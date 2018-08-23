@@ -1,0 +1,129 @@
+{
+    "name": "dn_charting",
+    "version": "1.0.0-SNAPSHOT",
+    "title": "${bundleName}",
+    "description": "${bundleDescription}",
+    "vendor": "con terra GmbH",
+    "productName": "devnet-mapapps-charting",
+    "dependencies": {
+        "apprt-vue": "^4.2.0",
+        "apprt-binding": "^4.2.0",
+        "apprt-core": "^4.2.0",
+        "coordinatetransformer": "^4.2.0",
+        "mapdraw-api": "^4.2.0",
+        "c3": ">0"
+    },
+    "CSS-Themes-Extension": [
+        {
+            "name": "*",
+            "files": [
+                "./css/styles.css"
+            ]
+        }
+    ],
+    "layout-widgets": [
+        {
+            "widgetRole": "chartingDashboardWidget",
+            "sublayout": [
+                "desktop",
+                "tablet_landscape",
+                "tablet_portrait"
+            ],
+            "window": {
+                "autofocus": false,
+                "minimizeOnClose": true,
+                "resizable": true,
+                "marginBox": {
+                    "t": 40,
+                    "b": 40,
+                    "r": 0,
+                    "w": 400
+                },
+                "fixEdgesInViewPort": {
+                    "l": false
+                },
+                "draggable": false,
+                "closable": false,
+                "collapsable": true,
+                "collapseAxis": {
+                    "l": true
+                },
+                "windowClass": "noTitleBarAndWindowTools"
+            }
+        },
+        {
+            "widgetRole": "chartingDashboardWidget",
+            "sublayout": [
+                "mobile_landscape",
+                "mobile_portrait"
+            ],
+            "window": {
+                "autofocus": false,
+                "minimizeOnClose": true,
+                "marginBox": {
+                    "w": "100%",
+                    "h": "50%",
+                    "b": 40,
+                    "l": 0
+                },
+                "windowClass": "mobileWindow noTitleBarAndWindowTools"
+            }
+        }
+    ],
+    "Components": [
+        {
+            "name": "C3ChartsFactory",
+            "provides": [
+                "dn_charting.C3ChartsFactory"
+            ],
+            "references": [
+                {
+                    "name": "_c3ChartsDataProvider",
+                    "providing": "dn_charting.C3ChartsDataProvider"
+                }
+            ]
+        },
+        {
+            "name": "C3ChartsDataProvider",
+            "provides": [
+                "dn_charting.C3ChartsDataProvider"
+            ]
+        },
+        {
+            "name": "ChartingDashboardWidgetFactory",
+            "provides": [
+                "dijit.Widget"
+            ],
+            "instanceFactory": true,
+            "immediate": true,
+            "properties": {
+                "widgetRole": "chartingDashboardWidget",
+                "storeId": "",
+                "titleAttribute": "",
+                "initialPoint": {
+                    "x": 7.628694,
+                    "y": 51.962944
+                },
+                "charts": []
+            },
+            "references": [
+                {
+                    "name": "_mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel"
+                },
+                {
+                    "name": "_c3ChartsFactory",
+                    "providing": "dn_charting.C3ChartsFactory"
+                },
+                {
+                    "name": "_coordinateTransformer",
+                    "providing": "ct.api.coordinatetransformer.CoordinateTransformer"
+                },
+                {
+                    "name": "_drawing",
+                    "providing": "mapdraw-api.DefaultMapDrawing"
+                }
+            ]
+        }
+    ]
+}

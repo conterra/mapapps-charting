@@ -1,0 +1,24 @@
+{
+    "name": "c3",
+    "version": "0.4.10",
+    "d3-version": "0.4.10",
+    "title": "C3",
+    "description": "C3 API",
+    "url": "http://c3js.org",
+    "i18n": [],
+    "excludedExecutionEnvironment": [
+        "IE:[,9)"
+    ],
+    "productName": "map.apps",
+    "dependencies": {
+        "d3": "^3.x"
+    },
+    "CSS-Themes-Extension": [
+        {
+            "name": "*",
+            "files": [
+                "./styles/c3.css"
+            ]
+        }
+    ]
+}

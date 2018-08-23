@@ -1,0 +1,183 @@
+{
+    "properties": {
+        "title": "${apptitle}"
+    },
+    "load": {
+        "bundleLocations": [
+            "localbundles",
+            "bundles"
+        ],
+        "allowedBundles": [
+            "system",
+            "console",
+            "notifier",
+            "splashscreen",
+            "templatelayout",
+            "template-seasons",
+            "theme-everlasting",
+            "theme-winter",
+            "theme-spring",
+            "theme-summer",
+            "theme-autumn",
+            "map-init",
+            "toolset",
+            "agssearch",
+            "dn_charting"
+        ],
+        "require": [
+            "${app}.app"
+        ],
+        "i18n": [
+            "bundle"
+        ]
+    },
+    "bundles": {
+        "dn_charting": {
+            "ChartingDashboardWidgetFactory": {
+                "storeId": "life_expectancy",
+                "titleAttribute": "NAME",
+                "initialPoint": {
+                    "x": 7.628694,
+                    "y": 51.962944
+                },
+                "charts": [
+                    {
+                        "title": "Altersverteilung",
+                        "type": "bar",
+                        "height": 200,
+                        "data": [
+                            {
+                                "attribute": "LIFE_EXPECT_TOTAL",
+                                "title": "Lebenserwarung Total"
+                            },
+                            {
+                                "attribute": "LIFE_EXPECT_FEMALE",
+                                "title": "Lebenserwarung Frauen"
+                            },
+                            {
+                                "attribute": "LIFE_EXPECT_MALE",
+                                "title": "Lebenserwarung Männer"
+                            }
+                        ],
+                        "dataOrientation": "rows",
+                        "showDataLabels": true,
+                        "rotatedAxis": false,
+                        "expanded": false
+                    },
+                    {
+                        "title": "Altersverteilung",
+                        "type": "bar",
+                        "height": 200,
+                        "data": [
+                            {
+                                "attribute": "LIFE_EXPECT_FEMALE",
+                                "title": "Lebenserwarung Frauen"
+                            },
+                            {
+                                "attribute": "LIFE_EXPECT_MALE",
+                                "title": "Lebenserwarung Männer"
+                            }
+                        ],
+                        "dataOrientation": "rows",
+                        "showDataLabels": false,
+                        "rotatedAxis": false,
+                        "expanded": true
+                    },
+                    {
+                        "title": "Geschlechterverteilung",
+                        "type": "pie",
+                        "height": 200,
+                        "data": [
+                            {
+                                "attribute": "LIFE_EXPECT_FEMALE",
+                                "title": "Lebenserwarung Frauen"
+                            },
+                            {
+                                "attribute": "LIFE_EXPECT_MALE",
+                                "title": "Lebenserwarung Männer"
+                            }
+                        ],
+                        "dataOrientation": "rows",
+                        "showDataLabels": false,
+                        "rotatedAxis": false,
+                        "expanded": true
+                    }
+                ]
+            }
+        },
+        "agssearch": {
+            "AGSStore": [
+                {
+                    "title": "World Life Expectancy",
+                    "id": "life_expectancy",
+                    "description": "",
+                    "omniSearchLabelAttr": "NAME",
+                    "omniSearchSearchAttr": "NAME",
+                    "idProperty": "OBJECTID",
+                    "url": "https://services1.arcgis.com/VAI453sU9tG9rSmh/ArcGIS/rest/services/WorldGeo_HumanCulture_LifeExpectancy_features/FeatureServer/0",
+                    "useIn": [
+                        "selection"
+                    ],
+                    "filterOptions": {
+                        "suggestContains": true
+                    },
+                    "omniSearchTypingDelay": 500,
+                    "omniSearchPageSize": 20,
+                    "omniSearchDefaultLabel": "Suchbegriff eingeben...",
+                    "fetchIdProperty": true,
+                    "enablePagination": false
+                }
+            ]
+        },
+        "basemaptoggler": {
+            "Config": {
+                "nextBasemap": "hybrid"
+            }
+        },
+        "map-init": {
+            "Config": {
+                "map": {
+                    "basemap": "streets-night-vector",
+                    "layers": [
+                        {
+                            "id": "zensus",
+                            "title": "Zensus 2011",
+                            "url": "http://services.arcgis.com/OLiydejKCZTGhvWg/arcgis/rest/services/Bev%C3%B6lkerungNationalit%C3%A4t1B/FeatureServer/1",
+                            "type": "AGS_FEATURE",
+                            "elevationInfo": {
+                                "mode": "on-the-ground"
+                            },
+                            "visible": true,
+                            "outFields": [
+                                "*"
+                            ]
+                        }
+                    ],
+                    "ground": {
+                        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+                        "type": "ELEVATION"
+                    }
+                },
+                "view": {
+                    "viewmode": "2D",
+                    "scale": 5000000,
+                    "center": {
+                        "x": 1159578.07,
+                        "y": 6644912.76,
+                        "spatialReference": {
+                            "wkid": 3857
+                        }
+                    }
+                }
+            }
+        },
+        "themes": {
+            "ThemeModel": {
+                "_selectedTheme": "everlasting"
+            },
+            "ThemeSelector": {
+                "componentEnabled": true
+            }
+        }
+    }
+}

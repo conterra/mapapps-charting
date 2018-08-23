@@ -1,0 +1,31 @@
+.ctAppRoot .chartingDashboardWidget .vue-base {
+    height: 100%
+}
+
+.ctAppRoot .chartingDashboardWidget .overflowAuto {
+    overflow: auto;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3-tooltip .name {
+    color: black;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3-tooltip .value {
+    color: black;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3 .c3-axis-x path, .chartingDashboardWidget .c3 .c3-axis-x line {
+    stroke: white;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3 .c3-axis-y path, .chartingDashboardWidget .c3 .c3-axis-y line {
+    stroke: white;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3 .c3-axis-y text, .chartingDashboardWidget .c3 .c3-axis-x text {
+    fill: white;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3 .c3-legend-item text {
+    fill: white;
+}
