@@ -1,4 +1,4 @@
-# map.apps Charting
+Charts
 The map.apps charting bundle enables you to display charts for your data. 
 By clicking on the map, the user can select a different features to query charts for this feature.
 
