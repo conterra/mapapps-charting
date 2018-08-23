@@ -1,7 +1,7 @@
 # Charts
 
 The map.apps charting bundle enables you to display charts for your data. 
-By clicking on the map, the user can select a different features to query charts for this feature.
+By clicking on the map, the user can select a different features to query charts for this feature. You can choose of a vairety of different charts like: line, timeseries, spline, step, donut, bar, pie, step, area, gauge. For more information see: For more information see: https://c3js.org/examples.html
 
 ![Screenshot App](https://github.com/conterra/mapapps-charting/blob/master/screenshot.JPG)
 
@@ -13,7 +13,7 @@ Installation Guide
 ------------------
 **Requirement: map.apps 4.2.0**
 
-First you need to configure the store for which the charts should be displayed.
+First you need to configure the store for which the charts should be displayed. This is the data source (layer with attributes) for which the statitics will be calculated.
 For more information have a look at:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/stores
 
@@ -69,23 +69,23 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 
 ###### Configuration
 | Property                   | Type    | Possible Values                                                       | Default                     | Description                                                                                                                                                                                                              |
-|----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------|
-| storeId                    | String  |                                                                       |                             | The ID of the store for which the charts should be constructed.                                             |
-| titleAttribute             | String  |                                                                       |                             | The attribute name for the title of the whole statistics section.                                           |
-| initialPoint               | Array   |                                                                       |                             | Coordinate array with point of initial selected feature.                                                    |
-| initialPoint.x             | Integer |                                                                       |                             | x-coordinate of initial feature.                                                                            |
-| initialPoint.y             | Integer |                                                                       |                             | y-coordinate of initial feature.                                                                            |
-| charts                     | Array   |                                                                       |                             | Array with charts definitions.                                                                              |
-| charts.title               | String  |                                                                       |                             | Title of specific chart.                                                                                    |
-| charts.type                | String  | donut, bar, pie, line, spline, step, area, gauge                      |                             | Type of chart to be displayed. For more information see: https://c3js.org/examples.html.                    |
-| charts.height              | Integer |                                                                       |                             | Height of chart to be displayed. Width will be set automatically.                                           |
-| charts.data                | Array   |                                                                       |                             | Data to construct the chart for.                                                                            |
-| charts.data.attribute      | String  |                                                                       |                             | Attribute name of data. Multiple objects with attribute and title can be configured.                        |
-| charts.data.title          | String  |                                                                       |                             | Title for the data.                                                                                         |
-| dataOrientation            | String  | rows, columns                                                         |                             | Is the initial data in rows or in columns.                                                                  |
-| showDataLabels             | boolean | ```true``` &#124; ```false```                                         | true                        | Show the individual data label.                                                                             |
-| rotatedAxis                | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                      |
-| expanded                   | boolean | ```true``` &#124; ```false```                                         | false                       | Chart is initially expended.                                                                                |
+|----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| storeId                    | String  |                                                                       |                             | The ID of the store for which the charts should be constructed. (Data Source)                                                          |
+| titleAttribute             | String  |                                                                       |                             | The attribute name for the title of the whole statistics section.                                                                       |
+| initialPoint               | Array   |                                                                       |                             | Coordinate array with point of initial selected feature.                                                                                 |
+| initialPoint.x             | Integer |                                                                       |                             | x-coordinate of initial feature.                                                                                                         |
+| initialPoint.y             | Integer |                                                                       |                             | y-coordinate of initial feature.                                                                                                         |
+| charts                     | Array   |                                                                       |                             | Array with charts definitions.                                                                                                           |
+| charts.title               | String  |                                                                       |                             | Title of specific chart.                                                                                                                 |
+| charts.type                | String  | line, timeseries, spline, step, donut, bar, pie, step, area, gauge    |                             | Type of chart to be displayed. For more information see: https://c3js.org/examples.html.                                                 |
+| charts.height              | Integer |                                                                       |                             | Height of chart to be displayed. Width will be set automatically.                                                                       |
+| charts.data                | Array   |                                                                       |                             | Data to construct the chart for.                                                                                                         |
+| charts.data.attribute      | String  |                                                                       |                             | Attribute name of data. Multiple objects with attribute and title can be configured. These attributes will be included in this chart |
+| charts.data.title          | String  |                                                                       |                             | Title for the data.                                                                                                                     |
+| dataOrientation            | String  | rows, columns                                                         |                             | Is the initial data in rows or in columns.                                                                                               |
+| showDataLabels             | boolean | ```true``` &#124; ```false```                                         | true                        | Show the individual data label.                                                                                                         |
+| rotatedAxis                | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                   |
+| expanded                   | boolean | ```true``` &#124; ```false```                                         | false                       | Chart is initially expended.                                                                                                             |
 
 
 Development Guide
