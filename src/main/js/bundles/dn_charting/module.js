@@ -17,3 +17,4 @@ import ".";
 import "./C3ChartsFactory";
 import "./C3ChartsDataProvider";
 import "./ChartingDashboardWidgetFactory";
+import "./ChartingDashboardWidgetModel";

@@ -22,6 +22,7 @@
             "map-init",
             "toolset",
             "agssearch",
+            "selection-ui",
             "dn_charting"
         ],
         "require": [
@@ -33,7 +34,7 @@
     },
     "bundles": {
         "dn_charting": {
-            "ChartingDashboardWidgetFactory": {
+            "ChartingDashboardWidgetModel": {
                 "storeId": "zensus_store",
                 "titleAttribute": "NAME",
                 "initialPoint": {
@@ -146,7 +147,6 @@
         },
         "toolset": {
             "ToolsetManager": {
-                "toolsets": []
             }
         },
         "agssearch": {

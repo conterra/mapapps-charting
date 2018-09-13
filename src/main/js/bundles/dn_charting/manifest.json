@@ -11,6 +11,7 @@
         "apprt-core": "^4.2.0",
         "coordinatetransformer": "^4.2.0",
         "mapdraw-api": "^4.2.0",
+        "selection-resultcenter": "^4.2.0",
         "c3": ">0"
     },
     "CSS-Themes-Extension": [
@@ -90,14 +91,10 @@
             ]
         },
         {
-            "name": "ChartingDashboardWidgetFactory",
-            "provides": [
-                "dijit.Widget"
-            ],
-            "instanceFactory": true,
-            "immediate": true,
+            "name": "ChartingDashboardWidgetModel",
+            "provides": "dn_charting.ChartingDashboardWidgetModel",
+            "propertiesConstructor": true,
             "properties": {
-                "widgetRole": "chartingDashboardWidget",
                 "storeId": "",
                 "titleAttribute": "",
                 "initialPoint": {
@@ -122,6 +119,23 @@
                 {
                     "name": "_drawing",
                     "providing": "mapdraw-api.DefaultMapDrawing"
+                }
+            ]
+        },
+        {
+            "name": "ChartingDashboardWidgetFactory",
+            "provides": [
+                "dijit.Widget"
+            ],
+            "instanceFactory": true,
+            "immediate": true,
+            "properties": {
+                "widgetRole": "chartingDashboardWidget"
+            },
+            "references": [
+                {
+                    "name": "_chartingDashboardWidgetModel",
+                    "providing": "dn_charting.ChartingDashboardWidgetModel"
                 }
             ]
         }

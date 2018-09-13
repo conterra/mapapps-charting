@@ -33,7 +33,7 @@
     },
     "bundles": {
         "dn_charting": {
-            "ChartingDashboardWidgetFactory": {
+            "ChartingDashboardWidgetModel": {
                 "storeId": "life_expectancy",
                 "titleAttribute": "NAME",
                 "initialPoint": {

@@ -33,7 +33,7 @@
     },
     "bundles": {
         "dn_charting": {
-            "ChartingDashboardWidgetFactory": {
+            "ChartingDashboardWidgetModel": {
                 "storeId": "crime_stas",
                 "titleAttribute": "Landkreis",
                 "initialPoint": {
