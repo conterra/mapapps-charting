@@ -63,7 +63,7 @@ export default declare({
                 if (total === 1) {
                     this.title = results[0][chartsProperties.titleAttribute];
                 } else {
-                    this.title = "mehrere Objekte"
+                    this.title = this._i18n.get().ui.multipleObjects;
                 }
                 this._tool.set("active", true);
                 this._drawCharts(sumObject, chartsProperties.charts);

@@ -18,7 +18,8 @@ module.exports = {
     bundleDescription: "map.apps Charting",
     ui: {
         statistics: "Statistiken für ",
-        warning: "Es konnte kein Feature gefunden werden"
+        warning: "Es konnte kein Feature gefunden werden",
+        multipleObjects: "mehrere Objekte"
     },
     tool: {
         title: "Statistiken",
