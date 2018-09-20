@@ -21,9 +21,10 @@ import Graphic from "esri/Graphic";
 
 export default declare({
 
-    chartNodes: [],
     title: "",
+    chartNodes: [],
     _charts: [],
+    _chartsProperties: [],
 
     activate(componentContext) {
         let serviceResolver = this.serviceResolver = new ServiceResolver();
@@ -35,8 +36,9 @@ export default declare({
         const queryExecutions = event.getProperty("executions");
         queryExecutions.executions[0].waitForExecution().then((response) => {
             if (this._storeId !== response.source.id) {
-                this._charts = [];
                 this.chartNodes = [];
+                this._charts = [];
+                this._chartsProperties = [];
             }
             let storeId = this._storeId = response.source.id;
             let chartsProperties = this._getChartsProperties(storeId);
@@ -72,7 +74,7 @@ export default declare({
     },
 
     resizeCharts(width) {
-        let chartsProperties = this._getChartsProperties(this._storeId).charts;
+        let chartsProperties = this._chartsProperties;
         if (width >= 40) {
             width -= 40;
         }
@@ -95,6 +97,7 @@ export default declare({
                 let chartNode = domConstruct.create("div");
                 let chart = factory.createChart(chartNode, chartProperties, attributes, null);
                 this._charts.push(chart);
+                this._chartsProperties.push(chartProperties);
                 chartNode.titleText = chartProperties.title;
                 chartNode.expanded = chartProperties.expanded === undefined ? true : chartProperties.expanded;
                 this.chartNodes.push(chartNode);
