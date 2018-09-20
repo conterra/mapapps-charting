@@ -73,7 +73,9 @@ export default declare({
 
     resizeCharts(width) {
         let chartsProperties = this._getChartsProperties(this._storeId).charts;
-        width -= 40;
+        if (width >= 40) {
+            width -= 40;
+        }
         this._charts.forEach((chart, i) => {
             chart.resize({height: chartsProperties[i].height, width: width});
         });

@@ -56,7 +56,7 @@ export default class ChartingDashboardWidgetFactory {
             if (rect) {
                 width = rect.width
             } else {
-                width = 400;
+                width = 500;
             }
             model.resizeCharts(width);
         });
