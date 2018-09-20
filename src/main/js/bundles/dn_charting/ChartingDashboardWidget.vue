@@ -2,7 +2,7 @@
     <div class="ct-flex-container ct-flex-container--column fullHeight">
         <div class="ct-flex-item ct-flex-item--no-grow ct-flex-item--no-shrink">
             <v-card class="elevation-6">
-                <v-card-title class="primary title">{{i18n.statistics}} {{name}}</v-card-title>
+                <v-card-title class="primary title">{{i18n.statistics}} {{title}}</v-card-title>
             </v-card>
         </div>
         <div class="ct-flex-item overflowAuto">
@@ -26,9 +26,8 @@
         mixins: [Bindable],
         data: function () {
             return {
-                charts: [],
                 chartNodes: [],
-                name: "",
+                title: "",
                 i18n: {
                     type: Object,
                     default: function () {
@@ -45,10 +44,6 @@
             that.$nextTick(function () {
                 that.$emit('start');
             })
-        },
-        watch: {
-            charts: function (val, oldVal) {
-            }
         },
         methods: {}
     };

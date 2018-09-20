@@ -11,7 +11,7 @@
         "apprt-core": "^4.2.0",
         "coordinatetransformer": "^4.2.0",
         "mapdraw-api": "^4.2.0",
-        "selection-resultcenter": "^4.2.0",
+        "selection-services": "^4.2.0",
         "c3": ">0"
     },
     "CSS-Themes-Extension": [
@@ -31,9 +31,7 @@
                 "tablet_portrait"
             ],
             "window": {
-                "autofocus": false,
-                "minimizeOnClose": true,
-                "resizable": true,
+                "dockTool": "chartingDashboardToggleTool",
                 "marginBox": {
                     "t": 40,
                     "b": 40,
@@ -43,6 +41,10 @@
                 "fixEdgesInViewPort": {
                     "l": false
                 },
+                "dockable": true,
+                "autofocus": false,
+                "minimizeOnClose": true,
+                "resizable": true,
                 "draggable": false,
                 "closable": false,
                 "collapsable": true,
@@ -92,16 +94,25 @@
         },
         {
             "name": "ChartingDashboardWidgetModel",
-            "provides": "dn_charting.ChartingDashboardWidgetModel",
+            "provides": [
+                "dn_charting.ChartingDashboardWidgetModel",
+                "ct.framework.api.EventHandler"
+            ],
             "propertiesConstructor": true,
             "properties": {
-                "storeId": "",
-                "titleAttribute": "",
-                "initialPoint": {
-                    "x": 7.628694,
-                    "y": 51.962944
-                },
-                "charts": []
+                "chartsProperties": [
+                    {
+                        "storeId": "",
+                        "titleAttribute": "",
+                        "charts": []
+                    }
+                ],
+                "Event-Topics": [
+                    {
+                        "topic": "selection/EXECUTING",
+                        "method": "receiveSelections"
+                    }
+                ]
             },
             "references": [
                 {
@@ -119,6 +130,11 @@
                 {
                     "name": "_drawing",
                     "providing": "mapdraw-api.DefaultMapDrawing"
+                },
+                {
+                    "name": "_tool",
+                    "providing": "ct.tools.Tool",
+                    "filter": "(id=chartingDashboardToggleTool)"
                 }
             ]
         },
@@ -138,6 +154,21 @@
                     "providing": "dn_charting.ChartingDashboardWidgetModel"
                 }
             ]
+        },
+        {
+            "name": "ChartingDashboardToggleTool",
+            "impl": "ct/tools/Tool",
+            "provides": [
+                "ct.tools.Tool"
+            ],
+            "propertiesConstructor": true,
+            "properties": {
+                "id": "chartingDashboardToggleTool",
+                "title": "${tool.title}",
+                "tooltip": "${tool.tooltip}",
+                "iconClass": "icon-chart-pie",
+                "togglable": true
+            }
         }
     ]
 }

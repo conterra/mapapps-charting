@@ -14,5 +14,5 @@
  * limitations under the License.
  */
 module.exports = {
-    apptitle: "Zensus 2011 Statistiken"
+    apptitle: "Statistiken"
 };

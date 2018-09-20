@@ -15,7 +15,7 @@
  */
 module.exports = {
     root: {
-        apptitle: "Zensus 2011 Statistiken"
+        apptitle: "Statistiken"
     },
     "de": true
 };

@@ -30,17 +30,16 @@ export default class ChartingDashboardWidgetFactory {
         let model = this._chartingDashboardWidgetModel;
         const vm = this.vm = new Vue(ChartingDashboardWidget);
         vm.i18n = this.i18n = this._i18n.get().ui;
-        vm.name = model.name;
+        vm.title = model.title;
         vm.chartNodes = model.chartNodes;
 
         Binding
             .create()
-            .syncAll("chartNodes", "name")
+            .bindTo(vm, model)
+            .syncAll("title", "chartNodes")
             .enable();
 
         vm.$once('start', () => {
-            model.start();
-
             let enclosingWidget = ct_util.findEnclosingWindow(this.widget);
             if (enclosingWidget) {
                 d_aspect.before(enclosingWidget, "resize", (dims) => {
@@ -52,7 +51,14 @@ export default class ChartingDashboardWidgetFactory {
         });
 
         d_aspect.after(model, "_drawCharts", () => {
-            model.resizeCharts(this.vm.$el.getBoundingClientRect().width);
+            let width;
+            let rect = this.vm.$el && this.vm.$el.getBoundingClientRect();
+            if (rect) {
+                width = rect.width
+            } else {
+                width = 400;
+            }
+            model.resizeCharts(width);
         });
     }
 

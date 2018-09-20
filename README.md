@@ -25,56 +25,55 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 ##### ChartingDashboardWidgetFactory
 ```
 "ChartingDashboardWidgetFactory": {
-    "storeId": "yourStoreID",
-    "titleAttribute": "NAME",
-    "initialPoint": {
-        "x": 7.628694,
-        "y": 51.962944
-    },
-    "charts": [
+    "chartsProperties": [
         {
-            "title": "Altersverteilung",
-            "type": "donut", //donut,
-            "height": 400,
-            "data": [
+            "storeId": "yourStoreID",
+            "titleAttribute": "NAME",
+            "charts": [
                 {
-                    "attribute": "ALTER_1",
-                    "title": "Unter 18 Jahren"
+                    "title": "Altersverteilung",
+                    "type": "donut",
+                    "height": 400,
+                    "data": [
+                        {
+                            "attribute": "ALTER_1",
+                           "title": "Unter 18 Jahren"
+                        },
+                        {
+                            "attribute": "ALTER_2",
+                            "title": "18 - 29 Jahre"
+                        },
+                        {
+                            "attribute": "ALTER_3",
+                           "title": "30 - 49 Jahre"
+                        },
+                        {
+                            "attribute": "ALTER_4",
+                            "title": "50 - 64 Jahre"
+                        },
+                        {
+                            "attribute": "ALTER_5",
+                            "title": "65 Jahre und älter"
+                        }
+                    ],
+                    "dataOrientation": "rows", //rows und columns    
+                    "showDataLabels": true,
+                    "rotatedAxis": false,
+                    "expanded": true
                 },
-                {
-                    "attribute": "ALTER_2",
-                    "title": "18 - 29 Jahre"
-                },
-                {
-                    "attribute": "ALTER_3",
-                    "title": "30 - 49 Jahre"
-                },
-                {
-                    "attribute": "ALTER_4",
-                    "title": "50 - 64 Jahre"
-                },
-                {
-                    "attribute": "ALTER_5",
-                    "title": "65 Jahre und älter"
-                }
-            ],
-            "dataOrientation": "rows", //rows und columns    
-            "showDataLabels": true,
-            "rotatedAxis": false,
-            "expanded": true
+                ...
+            ]
         },
+        ...
     ]
 }
 ```
 
-###### Configuration
+###### Chart Configuration
 | Property                   | Type    | Possible Values                                                       | Default                     | Description                                                                                                                                                                                                              |
 |----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | storeId                    | String  |                                                                       |                             | The ID of the store for which the charts should be constructed. (Data Source)                                                          |
 | titleAttribute             | String  |                                                                       |                             | The attribute name for the title of the whole statistics section.                                                                       |
-| initialPoint               | Array   |                                                                       |                             | Coordinate array with point of initial selected feature.                                                                                 |
-| initialPoint.x             | Integer |                                                                       |                             | x-coordinate of initial feature.                                                                                                         |
-| initialPoint.y             | Integer |                                                                       |                             | y-coordinate of initial feature.                                                                                                         |
 | charts                     | Array   |                                                                       |                             | Array with charts definitions.                                                                                                           |
 | charts.title               | String  |                                                                       |                             | Title of specific chart.                                                                                                                 |
 | charts.type                | String  | line, timeseries, spline, step, donut, bar, pie, step, area, gauge    |                             | Type of chart to be displayed. For more information see: https://c3js.org/examples.html.                                                 |

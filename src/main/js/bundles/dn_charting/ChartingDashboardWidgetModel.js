@@ -16,15 +16,13 @@
 import {declare} from "apprt-core/Mutable";
 import ServiceResolver from "apprt/ServiceResolver";
 import domConstruct from "dojo/dom-construct";
-import ct_when from "ct/_when";
-import * as WatchUtils from "esri/core/watchUtils";
-import Point from "esri/geometry/Point";
+import ct_lang from "ct/_lang";
 import Graphic from "esri/Graphic";
 
 export default declare({
 
     chartNodes: [],
-    name: "",
+    title: "",
     _charts: [],
 
     activate(componentContext) {
@@ -33,50 +31,62 @@ export default declare({
         serviceResolver.setBundleCtx(bundleCtx);
     },
 
-    start() {
-        let mapWidgetModel = this._mapWidgetModel;
-        let properties = this._properties;
-        WatchUtils.whenDefined(mapWidgetModel, "spatialReference", (result) => {
-            let point = new Point(properties.initialPoint);
-            if (result.value) {
-                ct_when(this._coordinateTransformer.transform(point, result.value.wkid), (transformedPoint) => {
-                    this._geometryDrawn({
-                        geometry: transformedPoint
-                    });
-                });
+    receiveSelections(event) {
+        const queryExecutions = event.getProperty("executions");
+        queryExecutions.executions[0].waitForExecution().then((response) => {
+            if (this._storeId !== response.source.id) {
+                this._charts = [];
+                this.chartNodes = [];
             }
-
-            this._startDrawing();
+            let storeId = this._storeId = response.source.id;
+            let chartsProperties = this._getChartsProperties(storeId);
+            let total = response.total;
+            this._getGeometryForResults(response.result, response.source.store).then((results) => {
+                let sumObject = null;
+                let geometries = [];
+                results.forEach((result) => {
+                    if (!sumObject) {
+                        sumObject = {};
+                        ct_lang.forEachOwnProp(result, (value, name) => {
+                            sumObject[name] = value;
+                        });
+                    } else {
+                        ct_lang.forEachOwnProp(result, (value, name) => {
+                            sumObject[name] = sumObject[name] += value;
+                        });
+                    }
+                    if (result.geometry) {
+                        geometries.push(result.geometry);
+                    }
+                });
+                this._addGraphicsToView(geometries);
+                if (total === 1) {
+                    this.title = results[0][chartsProperties.titleAttribute];
+                } else {
+                    this.title = "mehrere Objekte"
+                }
+                this._tool.set("active", true);
+                this._drawCharts(sumObject, chartsProperties.charts);
+            });
         });
     },
 
     resizeCharts(width) {
-        let chartsProperties = this._properties.charts;
+        let chartsProperties = this._getChartsProperties(this._storeId).charts;
         width -= 40;
         this._charts.forEach((chart, i) => {
             chart.resize({height: chartsProperties[i].height, width: width});
         });
     },
 
-    _startDrawing() {
-        let drawing = this._drawing;
-        drawing.mode = "point";
-        drawing.active = true;
-
-        let drawListener = drawing.watch("graphic", evt => {
-            drawListener.remove();
-            drawing.active = false;
-            let point = evt.value.geometry;
-            ct_when(this._coordinateTransformer.transform(point, this._mapWidgetModel.spatialReference.wkid), (transformedPoint) => {
-                this._geometryDrawn({
-                    geometry: transformedPoint
-                });
-            });
+    _getChartsProperties(storeId) {
+        let chartsProperties = this._properties.chartsProperties;
+        return chartsProperties.find((properties) => {
+            return properties.storeId === storeId;
         });
     },
 
-    _drawCharts(attributes) {
-        let chartsProperties = this._properties.charts;
+    _drawCharts(attributes, chartsProperties) {
         let factory = this._c3ChartsFactory;
         if (this._charts.length === 0) {
             chartsProperties.forEach((chartProperties) => {
@@ -89,54 +99,48 @@ export default declare({
             });
         } else {
             this._charts.forEach((chart, i) => {
-                factory.createChart(null, this._properties.charts[i], attributes, chart);
+                factory.createChart(null, chartsProperties[i], attributes, chart);
             });
         }
     },
 
-    _geometryDrawn(evt) {
-        let geom = evt.geometry ? evt.geometry : evt.getProperty("geometry");
-        try {
-            let store = this._getStore(this._properties.storeId);
-            ct_when(store.query({
-                geometry: {
-                    $intersects: geom
+    _addGraphicsToView(geometries) {
+        let graphics = geometries.map((geometry) => {
+            return new Graphic({
+                geometry: geometry,
+                symbol: {
+                    type: "simple-fill",
+                    color: [51, 51, 204, 0.5],
+                    style: "solid",
+                    outline: {
+                        color: "white",
+                        width: 1
+                    },
+                    attributes: {}
                 }
-            }, {
-                fields: {
-                    "geometry": true
-                }
-            }), (results) => {
-                if (results.length > 0) {
-                    let geometry = results[0].geometry;
-                    this._addGraphicToView(geometry);
-                    this.name = results[0][this._properties.titleAttribute];
-                    this._drawCharts(results[0]);
-                    this._startDrawing();
-                }
-            }, this);
-        } catch (e) {
-            //do nothing
-        }
-    },
-
-    _addGraphicToView(geometry) {
-        let graphic = new Graphic({
-            geometry: geometry,
-            symbol: {
-                type: "simple-fill",
-                color: [51, 51, 204, 0.5],
-                style: "solid",
-                outline: {
-                    color: "white",
-                    width: 1
-                },
-                attributes: {}
-            }
+            });
         });
         let view = this._mapWidgetModel.get("view");
         view.graphics.removeAll();
-        view.graphics.add(graphic);
+        view.graphics.addMany(graphics);
+    },
+
+    _getGeometryForResults(results, store) {
+        let query = {
+            $or: []
+        };
+        results.forEach((result) => {
+            let obj = {};
+            obj[store.idProperty] = result[store.idProperty];
+            query["$or"].push(obj);
+        });
+        return store.query(query, {
+            fields: {
+                geometry: 1
+            }
+        }).then((results) => {
+            return results;
+        });
     },
 
     _getStore(id) {
