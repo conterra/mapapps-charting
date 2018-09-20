@@ -123,25 +123,6 @@
                                 "showDataLabels": false,
                                 "rotatedAxis": false,
                                 "expanded": true
-                            },
-                            {
-                                "title": "Ausländeranteil",
-                                "type": "pie",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "EW_D",
-                                        "title": "Deutsche"
-                                    },
-                                    {
-                                        "attribute": "EW_A",
-                                        "title": "Ausländer"
-                                    }
-                                ],
-                                "dataOrientation": "rows",
-                                "showDataLabels": false,
-                                "rotatedAxis": false,
-                                "expanded": true
                             }
                         ]
                     },
