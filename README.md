@@ -11,14 +11,15 @@ https://demos.conterra.de/mapapps/resources/apps/downloads_charting/index.html
 
 Installation Guide
 ------------------
-**Requirement: map.apps 4.2.0**
+**Requirement: map.apps 4.4.0**
 
-First you need to configure the store for which the charts should be displayed. This is the data source (layer with attributes) for which the statitics will be calculated.
+1. First you need to add the bundles selection-ui and dn_charting to your app.
+
+2. Then you need to configure one or more stores for which the charts should be displayed. This is the data source (layer with attributes) for which the charts will be created.
 For more information have a look at:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/stores
 
-More information about how to place a widget:
-https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
+3. Finally, you need to configure your charts in the following component.
 
 #### Configurable Components of dn_charting
 
@@ -86,6 +87,8 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 | rotatedAxis                | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                   |
 | expanded                   | boolean | ```true``` &#124; ```false```                                         | false                       | Chart is initially expended.                                                                                                             |
 
+More information about how to place a widget:
+https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
 
 Development Guide
 ------------------
