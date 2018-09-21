@@ -29,3 +29,27 @@
 .ctAppRoot .chartingDashboardWidget .c3 .c3-legend-item text {
     fill: white;
 }
+
+.ctAppRoot .chartingDashboardWidget .tabs__content {
+    height: 100%;
+}
+
+.ctAppRoot .chartingDashboardWidget .tabs {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ctAppRoot .chartingDashboardWidget .tabs__bar {
+    flex: 0 0 auto;
+}
+
+.ctAppRoot .chartingDashboardWidget .tabs__items {
+    flex: 1 1 auto;
+    height: calc(100% - 48px);
+    overflow-y: auto;
+}
+
+.ctAppRoot .chartingDashboardWidget .dijitDialogPaneContent {
+    overflow: hidden;
+}

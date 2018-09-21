@@ -30,13 +30,14 @@ export default class ChartingDashboardWidgetFactory {
         let model = this._chartingDashboardWidgetModel;
         const vm = this.vm = new Vue(ChartingDashboardWidget);
         vm.i18n = this.i18n = this._i18n.get().ui;
-        vm.title = model.title;
-        vm.chartNodes = model.chartNodes;
+        vm.loading = model.loading;
+        vm.charts = model.charts;
+        vm.activeTab = model.activeTab;
 
         Binding
             .create()
             .bindTo(vm, model)
-            .syncAll("title", "chartNodes")
+            .syncAll("loading", "charts", "activeTab")
             .enable();
 
         vm.$once('start', () => {
@@ -48,6 +49,10 @@ export default class ChartingDashboardWidgetFactory {
                     }
                 });
             }
+        });
+
+        vm.$on('activeTabChanged', (activeTab) => {
+            model.drawGraphicsForActiveTab(activeTab);
         });
 
         d_aspect.after(model, "_drawCharts", () => {

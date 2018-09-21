@@ -28,6 +28,9 @@
             "selection-ui",
             "dn_charting"
         ],
+        "styles": [
+            "${app}:app.css"
+        ],
         "require": [
             "${app}.app"
         ],
@@ -210,7 +213,7 @@
         },
         "selection-ui": {
             "Config": {
-                "preselectSources": "none",
+                "preselectSources": "all",
                 "activateSelectionMethod": true,
                 "closeOnSelection": false,
                 "selectionMethods": [
@@ -241,6 +244,21 @@
                     "description": "",
                     "idProperty": "OBJECTID",
                     "url": "https://services1.arcgis.com/wdMHWK8xfn32LjIy/arcgis/rest/services/BKAPKS_landkreise_STinsgesamt/FeatureServer/0",
+                    "useIn": [
+                        "selection"
+                    ],
+                    "filterOptions": {
+                        "suggestContains": true
+                    },
+                    "fetchIdProperty": true,
+                    "enablePagination": false
+                },
+                {
+                    "title": "Lebenserwartung",
+                    "id": "life_store",
+                    "description": "",
+                    "idProperty": "OBJECTID",
+                    "url": "https://services1.arcgis.com/VAI453sU9tG9rSmh/ArcGIS/rest/services/WorldGeo_HumanCulture_LifeExpectancy_features/FeatureServer/0",
                     "useIn": [
                         "selection"
                     ],
@@ -300,8 +318,8 @@
                     "basemap": "streets-night-vector",
                     "layers": [
                         {
-                            "id": "zensus",
-                            "title": "Zensus 2011",
+                            "id": "kreise",
+                            "title": "Kreise",
                             "url": "http://services.arcgis.com/OLiydejKCZTGhvWg/arcgis/rest/services/Bev%C3%B6lkerungNationalit%C3%A4t1B/FeatureServer/1",
                             "type": "AGS_FEATURE",
                             "elevationInfo": {
@@ -310,7 +328,18 @@
                             "visible": true,
                             "outFields": [
                                 "*"
-                            ]
+                            ],
+                            "renderer": {
+                                "type": "simple",
+                                "symbol": {
+                                    "type": "simple-fill",
+                                    "color": [ 255, 255, 255, 0.5 ],
+                                    "outline": {
+                                        "width": 1,
+                                        "color": "white"
+                                    }
+                                }
+                            }
                         }
                     ],
                     "ground": {

@@ -21,10 +21,13 @@ import Graphic from "esri/Graphic";
 
 export default declare({
 
-    title: "",
-    chartNodes: [],
+    loading: false,
+    tabTitle: "",
+    activeTab: "0",
+    chartsTitle: "",
+    charts: [],
     _charts: [],
-    _chartsProperties: [],
+    _geometries: [],
 
     activate(componentContext) {
         let serviceResolver = this.serviceResolver = new ServiceResolver();
@@ -33,16 +36,64 @@ export default declare({
     },
 
     receiveSelections(event) {
+        if (this.loading) {
+            return;
+        }
+        this.loading = true;
+        this.charts = [];
+        this._charts = [];
+        this._geometries = [];
+        this._tool.set("active", true);
         const queryExecutions = event.getProperty("executions");
-        queryExecutions.executions[0].waitForExecution().then((response) => {
-            if (this._storeId !== response.source.id) {
-                this.chartNodes = [];
-                this._charts = [];
-                this._chartsProperties = [];
-            }
-            let storeId = this._storeId = response.source.id;
-            let chartsProperties = this._getChartsProperties(storeId);
+        queryExecutions.waitForExecution().then((response) => {
+            this.loading = false;
+            let executions = response.executions;
+            let responses = [];
+            executions.forEach((response) => {
+                if (!response.result) {
+                    return;
+                }
+                let storeId = response.source.id;
+                let chartsProperties = this._getChartsProperties(storeId);
+                if (chartsProperties) {
+                    responses.push(response);
+                }
+            });
+            this._handleChartResponses(responses);
+        });
+    },
+
+    resizeCharts(width) {
+        if (width >= 40) {
+            width -= 40;
+        }
+        this._charts.forEach((chart, i) => {
+            chart.resize({width: width});
+        });
+    },
+
+    drawGraphicsForActiveTab(activeTab) {
+        let geometries = this._geometries[activeTab];
+        if (geometries) {
+            this._addGraphicsToView(geometries);
+        }
+    },
+
+    _handleChartResponses(responses) {
+        responses.forEach((response, i) => {
+            let tabTitle = response.source.title;
             let total = response.total;
+            let storeId = response.source.id;
+            let chartsProperties = this._getChartsProperties(storeId);
+            let chartsTitle = total === 1 ? response.result[0][chartsProperties.titleAttribute] : this._i18n.get().ui.multipleObjects;
+            let chartNodes = [];
+            this.charts.push({
+                storeId: storeId,
+                tabTitle: tabTitle,
+                chartsTitle: chartsTitle,
+                chartNodes: chartNodes
+            });
+
             this._getGeometryForResults(response.result, response.source.store).then((results) => {
                 let sumObject = null;
                 let geometries = [];
@@ -61,25 +112,12 @@ export default declare({
                         geometries.push(result.geometry);
                     }
                 });
-                this._addGraphicsToView(geometries);
-                if (total === 1) {
-                    this.title = results[0][chartsProperties.titleAttribute];
-                } else {
-                    this.title = this._i18n.get().ui.multipleObjects;
+                if (i === parseInt(this.activeTab)) {
+                    this._addGraphicsToView(geometries);
                 }
-                this._tool.set("active", true);
-                this._drawCharts(sumObject, chartsProperties.charts);
+                this._geometries[i] = geometries;
+                this._drawCharts(sumObject, chartsProperties.charts, chartNodes);
             });
-        });
-    },
-
-    resizeCharts(width) {
-        let chartsProperties = this._chartsProperties;
-        if (width >= 40) {
-            width -= 40;
-        }
-        this._charts.forEach((chart, i) => {
-            chart.resize({height: chartsProperties[i].height, width: width});
         });
     },
 
@@ -90,23 +128,16 @@ export default declare({
         });
     },
 
-    _drawCharts(attributes, chartsProperties) {
+    _drawCharts(attributes, chartsProperties, chartNodes) {
         let factory = this._c3ChartsFactory;
-        if (this._charts.length === 0) {
-            chartsProperties.forEach((chartProperties) => {
-                let chartNode = domConstruct.create("div");
-                let chart = factory.createChart(chartNode, chartProperties, attributes, null);
-                this._charts.push(chart);
-                this._chartsProperties.push(chartProperties);
-                chartNode.titleText = chartProperties.title;
-                chartNode.expanded = chartProperties.expanded === undefined ? true : chartProperties.expanded;
-                this.chartNodes.push(chartNode);
-            });
-        } else {
-            this._charts.forEach((chart, i) => {
-                factory.createChart(null, chartsProperties[i], attributes, chart);
-            });
-        }
+        chartsProperties.forEach((chartProperties) => {
+            let chartNode = domConstruct.create("div");
+            let chart = factory.createChart(chartNode, chartProperties, attributes, null);
+            this._charts.push(chart);
+            chartNode.titleText = chartProperties.title;
+            chartNode.expanded = chartProperties.expanded === undefined ? true : chartProperties.expanded;
+            chartNodes.push(chartNode);
+        });
     },
 
     _addGraphicsToView(geometries) {
