@@ -43,8 +43,8 @@
             "ChartingDashboardWidgetModel": {
                 "chartsProperties": [
                     {
-                        "storeId": "zensus_store",
-                        "titleAttribute": "NAME",
+                        "storeId": "wahlkreise_strukturdaten",
+                        "titleAttribute": "WKR_NAME",
                         "charts": [
                             {
                                 "title": "Altersverteilung",
@@ -52,24 +52,28 @@
                                 "height": 400,
                                 "data": [
                                     {
-                                        "attribute": "ALTER_1",
+                                        "attribute": "Alter_unter_18",
                                         "title": "Unter 18 Jahren"
                                     },
                                     {
-                                        "attribute": "ALTER_2",
-                                        "title": "18 - 29 Jahre"
+                                        "attribute": "Alter_18_24",
+                                        "title": "18 - 24 Jahre"
                                     },
                                     {
-                                        "attribute": "ALTER_3",
-                                        "title": "30 - 49 Jahre"
+                                        "attribute": "Alter_25_34",
+                                        "title": "25 - 34 Jahre"
                                     },
                                     {
-                                        "attribute": "ALTER_4",
-                                        "title": "50 - 64 Jahre"
+                                        "attribute": "Alter_35_59",
+                                        "title": "35 - 59 Jahre"
                                     },
                                     {
-                                        "attribute": "ALTER_5",
-                                        "title": "65 Jahre und älter"
+                                        "attribute": "Alter_60_74",
+                                        "title": "60 - 74 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Alter_75_und_mehr",
+                                        "title": "75 Jahre und älter"
                                     }
                                 ],
                                 "dataOrientation": "rows",
@@ -83,80 +87,28 @@
                                 "height": 600,
                                 "data": [
                                     {
-                                        "attribute": "ALTER_1",
+                                        "attribute": "Alter_unter_18",
                                         "title": "Unter 18 Jahren"
                                     },
                                     {
-                                        "attribute": "ALTER_2",
-                                        "title": "18 - 29 Jahre"
+                                        "attribute": "Alter_18_24",
+                                        "title": "18 - 24 Jahre"
                                     },
                                     {
-                                        "attribute": "ALTER_3",
-                                        "title": "30 - 49 Jahre"
+                                        "attribute": "Alter_25_34",
+                                        "title": "25 - 34 Jahre"
                                     },
                                     {
-                                        "attribute": "ALTER_4",
-                                        "title": "50 - 64 Jahre"
+                                        "attribute": "Alter_35_59",
+                                        "title": "35 - 59 Jahre"
                                     },
                                     {
-                                        "attribute": "ALTER_5",
-                                        "title": "65 Jahre und älter"
-                                    }
-                                ],
-                                "dataOrientation": "rows",
-                                "showDataLabels": false,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Geschlechterverteilung",
-                                "type": "pie",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "EW_M",
-                                        "title": "Männlich"
+                                        "attribute": "Alter_60_74",
+                                        "title": "60 - 74 Jahre"
                                     },
                                     {
-                                        "attribute": "EW_W",
-                                        "title": "Weiblich"
-                                    }
-                                ],
-                                "dataOrientation": "rows",
-                                "showDataLabels": false,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            }
-                        ]
-                    },
-                    {
-                        "storeId": "crime_store",
-                        "titleAttribute": "Landkreis",
-                        "charts": [
-                            {
-                                "title": "Kriminalfälle",
-                                "type": "bar",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "faelle",
-                                        "title": "Fälle insgesamt"
-                                    },
-                                    {
-                                        "attribute": "F1SW_drohung",
-                                        "title": "Drohung mit Schusswaffe"
-                                    },
-                                    {
-                                        "attribute": "SW_geschossen",
-                                        "title": "Schusswaffe gefeuert"
-                                    },
-                                    {
-                                        "attribute": "faelle_gekl",
-                                        "title": "Fälle geklärt"
-                                    },
-                                    {
-                                        "attribute": "ungfaelle",
-                                        "title": "Fälle ungeklärt"
+                                        "attribute": "Alter_75_und_mehr",
+                                        "title": "75 Jahre und älter"
                                     }
                                 ],
                                 "dataOrientation": "rows",
@@ -165,44 +117,357 @@
                                 "expanded": true
                             },
                             {
-                                "title": "Tatverdächtige",
-                                "type": "donut",
+                                "title": "Religionsangehörigkeit",
+                                "type": "pie",
                                 "height": 400,
                                 "data": [
                                     {
-                                        "attribute": "TV_m",
-                                        "title": "Tatverdächtige männlich"
+                                        "attribute": "BEV_Römisch_Katholisch",
+                                        "title": "Römisch Katholisch"
                                     },
                                     {
-                                        "attribute": "TV_w",
-                                        "title": "Tatverdächtige weiblich"
+                                        "attribute": "BEV_Evangelisch",
+                                        "title": "Evangelisch"
+                                    },
+                                    {
+                                        "attribute": "BEV_sonst_Religion",
+                                        "title": "Sonstige Religionen"
                                     }
                                 ],
                                 "dataOrientation": "rows",
-                                "showDataLabels": false,
+                                "showDataLabels": true,
                                 "rotatedAxis": false,
                                 "expanded": true
                             },
                             {
-                                "title": "Bevölkerung",
+                                "title": "Beschäftigte",
+                                "type": "pie",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "Beschäftigte_Land_Forst_Fisch",
+                                        "title": "Land Forst Fisch"
+                                    },
+                                    {
+                                        "attribute": "Beschäftigte_Produzierendes_Gw",
+                                        "title": "Produzierendes Gewerbe"
+                                    },
+                                    {
+                                        "attribute": "Beschäftigte_Handel_Verkehr",
+                                        "title": "Handel und Verkehr"
+                                    },
+                                    {
+                                        "attribute": "Beschaftigte_Dienstleister",
+                                        "title": "Dienstleistung"
+                                    },
+                                    {
+                                        "attribute": "Beschäftigte_Übrige",
+                                        "title": "Sonstige"
+                                    }
+                                ],
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Schulabschlüsse",
+                                "type": "pie",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "Absolv_ohne_Hauptschulabschlus",
+                                        "title": "Ohne Schulabschluss"
+                                    },
+                                    {
+                                        "attribute": "Absolv_mit_Hauptschulabscluss",
+                                        "title": "Hauptschulabschluss"
+                                    },
+                                    {
+                                        "attribute": "Absolv_mit_mittlerem_Schulabs",
+                                        "title": "Mittlere Reife"
+                                    },
+                                    {
+                                        "attribute": "Absolv_mit_all_und_Fachhochsch",
+                                        "title": "Allgemeine- oder Fachhhochschulreife"
+                                    },
+                                    {
+                                        "attribute": "Absolv_Berufschulen",
+                                        "title": "Berufsschulabschluss"
+                                    }
+                                ],
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Arbeitslosenquote",
+                                "type": "bar",
+                                "height": 600,
+                                "data": [
+                                    {
+                                        "attribute": "Arbeitslosenquote_insges",
+                                        "title": "Arbeitslosenquote Insgesamt"
+                                    },
+                                    {
+                                        "attribute": "Arbeitslosenquote_Männer",
+                                        "title": "Arbeitslosenquote Männer"
+                                    },
+                                    {
+                                        "attribute": "Arbeitslosenquote_Frauen",
+                                        "title": "Arbeitslosenquote Frauen "
+                                    },
+                                    {
+                                        "attribute": "Arbeitslosenquote_15_20",
+                                        "title": "Arbeitslosenquote 15 bis 20 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Arbeitslosenquote_55_65",
+                                        "title": "Arbeitslosenquote 55 bis 65 Jahre"
+                                    }
+                                ],
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Statistiken je 1000 Einwohner",
+                                "type": "bar",
+                                "height": 600,
+                                "data": [
+                                    {
+                                        "attribute": "Geburtensaldo_je1000",
+                                        "title": "Geburtensaldo - Zu- bzw. Abnahme"
+                                    },
+                                    {
+                                        "attribute": "Wanderungssaldo_je1000",
+                                        "title": "Wanderungssaldo - Zu- bzw. Abnahme"
+                                    },
+                                    {
+                                        "attribute": "Whg_Fertiggestellte_je1000_Ein",
+                                        "title": "Fertiggestellte Wohnungen"
+                                    },
+                                    {
+                                        "attribute": "Whg_Bestand_je1000_Einw",
+                                        "title": "Bestehende Wohnungen"
+                                    },
+                                    {
+                                        "attribute": "KFZ_Bestand_je1000_Einw",
+                                        "title": "KFZ Bestand"
+                                    },
+                                    {
+                                        "attribute": "Absolv_allgSchulen_je1000",
+                                        "title": "Schulabsolventen"
+                                    },
+                                    {
+                                        "attribute": "Betreure_Kinder_je1000",
+                                        "title": "Betreute Kinder"
+                                    },
+                                    {
+                                        "attribute": "Unternehmen_insges_je1000",
+                                        "title": "Unternehmen"
+                                    },
+                                    {
+                                        "attribute": "Handwerksunternehmen_je1000",
+                                        "title": "Unternehmen"
+                                    },
+                                    {
+                                        "attribute": "Beschäftigte_insges_je1000",
+                                        "title": "Beschäftigt"
+                                    },
+                                    {
+                                        "attribute": "Empf_SGBII_insges_je1000",
+                                        "title": "Arbeitslos"
+                                    }
+                                ],
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            }
+                        ]
+                    },
+                    {
+                        "storeId": "wahlkreise_ergebnis",
+                        "titleAttribute": "Wahlkreise17_Wahlkreise17_WKR_1",
+                        "charts": [
+                            {
+                                "title": "Erststimme",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_cducsu_erst",
+                                        "title": "CDU / CSU"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_spd_erst",
+                                        "title": "SPD"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_linke_erst",
+                                        "title": "Linke"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_gruene_erst",
+                                        "title": "Grüne"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_fdp_erst",
+                                        "title": "FDP"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_afd_erst",
+                                        "title": "AFD"
+                                    }
+                                ],
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Erststimme",
                                 "type": "bar",
                                 "height": 400,
                                 "data": [
                                     {
-                                        "attribute": "wanderungssaldo_je10000",
-                                        "title": "Wanderungssaldo je 10.000"
+                                        "attribute": "btw17_WKR_cducsu_erst",
+                                        "title": "CDU / CSU"
                                     },
                                     {
-                                        "attribute": "gest_je10000",
-                                        "title": "gestorben je 10.000"
+                                        "attribute": "btw17_WKR_spd_erst",
+                                        "title": "SPD"
                                     },
                                     {
-                                        "attribute": "lebendgeb_je10000",
-                                        "title": "Geburten je 10.000"
+                                        "attribute": "btw17_WKR_linke_erst",
+                                        "title": "Linke"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_gruene_erst",
+                                        "title": "Grüne"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_fdp_erst",
+                                        "title": "FDP"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_afd_erst",
+                                        "title": "AFD"
                                     }
                                 ],
                                 "dataOrientation": "rows",
-                                "showDataLabels": false,
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Zweitstimme",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_cducsu_zweit",
+                                        "title": "CDU / CSU"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_spd_zweit",
+                                        "title": "SPD"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_linke_zweit",
+                                        "title": "Linke"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_gruene_zweit",
+                                        "title": "Grüne"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_fdp_zweit",
+                                        "title": "FDP"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_afd_zweit",
+                                        "title": "AFD"
+                                    }
+                                ],
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Zweitstimme",
+                                "type": "bar",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_cducsu_zweit",
+                                        "title": "CDU / CSU"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_spd_zweit",
+                                        "title": "SPD"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_linke_zweit",
+                                        "title": "Linke"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_gruene_zweit",
+                                        "title": "Grüne"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_fdp_zweit",
+                                        "title": "FDP"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_afd_zweit",
+                                        "title": "AFD"
+                                    }
+                                ],
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Gültigkeit Erststimme",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_gueltig_erst",
+                                        "title": "gültig"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_ungueltig_erst",
+                                        "title": "ungültig"
+                                    }
+                                ],
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Gültigkeit Zweitstimme",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_gueltig_zweit",
+                                        "title": "gültig"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_ungueltig_zweit",
+                                        "title": "ungültig"
+                                    }
+                                ],
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
                                 "rotatedAxis": false,
                                 "expanded": true
                             }
@@ -224,11 +489,11 @@
         "agssearch": {
             "AGSStore": [
                 {
-                    "title": "Zensus 2011",
-                    "id": "zensus_store",
+                    "title": "Wahlkreise 2017 - Strukturdaten",
+                    "id": "wahlkreise_strukturdaten",
                     "description": "",
                     "idProperty": "OBJECTID",
-                    "url": "http://services.arcgis.com/OLiydejKCZTGhvWg/arcgis/rest/services/Bev%C3%B6lkerungNationalit%C3%A4t1B/FeatureServer/1",
+                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Wahlkreise_2017_mit_Strukturdaten/FeatureServer/0",
                     "useIn": [
                         "selection"
                     ],
@@ -239,26 +504,11 @@
                     "enablePagination": false
                 },
                 {
-                    "title": "Kriminalstatistiken 2013",
-                    "id": "crime_store",
+                    "title": "Wahlkreise 2017 - Wahlergebnisse",
+                    "id": "wahlkreise_ergebnis",
                     "description": "",
                     "idProperty": "OBJECTID",
-                    "url": "https://services1.arcgis.com/wdMHWK8xfn32LjIy/arcgis/rest/services/BKAPKS_landkreise_STinsgesamt/FeatureServer/0",
-                    "useIn": [
-                        "selection"
-                    ],
-                    "filterOptions": {
-                        "suggestContains": true
-                    },
-                    "fetchIdProperty": true,
-                    "enablePagination": false
-                },
-                {
-                    "title": "Lebenserwartung",
-                    "id": "life_store",
-                    "description": "",
-                    "idProperty": "OBJECTID",
-                    "url": "https://services1.arcgis.com/VAI453sU9tG9rSmh/ArcGIS/rest/services/WorldGeo_HumanCulture_LifeExpectancy_features/FeatureServer/0",
+                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Wahlkreise_2017_amtlichesErgebnis/FeatureServer/0",
                     "useIn": [
                         "selection"
                     ],
@@ -307,20 +557,15 @@
                 ]
             }
         },
-        "basemaptoggler": {
-            "Config": {
-                "nextBasemap": "hybrid"
-            }
-        },
         "map-init": {
             "Config": {
                 "map": {
                     "basemap": "streets-night-vector",
                     "layers": [
                         {
-                            "id": "kreise",
-                            "title": "Kreise",
-                            "url": "http://services.arcgis.com/OLiydejKCZTGhvWg/arcgis/rest/services/Bev%C3%B6lkerungNationalit%C3%A4t1B/FeatureServer/1",
+                            "id": "wahlkreise",
+                            "title": "Wahlkreise",
+                            "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Wahlkreise_2017_mit_Strukturdaten/FeatureServer/0",
                             "type": "AGS_FEATURE",
                             "elevationInfo": {
                                 "mode": "on-the-ground"
@@ -333,7 +578,12 @@
                                 "type": "simple",
                                 "symbol": {
                                     "type": "simple-fill",
-                                    "color": [ 255, 255, 255, 0.5 ],
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        0.5
+                                    ],
                                     "outline": {
                                         "width": 1,
                                         "color": "white"
@@ -365,7 +615,7 @@
                 "_selectedTheme": "everlasting"
             },
             "ThemeSelector": {
-                "componentEnabled": true
+                "componentEnabled": false
             }
         }
     }

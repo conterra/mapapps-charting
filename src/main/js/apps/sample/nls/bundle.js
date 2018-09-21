@@ -15,7 +15,7 @@
  */
 module.exports = {
     root: {
-        apptitle: "Statistiken"
+        apptitle: "Statistiken der Wahlkreise - 2017"
     },
     "de": true
 };
