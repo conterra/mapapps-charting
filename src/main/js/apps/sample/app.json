@@ -294,183 +294,410 @@
                         "titleAttribute": "Wahlkreise17_Wahlkreise17_WKR_1",
                         "charts": [
                             {
-                                "title": "Erststimme",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "btw17_WKR_cducsu_erst",
-                                        "title": "CDU / CSU"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_spd_erst",
-                                        "title": "SPD"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_linke_erst",
-                                        "title": "Linke"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_gruene_erst",
-                                        "title": "Grüne"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_fdp_erst",
-                                        "title": "FDP"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_afd_erst",
-                                        "title": "AFD"
-                                    }
-                                ],
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Erststimme",
+                                "title": "Entwicklung CDU / CSU",
                                 "type": "bar",
                                 "height": 400,
                                 "data": [
                                     {
+                                        "attribute": "btw17_WKR_cducsu_erst13",
+                                        "title": "2013"
+                                    },
+                                    {
                                         "attribute": "btw17_WKR_cducsu_erst",
-                                        "title": "CDU / CSU"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_spd_erst",
-                                        "title": "SPD"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_linke_erst",
-                                        "title": "Linke"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_gruene_erst",
-                                        "title": "Grüne"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_fdp_erst",
-                                        "title": "FDP"
-                                    },
-                                    {
-                                        "attribute": "btw17_WKR_afd_erst",
-                                        "title": "AFD"
+                                        "title": "2017"
                                     }
                                 ],
-                                "dataOrientation": "rows",
+                                "dataOrientation": "columns",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
                                 "expanded": true
                             },
                             {
-                                "title": "Zweitstimme",
-                                "type": "donut",
+                                "title": "Entwicklung Erststimme",
+                                "type": "line",
                                 "height": 400,
-                                "data": [
+                                "headers": [
+                                    "2013",
+                                    "2017"
+                                ],
+                                "dataSeries": [
                                     {
-                                        "attribute": "btw17_WKR_cducsu_zweit",
-                                        "title": "CDU / CSU"
+                                        "title": "CDU / CSU",
+                                        "attributes": [
+                                            "btw17_WKR_cducsu_erst13",
+                                            "btw17_WKR_cducsu_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_spd_zweit",
-                                        "title": "SPD"
+                                        "title": "SPD",
+                                        "attributes": [
+                                            "btw17_WKR_spd_erst13",
+                                            "btw17_WKR_spd_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_linke_zweit",
-                                        "title": "Linke"
+                                        "title": "Linke",
+                                        "attributes": [
+                                            "btw17_WKR_linke_erst13",
+                                            "btw17_WKR_linke_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_gruene_zweit",
-                                        "title": "Grüne"
+                                        "title": "Grüne",
+                                        "attributes": [
+                                            "btw17_WKR_gruene_erst13",
+                                            "btw17_WKR_gruene_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_fdp_zweit",
-                                        "title": "FDP"
+                                        "title": "FDP",
+                                        "attributes": [
+                                            "btw17_WKR_fdp_erst13",
+                                            "btw17_WKR_fdp_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_afd_zweit",
-                                        "title": "AFD"
+                                        "title": "AFD",
+                                        "attributes": [
+                                            "btw17_WKR_afd_erst13",
+                                            "btw17_WKR_afd_erst"
+                                        ]
                                     }
                                 ],
-                                "dataOrientation": "rows",
+                                "dataOrientation": "columns",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
                                 "expanded": true
                             },
                             {
-                                "title": "Zweitstimme",
+                                "title": "Entwicklung Erststimme",
                                 "type": "bar",
                                 "height": 400,
-                                "data": [
+                                "headers": [
+                                    "2013",
+                                    "2017"
+                                ],
+                                "dataSeries": [
                                     {
-                                        "attribute": "btw17_WKR_cducsu_zweit",
-                                        "title": "CDU / CSU"
+                                        "title": "CDU / CSU",
+                                        "attributes": [
+                                            "btw17_WKR_cducsu_erst13",
+                                            "btw17_WKR_cducsu_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_spd_zweit",
-                                        "title": "SPD"
+                                        "title": "SPD",
+                                        "attributes": [
+                                            "btw17_WKR_spd_erst13",
+                                            "btw17_WKR_spd_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_linke_zweit",
-                                        "title": "Linke"
+                                        "title": "Linke",
+                                        "attributes": [
+                                            "btw17_WKR_linke_erst13",
+                                            "btw17_WKR_linke_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_gruene_zweit",
-                                        "title": "Grüne"
+                                        "title": "Grüne",
+                                        "attributes": [
+                                            "btw17_WKR_gruene_erst13",
+                                            "btw17_WKR_gruene_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_fdp_zweit",
-                                        "title": "FDP"
+                                        "title": "FDP",
+                                        "attributes": [
+                                            "btw17_WKR_fdp_erst13",
+                                            "btw17_WKR_fdp_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_afd_zweit",
-                                        "title": "AFD"
+                                        "title": "AFD",
+                                        "attributes": [
+                                            "btw17_WKR_afd_erst13",
+                                            "btw17_WKR_afd_erst"
+                                        ]
                                     }
                                 ],
-                                "dataOrientation": "rows",
+                                "dataOrientation": "columns",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
                                 "expanded": true
                             },
                             {
-                                "title": "Gültigkeit Erststimme",
-                                "type": "donut",
+                                "title": "Entwicklung Erststimme",
+                                "type": "bar",
                                 "height": 400,
-                                "data": [
+                                "headers": [
+                                    "2013",
+                                    "2017"
+                                ],
+                                "dataSeries": [
                                     {
-                                        "attribute": "btw17_WKR_gueltig_erst",
-                                        "title": "gültig"
+                                        "title": "CDU / CSU",
+                                        "attributes": [
+                                            "btw17_WKR_cducsu_erst13",
+                                            "btw17_WKR_cducsu_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_ungueltig_erst",
-                                        "title": "ungültig"
-                                    }
-                                ],
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Gültigkeit Zweitstimme",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "btw17_WKR_gueltig_zweit",
-                                        "title": "gültig"
+                                        "title": "SPD",
+                                        "attributes": [
+                                            "btw17_WKR_spd_erst13",
+                                            "btw17_WKR_spd_erst"
+                                        ]
                                     },
                                     {
-                                        "attribute": "btw17_WKR_ungueltig_zweit",
-                                        "title": "ungültig"
+                                        "title": "Linke",
+                                        "attributes": [
+                                            "btw17_WKR_linke_erst13",
+                                            "btw17_WKR_linke_erst"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Grüne",
+                                        "attributes": [
+                                            "btw17_WKR_gruene_erst13",
+                                            "btw17_WKR_gruene_erst"
+                                        ]
+                                    },
+                                    {
+                                        "title": "FDP",
+                                        "attributes": [
+                                            "btw17_WKR_fdp_erst13",
+                                            "btw17_WKR_fdp_erst"
+                                        ]
+                                    },
+                                    {
+                                        "title": "AFD",
+                                        "attributes": [
+                                            "btw17_WKR_afd_erst13",
+                                            "btw17_WKR_afd_erst"
+                                        ]
                                     }
                                 ],
-                                "dataOrientation": "rows",
+                                "groups": [
+                                    [
+                                        "CDU / CSU",
+                                        "SPD"
+                                    ]
+                                ],
+                                "dataOrientation": "columns",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
                                 "expanded": true
                             }
+                            /*,
+                                                        {
+                                                            "title": "Erststimme",
+                                                            "type": "donut",
+                                                            "height": 400,
+                                                            "headers": [
+                                                                "CDU / CSU",
+                                                                "SPD",
+                                                                "Linke",
+                                                                "Grüne",
+                                                                "FDP",
+                                                                "AFD"
+                                                            ],
+                                                            "data": [
+                                                                {
+                                                                    "title": "Erststimme 2017",
+                                                                    "attributes": [
+                                                                        "btw17_WKR_cducsu_erst",
+                                                                        "btw17_WKR_spd_erst",
+                                                                        "btw17_WKR_linke_erst",
+                                                                        "btw17_WKR_gruene_erst",
+                                                                        "btw17_WKR_fdp_erst",
+                                                                        "btw17_WKR_afd_erst"
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "dataOrientation": "rows",
+                                                            "showDataLabels": true,
+                                                            "rotatedAxis": false,
+                                                            "expanded": true
+                                                        },
+                                                        {
+                                                            "title": "Erststimme",
+                                                            "type": "donut",
+                                                            "height": 400,
+                                                            "data": [
+                                                                {
+                                                                    "attribute": "btw17_WKR_cducsu_erst",
+                                                                    "title": "CDU / CSU"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_spd_erst",
+                                                                    "title": "SPD"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_linke_erst",
+                                                                    "title": "Linke"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_gruene_erst",
+                                                                    "title": "Grüne"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_fdp_erst",
+                                                                    "title": "FDP"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_afd_erst",
+                                                                    "title": "AFD"
+                                                                }
+                                                            ],
+                                                            "dataOrientation": "rows",
+                                                            "showDataLabels": true,
+                                                            "rotatedAxis": false,
+                                                            "expanded": true
+                                                        },
+                                                        {
+                                                            "title": "Erststimme",
+                                                            "type": "bar",
+                                                            "height": 400,
+                                                            "data": [
+                                                                {
+                                                                    "attribute": "btw17_WKR_cducsu_erst",
+                                                                    "title": "CDU / CSU"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_spd_erst",
+                                                                    "title": "SPD"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_linke_erst",
+                                                                    "title": "Linke"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_gruene_erst",
+                                                                    "title": "Grüne"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_fdp_erst",
+                                                                    "title": "FDP"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_afd_erst",
+                                                                    "title": "AFD"
+                                                                }
+                                                            ],
+                                                            "dataOrientation": "rows",
+                                                            "showDataLabels": true,
+                                                            "rotatedAxis": false,
+                                                            "expanded": true
+                                                        },
+                                                        {
+                                                            "title": "Zweitstimme",
+                                                            "type": "donut",
+                                                            "height": 400,
+                                                            "data": [
+                                                                {
+                                                                    "attribute": "btw17_WKR_cducsu_zweit",
+                                                                    "title": "CDU / CSU"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_spd_zweit",
+                                                                    "title": "SPD"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_linke_zweit",
+                                                                    "title": "Linke"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_gruene_zweit",
+                                                                    "title": "Grüne"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_fdp_zweit",
+                                                                    "title": "FDP"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_afd_zweit",
+                                                                    "title": "AFD"
+                                                                }
+                                                            ],
+                                                            "dataOrientation": "rows",
+                                                            "showDataLabels": true,
+                                                            "rotatedAxis": false,
+                                                            "expanded": true
+                                                        },
+                                                        {
+                                                            "title": "Zweitstimme",
+                                                            "type": "bar",
+                                                            "height": 400,
+                                                            "data": [
+                                                                {
+                                                                    "attribute": "btw17_WKR_cducsu_zweit",
+                                                                    "title": "CDU / CSU"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_spd_zweit",
+                                                                    "title": "SPD"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_linke_zweit",
+                                                                    "title": "Linke"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_gruene_zweit",
+                                                                    "title": "Grüne"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_fdp_zweit",
+                                                                    "title": "FDP"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_afd_zweit",
+                                                                    "title": "AFD"
+                                                                }
+                                                            ],
+                                                            "dataOrientation": "rows",
+                                                            "showDataLabels": true,
+                                                            "rotatedAxis": false,
+                                                            "expanded": true
+                                                        },
+                                                        {
+                                                            "title": "Gültigkeit Erststimme",
+                                                            "type": "donut",
+                                                            "height": 400,
+                                                            "data": [
+                                                                {
+                                                                    "attribute": "btw17_WKR_gueltig_erst",
+                                                                    "title": "gültig"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_ungueltig_erst",
+                                                                    "title": "ungültig"
+                                                                }
+                                                            ],
+                                                            "dataOrientation": "rows",
+                                                            "showDataLabels": true,
+                                                            "rotatedAxis": false,
+                                                            "expanded": true
+                                                        },
+                                                        {
+                                                            "title": "Gültigkeit Zweitstimme",
+                                                            "type": "donut",
+                                                            "height": 400,
+                                                            "data": [
+                                                                {
+                                                                    "attribute": "btw17_WKR_gueltig_zweit",
+                                                                    "title": "gültig"
+                                                                },
+                                                                {
+                                                                    "attribute": "btw17_WKR_ungueltig_zweit",
+                                                                    "title": "ungültig"
+                                                                }
+                                                            ],
+                                                            "dataOrientation": "rows",
+                                                            "showDataLabels": true,
+                                                            "rotatedAxis": false,
+                                                            "expanded": true
+                                                        }*/
                         ]
                     }
                 ]

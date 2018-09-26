@@ -27,7 +27,7 @@ export default class C3ChartsFactory {
             bindto: node,
             data: {
                 x: 'x',
-                type: chartProperties.type || "line",
+                type: chartProperties.type || "bar",
                 groups: chartProperties.groups || [],
                 labels: chartProperties.showDataLabels === undefined ? true : chartProperties.showDataLabels
             },

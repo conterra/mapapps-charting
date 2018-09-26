@@ -31,6 +31,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             "storeId": "yourStoreID",
             "titleAttribute": "NAME",
             "charts": [
+                // configuration for single data series (available in all bundle versions)
                 {
                     "title": "Altersverteilung",
                     "type": "donut",
@@ -57,12 +58,69 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
                             "title": "65 Jahre und älter"
                         }
                     ],
-                    "dataOrientation": "rows", //rows und columns    
+                    "dataOrientation": "rows",   
                     "showDataLabels": true,
                     "rotatedAxis": false,
                     "expanded": true
                 },
-                ...
+                // configuration for multiple data series in one chart (since version 1.3)
+                {
+                    "title": "Entwicklung Erststimme",
+                    "type": "bar",
+                    "height": 400,
+                    "headers": [
+                        "2013",
+                        "2017"
+                    ],
+                    "dataSeries": [
+                        {
+                            "title": "CDU / CSU",
+                            "attributes": [
+                                "btw17_WKR_cducsu_erst13",
+                                "btw17_WKR_cducsu_erst"
+                            ]
+                        },
+                        {
+                            "title": "SPD",
+                            "attributes": [
+                                "btw17_WKR_spd_erst13",
+                                "btw17_WKR_spd_erst"
+                            ]
+                        },
+                        {
+                            "title": "Linke",
+                            "attributes": [
+                                "btw17_WKR_linke_erst13",
+                                "btw17_WKR_linke_erst"
+                            ]
+                        },
+                        {
+                            "title": "Grüne",
+                            "attributes": [
+                                "btw17_WKR_gruene_erst13",
+                                "btw17_WKR_gruene_erst"
+                            ]
+                        },
+                        {
+                            "title": "FDP",
+                            "attributes": [
+                                "btw17_WKR_fdp_erst13",
+                                "btw17_WKR_fdp_erst"
+                            ]
+                        },
+                        {
+                            "title": "AFD",
+                            "attributes": [
+                                "btw17_WKR_afd_erst13",
+                                "btw17_WKR_afd_erst"
+                            ]
+                        }
+                    ],
+                    "dataOrientation": "columns",
+                    "showDataLabels": true,
+                    "rotatedAxis": false,
+                    "expanded": true
+                }
             ]
         },
         ...
@@ -70,24 +128,42 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 }
 ```
 
-###### Chart Configuration
-| Property                   | Type    | Possible Values                                                       | Default                     | Description                                                                                                                                                                                                              |
-|----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| storeId                    | String  |                                                                       |                             | The ID of the store for which the charts should be constructed. (Data Source)                                                          |
-| titleAttribute             | String  |                                                                       |                             | The attribute name for the title of the whole statistics section.                                                                       |
-| charts                     | Array   |                                                                       |                             | Array with charts definitions.                                                                                                           |
-| charts.title               | String  |                                                                       |                             | Title of specific chart.                                                                                                                 |
-| charts.type                | String  | line, timeseries, spline, step, donut, bar, pie, step, area, gauge    |                             | Type of chart to be displayed. For more information see: https://c3js.org/examples.html.                                                 |
-| charts.height              | Integer |                                                                       |                             | Height of chart to be displayed. Width will be set automatically.                                                                       |
-| charts.data                | Array   |                                                                       |                             | Data to construct the chart for.                                                                                                         |
-| charts.data.attribute      | String  |                                                                       |                             | Attribute name of data. Multiple objects with attribute and title can be configured. These attributes will be included in this chart |
-| charts.data.title          | String  |                                                                       |                             | Title for the data.                                                                                                                     |
-| dataOrientation            | String  | rows, columns                                                         |                             | Is the initial data in rows or in columns.                                                                                               |
-| showDataLabels             | boolean | ```true``` &#124; ```false```                                         | true                        | Show the individual data label.                                                                                                         |
-| rotatedAxis                | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                   |
-| expanded                   | boolean | ```true``` &#124; ```false```                                         | false                       | Chart is initially expended.                                                                                                             |
+##### Chart Configuration
+###### Core Properties
+| Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
+|-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| storeId                     | String  |                                                                       |                             | The ID of the AGSSeach store which will be used as data source. (AGSSearch Store)                                                      |
+| titleAttribute              | String  |                                                                       |                             | The attribute name for the title of the whole charting section.                                                                        |
+| charts                      | Array   |                                                                       |                             | Array with charts definitions.                                                                                                         |
 
-More information about how to place a widget:
+###### Chart properties
+| Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
+|-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| chart.title                 | String  |                                                                       |                             | Title of specific chart.                                                                                                               |
+| chart.type                  | String  | line, spline, step, donut, bar, pie, step, area, gauge                | bar                         | Type of chart. (More information: https://c3js.org/examples.html)                                                                      |
+| chart.height                | Integer |                                                                       | 500                         | Height of the chart. Width will be set automatically.                                                                                  |
+| chart.dataOrientation       | String  | ```rows``` &#124; ```columns ```                                      | row                         | Row or column oriented data.                                                                                                           |
+| chart.showDataLabels        | boolean | ```true``` &#124; ```false```                                         | true                        | Show the individual data labels.                                                                                                       |
+| chart.rotatedAxis           | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                 |
+| chart.expanded              | boolean | ```true``` &#124; ```false```                                         | true                        | Chart expansion panel is initially expanded.                                                                                           |
+
+###### Singe chart series configuration
+| Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
+|-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| chart.data                  | Array   |                                                                       |                             | Array of data objects.                                                                                                                 |
+| chart.data.title            | String  |                                                                       |                             | Title for the data.                                                                                                                    |
+| chart.data.attribute        | String  |                                                                       |                             | Attribute name of the data.                                                                                                            |
+
+###### Multiple chart series configuration
+| Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
+|-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| chart.dataSeries            | Array   |                                                                       |                             | Array of data series objects.                                                                                                          |
+| chart.dataSeries.headers    | Array   |                                                                       |                             | Array of headers used for the x axis. (e.g. ["2016", 2017", "2018"])                                                                   |
+| chart.dataSeries.title      | String  |                                                                       |                             | Title for the data series.                                                                                                             |
+| chart.dataSeries.attributes | Array   |                                                                       |                             | Array of attributes in the data series. These must be in the same order as the headers.                                                |
+| chart.dataSeries.groups     | Array   |                                                                       | []                          | Optional property that allows to use stacked charts. Array of grouped attributes. (e.g. [["2016", "2017"]])                            |
+
+More information about how to place the charting widget:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
 
 Development Guide
