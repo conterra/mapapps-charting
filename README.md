@@ -147,14 +147,14 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 | chart.rotatedAxis           | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                 |
 | chart.expanded              | boolean | ```true``` &#124; ```false```                                         | true                        | Chart expansion panel is initially expanded.                                                                                           |
 
-###### Singe chart series configuration
+###### Singe chart series configuration (available in all bundle versions)
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | chart.data                  | Array   |                                                                       |                             | Array of data objects.                                                                                                                 |
 | chart.data.title            | String  |                                                                       |                             | Title for the data.                                                                                                                    |
 | chart.data.attribute        | String  |                                                                       |                             | Attribute name of the data.                                                                                                            |
 
-###### Multiple chart series configuration
+###### Multiple chart series configuration (since 1.3)
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | chart.dataSeries            | Array   |                                                                       |                             | Array of data series objects.                                                                                                          |
