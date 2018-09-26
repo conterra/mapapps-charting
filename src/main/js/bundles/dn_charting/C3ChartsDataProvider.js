@@ -18,18 +18,35 @@ class C3ChartsDataProvider {
 
     getChartData(props, attributes) {
         let res = [["x"]];
-        props.data.forEach((data) => {
-            res[0].push(data.title || "");
-        });
-        let column = [props.title || ""];
-        props.data.forEach((data) => {
-            let value = attributes[data.attribute];
-            if(!value){
-                value = null;
-            }
-            column.push(value);
-        });
-        res.push(column);
+
+        if (props.dataSeries) {
+            props.headers.forEach((header) => {
+                res[0].push(header || "");
+            });
+
+            props.dataSeries.forEach((serie) => {
+                let array = [serie.title || ""];
+                serie.attributes.forEach((attribute) => {
+                    let value = attributes[attribute];
+                    if (!value) {
+                        value = null;
+                    }
+                    array.push(value);
+                });
+                res.push(array);
+            });
+        } else {
+            let array = [props.title || ""];
+            props.data.forEach((data) => {
+                res[0].push(data.title || "");
+                let value = attributes[data.attribute];
+                if (!value) {
+                    value = null;
+                }
+                array.push(value);
+            });
+            res.push(array);
+        }
         return res;
     }
 

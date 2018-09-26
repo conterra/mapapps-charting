@@ -28,6 +28,7 @@ export default class C3ChartsFactory {
             data: {
                 x: 'x',
                 type: chartProperties.type || "line",
+                groups: chartProperties.groups || [],
                 labels: chartProperties.showDataLabels === undefined ? true : chartProperties.showDataLabels
             },
             size: {
