@@ -6,12 +6,10 @@ You can choose of a variety of different chart types like: bar, line, spline, ar
 
 ![Screenshot App](https://github.com/conterra/mapapps-charting/blob/master/screenshot.JPG)
 
-Sample App
-------------------
+## Sample App
 https://demos.conterra.de/mapapps/resources/apps/downloads_charting/index.html
 
-Installation Guide
-------------------
+## Installation Guide
 **Requirement: map.apps 4.4.0**
 
 1. First you need to add the bundles selection-ui and dn_charting to your app.
@@ -20,9 +18,8 @@ For more information have a look at:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/stores
 3. Finally, you need to configure your charts in the following component.
 
-#### Configurable Components of the dn_charting bundle
-
-##### ChartingDashboardWidgetFactory
+### Configurable components of the dn_charting bundle
+#### ChartingDashboardWidgetFactory
 ```
 "ChartingDashboardWidgetFactory": {
     "chartsProperties": [
@@ -131,15 +128,15 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 }
 ```
 
-##### Chart Configuration
-###### Core Properties
+### Chart Configuration
+#### Core Properties
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | storeId                     | String  |                                                                       |                             | The ID of the AGSSeach store which will be used as data source. (AGSSearch Store)                                                      |
 | titleAttribute              | String  |                                                                       |                             | The attribute name for the title of the whole charting section.                                                                        |
 | charts                      | Array   |                                                                       |                             | Array with charts definitions.                                                                                                         |
 
-###### Chart properties
+#### Chart properties
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | chart.title                 | String  |                                                                       |                             | Title of specific chart.                                                                                                               |
@@ -150,14 +147,14 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 | chart.rotatedAxis           | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                 |
 | chart.expanded              | boolean | ```true``` &#124; ```false```                                         | true                        | Chart expansion panel is initially expanded.                                                                                           |
 
-###### Singe chart series configuration (available in all bundle versions)
+#### Single chart series configuration (available in all bundle versions)
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | chart.data                  | Array   |                                                                       |                             | Array of data objects.                                                                                                                 |
 | chart.data.title            | String  |                                                                       |                             | Title for the data.                                                                                                                    |
 | chart.data.attribute        | String  |                                                                       |                             | Attribute name of the data.                                                                                                            |
 
-###### Multiple chart series configuration (since 1.3)
+#### Multiple chart series configuration (since 1.3)
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | chart.dataSeries            | Array   |                                                                       |                             | Array of data series objects.                                                                                                          |
@@ -169,11 +166,10 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 More information about how to place the charting widget:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
 
-##### Sample chart configurations
-###### Bar chart - single series
+### Chart configuration samples
+#### Bar chart - single series
 ![Screenshot bar chart single series](https://github.com/conterra/mapapps-charting/blob/master/screenshots/bar_single.JPG)
-<details><summary>Sample code</summary>
-<p>
+
 ```
 {
     "title": "Altersverteilung",
@@ -211,8 +207,6 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
     "expanded": true
 }
 ```
-</p>
-</details>
 
 Development Guide
 ------------------
