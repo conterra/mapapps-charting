@@ -167,38 +167,39 @@ More information about how to place the charting widget:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
 
 ### Chart configuration samples
+
 #### Bar chart - single series
 ![Screenshot bar chart single series](https://github.com/conterra/mapapps-charting/blob/master/screenshots/bar_single.JPG)
 
 ```
 {
-    "title": "Altersverteilung",
+    "title": "Erststimme",
     "type": "bar",
     "height": 400,
     "data": [
         {
-            "attribute": "Alter_unter_18",
-            "title": "Unter 18 Jahren"
+            "attribute": "btw17_WKR_cducsu_erst",
+            "title": "CDU / CSU"
         },
         {
-            "attribute": "Alter_18_24",
-            "title": "18 - 24 Jahre"
+            "attribute": "btw17_WKR_spd_erst",
+            "title": "SPD"
         },
         {
-            "attribute": "Alter_25_34",
-            "title": "25 - 34 Jahre"
+            "attribute": "btw17_WKR_linke_erst",
+            "title": "Linke"
         },
         {
-            "attribute": "Alter_35_59",
-            "title": "35 - 59 Jahre"
+            "attribute": "btw17_WKR_gruene_erst",
+            "title": "Grüne"
         },
         {
-            "attribute": "Alter_60_74",
-            "title": "60 - 74 Jahre"
+            "attribute": "btw17_WKR_fdp_erst",
+            "title": "FDP"
         },
         {
-            "attribute": "Alter_75_und_mehr",
-            "title": "75 Jahre und älter"
+           "attribute": "btw17_WKR_afd_erst",
+            "title": "AFD"
         }
     ],
     "dataOrientation": "rows",
@@ -208,13 +209,310 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 }
 ```
 
-Development Guide
-------------------
+#### Bar chart - multiple series
+![Screenshot bar chart multiple series](https://github.com/conterra/mapapps-charting/blob/master/screenshots/bar_multiple.JPG)
+
+```
+{
+    "title": "Entwicklung Erststimme",
+    "type": "bar",
+    "height": 400,
+    "headers": [
+        "2013",
+        "2017"
+    ],
+    "dataSeries": [
+        {
+            "title": "CDU / CSU",
+            "attributes": [
+                "btw17_WKR_cducsu_erst13",
+                "btw17_WKR_cducsu_erst"
+            ]
+        },
+        {
+            "title": "SPD",
+            "attributes": [
+                "btw17_WKR_spd_erst13",
+                "btw17_WKR_spd_erst"
+            ]
+        },
+        {
+            "title": "Linke",
+            "attributes": [
+                "btw17_WKR_linke_erst13",
+                "btw17_WKR_linke_erst"
+            ]
+        },
+        {
+            "title": "Grüne",
+            "attributes": [
+                "btw17_WKR_gruene_erst13",
+                "btw17_WKR_gruene_erst"
+            ]
+        },
+        {
+            "title": "FDP",
+            "attributes": [
+                "btw17_WKR_fdp_erst13",
+                "btw17_WKR_fdp_erst"
+            ]
+        },
+        {
+            "title": "AFD",
+            "attributes": [
+                "btw17_WKR_afd_erst13",
+                "btw17_WKR_afd_erst"
+            ]
+        }
+    ],
+    "dataOrientation": "columns",
+    "showDataLabels": true,
+    "rotatedAxis": false,
+    "expanded": true
+}
+```
+
+#### Stacked bar chart
+![Screenshot stacked bar chart multiple series](https://github.com/conterra/mapapps-charting/blob/master/screenshots/bar_multiple_stacked.JPG)
+
+```
+{
+    "title": "Entwicklung Erststimme",
+    "type": "bar",
+    "height": 400,
+    "headers": [
+        "2013",
+        "2017"
+    ],
+    "dataSeries": [
+        {
+            "title": "CDU / CSU",
+            "attributes": [
+                "btw17_WKR_cducsu_erst13",
+                "btw17_WKR_cducsu_erst"
+            ]
+        },
+        {
+            "title": "SPD",
+            "attributes": [
+                "btw17_WKR_spd_erst13",
+                "btw17_WKR_spd_erst"
+            ]
+        },
+        {
+            "title": "Linke",
+            "attributes": [
+                "btw17_WKR_linke_erst13",
+                "btw17_WKR_linke_erst"
+            ]
+        },
+        {
+            "title": "Grüne",
+            "attributes": [
+                "btw17_WKR_gruene_erst13",
+                "btw17_WKR_gruene_erst"
+            ]
+        },
+        {
+            "title": "FDP",
+            "attributes": [
+                "btw17_WKR_fdp_erst13",
+                "btw17_WKR_fdp_erst"
+            ]
+        },
+        {
+            "title": "AFD",
+            "attributes": [
+                "btw17_WKR_afd_erst13",
+                "btw17_WKR_afd_erst"
+            ]
+        }
+    ],
+    "groups": [
+        [
+            "CDU / CSU",
+            "SPD"
+        ]
+    ],
+    "dataOrientation": "columns",
+    "showDataLabels": true,
+    "rotatedAxis": false,
+    "expanded": true
+}
+```
+
+#### Line chart
+![Screenshot line chart multiple series](https://github.com/conterra/mapapps-charting/blob/master/screenshots/line_multiple.JPG)
+
+```
+{
+    "title": "Entwicklung Erststimme",
+    "type": "bar",
+    "height": 400,
+    "headers": [
+        "2013",
+        "2017"
+    ],
+    "dataSeries": [
+        {
+            "title": "CDU / CSU",
+            "attributes": [
+                "btw17_WKR_cducsu_erst13",
+                "btw17_WKR_cducsu_erst"
+            ]
+        },
+        {
+            "title": "SPD",
+            "attributes": [
+                "btw17_WKR_spd_erst13",
+                "btw17_WKR_spd_erst"
+            ]
+        },
+        {
+            "title": "Linke",
+            "attributes": [
+                "btw17_WKR_linke_erst13",
+                "btw17_WKR_linke_erst"
+            ]
+        },
+        {
+            "title": "Grüne",
+            "attributes": [
+                "btw17_WKR_gruene_erst13",
+                "btw17_WKR_gruene_erst"
+            ]
+        },
+        {
+            "title": "FDP",
+            "attributes": [
+                "btw17_WKR_fdp_erst13",
+                "btw17_WKR_fdp_erst"
+            ]
+        },
+        {
+            "title": "AFD",
+            "attributes": [
+                "btw17_WKR_afd_erst13",
+                "btw17_WKR_afd_erst"
+            ]
+        }
+    ],
+    "dataOrientation": "columns",
+    "showDataLabels": true,
+    "rotatedAxis": false,
+    "expanded": true
+}
+```
+
+#### Pie chart
+![Screenshot pie chart single series](https://github.com/conterra/mapapps-charting/blob/master/screenshots/pie_single.JPG)
+
+```
+{
+    "title": "Erststimme",
+    "type": "pie",
+    "height": 400,
+    "data": [
+        {
+            "attribute": "btw17_WKR_cducsu_erst",
+            "title": "CDU / CSU"
+        },
+        {
+            "attribute": "btw17_WKR_spd_erst",
+            "title": "SPD"
+        },
+        {
+            "attribute": "btw17_WKR_linke_erst",
+            "title": "Linke"
+        },
+        {
+            "attribute": "btw17_WKR_gruene_erst",
+            "title": "Grüne"
+        },
+        {
+            "attribute": "btw17_WKR_fdp_erst",
+            "title": "FDP"
+        },
+        {
+           "attribute": "btw17_WKR_afd_erst",
+            "title": "AFD"
+        }
+    ],
+    "dataOrientation": "rows",
+    "showDataLabels": true,
+    "rotatedAxis": false,
+    "expanded": true
+}
+```
+
+#### Donut chart
+![Screenshot donut chart single series](https://github.com/conterra/mapapps-charting/blob/master/screenshots/donut_single.JPG)
+
+```
+{
+    "title": "Erststimme",
+    "type": "donut",
+    "height": 400,
+    "data": [
+        {
+            "attribute": "btw17_WKR_cducsu_erst",
+            "title": "CDU / CSU"
+        },
+        {
+            "attribute": "btw17_WKR_spd_erst",
+            "title": "SPD"
+        },
+        {
+            "attribute": "btw17_WKR_linke_erst",
+            "title": "Linke"
+        },
+        {
+            "attribute": "btw17_WKR_gruene_erst",
+            "title": "Grüne"
+        },
+        {
+            "attribute": "btw17_WKR_fdp_erst",
+            "title": "FDP"
+        },
+        {
+           "attribute": "btw17_WKR_afd_erst",
+            "title": "AFD"
+        }
+    ],
+    "dataOrientation": "rows",
+    "showDataLabels": true,
+    "rotatedAxis": false,
+    "expanded": true
+}
+```
+
+#### Gauge chart
+![Screenshot gauge chart single series](https://github.com/conterra/mapapps-charting/blob/master/screenshots/gauge_single.JPG)
+
+```
+{
+    "title": "Arbeitslosenquote",
+    "type": "gauge",
+    "height": 400,
+    "data": [
+        {
+            "attribute": "Arbeitslosenquote_insges",
+            "title": "Arbeitslosenquote Insgesamt"
+        }
+    ],
+    "dataOrientation": "rows",
+    "showDataLabels": true,
+    "rotatedAxis": false,
+    "expanded": true
+}
+```
+
+## Development Guide
 ### Define the mapapps remote base
 Before you can run the project you have to define the mapapps.remote.base property in the pom.xml-file:
 `<mapapps.remote.base>http://%YOURSERVER%/ct-mapapps-webapp-%VERSION%</mapapps.remote.base>`
 
-##### Other methods to to define the mapapps.remote.base property.
+### Other methods to to define the mapapps.remote.base property.
 1. Goal parameters
 `mvn install -Dmapapps.remote.base=http://%YOURSERVER%/ct-mapapps-webapp-%VERSION%`
 
