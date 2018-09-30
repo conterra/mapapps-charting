@@ -1,7 +1,8 @@
 # Charts
 
-The map.apps charting bundle enables you to display charts for your data. 
-By clicking on the map, the user can select a different features to query charts for this feature. You can choose of a vairety of different charts like: line, timeseries, spline, step, donut, bar, pie, step, area, gauge. For more information see: For more information see: https://c3js.org/examples.html
+The Charting Bundle allows you to display various charts based on data from an AGSSearch store.
+By selecting one or more features from the selection-ui bundle, you can trigger the drawing of these charts.
+You can choose of a variety of different chart types like: bar, line, spline, area and donut.
 
 ![Screenshot App](https://github.com/conterra/mapapps-charting/blob/master/screenshot.JPG)
 
@@ -14,14 +15,12 @@ Installation Guide
 **Requirement: map.apps 4.4.0**
 
 1. First you need to add the bundles selection-ui and dn_charting to your app.
-
-2. Then you need to configure one or more stores for which the charts should be displayed. This is the data source (layer with attributes) for which the charts will be created.
+2. Then you need to configure one or more stores. These are the data basis for the diagrams.
 For more information have a look at:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/stores
-
 3. Finally, you need to configure your charts in the following component.
 
-#### Configurable Components of dn_charting
+#### Configurable Components of the dn_charting bundle
 
 ##### ChartingDashboardWidgetFactory
 ```
@@ -34,35 +33,39 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
                 // configuration for single data series (available in all bundle versions)
                 {
                     "title": "Altersverteilung",
-                    "type": "donut",
+                    "type": "bar",
                     "height": 400,
                     "data": [
                         {
-                            "attribute": "ALTER_1",
-                           "title": "Unter 18 Jahren"
+                            "attribute": "Alter_unter_18",
+                            "title": "Unter 18 Jahren"
                         },
                         {
-                            "attribute": "ALTER_2",
-                            "title": "18 - 29 Jahre"
+                            "attribute": "Alter_18_24",
+                            "title": "18 - 24 Jahre"
                         },
                         {
-                            "attribute": "ALTER_3",
-                           "title": "30 - 49 Jahre"
+                            "attribute": "Alter_25_34",
+                            "title": "25 - 34 Jahre"
                         },
                         {
-                            "attribute": "ALTER_4",
-                            "title": "50 - 64 Jahre"
+                            "attribute": "Alter_35_59",
+                            "title": "35 - 59 Jahre"
                         },
                         {
-                            "attribute": "ALTER_5",
-                            "title": "65 Jahre und älter"
+                            "attribute": "Alter_60_74",
+                            "title": "60 - 74 Jahre"
+                        },
+                        {
+                            "attribute": "Alter_75_und_mehr",
+                            "title": "75 Jahre und älter"
                         }
                     ],
-                    "dataOrientation": "rows",   
+                    "dataOrientation": "rows",
                     "showDataLabels": true,
                     "rotatedAxis": false,
                     "expanded": true
-                },
+                }
                 // configuration for multiple data series in one chart (since version 1.3)
                 {
                     "title": "Entwicklung Erststimme",
@@ -165,6 +168,51 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 
 More information about how to place the charting widget:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
+
+##### Sample chart configurations
+###### Bar chart - single series
+![Screenshot bar chart single series](https://github.com/conterra/mapapps-charting/blob/master/screenshots/bar_single.JPG)
+<details><summary>Sample code</summary>
+<p>
+```
+{
+    "title": "Altersverteilung",
+    "type": "bar",
+    "height": 400,
+    "data": [
+        {
+            "attribute": "Alter_unter_18",
+            "title": "Unter 18 Jahren"
+        },
+        {
+            "attribute": "Alter_18_24",
+            "title": "18 - 24 Jahre"
+        },
+        {
+            "attribute": "Alter_25_34",
+            "title": "25 - 34 Jahre"
+        },
+        {
+            "attribute": "Alter_35_59",
+            "title": "35 - 59 Jahre"
+        },
+        {
+            "attribute": "Alter_60_74",
+            "title": "60 - 74 Jahre"
+        },
+        {
+            "attribute": "Alter_75_und_mehr",
+            "title": "75 Jahre und älter"
+        }
+    ],
+    "dataOrientation": "rows",
+    "showDataLabels": true,
+    "rotatedAxis": false,
+    "expanded": true
+}
+```
+</p>
+</details>
 
 Development Guide
 ------------------
