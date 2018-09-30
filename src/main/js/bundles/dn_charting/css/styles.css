@@ -30,6 +30,14 @@
     fill: white;
 }
 
+.ctAppRoot .chartingDashboardWidget .c3 .c3-chart-arcs text {
+    fill: white;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3 .c3-chart-arc text {
+    fill: white;
+}
+
 .ctAppRoot .chartingDashboardWidget .tabs__content {
     height: 100%;
 }
