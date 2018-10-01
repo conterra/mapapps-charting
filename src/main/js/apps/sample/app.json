@@ -76,6 +76,7 @@
                                         "title": "75 Jahre und älter"
                                     }
                                 ],
+                                "calculationType": "mean",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -111,6 +112,7 @@
                                         "title": "75 Jahre und älter"
                                     }
                                 ],
+                                "calculationType": "mean",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -134,6 +136,7 @@
                                         "title": "Sonstige Religionen"
                                     }
                                 ],
+                                "calculationType": "mean",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -165,6 +168,7 @@
                                         "title": "Sonstige"
                                     }
                                 ],
+                                "calculationType": "mean",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -196,6 +200,7 @@
                                         "title": "Berufsschulabschluss"
                                     }
                                 ],
+                                "calculationType": "mean",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -211,6 +216,7 @@
                                         "title": "Arbeitslosenquote Insgesamt"
                                     }
                                 ],
+                                "calculationType": "mean",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -242,6 +248,7 @@
                                         "title": "Arbeitslosenquote 55 bis 65 Jahre"
                                     }
                                 ],
+                                "calculationType": "mean",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -297,6 +304,7 @@
                                         "title": "Arbeitslos"
                                     }
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -338,6 +346,7 @@
                                         "title": "AFD"
                                     }
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -373,6 +382,7 @@
                                         "title": "AFD"
                                     }
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -408,6 +418,7 @@
                                         "title": "AFD"
                                     }
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -443,6 +454,7 @@
                                         "title": "AFD"
                                     }
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -462,6 +474,7 @@
                                         "title": "ungültig"
                                     }
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -481,6 +494,7 @@
                                         "title": "ungültig"
                                     }
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -538,6 +552,7 @@
                                         ]
                                     }
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "columns",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -595,6 +610,7 @@
                                         ]
                                     }
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "columns",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
@@ -658,6 +674,7 @@
                                         "SPD"
                                     ]
                                 ],
+                                "calculationType": "sum",
                                 "dataOrientation": "columns",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,

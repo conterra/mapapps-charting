@@ -101,11 +101,11 @@ export default declare({
                     if (!sumObject) {
                         sumObject = {};
                         ct_lang.forEachOwnProp(result, (value, name) => {
-                            sumObject[name] = value;
+                            sumObject[name] = parseFloat(value);
                         });
                     } else {
                         ct_lang.forEachOwnProp(result, (value, name) => {
-                            sumObject[name] = sumObject[name] += value;
+                            sumObject[name] = sumObject[name] += parseFloat(value);
                         });
                     }
                     if (result.geometry) {
@@ -116,7 +116,7 @@ export default declare({
                     this._addGraphicsToView(geometries);
                 }
                 this._geometries[i] = geometries;
-                this._drawCharts(sumObject, chartsProperties.charts, chartNodes);
+                this._drawCharts(sumObject, results.length, chartsProperties.charts, chartNodes);
             });
         });
     },
@@ -128,9 +128,19 @@ export default declare({
         });
     },
 
-    _drawCharts(attributes, chartsProperties, chartNodes) {
+    _drawCharts(sumObject, count, chartsProperties, chartNodes) {
         let factory = this._c3ChartsFactory;
         chartsProperties.forEach((chartProperties) => {
+            let attributes = {};
+            if (chartProperties.calculationType === "mean") {
+                ct_lang.forEachOwnProp(sumObject, (value, name) => {
+                    attributes[name] = Math.round(value / count * 100) / 100;
+                });
+            } else {
+                ct_lang.forEachOwnProp(sumObject, (value, name) => {
+                    attributes[name] = Math.round(value * 100) / 100;
+                });
+            }
             let chartNode = domConstruct.create("div");
             let chart = factory.createChart(chartNode, chartProperties, attributes, null);
             this._charts.push(chart);

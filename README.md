@@ -58,6 +58,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
                             "title": "75 Jahre und älter"
                         }
                     ],
+                    "calculationType": "mean",
                     "dataOrientation": "rows",
                     "showDataLabels": true,
                     "rotatedAxis": false,
@@ -116,6 +117,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
                             ]
                         }
                     ],
+                    "calculationType": "sum",
                     "dataOrientation": "columns",
                     "showDataLabels": true,
                     "rotatedAxis": false,
@@ -142,6 +144,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 | chart.title                 | String  |                                                                       |                             | Title of specific chart.                                                                                                               |
 | chart.type                  | String  | line, spline, step, donut, bar, pie, step, area, gauge                | bar                         | Type of chart. (More information: https://c3js.org/examples.html)                                                                      |
 | chart.height                | Integer |                                                                       | 500                         | Height of the chart. Width will be set automatically.                                                                                  |
+| chart.calculationType       | String  | ```sum``` &#124; ```mean```                                           | sum                         | Use sum or mean values for multiple features.                                                                                                           |
 | chart.dataOrientation       | String  | ```rows``` &#124; ```columns ```                                      | row                         | Row or column oriented data.                                                                                                           |
 | chart.showDataLabels        | boolean | ```true``` &#124; ```false```                                         | true                        | Show the individual data labels.                                                                                                       |
 | chart.rotatedAxis           | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                 |
@@ -202,6 +205,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             "title": "AFD"
         }
     ],
+    "calculationType": "sum",
     "dataOrientation": "rows",
     "showDataLabels": true,
     "rotatedAxis": false,
@@ -265,6 +269,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             ]
         }
     ],
+    "calculationType": "sum",
     "dataOrientation": "columns",
     "showDataLabels": true,
     "rotatedAxis": false,
@@ -334,6 +339,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             "SPD"
         ]
     ],
+    "calculationType": "sum",
     "dataOrientation": "columns",
     "showDataLabels": true,
     "rotatedAxis": false,
@@ -397,6 +403,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             ]
         }
     ],
+    "calculationType": "sum",
     "dataOrientation": "columns",
     "showDataLabels": true,
     "rotatedAxis": false,
@@ -438,6 +445,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             "title": "AFD"
         }
     ],
+    "calculationType": "sum",
     "dataOrientation": "rows",
     "showDataLabels": true,
     "rotatedAxis": false,
@@ -479,6 +487,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             "title": "AFD"
         }
     ],
+    "calculationType": "sum",
     "dataOrientation": "rows",
     "showDataLabels": true,
     "rotatedAxis": false,
@@ -500,6 +509,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             "title": "Arbeitslosenquote Insgesamt"
         }
     ],
+    "calculationType": "mean",
     "dataOrientation": "rows",
     "showDataLabels": true,
     "rotatedAxis": false,
