@@ -21,7 +21,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 ### Configurable components of the dn_charting bundle
 #### ChartingDashboardWidgetFactory
 ```
-"ChartingDashboardWidgetFactory": {
+"ChartingDashboardWidgetModel": {
     "chartsProperties": [
         {
             "storeId": "yourStoreID",
