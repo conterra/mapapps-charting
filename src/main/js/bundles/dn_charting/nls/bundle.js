@@ -15,8 +15,8 @@
  */
 module.exports = {
     root: ({
-        bundleName: "map.apps Charting",
-        bundleDescription: "map.apps Charting",
+        bundleName: "Charts",
+        bundleDescription: "Charts",
         ui: {
             statistics: "Statistics for ",
             warning: "No feature found",

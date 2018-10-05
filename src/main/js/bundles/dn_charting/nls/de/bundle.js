@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 module.exports = {
-    bundleName: "map.apps Charting",
-    bundleDescription: "map.apps Charting",
+    bundleName: "Charts",
+    bundleDescription: "Charts",
     ui: {
         statistics: "Statistiken für ",
         warning: "Es konnte kein Feature gefunden werden",
