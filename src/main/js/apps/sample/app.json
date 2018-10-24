@@ -882,7 +882,7 @@
                 "_selectedTheme": "everlasting"
             },
             "ThemeSelector": {
-                "componentEnabled": false
+                "componentEnabled": true
             }
         }
     }

@@ -6,38 +6,6 @@
     overflow: auto;
 }
 
-.ctAppRoot .chartingDashboardWidget .c3-tooltip .name {
-    color: black;
-}
-
-.ctAppRoot .chartingDashboardWidget .c3-tooltip .value {
-    color: black;
-}
-
-.ctAppRoot .chartingDashboardWidget .c3 .c3-axis-x path, .chartingDashboardWidget .c3 .c3-axis-x line {
-    stroke: white;
-}
-
-.ctAppRoot .chartingDashboardWidget .c3 .c3-axis-y path, .chartingDashboardWidget .c3 .c3-axis-y line {
-    stroke: white;
-}
-
-.ctAppRoot .chartingDashboardWidget .c3 .c3-axis-y text, .chartingDashboardWidget .c3 .c3-axis-x text {
-    fill: white;
-}
-
-.ctAppRoot .chartingDashboardWidget .c3 .c3-legend-item text {
-    fill: white;
-}
-
-.ctAppRoot .chartingDashboardWidget .c3 .c3-chart-arcs text {
-    fill: white;
-}
-
-.ctAppRoot .chartingDashboardWidget .c3 .c3-chart-arc text {
-    fill: white;
-}
-
 .ctAppRoot .chartingDashboardWidget .tabs__content {
     height: 100%;
 }
@@ -60,4 +28,53 @@
 
 .ctAppRoot .chartingDashboardWidget .dijitDialogPaneContent {
     overflow: hidden;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3-tooltip th {
+    background-color: #aaaaaa;
+    padding: 2px 5px !important;
+    color: #ffffff;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3-tooltip td {
+    padding: 3px 6px !important;
+    background-color: #ffffff;
+}
+
+.ctAppRoot .chartingDashboardWidget .c3-tooltip td > span {
+    margin-right: 6px !important;
+}
+
+/* colors */
+/* everlasting */
+.ctAppRoot.everlasting .chartingDashboardWidget .c3-tooltip .name {
+    color: #000000;
+}
+
+.ctAppRoot.everlasting .chartingDashboardWidget .c3-tooltip .value {
+    color: #000000;
+}
+
+.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-x path, .chartingDashboardWidget .c3 .c3-axis-x line {
+    stroke: #ffffff;
+}
+
+.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-y path, .chartingDashboardWidget .c3 .c3-axis-y line {
+    stroke: #ffffff;
+}
+
+.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-y text, .chartingDashboardWidget .c3 .c3-axis-x text {
+    fill: #ffffff;
+}
+
+.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-legend-item text {
+    fill: #ffffff;
+}
+
+.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-chart-arcs text {
+    fill: #ffffff;
+}
+
+.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-chart-arc text {
+    fill: #ffffff;
 }
