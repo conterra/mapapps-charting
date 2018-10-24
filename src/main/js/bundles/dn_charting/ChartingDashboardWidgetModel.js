@@ -122,6 +122,9 @@ export default declare({
 
         all(promises).then(()=> {
             this.loading = false;
+        }, (error) => {
+            console.error(error);
+            this.loading = false;
         });
     },
 
