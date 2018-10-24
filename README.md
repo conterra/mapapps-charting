@@ -221,6 +221,14 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             "title": "AFD"
         }
     ],
+    "colorPattern": [
+        "#000000",
+        "#FF0000",
+        "#A020F0",
+        "#00FF00",
+        "#FFFF00",
+        "#0000FF"
+    ],
     "calculationType": "sum",
     "dataOrientation": "rows",
     "showDataLabels": true,
@@ -247,42 +255,48 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             "attributes": [
                 "btw17_WKR_cducsu_erst13",
                 "btw17_WKR_cducsu_erst"
-            ]
+            ],
+            "color": "#000000"
         },
         {
             "title": "SPD",
             "attributes": [
                 "btw17_WKR_spd_erst13",
                 "btw17_WKR_spd_erst"
-            ]
+            ],
+            "color": "#FF0000"
         },
         {
             "title": "Linke",
             "attributes": [
                 "btw17_WKR_linke_erst13",
                 "btw17_WKR_linke_erst"
-            ]
+            ],
+            "color": "#A020F0"
         },
         {
             "title": "Grüne",
             "attributes": [
                 "btw17_WKR_gruene_erst13",
                 "btw17_WKR_gruene_erst"
-            ]
+            ],
+            "color": "#00FF00"
         },
         {
             "title": "FDP",
             "attributes": [
                 "btw17_WKR_fdp_erst13",
                 "btw17_WKR_fdp_erst"
-            ]
+            ],
+            "color": "#FFFF00"
         },
         {
             "title": "AFD",
             "attributes": [
                 "btw17_WKR_afd_erst13",
                 "btw17_WKR_afd_erst"
-            ]
+            ],
+            "color": "#0000FF"
         }
     ],
     "calculationType": "sum",
@@ -306,47 +320,54 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
         "2017"
     ],
     "dataSeries": [
+        
         {
             "title": "CDU / CSU",
             "attributes": [
                 "btw17_WKR_cducsu_erst13",
                 "btw17_WKR_cducsu_erst"
-            ]
+            ],
+            "color": "#000000"
         },
         {
             "title": "SPD",
             "attributes": [
                 "btw17_WKR_spd_erst13",
                 "btw17_WKR_spd_erst"
-            ]
+            ],
+            "color": "#FF0000"
         },
         {
             "title": "Linke",
             "attributes": [
                 "btw17_WKR_linke_erst13",
                 "btw17_WKR_linke_erst"
-            ]
+            ],
+            "color": "#A020F0"
         },
         {
             "title": "Grüne",
             "attributes": [
                 "btw17_WKR_gruene_erst13",
                 "btw17_WKR_gruene_erst"
-            ]
+            ],
+            "color": "#00FF00"
         },
         {
             "title": "FDP",
             "attributes": [
                 "btw17_WKR_fdp_erst13",
                 "btw17_WKR_fdp_erst"
-            ]
+            ],
+            "color": "#FFFF00"
         },
         {
             "title": "AFD",
             "attributes": [
                 "btw17_WKR_afd_erst13",
                 "btw17_WKR_afd_erst"
-            ]
+            ],
+            "color": "#0000FF"
         }
     ],
     "groups": [
@@ -376,47 +397,54 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
         "2017"
     ],
     "dataSeries": [
+        
         {
             "title": "CDU / CSU",
             "attributes": [
                 "btw17_WKR_cducsu_erst13",
                 "btw17_WKR_cducsu_erst"
-            ]
+            ],
+            "color": "#000000"
         },
         {
             "title": "SPD",
             "attributes": [
                 "btw17_WKR_spd_erst13",
                 "btw17_WKR_spd_erst"
-            ]
+            ],
+            "color": "#FF0000"
         },
         {
             "title": "Linke",
             "attributes": [
                 "btw17_WKR_linke_erst13",
                 "btw17_WKR_linke_erst"
-            ]
+            ],
+            "color": "#A020F0"
         },
         {
             "title": "Grüne",
             "attributes": [
                 "btw17_WKR_gruene_erst13",
                 "btw17_WKR_gruene_erst"
-            ]
+            ],
+            "color": "#00FF00"
         },
         {
             "title": "FDP",
             "attributes": [
                 "btw17_WKR_fdp_erst13",
                 "btw17_WKR_fdp_erst"
-            ]
+            ],
+            "color": "#FFFF00"
         },
         {
             "title": "AFD",
             "attributes": [
                 "btw17_WKR_afd_erst13",
                 "btw17_WKR_afd_erst"
-            ]
+            ],
+            "color": "#0000FF"
         }
     ],
     "calculationType": "sum",
@@ -461,6 +489,14 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
             "title": "AFD"
         }
     ],
+    "colorPattern": [
+        "#000000",
+        "#FF0000",
+        "#A020F0",
+        "#00FF00",
+        "#FFFF00",
+        "#0000FF"
+    ],
     "calculationType": "sum",
     "dataOrientation": "rows",
     "showDataLabels": true,
@@ -502,6 +538,14 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
            "attribute": "btw17_WKR_afd_erst",
             "title": "AFD"
         }
+    ],
+    "colorPattern": [
+        "#000000",
+        "#FF0000",
+        "#A020F0",
+        "#00FF00",
+        "#FFFF00",
+        "#0000FF"
     ],
     "calculationType": "sum",
     "dataOrientation": "rows",
