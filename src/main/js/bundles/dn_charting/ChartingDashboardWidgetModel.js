@@ -16,6 +16,7 @@
 import {declare} from "apprt-core/Mutable";
 import ServiceResolver from "apprt/ServiceResolver";
 import domConstruct from "dojo/dom-construct";
+import all from "dojo/promise/all";
 import ct_lang from "ct/_lang";
 import Graphic from "esri/Graphic";
 
@@ -46,7 +47,6 @@ export default declare({
         this._tool.set("active", true);
         const queryExecutions = event.getProperty("executions");
         queryExecutions.waitForExecution().then((response) => {
-            this.loading = false;
             let executions = response.executions;
             let responses = [];
             executions.forEach((response) => {
@@ -80,7 +80,7 @@ export default declare({
     },
 
     _handleChartResponses(responses) {
-        responses.forEach((response, i) => {
+        let promises = responses.map((response, i) => {
             let tabTitle = response.source.title;
             let total = response.total;
             let storeId = response.source.id;
@@ -94,7 +94,7 @@ export default declare({
                 chartNodes: chartNodes
             });
 
-            this._getGeometryForResults(response.result, response.source.store).then((results) => {
+            return this._getGeometryForResults(response.result, response.source.store).then((results) => {
                 let sumObject = null;
                 let geometries = [];
                 results.forEach((result) => {
@@ -118,6 +118,10 @@ export default declare({
                 this._geometries[i] = geometries;
                 this._drawCharts(sumObject, results.length, chartsProperties.charts, chartNodes);
             });
+        });
+
+        all(promises).then(()=> {
+            this.loading = false;
         });
     },
 
