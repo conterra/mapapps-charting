@@ -24,9 +24,9 @@ class C3ChartsDataProvider {
                 res[0].push(header || "");
             });
 
-            props.dataSeries.forEach((serie) => {
-                let array = [serie.title || ""];
-                serie.attributes.forEach((attribute) => {
+            props.dataSeries.forEach((series) => {
+                let array = [series.title || ""];
+                series.attributes.forEach((attribute) => {
                     let value = attributes[attribute];
                     if (!value) {
                         value = null;
@@ -48,6 +48,20 @@ class C3ChartsDataProvider {
             res.push(array);
         }
         return res;
+    }
+
+    getDataColors(props) {
+        if (props.dataSeries) {
+            let colors = {};
+            props.dataSeries.forEach((series) => {
+                if (series.color) {
+                    colors[series.title] = series.color;
+                }
+            });
+            return colors;
+        } else {
+            return null;
+        }
     }
 
 }

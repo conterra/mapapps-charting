@@ -45,6 +45,15 @@ export default class C3ChartsFactory {
         if (!chartProperties.dataOrientation) {
             chartProperties.dataOrientation = "rows";
         }
+        if (chartProperties.colorPattern) {
+            props.color = {
+                pattern: chartProperties.colorPattern
+            };
+        }
+        let colors = this._c3ChartsDataProvider.getDataColors(chartProperties);
+        if (colors) {
+            props.data.colors = colors;
+        }
 
         props.data[chartProperties.dataOrientation] = data;
 

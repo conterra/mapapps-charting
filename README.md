@@ -58,6 +58,14 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
                             "title": "75 Jahre und älter"
                         }
                     ],
+                    "colorPattern": [
+                        "#1f77b4",
+                        "#aec7e8",
+                        "#ff7f0e",
+                        "#ffbb78",
+                        "#2ca02c",
+                        "#98df8a"
+                    ],
                     "calculationType": "mean",
                     "dataOrientation": "rows",
                     "showDataLabels": true,
@@ -79,42 +87,48 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
                             "attributes": [
                                 "btw17_WKR_cducsu_erst13",
                                 "btw17_WKR_cducsu_erst"
-                            ]
+                            ],
+                            "color": "#000000"
                         },
                         {
                             "title": "SPD",
                             "attributes": [
                                 "btw17_WKR_spd_erst13",
                                 "btw17_WKR_spd_erst"
-                            ]
+                            ],
+                            "color": "#FF0000"
                         },
                         {
                             "title": "Linke",
                             "attributes": [
                                 "btw17_WKR_linke_erst13",
                                 "btw17_WKR_linke_erst"
-                            ]
+                            ],
+                            "color": "#A020F0"
                         },
                         {
                             "title": "Grüne",
                             "attributes": [
                                 "btw17_WKR_gruene_erst13",
                                 "btw17_WKR_gruene_erst"
-                            ]
+                            ],
+                            "color": "#00FF00"
                         },
                         {
                             "title": "FDP",
                             "attributes": [
                                 "btw17_WKR_fdp_erst13",
                                 "btw17_WKR_fdp_erst"
-                            ]
+                            ],
+                            "color": "#FFFF00"
                         },
                         {
                             "title": "AFD",
                             "attributes": [
                                 "btw17_WKR_afd_erst13",
                                 "btw17_WKR_afd_erst"
-                            ]
+                            ],
+                            "color": "#0000FF"
                         }
                     ],
                     "calculationType": "sum",
@@ -144,11 +158,12 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 | chart.title                 | String  |                                                                       |                             | Title of specific chart.                                                                                                               |
 | chart.type                  | String  | line, spline, step, donut, bar, pie, step, area, gauge                | bar                         | Type of chart. (More information: https://c3js.org/examples.html)                                                                      |
 | chart.height                | Integer |                                                                       | 500                         | Height of the chart. Width will be set automatically.                                                                                  |
-| chart.calculationType       | String  | ```sum``` &#124; ```mean```                                           | sum                         | Use sum or mean values for multiple features.                                                                                                           |
+| chart.calculationType       | String  | ```sum``` &#124; ```mean```                                           | sum                         | Use sum or mean values for multiple features.                                                                                          |
 | chart.dataOrientation       | String  | ```rows``` &#124; ```columns ```                                      | row                         | Row or column oriented data.                                                                                                           |
 | chart.showDataLabels        | boolean | ```true``` &#124; ```false```                                         | true                        | Show the individual data labels.                                                                                                       |
 | chart.rotatedAxis           | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                 |
 | chart.expanded              | boolean | ```true``` &#124; ```false```                                         | true                        | Chart expansion panel is initially expanded.                                                                                           |
+| chart.colorPattern          | Array   |                                                                       |                             | Chart collor pattern. Array of hexadecimal colors.                                                                                     |
 
 #### Single chart series configuration (available in all bundle versions)
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
@@ -165,6 +180,7 @@ https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-docu
 | chart.dataSeries.title      | String  |                                                                       |                             | Title for the data series.                                                                                                             |
 | chart.dataSeries.attributes | Array   |                                                                       |                             | Array of attributes in the data series. These must be in the same order as the headers.                                                |
 | chart.dataSeries.groups     | Array   |                                                                       | []                          | Optional property that allows to use stacked charts. Array of grouped attributes. (e.g. [["2016", "2017"]])                            |
+| chart.dataSeries.color      | Array   |                                                                       | []                          | Optional property that change the color of the attribute. (e.g. "#FF0000")                            |
 
 More information about how to place the charting widget:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
