@@ -13,7 +13,22 @@ https://demos.conterra.de/mapapps/resources/apps/downloads_charting/index.html
 **Requirement: map.apps 4.4.0**
 
 1. First you need to add the bundles selection-ui and dn_charting to your app.
-2. Then you need to configure one or more stores. These are the data basis for the diagrams.
+2. Then you need to configure one or more stores. These are the data basis for the diagrams. A simple store configuration might look like this:
+```
+"agssearch": {
+    "AGSStore": [{
+        "title": "Wahlkreise 2017 - Strukturdaten",
+        "id": "wahlkreise_strukturdaten",
+        "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Wahlkreise_2017_mit_Strukturdaten/FeatureServer/0",
+        "useIn": ["selection"],
+        "filterOptions": {
+            "suggestContains": true
+        },
+        "fetchIdProperty": true,
+        "enablePagination": false
+    }]
+},
+```
 For more information on how to configure ArcGIS Search stores have a look at:
 https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/README.md
 3. Finally, you can configure your diagrams as described below.
