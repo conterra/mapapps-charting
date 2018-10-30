@@ -14,9 +14,9 @@ https://demos.conterra.de/mapapps/resources/apps/downloads_charting/index.html
 
 1. First you need to add the bundles selection-ui and dn_charting to your app.
 2. Then you need to configure one or more stores. These are the data basis for the diagrams.
-For more information have a look at:
-https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/stores
-3. Finally, you need to configure your charts in the following component.
+For more information on how to configure ArcGIS Search stores have a look at:
+https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/README.md
+3. Finally, you can configure your diagrams as described below.
 
 ### Configurable components of the dn_charting bundle
 #### ChartingDashboardWidgetFactory
