@@ -10,7 +10,7 @@ You can choose of a variety of different chart types like: bar, line, spline, ar
 https://demos.conterra.de/mapapps/resources/apps/downloads_charting/index.html
 
 ## Installation Guide
-**Requirement: map.apps 4.4.0**
+**Requirement: map.apps 4.4.1**
 
 1. First you need to add the bundles selection-ui and dn_charting to your app.
 2. Then you need to configure one or more stores. These are the data basis for the diagrams. A simple store configuration might look like this:

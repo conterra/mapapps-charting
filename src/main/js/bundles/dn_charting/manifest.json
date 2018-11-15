@@ -6,12 +6,14 @@
     "vendor": "con terra GmbH",
     "productName": "devnet-mapapps-charting",
     "dependencies": {
-        "apprt-vue": "^4.2.0",
-        "apprt-binding": "^4.2.0",
-        "apprt-core": "^4.2.0",
-        "coordinatetransformer": "^4.2.0",
-        "mapdraw-api": "^4.2.0",
-        "selection-services": "^4.2.0",
+        "esri": "^4.5.0",
+        "apprt-vue": "^4.4.1",
+        "apprt-vuetify": "^4.4.1",
+        "apprt-binding": "^4.4.1",
+        "apprt-core": "^4.4.1",
+        "coordinatetransformer": "^4.4.1",
+        "mapdraw-api": "^4.4.1",
+        "selection-services": "^4.4.1",
         "c3": ">0"
     },
     "CSS-Themes-Extension": [
