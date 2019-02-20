@@ -1,0 +1,2850 @@
+{
+    "properties": {
+        "templateFile": "konsumschwerpunkte4x.zip",
+        "description": "",
+        "modifiedAt": 1539078807192,
+        "templateId": "",
+        "id": "isp",
+        "title": "ISP",
+        "createdAt": 1523967206958,
+        "modifiedBy": "Daues.Matthias",
+        "editorState": "DRAFT",
+        "createdBy": "Daues.Matthias",
+        "thumbnailFile": "thumbnail.png"
+    },
+    "load": {
+        "bundleLocations": [
+            "localbundles",
+            "bundles"
+        ],
+        "styles": [
+            "${app}:app.css"
+        ],
+        "allowedBundles": [
+            "system",
+            "templatelayout",
+            "template-seasons",
+            "theme-autumn",
+            "toolset",
+            "map-init",
+            "map-config-mig",
+            "notifier",
+            "parametermanager",
+            "basemaptoggler",
+            "legend",
+            "omnisearch",
+            "console",
+            "agssearch",
+            "layerlist",
+            "dn_querybuilder",
+            "locator-store",
+            "mapnavigation",
+            "selection-resultcenter",
+            "selection-services",
+            "selection-tools",
+            "selection-ui",
+            "dn_charting",
+            "locateme"
+        ]
+    },
+    "bundles": {
+        "agssearch": {
+            "AGSStore": [
+                {
+                    "title": "Wahlkreise 2017 - Strukturdaten",
+                    "id": "wahlkreise_strukturdaten",
+                    "description": "",
+                    "idProperty": "OBJECTID",
+                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Wahlkreise_2017_mit_Strukturdaten/FeatureServer/0",
+                    "useIn": [
+                        "selection"
+                    ],
+                    "filterOptions": {
+                        "suggestContains": true
+                    },
+                    "fetchIdProperty": true,
+                    "enablePagination": false
+                },
+                {
+                    "title": "Wahlkreise 2017 - Wahlergebnisse",
+                    "id": "wahlkreise_ergebnis",
+                    "description": "",
+                    "idProperty": "OBJECTID",
+                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Wahlkreise_2017_amtlichesErgebnis/FeatureServer/0",
+                    "useIn": [
+                        "selection"
+                    ],
+                    "filterOptions": {
+                        "suggestContains": true
+                    },
+                    "fetchIdProperty": true,
+                    "enablePagination": false
+                }
+            ]
+        },
+        "dn_charting": {
+            "ChartingDashboardWidgetModel": {
+                "chartsProperties": [
+                    {
+                        "storeId": "wahlkreise_strukturdaten",
+                        "titleAttribute": "WKR_NAME",
+                        "charts": [
+                            {
+                                "title": "Altersverteilung",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "Alter_unter_18",
+                                        "title": "Unter 18 Jahren"
+                                    },
+                                    {
+                                        "attribute": "Alter_18_24",
+                                        "title": "18 - 24 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Alter_25_34",
+                                        "title": "25 - 34 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Alter_35_59",
+                                        "title": "35 - 59 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Alter_60_74",
+                                        "title": "60 - 74 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Alter_75_und_mehr",
+                                        "title": "75 Jahre und älter"
+                                    }
+                                ],
+                                "colorPattern": [
+                                    "#1f77b4",
+                                    "#aec7e8",
+                                    "#ff7f0e",
+                                    "#ffbb78",
+                                    "#2ca02c",
+                                    "#98df8a"
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Altersverteilung",
+                                "type": "bar",
+                                "height": 600,
+                                "data": [
+                                    {
+                                        "attribute": "Alter_unter_18",
+                                        "title": "Unter 18 Jahren"
+                                    },
+                                    {
+                                        "attribute": "Alter_18_24",
+                                        "title": "18 - 24 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Alter_25_34",
+                                        "title": "25 - 34 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Alter_35_59",
+                                        "title": "35 - 59 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Alter_60_74",
+                                        "title": "60 - 74 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Alter_75_und_mehr",
+                                        "title": "75 Jahre und älter"
+                                    }
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Religionsangehörigkeit",
+                                "type": "pie",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "BEV_Römisch_Katholisch",
+                                        "title": "Römisch Katholisch"
+                                    },
+                                    {
+                                        "attribute": "BEV_Evangelisch",
+                                        "title": "Evangelisch"
+                                    },
+                                    {
+                                        "attribute": "BEV_sonst_Religion",
+                                        "title": "Sonstige Religionen"
+                                    }
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Beschäftigte",
+                                "type": "pie",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "Beschäftigte_Land_Forst_Fisch",
+                                        "title": "Land Forst Fisch"
+                                    },
+                                    {
+                                        "attribute": "Beschäftigte_Produzierendes_Gw",
+                                        "title": "Produzierendes Gewerbe"
+                                    },
+                                    {
+                                        "attribute": "Beschäftigte_Handel_Verkehr",
+                                        "title": "Handel und Verkehr"
+                                    },
+                                    {
+                                        "attribute": "Beschaftigte_Dienstleister",
+                                        "title": "Dienstleistung"
+                                    },
+                                    {
+                                        "attribute": "Beschäftigte_Übrige",
+                                        "title": "Sonstige"
+                                    }
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Schulabschlüsse",
+                                "type": "pie",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "Absolv_ohne_Hauptschulabschlus",
+                                        "title": "Ohne Schulabschluss"
+                                    },
+                                    {
+                                        "attribute": "Absolv_mit_Hauptschulabscluss",
+                                        "title": "Hauptschulabschluss"
+                                    },
+                                    {
+                                        "attribute": "Absolv_mit_mittlerem_Schulabs",
+                                        "title": "Mittlere Reife"
+                                    },
+                                    {
+                                        "attribute": "Absolv_mit_all_und_Fachhochsch",
+                                        "title": "Allgemeine- oder Fachhhochschulreife"
+                                    },
+                                    {
+                                        "attribute": "Absolv_Berufschulen",
+                                        "title": "Berufsschulabschluss"
+                                    }
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Arbeitslosenquote",
+                                "type": "gauge",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "Arbeitslosenquote_insges",
+                                        "title": "Arbeitslosenquote Insgesamt"
+                                    }
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Arbeitslosenquote",
+                                "type": "bar",
+                                "height": 600,
+                                "data": [
+                                    {
+                                        "attribute": "Arbeitslosenquote_insges",
+                                        "title": "Arbeitslosenquote Insgesamt"
+                                    },
+                                    {
+                                        "attribute": "Arbeitslosenquote_Männer",
+                                        "title": "Arbeitslosenquote Männer"
+                                    },
+                                    {
+                                        "attribute": "Arbeitslosenquote_Frauen",
+                                        "title": "Arbeitslosenquote Frauen "
+                                    },
+                                    {
+                                        "attribute": "Arbeitslosenquote_15_20",
+                                        "title": "Arbeitslosenquote 15 bis 20 Jahre"
+                                    },
+                                    {
+                                        "attribute": "Arbeitslosenquote_55_65",
+                                        "title": "Arbeitslosenquote 55 bis 65 Jahre"
+                                    }
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Statistiken je 1000 Einwohner",
+                                "type": "bar",
+                                "height": 600,
+                                "data": [
+                                    {
+                                        "attribute": "Geburtensaldo_je1000",
+                                        "title": "Geburtensaldo - Zu- bzw. Abnahme"
+                                    },
+                                    {
+                                        "attribute": "Wanderungssaldo_je1000",
+                                        "title": "Wanderungssaldo - Zu- bzw. Abnahme"
+                                    },
+                                    {
+                                        "attribute": "Whg_Fertiggestellte_je1000_Ein",
+                                        "title": "Fertiggestellte Wohnungen"
+                                    },
+                                    {
+                                        "attribute": "Whg_Bestand_je1000_Einw",
+                                        "title": "Bestehende Wohnungen"
+                                    },
+                                    {
+                                        "attribute": "KFZ_Bestand_je1000_Einw",
+                                        "title": "KFZ Bestand"
+                                    },
+                                    {
+                                        "attribute": "Absolv_allgSchulen_je1000",
+                                        "title": "Schulabsolventen"
+                                    },
+                                    {
+                                        "attribute": "Betreure_Kinder_je1000",
+                                        "title": "Betreute Kinder"
+                                    },
+                                    {
+                                        "attribute": "Unternehmen_insges_je1000",
+                                        "title": "Unternehmen"
+                                    },
+                                    {
+                                        "attribute": "Handwerksunternehmen_je1000",
+                                        "title": "Unternehmen"
+                                    },
+                                    {
+                                        "attribute": "Beschäftigte_insges_je1000",
+                                        "title": "Beschäftigt"
+                                    },
+                                    {
+                                        "attribute": "Empf_SGBII_insges_je1000",
+                                        "title": "Arbeitslos"
+                                    }
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            }
+                        ]
+                    },
+                    {
+                        "storeId": "wahlkreise_ergebnis",
+                        "titleAttribute": "Wahlkreise17_Wahlkreise17_WKR_1",
+                        "charts": [
+                            {
+                                "title": "Erststimme",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_cducsu_erst",
+                                        "title": "CDU / CSU"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_spd_erst",
+                                        "title": "SPD"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_linke_erst",
+                                        "title": "Linke"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_gruene_erst",
+                                        "title": "Grüne"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_fdp_erst",
+                                        "title": "FDP"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_afd_erst",
+                                        "title": "AFD"
+                                    }
+                                ],
+                                "colorPattern": [
+                                    "#000000",
+                                    "#FF0000",
+                                    "#A020F0",
+                                    "#00FF00",
+                                    "#FFFF00",
+                                    "#0000FF"
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Erststimme",
+                                "type": "bar",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_cducsu_erst",
+                                        "title": "CDU / CSU"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_spd_erst",
+                                        "title": "SPD"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_linke_erst",
+                                        "title": "Linke"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_gruene_erst",
+                                        "title": "Grüne"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_fdp_erst",
+                                        "title": "FDP"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_afd_erst",
+                                        "title": "AFD"
+                                    }
+                                ],
+                                "colorPattern": [
+                                    "#000000",
+                                    "#FF0000",
+                                    "#A020F0",
+                                    "#00FF00",
+                                    "#FFFF00",
+                                    "#0000FF"
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Zweitstimme",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_cducsu_zweit",
+                                        "title": "CDU / CSU"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_spd_zweit",
+                                        "title": "SPD"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_linke_zweit",
+                                        "title": "Linke"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_gruene_zweit",
+                                        "title": "Grüne"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_fdp_zweit",
+                                        "title": "FDP"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_afd_zweit",
+                                        "title": "AFD"
+                                    }
+                                ],
+                                "colorPattern": [
+                                    "#000000",
+                                    "#FF0000",
+                                    "#A020F0",
+                                    "#00FF00",
+                                    "#FFFF00",
+                                    "#0000FF"
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Zweitstimme",
+                                "type": "bar",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_cducsu_zweit",
+                                        "title": "CDU / CSU"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_spd_zweit",
+                                        "title": "SPD"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_linke_zweit",
+                                        "title": "Linke"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_gruene_zweit",
+                                        "title": "Grüne"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_fdp_zweit",
+                                        "title": "FDP"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_afd_zweit",
+                                        "title": "AFD"
+                                    }
+                                ],
+                                "colorPattern": [
+                                    "#000000",
+                                    "#FF0000",
+                                    "#A020F0",
+                                    "#00FF00",
+                                    "#FFFF00",
+                                    "#0000FF"
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Gültigkeit Erststimme",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_gueltig_erst",
+                                        "title": "gültig"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_ungueltig_erst",
+                                        "title": "ungültig"
+                                    }
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Gültigkeit Zweitstimme",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "btw17_WKR_gueltig_zweit",
+                                        "title": "gültig"
+                                    },
+                                    {
+                                        "attribute": "btw17_WKR_ungueltig_zweit",
+                                        "title": "ungültig"
+                                    }
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Entwicklung Erststimme",
+                                "type": "line",
+                                "height": 400,
+                                "headers": [
+                                    "2013",
+                                    "2017"
+                                ],
+                                "dataSeries": [
+                                    {
+                                        "title": "CDU / CSU",
+                                        "attributes": [
+                                            "btw17_WKR_cducsu_erst13",
+                                            "btw17_WKR_cducsu_erst"
+                                        ],
+                                        "color": "#000000"
+                                    },
+                                    {
+                                        "title": "SPD",
+                                        "attributes": [
+                                            "btw17_WKR_spd_erst13",
+                                            "btw17_WKR_spd_erst"
+                                        ],
+                                        "color": "#FF0000"
+                                    },
+                                    {
+                                        "title": "Linke",
+                                        "attributes": [
+                                            "btw17_WKR_linke_erst13",
+                                            "btw17_WKR_linke_erst"
+                                        ],
+                                        "color": "#A020F0"
+                                    },
+                                    {
+                                        "title": "Grüne",
+                                        "attributes": [
+                                            "btw17_WKR_gruene_erst13",
+                                            "btw17_WKR_gruene_erst"
+                                        ],
+                                        "color": "#00FF00"
+                                    },
+                                    {
+                                        "title": "FDP",
+                                        "attributes": [
+                                            "btw17_WKR_fdp_erst13",
+                                            "btw17_WKR_fdp_erst"
+                                        ],
+                                        "color": "#FFFF00"
+                                    },
+                                    {
+                                        "title": "AFD",
+                                        "attributes": [
+                                            "btw17_WKR_afd_erst13",
+                                            "btw17_WKR_afd_erst"
+                                        ],
+                                        "color": "#0000FF"
+                                    }
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "columns",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Entwicklung Erststimme",
+                                "type": "bar",
+                                "height": 400,
+                                "headers": [
+                                    "2013",
+                                    "2017"
+                                ],
+                                "dataSeries": [
+                                    {
+                                        "title": "CDU / CSU",
+                                        "attributes": [
+                                            "btw17_WKR_cducsu_erst13",
+                                            "btw17_WKR_cducsu_erst"
+                                        ],
+                                        "color": "#000000"
+                                    },
+                                    {
+                                        "title": "SPD",
+                                        "attributes": [
+                                            "btw17_WKR_spd_erst13",
+                                            "btw17_WKR_spd_erst"
+                                        ],
+                                        "color": "#FF0000"
+                                    },
+                                    {
+                                        "title": "Linke",
+                                        "attributes": [
+                                            "btw17_WKR_linke_erst13",
+                                            "btw17_WKR_linke_erst"
+                                        ],
+                                        "color": "#A020F0"
+                                    },
+                                    {
+                                        "title": "Grüne",
+                                        "attributes": [
+                                            "btw17_WKR_gruene_erst13",
+                                            "btw17_WKR_gruene_erst"
+                                        ],
+                                        "color": "#00FF00"
+                                    },
+                                    {
+                                        "title": "FDP",
+                                        "attributes": [
+                                            "btw17_WKR_fdp_erst13",
+                                            "btw17_WKR_fdp_erst"
+                                        ],
+                                        "color": "#FFFF00"
+                                    },
+                                    {
+                                        "title": "AFD",
+                                        "attributes": [
+                                            "btw17_WKR_afd_erst13",
+                                            "btw17_WKR_afd_erst"
+                                        ],
+                                        "color": "#0000FF"
+                                    }
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "columns",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Entwicklung Erststimme",
+                                "type": "bar",
+                                "height": 400,
+                                "headers": [
+                                    "2013",
+                                    "2017"
+                                ],
+                                "dataSeries": [
+                                    {
+                                        "title": "CDU / CSU",
+                                        "attributes": [
+                                            "btw17_WKR_cducsu_erst13",
+                                            "btw17_WKR_cducsu_erst"
+                                        ],
+                                        "color": "#000000"
+                                    },
+                                    {
+                                        "title": "SPD",
+                                        "attributes": [
+                                            "btw17_WKR_spd_erst13",
+                                            "btw17_WKR_spd_erst"
+                                        ],
+                                        "color": "#FF0000"
+                                    },
+                                    {
+                                        "title": "Linke",
+                                        "attributes": [
+                                            "btw17_WKR_linke_erst13",
+                                            "btw17_WKR_linke_erst"
+                                        ],
+                                        "color": "#A020F0"
+                                    },
+                                    {
+                                        "title": "Grüne",
+                                        "attributes": [
+                                            "btw17_WKR_gruene_erst13",
+                                            "btw17_WKR_gruene_erst"
+                                        ],
+                                        "color": "#00FF00"
+                                    },
+                                    {
+                                        "title": "FDP",
+                                        "attributes": [
+                                            "btw17_WKR_fdp_erst13",
+                                            "btw17_WKR_fdp_erst"
+                                        ],
+                                        "color": "#FFFF00"
+                                    },
+                                    {
+                                        "title": "AFD",
+                                        "attributes": [
+                                            "btw17_WKR_afd_erst13",
+                                            "btw17_WKR_afd_erst"
+                                        ],
+                                        "color": "#0000FF"
+                                    }
+                                ],
+                                "groups": [
+                                    [
+                                        "CDU / CSU",
+                                        "SPD"
+                                    ]
+                                ],
+                                "calculationType": "sum",
+                                "dataOrientation": "columns",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "dn_querybuilder": {
+            "QueryBuilderProperties": {
+                "enableDistinctValues": true,
+                "defaultRelationalOperator": "$and",
+                "searchEverywhereAsDefault": true,
+                "defaultLinkOperator": "$or",
+                "defaultSpatialRelation": "everywhere",
+                "useMemorySelectionStore": true,
+                "allowNegation": false
+            },
+            "QueryBuilderWidgetModel": {
+                "storeIds": [
+                    "store03"
+                ]
+            },
+            "enabled": true
+        },
+        "dn_vuetoc": {
+            "MapContentWidgetFactory": {
+                "showBasemaps": false,
+                "showOperationalLayer": true,
+                "showLegend": true
+            }
+        },
+        "locator-store": {
+            "Config": {
+                "title": "Adresse",
+                "description": "Adresse suchen...",
+                "omniSearchDefaultLabel": "Adresse suchen...",
+                "countryCode": "DEU"
+            }
+        },
+        "map-init": {
+            "Config": {
+                "basemaps": [
+                    {
+                        "id": "Luftbild",
+                        "title": "Luftbild",
+                        "description": "Luftbild",
+                        "basemap": {
+                            "type": "AGS_TILED",
+                            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+                        }
+                    },
+                    {
+                        "id": "Hintergrundkarte",
+                        "basemap": "gray-vector",
+                        "title": "Hintergrundkarte",
+                        "selected": true,
+                        "description": "This basemap has no title, therefore its ID is used a title"
+                    },
+                    {
+                        "title": "OpenStreetMap",
+                        "id": "osm",
+                        "basemap": "osm",
+                        "description": "This basemap has no title, therefore its ID is used a title"
+                    }
+                ],
+                "map": {
+                    "layers": [
+                        {
+                            "url": "https://gisportal.unitymedia.de/wss/service/ags-relay/ArcGis_Server_Prod/sso/arcgis/rest/services/b2c/isp/MapServer",
+                            "type": "AGS_DYNAMIC",
+                            "id": "service_45688_1517469913202",
+                            "title": "ISP-Performance",
+                            "visible": true,
+                            "sublayers": [
+                                {
+                                    "id": "0",
+                                    "sublayers": [
+                                        {
+                                            "id": "5"
+                                        },
+                                        {
+                                            "id": "4"
+                                        },
+                                        {
+                                            "id": "3"
+                                        },
+                                        {
+                                            "id": "1",
+                                            "popupTemplate": {
+                                                "title": "{sales_name}<br>Sales-ID(s):  {sales_id_s}<br>PoS-ID: {pos_id}",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "<strong>{strasse} {hausnummer} {plz} {stadt}, {bundesland}</strong>"
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "<table><tr><td><strong><u>Stammdaten</u></strong></td><td></td><td></td><td></td></tr><tr><td><strong>VB</strong></td><td>{vb}</td><td><strong>Subchannel</strong></td><td>{subchannel}</tr><tr><td><strong>Team</strong></td><td>{team_name}</td><td><strong>Branche</strong></td><td>{branche}</tr><tr><td><strong><br><u>Analyse</u></strong></td><td></td><td></td><td></td></tr><tr><td><strong>Zentraler Markt</strong></td><td colspan='3'>{zm_name}</td></tr><tr><td><strong>Strategie</strong></td><td>{zm_strategie}</td><td><strong>Potenzial</strong></td><td>{zm_potential}</td></tr><tr><td><br></td><td></td><td></td><td></td></tr><tr><td><strong>KSP</strong></td><td colspan='3'>{ksp_name}</tr><tr><td><strong>KSI</strong></td><td>{ksi_index}</td><td><strong>Gemeindeklasse</strong></td><td>{ksi_gemeindeklasse}</td></tr><tr><td><br></td><td></td><td></td><td></td></tr><tr><td><strong>Echtes EZG</strong></td><td>{echt_ezg}</td><td><strong>Standard EZG</strong></td><td>{standard_ezg}</td></tr><tr><td><strong>Marktanteile</strong></td><td>Telekom</td><td colspan='2'>{ma_telekom}</td></tr><tr><td><strong></strong></td><td>O2</td><td colspan='2'>{ma_o2}</td></tr><tr><td><strong></strong></td><td>Vodafone</td><td colspan='2'>{ma_vodafone}</td></tr><tr><td><br></td><td></td><td></td><td></tr></td><tr><td><strong>Centerzuordnung</strong></td><td>{center_zuordnung}</td><td><strong>Center</strong></td><td>{center_name}</tr></td></table>"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "6",
+                                    "sublayers": [
+                                        {
+                                            "id": "15",
+                                            "popupTemplate": {
+                                                "title": "Zentraler Markt {zentraler_markt_name}",
+                                                "content": [
+                                                    {
+                                                        "type": "fields",
+                                                        "fieldInfos": [
+                                                            {
+                                                                "fieldName": "segment",
+                                                                "label": "Strategie Consumer:"
+                                                            },
+                                                            {
+                                                                "fieldName": "segment_b2b",
+                                                                "label": "Strategie B2B"
+                                                            },
+                                                            {
+                                                                "fieldName": "segment_mdu",
+                                                                "label": "Strategie MDU"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "id": "14"
+                                        },
+                                        {
+                                            "id": "13"
+                                        },
+                                        {
+                                            "id": "12"
+                                        },
+                                        {
+                                            "id": "11"
+                                        },
+                                        {
+                                            "id": "10",
+                                            "popupTemplate": {
+                                                "title": "{ksp_name}",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "<strong>Konsumschwerpunkt</strong>"
+                                                    },
+                                                    {
+                                                        "type": "fields",
+                                                        "fieldInfos": [
+                                                            {
+                                                                "fieldName": "ksi",
+                                                                "label": "KSI"
+                                                            },
+                                                            {
+                                                                "fieldName": "ksi_idx",
+                                                                "label": "KSI-Index"
+                                                            },
+                                                            {
+                                                                "fieldName": "ksi_klasse",
+                                                                "label": "KSI-Klasse"
+                                                            },
+                                                            {
+                                                                "fieldName": "ksi_regtyp",
+                                                                "label": "KSI-Regionaltyp"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "id": "9"
+                                        },
+                                        {
+                                            "id": "8"
+                                        },
+                                        {
+                                            "id": "7"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "view": {
+                    "viewmode": "2D",
+                    "extent": {
+                        "xmin": 12469.739409100148,
+                        "xmax": 1969257.6635090858,
+                        "ymin": 6002540.53960906,
+                        "ymax": 6865973.211118178,
+                        "spatialReference": 3857
+                    }
+                }
+            }
+        },
+        "omnisearch": {
+            "OmniSearchFactory": {
+                "displayLoadingIcon": true,
+                "comboBoxOpts": {
+                    "ignoreCase": true,
+                    "autoComplete": true,
+                    "selectFirstResultOnEnter": false,
+                    "autoSelect": false
+                }
+            }
+        },
+        "resultcenter": {
+            "DataView": {
+                "DGRID": {
+                    "checkboxSelection": true,
+                    "columns": [
+                        {
+                            "matches": {
+                                "name": "firmenname"
+                            },
+                            "width": 200,
+                            "title": "firmenname"
+                        },
+                        {
+                            "matches": {
+                                "name": "pos_id"
+                            },
+                            "width": 70,
+                            "title": "pos_id"
+                        },
+                        {
+                            "matches": {
+                                "name": "sales_id_s"
+                            },
+                            "width": 200,
+                            "title": "sales id(s)"
+                        },
+                        {
+                            "matches": {
+                                "name": "aktiv_vorm"
+                            },
+                            "width": 200,
+                            "title": "aktiv_vorm"
+                        },
+                        {
+                            "matches": {
+                                "name": "sales_name"
+                            },
+                            "width": 200,
+                            "title": "sales_name"
+                        },
+                        {
+                            "matches": {
+                                "name": "strasse"
+                            },
+                            "width": 200,
+                            "title": "strasse"
+                        },
+                        {
+                            "matches": {
+                                "name": "hausnummer"
+                            },
+                            "width": 200,
+                            "title": "hausnummer"
+                        },
+                        {
+                            "matches": {
+                                "name": "plz"
+                            },
+                            "width": 200,
+                            "title": "plz"
+                        },
+                        {
+                            "matches": {
+                                "name": "stadt"
+                            },
+                            "width": 200,
+                            "title": "ort"
+                        },
+                        {
+                            "matches": {
+                                "name": "bundesland"
+                            },
+                            "width": 200,
+                            "title": "bundesland"
+                        },
+                        {
+                            "matches": {
+                                "name": "branche"
+                            },
+                            "width": 200,
+                            "title": "branche"
+                        },
+                        {
+                            "matches": {
+                                "name": "vb"
+                            },
+                            "width": 200,
+                            "title": "vb"
+                        },
+                        {
+                            "matches": {
+                                "name": "status"
+                            },
+                            "width": 200,
+                            "title": "status"
+                        },
+                        {
+                            "matches": {
+                                "name": "attribut_1"
+                            },
+                            "width": 200,
+                            "title": "gebiet"
+                        },
+                        {
+                            "matches": {
+                                "name": "attribut_3"
+                            },
+                            "width": 200,
+                            "title": "kategorie"
+                        },
+                        {
+                            "matches": {
+                                "name": "team_id"
+                            },
+                            "width": 70,
+                            "title": "team_id"
+                        },
+                        {
+                            "matches": {
+                                "name": "team_name"
+                            },
+                            "width": 200,
+                            "title": "team_name"
+                        },
+                        {
+                            "matches": {
+                                "name": "manager_na"
+                            },
+                            "width": 200,
+                            "title": "manager_name"
+                        },
+                        {
+                            "matches": {
+                                "name": "kanal"
+                            },
+                            "width": 200,
+                            "title": "kanal"
+                        },
+                        {
+                            "matches": {
+                                "name": "subchannel"
+                            },
+                            "width": 200,
+                            "title": "subchannel"
+                        },
+                        {
+                            "matches": {
+                                "name": "ablaufdatu"
+                            },
+                            "width": 200,
+                            "title": "ablaufdatum"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_tp_12m"
+                            },
+                            "width": 200,
+                            "title": "hsi_tp_12m"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2018_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2018_07"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2018_06"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2018_05"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2018_04"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2018_03"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2018_02"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2018_01"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2017_12"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2017_11"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2017_10"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2017_09"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_2017_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2018_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2018_07"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2018_06"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2018_05"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2018_04"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2018_03"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2018_02"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2018_01"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2017_12"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2017_11"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2017_10"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2017_09"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_2017_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2018_08"
+                            },
+                            "width": 200,
+                            "title": "bcs_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2018_07"
+                            },
+                            "width": 200,
+                            "title": "bcs_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2018_06"
+                            },
+                            "width": 200,
+                            "title": "bcs_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2018_05"
+                            },
+                            "width": 200,
+                            "title": "bcs_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2018_04"
+                            },
+                            "width": 200,
+                            "title": "bcs_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2018_03"
+                            },
+                            "width": 200,
+                            "title": "bcs_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2018_02"
+                            },
+                            "width": 200,
+                            "title": "bcs_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2018_01"
+                            },
+                            "width": 200,
+                            "title": "bcs_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2017_12"
+                            },
+                            "width": 200,
+                            "title": "bcs_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2017_11"
+                            },
+                            "width": 200,
+                            "title": "bcs_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2017_10"
+                            },
+                            "width": 200,
+                            "title": "bcs_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2017_09"
+                            },
+                            "width": 200,
+                            "title": "bcs_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_2017_08"
+                            },
+                            "width": 200,
+                            "title": "bcs_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_oe_hore_ze_mtd"
+                            },
+                            "width": 200,
+                            "title": "hsi_oe_hore_ze_mtd"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_oe_hore_mtd"
+                            },
+                            "width": 200,
+                            "title": "hsi_oe_hore_mtd"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_hsi_oe__mtd"
+                            },
+                            "width": 200,
+                            "title": "sum_hsi_oe__mtd"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_oe_ziel_mtd"
+                            },
+                            "width": 200,
+                            "title": "hsi_oe_ziel_mtd"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_oe_monat_vorjahr"
+                            },
+                            "width": 200,
+                            "title": "hsi_oe_monat_vorjahr"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_oe_mtd_1"
+                            },
+                            "width": 200,
+                            "title": "hsi_oe_mtd_1"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_oe_mtd_2"
+                            },
+                            "width": 200,
+                            "title": "hsi_oe_mtd_2"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_oe__mtd_3"
+                            },
+                            "width": 200,
+                            "title": "hsi_oe__mtd_3"
+                        },
+                        {
+                            "matches": {
+                                "name": "twoplay_30_share_mtd"
+                            },
+                            "width": 200,
+                            "title": "twoplay_30_share_mtd"
+                        },
+                        {
+                            "matches": {
+                                "name": "twoplay_150_share_mtd"
+                            },
+                            "width": 200,
+                            "title": "twoplay_150_share_mtd"
+                        },
+                        {
+                            "matches": {
+                                "name": "twoplay_400_share_mtd"
+                            },
+                            "width": 200,
+                            "title": "twoplay_400_share_mtd"
+                        },
+                        {
+                            "matches": {
+                                "name": "twoplay_1000_share_mtd"
+                            },
+                            "width": 200,
+                            "title": "twoplay_1000_share_mtd"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_hsi_oe_3m"
+                            },
+                            "width": 200,
+                            "title": "sum_hsi_oe_3m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_hsi_oe_6m"
+                            },
+                            "width": 200,
+                            "title": "sum_hsi_oe_6m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_hsi_oe_12m"
+                            },
+                            "width": 200,
+                            "title": "sum_hsi_oe_12m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_b2c_oe_3m"
+                            },
+                            "width": 200,
+                            "title": "sum_b2c_oe_3m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_b2c_oe_6m"
+                            },
+                            "width": 200,
+                            "title": "sum_b2c_oe_6m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_b2c_oe_12m"
+                            },
+                            "width": 200,
+                            "title": "sum_b2c_oe_12m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_b2b_oe_3m"
+                            },
+                            "width": 200,
+                            "title": "sum_b2b_oe_3m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_b2b_oe_6m"
+                            },
+                            "width": 200,
+                            "title": "sum_b2b_oe_6m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_b2b_oe_12m"
+                            },
+                            "width": 200,
+                            "title": "sum_b2b_oe_12m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_bcs_oe_3m"
+                            },
+                            "width": 200,
+                            "title": "sum_bcs_oe_3m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_bcs_oe_6m"
+                            },
+                            "width": 200,
+                            "title": "sum_bcs_oe_6m"
+                        },
+                        {
+                            "matches": {
+                                "name": "sum_bcs_oe_12m"
+                            },
+                            "width": 200,
+                            "title": "sum_bcs_oe_12m"
+                        },
+                        {
+                            "matches": {
+                                "name": "produktion_bis_zum"
+                            },
+                            "width": 200,
+                            "title": "produktion_bis_zum"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_01"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_02"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_03"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_04"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_05"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_06"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_07"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_09"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_10"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_11"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_2017_12"
+                            },
+                            "width": 200,
+                            "title": "hsi_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "ges_hsi_2017"
+                            },
+                            "width": 200,
+                            "title": "ges_hsi_2017"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2018_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2018_07"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2018_06"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2018_05"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2018_04"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2018_03"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2018_02"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2018_01"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2017_12"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2017_11"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2017_10"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2017_09"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pic_2017_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pic_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2018_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2018_07"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2018_06"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2018_05"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2018_04"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2018_03"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2018_02"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2018_01"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2017_12"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2017_11"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2017_10"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2017_09"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pic_2017_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pic_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2018_08"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2018_07"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2018_06"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2018_05"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2018_04"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2018_03"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2018_02"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2018_01"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2017_12"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2017_11"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2017_10"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2017_09"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pic_2017_08"
+                            },
+                            "width": 200,
+                            "title": "bcs_pic_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2018_08"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2018_07"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2018_06"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2018_05"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2018_04"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2018_03"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2018_02"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2018_01"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2017_12"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2017_11"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2017_10"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2017_09"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2c_2017_08"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2c_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2018_08"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2018_07"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2018_06"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2018_05"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2018_04"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2018_03"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2018_02"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2018_01"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2017_12"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2017_11"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2017_10"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2017_09"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_hsi_b2b_2017_08"
+                            },
+                            "width": 200,
+                            "title": "benchmark_hsi_b2b_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2018_08"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2018_07"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2018_06"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2018_05"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2018_04"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2018_03"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2018_02"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2018_01"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2017_12"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2017_11"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2017_10"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2017_09"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "benchmark_bcs_2017_08"
+                            },
+                            "width": 200,
+                            "title": "benchmark_bcs_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2018_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2018_07"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2018_06"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2018_05"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2018_04"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2018_03"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2018_02"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2018_01"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2017_12"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2017_11"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2017_10"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2017_09"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2c_pq_2017_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2c_pq_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2018_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2018_07"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2018_06"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2018_05"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2018_04"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2018_03"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2018_02"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2018_01"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2017_12"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2017_11"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2017_10"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2017_09"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "hsi_b2b_pq_2017_08"
+                            },
+                            "width": 200,
+                            "title": "hsi_b2b_pq_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2018_08"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2018_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2018_07"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2018_07"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2018_06"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2018_06"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2018_05"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2018_05"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2018_04"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2018_04"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2018_03"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2018_03"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2018_02"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2018_02"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2018_01"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2018_01"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2017_12"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2017_12"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2017_11"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2017_11"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2017_10"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2017_10"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2017_09"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2017_09"
+                        },
+                        {
+                            "matches": {
+                                "name": "bcs_pq_2017_08"
+                            },
+                            "width": 200,
+                            "title": "bcs_pq_2017_08"
+                        },
+                        {
+                            "matches": {
+                                "name": "ksi_index"
+                            },
+                            "width": 200,
+                            "title": "ksi_index"
+                        },
+                        {
+                            "matches": {
+                                "name": "ksi_gemeindeklasse"
+                            },
+                            "width": 200,
+                            "title": "ksi_gemeindeklasse"
+                        },
+                        {
+                            "matches": {
+                                "name": "ksi_klasse"
+                            },
+                            "width": 200,
+                            "title": "ksi_klasse"
+                        },
+                        {
+                            "matches": {
+                                "name": "ksp_name"
+                            },
+                            "width": 200,
+                            "title": "ksp_name"
+                        },
+                        {
+                            "matches": {
+                                "name": "ksp_zuordnung"
+                            },
+                            "width": 200,
+                            "title": "ksp_zuordnung"
+                        },
+                        {
+                            "matches": {
+                                "name": "ksp_id"
+                            },
+                            "width": 200,
+                            "title": "ksp_id"
+                        },
+                        {
+                            "matches": {
+                                "name": "ksp_distanz"
+                            },
+                            "width": 200,
+                            "title": "ksp_distanz"
+                        },
+                        {
+                            "matches": {
+                                "name": "ksp_potential"
+                            },
+                            "width": 200,
+                            "title": "ksp_potential"
+                        },
+                        {
+                            "matches": {
+                                "name": "zm_name"
+                            },
+                            "width": 200,
+                            "title": "zm_name"
+                        },
+                        {
+                            "matches": {
+                                "name": "zm_id"
+                            },
+                            "width": 200,
+                            "title": "zm_id"
+                        },
+                        {
+                            "matches": {
+                                "name": "zm_strategie"
+                            },
+                            "width": 200,
+                            "title": "zm_strategie"
+                        },
+                        {
+                            "matches": {
+                                "name": "zm_potential"
+                            },
+                            "width": 200,
+                            "title": "zm_potential"
+                        },
+                        {
+                            "matches": {
+                                "name": "standard_ezg"
+                            },
+                            "width": 200,
+                            "title": "standard_ezg"
+                        },
+                        {
+                            "matches": {
+                                "name": "echt_ezg"
+                            },
+                            "width": 200,
+                            "title": "echt_ezg"
+                        },
+                        {
+                            "matches": {
+                                "name": "center_zuordnung"
+                            },
+                            "width": 200,
+                            "title": "center_zuordnung"
+                        },
+                        {
+                            "matches": {
+                                "name": "center_name"
+                            },
+                            "width": 200,
+                            "title": "center_name"
+                        },
+                        {
+                            "matches": {
+                                "name": "ma_telekom"
+                            },
+                            "width": 200,
+                            "title": "ma_telekom"
+                        },
+                        {
+                            "matches": {
+                                "name": "ma_vodafone"
+                            },
+                            "width": 200,
+                            "title": "ma_vodafone"
+                        },
+                        {
+                            "matches": {
+                                "name": "ma_o2"
+                            },
+                            "width": 200,
+                            "title": "ma_o2"
+                        },
+                        {
+                            "matches": {
+                                "name": "kgs8"
+                            },
+                            "width": 200,
+                            "title": "kgs8"
+                        },
+                        {
+                            "matches": {
+                                "name": "kgs22"
+                            },
+                            "width": 200,
+                            "title": "kgs22"
+                        },
+                        {
+                            "matches": {
+                                "name": "kgs44"
+                            },
+                            "width": 200,
+                            "title": "kgs44"
+                        },
+                        {
+                            "matches": {
+                                "name": "kgs12"
+                            },
+                            "width": 200,
+                            "title": "kgs12"
+                        },
+                        {
+                            "matches": {
+                                "name": "kgs16"
+                            },
+                            "width": 200,
+                            "title": "kgs16"
+                        },
+                        {
+                            "matches": {
+                                "name": "kgs36"
+                            },
+                            "width": 200,
+                            "title": "kgs36"
+                        },
+                        {
+                            "matches": {
+                                "name": {
+                                    "$in": [
+                                        "objectid",
+                                        "x_gk3",
+                                        "y_gk3",
+                                        "x_webmerca",
+                                        "y_webmerca"
+                                    ]
+                                }
+                            },
+                            "skip": true
+                        },
+                        {
+                            "matches": {
+                                "name": {
+                                    "$exists": true
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "selection-ui": {
+            "Config": {
+                "preselectSources": "all",
+                "respectLayerVisibility": true,
+                "activateSelectionMethod": false,
+                "closeOnSelection": true,
+                "selectionMethods": [
+                    "extent"
+                ],
+                "selectionOptions": {
+                    "point": {
+                        "clickTolerance": 3
+                    }
+                },
+                "disableCheckbox": false,
+                "selectedChild": 0
+            }
+        },
+        "templates": {
+            "TemplateModel": {
+                "_templates": [
+                    {
+                        "name": "seasons",
+                        "widgets": [
+                            {
+                                "widgetRole": "layerlist",
+                                "attachTo": "map_bottomleft"
+                            },
+                            {
+                                "widgetRole": "legend",
+                                "window": {
+                                    "marginBox": {
+                                        "l": 340,
+                                        "b": 70,
+                                        "w": 250,
+                                        "h": 400
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "themes": {
+            "ApplicationStyleWriter": {
+                "styles": [
+                    "${app}:app.css"
+                ]
+            },
+            "ThemeModel": {
+                "_selectedTheme": "autumn"
+            }
+        },
+        "toolset": {
+            "ToolsetManager": {
+                "toolsets": [
+                    {
+                        "id": "zoom_tools",
+                        "container": "map",
+                        "windowType": "container",
+                        "window": {
+                            "closable": false
+                        },
+                        "cssClass": "muted",
+                        "__isDirty": true,
+                        "title": "zoom_tools",
+                        "position": {
+                            "rel_l": 20,
+                            "rel_t": 85
+                        },
+                        "tools": [
+                            "zoomInTool",
+                            "zoomOutTool"
+                        ]
+                    },
+                    {
+                        "id": "toolset_1538723036818",
+                        "title": "Räumliche Auswahl",
+                        "container": "map",
+                        "window": {
+                            "closable": false
+                        },
+                        "cssClass": "notitle",
+                        "__isDirty": true,
+                        "max_horizontal": 2,
+                        "position": {
+                            "rel_l": 110,
+                            "rel_t": 85
+                        },
+                        "tools": [
+                            "selection-ui-tool"
+                        ]
+                    },
+                    {
+                        "id": "toolset_1538723201218",
+                        "title": "Abfragen",
+                        "container": "map",
+                        "window": {
+                            "closable": false
+                        },
+                        "__isDirty": true,
+                        "cssClass": "notitle",
+                        "position": {
+                            "rel_l": 160,
+                            "rel_t": 85
+                        },
+                        "tools": [
+                            "queryBuilderToggleTool"
+                        ]
+                    },
+                    {
+                        "id": "toolset_1538724191856",
+                        "title": "Kartenansicht",
+                        "container": "map",
+                        "windowType": "fixed",
+                        "window": {
+                            "closable": false
+                        },
+                        "__isDirty": true,
+                        "cssClass": "notitle",
+                        "position": {
+                            "rel_l": 230,
+                            "rel_t": 85
+                        },
+                        "tools": [
+                            "legendToggleTool",
+                            "compassTool",
+                            "restoreInitialViewTool",
+                            "locateMeTool"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
