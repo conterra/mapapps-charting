@@ -6,21 +6,21 @@
     overflow: auto;
 }
 
-.ctAppRoot .chartingDashboardWidget .tabs__content {
+.ctAppRoot .chartingDashboardWidget .v-window__container {
     height: 100%;
 }
 
-.ctAppRoot .chartingDashboardWidget .tabs {
+.ctAppRoot .chartingDashboardWidget .v-tabs {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.ctAppRoot .chartingDashboardWidget .tabs__bar {
+.ctAppRoot .chartingDashboardWidget .v-tabs__bar {
     flex: 0 0 auto;
 }
 
-.ctAppRoot .chartingDashboardWidget .tabs__items {
+.ctAppRoot .chartingDashboardWidget .v-window {
     flex: 1 1 auto;
     height: calc(100% - 48px);
     overflow-y: auto;
