@@ -27,6 +27,7 @@ export default declare({
     activeTab: "0",
     chartsTitle: "",
     charts: [],
+    expandedCharts: [],
     _charts: [],
     _geometries: [],
 
@@ -120,7 +121,7 @@ export default declare({
             });
         });
 
-        all(promises).then(()=> {
+        all(promises).then(() => {
             this.loading = false;
         }, (error) => {
             console.error(error);
@@ -152,7 +153,8 @@ export default declare({
             let chart = factory.createChart(chartNode, chartProperties, attributes, null);
             this._charts.push(chart);
             chartNode.titleText = chartProperties.title;
-            chartNode.expanded = chartProperties.expanded === undefined ? true : chartProperties.expanded;
+            let expanded = undefined ? true : chartProperties.expanded;
+            this.expandedCharts.push(expanded);
             chartNodes.push(chartNode);
         });
     },

@@ -10,10 +10,9 @@
                     <v-card-title primary-title>
                         <h3>{{i18n.statistics}} {{chart.chartsTitle}}</h3>
                     </v-card-title>
-                    <v-expansion-panel expand>
+                    <v-expansion-panel expand v-model="expandedCharts">
                         <v-expansion-panel-content v-for="chartNode in chart.chartNodes"
-                                                   v-bind:key="chartNode.titleText"
-                                                   v-bind:value="chartNode.expanded">
+                                                   v-bind:key="chartNode.titleText">
                             <div slot="header">{{chartNode.titleText}}</div>
                             <v-card>
                                 <ct-dom-node v-bind:node='chartNode'></ct-dom-node>
@@ -35,6 +34,7 @@
             return {
                 loading: false,
                 charts: [],
+                expandedCharts: [],
                 activeTab: null,
                 i18n: {
                     type: Object,

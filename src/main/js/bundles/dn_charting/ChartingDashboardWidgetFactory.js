@@ -32,12 +32,13 @@ export default class ChartingDashboardWidgetFactory {
         vm.i18n = this.i18n = this._i18n.get().ui;
         vm.loading = model.loading;
         vm.charts = model.charts;
+        vm.expandedCharts = model.expandedCharts;
         vm.activeTab = model.activeTab;
 
         Binding
             .create()
             .bindTo(vm, model)
-            .syncAll("loading", "charts", "activeTab")
+            .syncAll("loading", "charts", "expandedCharts", "activeTab")
             .enable();
 
         vm.$once('start', () => {
