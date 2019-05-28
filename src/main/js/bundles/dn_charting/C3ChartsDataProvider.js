@@ -27,7 +27,7 @@ class C3ChartsDataProvider {
                 let array = [series.title || ""];
                 series.attributes.forEach((attribute) => {
                     let value = attributes[attribute];
-                    if (!value) {
+                    if (typeof value === "undefined") {
                         value = null;
                     }
                     array.push(value);
@@ -39,7 +39,7 @@ class C3ChartsDataProvider {
             props.data.forEach((data) => {
                 res[0].push(data.title || "");
                 let value = attributes[data.attribute];
-                if (!value) {
+                if (typeof value === "undefined") {
                     value = null;
                 }
                 array.push(value);
