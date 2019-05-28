@@ -42,7 +42,8 @@ export default class ChartingDashboardWidgetFactory {
             .enable();
 
         vm.$once('start', () => {
-            let enclosingWidget = ct_util.findEnclosingWindow(this.widget);
+            let widget = this.widget;
+            let enclosingWidget = ct_util.findEnclosingWindow(widget);
             if (enclosingWidget) {
                 d_aspect.before(enclosingWidget, "resize", (dims) => {
                     if (dims) {
@@ -57,15 +58,20 @@ export default class ChartingDashboardWidgetFactory {
         });
 
         d_aspect.after(model, "_drawCharts", () => {
-            let width;
-            let rect = this.vm.$el && this.vm.$el.getBoundingClientRect();
-            if (rect) {
-                width = rect.width
-            } else {
-                width = 500;
-            }
-            model.resizeCharts(width);
+            this.resizeCharts();
         });
+    }
+
+    resizeCharts() {
+        let model = this._chartingDashboardWidgetModel;
+        let width;
+        let rect = this.vm.$el && this.vm.$el.getBoundingClientRect();
+        if (rect) {
+            width = rect.width
+        } else {
+            width = 500;
+        }
+        model.resizeCharts(width);
     }
 
     createInstance() {
