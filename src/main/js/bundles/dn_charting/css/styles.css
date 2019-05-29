@@ -7,7 +7,11 @@
 }
 
 .ctAppRoot .chartingDashboardWidget .v-window__container {
-    height: 100%;
+    height: 100% !important;
+}
+
+.everlasting .vue-base .v-window__container--is-active {
+    overflow: auto;
 }
 
 .ctAppRoot .chartingDashboardWidget .v-tabs {
