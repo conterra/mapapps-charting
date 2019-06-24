@@ -44,12 +44,28 @@
     import CtDomNode from "apprt-vue/CtDomNode.vue";
 
     export default {
+        components: {
+            "ct-dom-node": CtDomNode
+        },
         mixins: [Bindable],
         data: function () {
             return {
-                loading: false,
-                charts: [],
-                expandedCharts: [],
+                loading: {
+                    type: Boolean,
+                    default: false
+                },
+                charts: {
+                    type: Array,
+                    default: function () {
+                        return [];
+                    }
+                },
+                expandedCharts: {
+                    type: Array,
+                    default: function () {
+                        return [];
+                    }
+                },
                 activeTab: null,
                 i18n: {
                     type: Object,
@@ -59,21 +75,18 @@
                 }
             };
         },
-        components: {
-            "ct-dom-node": CtDomNode
+        watch: {
+            activeTab: {
+                handler(val) {
+                    this.$emit('activeTabChanged', val);
+                }
+            }
         },
         mounted: function () {
             let that = this;
             that.$nextTick(function () {
                 that.$emit('start');
             })
-        },
-        watch: {
-            activeTab: {
-                handler(val, oldVal) {
-                    this.$emit('activeTabChanged', val);
-                }
-            }
         },
         methods: {}
     };
