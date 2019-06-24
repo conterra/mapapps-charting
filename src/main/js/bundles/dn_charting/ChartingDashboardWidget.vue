@@ -1,21 +1,36 @@
 <template>
     <div class="fullHeight">
-        <v-progress-linear v-if="loading" :active="loading" :indeterminate="true" class="pa-0 ma-0"></v-progress-linear>
-        <v-tabs v-model="activeTab" slider-color="primary" class="ct-flex-container fullHeight">
-            <v-tab v-for="chart in charts" :key="chart.storeId">
-                {{chart.tabTitle}}
+        <v-progress-linear
+            v-if="loading"
+            :active="loading"
+            :indeterminate="true"
+            class="pa-0 ma-0"/>
+        <v-tabs
+            v-model="activeTab"
+            slider-color="primary"
+            class="ct-flex-container fullHeight">
+            <v-tab
+                v-for="chart in charts"
+                :key="chart.storeId">
+                {{ chart.tabTitle }}
             </v-tab>
-            <v-tab-item v-for="chart in charts" :key="chart.storeId">
+            <v-tab-item
+                v-for="chart in charts"
+                :key="chart.storeId">
                 <v-card class="fullHeight">
                     <v-card-title primary-title>
-                        <h3>{{i18n.statistics}} {{chart.chartsTitle}}</h3>
+                        <h3>{{ i18n.statistics }} {{ chart.chartsTitle }}</h3>
                     </v-card-title>
-                    <v-expansion-panel expand v-model="expandedCharts">
-                        <v-expansion-panel-content v-for="chartNode in chart.chartNodes"
-                                                   v-bind:key="chartNode.titleText">
-                            <div slot="header">{{chartNode.titleText}}</div>
+                    <v-expansion-panel
+                        v-model="expandedCharts"
+                        expand>
+                        <v-expansion-panel-content
+                            v-for="chartNode in chart.chartNodes"
+                            :key="chartNode.titleText">
+                            <div slot="header">{{ chartNode.titleText }}</div>
                             <v-card>
-                                <ct-dom-node v-bind:node='chartNode'></ct-dom-node>
+                                <ct-dom-node
+                                    :node="chartNode"/>
                             </v-card>
                         </v-expansion-panel-content>
                     </v-expansion-panel>
