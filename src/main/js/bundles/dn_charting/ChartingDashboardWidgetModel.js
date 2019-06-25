@@ -51,13 +51,12 @@ export default declare({
             let executions = response.executions;
             let responses = [];
             executions.forEach((response) => {
-                if (!response.result) {
-                    return;
-                }
-                let storeId = response.source.id;
-                let chartsProperties = this._getChartsProperties(storeId);
-                if (chartsProperties) {
-                    responses.push(response);
+                if (response.result && response.result.length) {
+                    let storeId = response.source.id;
+                    let chartsProperties = this._getChartsProperties(storeId);
+                    if (chartsProperties) {
+                        responses.push(response);
+                    }
                 }
             });
             this._handleChartResponses(responses);
