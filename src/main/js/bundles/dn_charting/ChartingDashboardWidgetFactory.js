@@ -56,10 +56,6 @@ export default class ChartingDashboardWidgetFactory {
         vm.$on('activeTabChanged', (activeTab) => {
             model.drawGraphicsForActiveTab(activeTab);
         });
-
-        d_aspect.after(model, "_drawCharts", () => {
-            this.resizeCharts();
-        });
     }
 
     resizeCharts() {
