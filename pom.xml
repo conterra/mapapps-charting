@@ -211,11 +211,6 @@
                     <artifactId>maven-scm-plugin</artifactId>
                     <version>1.9.5</version>
                 </plugin>
-                <plugin>
-                    <groupId>com.github.eirslett</groupId>
-                    <artifactId>frontend-maven-plugin</artifactId>
-                    <version>1.5</version>
-                </plugin>
             </plugins>
         </pluginManagement>
         <sourceDirectory>src/main/js</sourceDirectory>
