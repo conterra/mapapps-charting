@@ -68,7 +68,7 @@ export default declare({
         if (width >= 40) {
             width -= 40;
         }
-        this._charts.forEach((chart, i) => {
+        this._charts.forEach((chart) => {
             chart.resize({width: width});
         });
     },
@@ -131,9 +131,7 @@ export default declare({
 
     _getChartsProperties(storeId) {
         let chartsProperties = this._properties.chartsProperties;
-        return chartsProperties.find((properties) => {
-            return properties.storeId === storeId;
-        });
+        return chartsProperties.find((properties) => properties.storeId === storeId);
     },
 
     _drawCharts(sumObject, count, chartsProperties, chartNodes) {
@@ -160,21 +158,19 @@ export default declare({
     },
 
     _addGraphicsToView(geometries) {
-        let graphics = geometries.map((geometry) => {
-            return new Graphic({
-                geometry: geometry,
-                symbol: {
-                    type: "simple-fill",
-                    color: [51, 51, 204, 0.5],
-                    style: "solid",
-                    outline: {
-                        color: "white",
-                        width: 1
-                    },
-                    attributes: {}
-                }
-            });
-        });
+        let graphics = geometries.map((geometry) => new Graphic({
+            geometry: geometry,
+            symbol: {
+                type: "simple-fill",
+                color: [51, 51, 204, 0.5],
+                style: "solid",
+                outline: {
+                    color: "white",
+                    width: 1
+                },
+                attributes: {}
+            }
+        }));
         let view = this._mapWidgetModel.get("view");
         view.graphics.removeAll();
         view.graphics.addMany(graphics);
@@ -193,9 +189,7 @@ export default declare({
             fields: {
                 geometry: 1
             }
-        }).then((results) => {
-            return results;
-        });
+        }).then((results) => results);
     },
 
     _getStore(id) {
