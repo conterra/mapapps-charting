@@ -38,7 +38,8 @@ export default class ChartingDashboardWidgetFactory {
         Binding
             .create()
             .bindTo(vm, model)
-            .syncAll("loading", "charts", "expandedCharts", "activeTab")
+            .syncAll("activeTab")
+            .syncAllToLeft("loading", "charts", "expandedCharts")
             .enable();
 
         vm.$once('start', () => {
