@@ -25,6 +25,7 @@
             "viewmodeswitcher",
             "mapnavigation",
             "agssearch",
+            "banner",
             "selection-ui",
             "dn_charting"
         ],
@@ -883,6 +884,15 @@
             },
             "ThemeSelector": {
                 "componentEnabled": true
+            }
+        },
+        "banner": {
+            "BannerWidget": {
+                "label": "Developer Network",
+                "imagePosition": "above",
+                "image": "resource('${app}:/images/logo_conterra.png')",
+                "imageWidth": 200,
+                "link": "https://www.conterra.de"
             }
         }
     }
