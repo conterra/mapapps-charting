@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import ct_lang from "ct/_lang";
+import d_string from "dojo/string";
 
 class C3ChartsDataProvider {
 
@@ -23,12 +24,12 @@ class C3ChartsDataProvider {
         if (props.dataSeries) {
             this._getDataSeriesChartData(props, attributes, res);
         } else {
-            this._getDefaulthartData(props, attributes, res);
+            this._getDefaultChartData(props, attributes, res);
         }
         return res;
     }
 
-    _getDefaulthartData(props, attributes, res) {
+    _getDefaultChartData(props, attributes, res) {
         if (props.searchForAttributes) {
             // automatic search for attributes
             const attribute = props.data.attribute;
@@ -60,9 +61,9 @@ class C3ChartsDataProvider {
             res.push(array);
         } else {
             // default data usage via configuration
-            const array = [props.title || ""];
+            const array = [d_string.substitute(props.title, attributes) || ""];
             props.data.forEach((data) => {
-                res[0].push(data.title || "");
+                res[0].push(d_string.substitute(data.title, attributes) || "");
                 let value = attributes[data.attribute];
                 if (typeof value === "undefined") {
                     value = null;
@@ -116,10 +117,10 @@ class C3ChartsDataProvider {
         } else {
             // default data usage via configuration
             props.headers.forEach((header) => {
-                res[0].push(header || "");
+                res[0].push(d_string.substitute(header, attributes) || "");
             });
             props.dataSeries.forEach((series) => {
-                const array = [series.title || ""];
+                const array = [d_string.substitute(series.title, attributes) || ""];
                 series.attributes.forEach((attribute) => {
                     let value = attributes[attribute];
                     if (typeof value === "undefined") {
