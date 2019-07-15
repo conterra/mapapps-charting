@@ -27,7 +27,7 @@ export default class ChartingDashboardWidgetFactory {
     }
 
     _initComponent() {
-        let model = this._chartingDashboardWidgetModel;
+        const model = this._chartingDashboardWidgetModel;
         const vm = this.vm = new Vue(ChartingDashboardWidget);
         vm.i18n = this.i18n = this._i18n.get().ui;
         vm.loading = model.loading;
