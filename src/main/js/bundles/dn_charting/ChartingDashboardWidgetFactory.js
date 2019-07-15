@@ -43,8 +43,8 @@ export default class ChartingDashboardWidgetFactory {
             .enable();
 
         vm.$once('start', () => {
-            let widget = this.widget;
-            let enclosingWidget = ct_util.findEnclosingWindow(widget);
+            const widget = this.widget;
+            const enclosingWidget = ct_util.findEnclosingWindow(widget);
             if (enclosingWidget) {
                 d_aspect.before(enclosingWidget, "resize", (dims) => {
                     if (dims) {
@@ -64,9 +64,9 @@ export default class ChartingDashboardWidgetFactory {
     }
 
     resizeCharts() {
-        let model = this._chartingDashboardWidgetModel;
+        const model = this._chartingDashboardWidgetModel;
         let width;
-        let rect = this.vm.$el && this.vm.$el.getBoundingClientRect();
+        const rect = this.vm.$el && this.vm.$el.getBoundingClientRect();
         if (rect) {
             width = rect.width
         } else {

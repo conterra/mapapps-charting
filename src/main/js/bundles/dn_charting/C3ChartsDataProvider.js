@@ -18,25 +18,26 @@ import ct_lang from "ct/_lang";
 class C3ChartsDataProvider {
 
     getChartData(props, attributes) {
-        let res = [["x"]];
+        const res = [["x"]];
 
         if (props.dataSeries) {
             if (props.searchForAttributes) {
+                // automatic search for attributes
                 if (props.headers) {
                     props.headers.forEach((header) => {
                         res[0].push(header || "");
                     });
                 }
                 props.dataSeries && props.dataSeries.forEach((series, i) => {
-                    let attribute = series.attribute;
-                    let title = series.title || "";
-                    let header = props.header || "${time}";
-                    let values = [];
-                    let regex = new RegExp(attribute + "_\\d+", "gm");
+                    const attribute = series.attribute;
+                    const title = series.title || "";
+                    const header = props.header || "${time}";
+                    const values = [];
+                    const regex = new RegExp(attribute + "_\\d+", "gm");
                     ct_lang.forEachOwnProp(attributes, (value, name) => {
                         if (name.search(regex) >= 0) {
-                            let split = name.split("_");
-                            let time = parseInt(split[split.length - 1]);
+                            const split = name.split("_");
+                            const time = parseInt(split[split.length - 1]);
                             values.push({
                                 name: name,
                                 title: title,
@@ -45,10 +46,8 @@ class C3ChartsDataProvider {
                             });
                         }
                     });
-                    values.sort((a, b) => {
-                        return a.time - b.time;
-                    });
-                    let array = [series.title];
+                    values.sort((a, b) => a.time - b.time);
+                    const array = [series.title];
                     values.forEach((data) => {
                         let value = data.value;
                         if (typeof value === "undefined") {
@@ -62,11 +61,12 @@ class C3ChartsDataProvider {
                     res.push(array);
                 });
             } else {
+                // default data usage via configuration
                 props.headers.forEach((header) => {
                     res[0].push(header || "");
                 });
                 props.dataSeries.forEach((series) => {
-                    let array = [series.title || ""];
+                    const array = [series.title || ""];
                     series.attributes.forEach((attribute) => {
                         let value = attributes[attribute];
                         if (typeof value === "undefined") {
@@ -79,14 +79,15 @@ class C3ChartsDataProvider {
             }
         } else {
             if (props.searchForAttributes) {
-                let attribute = props.data.attribute;
-                let title = props.data.title || "${time}";
-                let values = [];
-                let regex = new RegExp(attribute + "_\\d+", "gm");
+                // automatic search for attributes
+                const attribute = props.data.attribute;
+                const title = props.data.title || "${time}";
+                const values = [];
+                const regex = new RegExp(attribute + "_\\d+", "gm");
                 ct_lang.forEachOwnProp(attributes, (value, name) => {
                     if (name.search(regex) >= 0) {
-                        let split = name.split("_");
-                        let time = parseInt(split[split.length - 1]);
+                        const split = name.split("_");
+                        const time = parseInt(split[split.length - 1]);
                         values.push({
                             name: name,
                             title: title.replace("${time}", time),
@@ -95,10 +96,8 @@ class C3ChartsDataProvider {
                         });
                     }
                 });
-                values.sort((a, b) => {
-                    return a.time - b.time;
-                });
-                let array = [props.title || ""];
+                values.sort((a, b) => a.time - b.time);
+                const array = [props.title || ""];
                 values.forEach((data) => {
                     res[0].push(data.title || "");
                     let value = data.value;
@@ -109,7 +108,8 @@ class C3ChartsDataProvider {
                 });
                 res.push(array);
             } else {
-                let array = [props.title || ""];
+                // default data usage via configuration
+                const array = [props.title || ""];
                 props.data.forEach((data) => {
                     res[0].push(data.title || "");
                     let value = attributes[data.attribute];
@@ -126,7 +126,7 @@ class C3ChartsDataProvider {
 
     getDataColors(props) {
         if (props.dataSeries) {
-            let colors = {};
+            const colors = {};
             props.dataSeries.forEach((series) => {
                 if (series.color) {
                     colors[series.title] = series.color;

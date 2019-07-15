@@ -22,8 +22,8 @@ export default class C3ChartsFactory {
     }
 
     _createChart(chartProperties, attributes, node) {
-        let data = this._c3ChartsDataProvider.getChartData(chartProperties, attributes);
-        let props = {
+        const data = this._c3ChartsDataProvider.getChartData(chartProperties, attributes);
+        const props = {
             bindto: node,
             data: {
                 x: 'x',
@@ -50,7 +50,7 @@ export default class C3ChartsFactory {
                 pattern: chartProperties.colorPattern
             };
         }
-        let colors = this._c3ChartsDataProvider.getDataColors(chartProperties);
+        const colors = this._c3ChartsDataProvider.getDataColors(chartProperties);
         if (colors) {
             props.data.colors = colors;
         }
@@ -61,7 +61,7 @@ export default class C3ChartsFactory {
     }
 
     _updateChart(chartProperties, attributes, chart) {
-        let data = this._c3ChartsDataProvider.getChartData(chartProperties, attributes);
+        const data = this._c3ChartsDataProvider.getChartData(chartProperties, attributes);
 
         switch (chartProperties.dataOrientation) {
             case "columns":

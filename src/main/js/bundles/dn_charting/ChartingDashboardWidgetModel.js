@@ -32,8 +32,8 @@ export default declare({
     _geometries: [],
 
     activate(componentContext) {
-        let serviceResolver = this.serviceResolver = new ServiceResolver();
-        let bundleCtx = componentContext.getBundleContext();
+        const serviceResolver = this.serviceResolver = new ServiceResolver();
+        const bundleCtx = componentContext.getBundleContext();
         serviceResolver.setBundleCtx(bundleCtx);
     },
 
@@ -48,12 +48,12 @@ export default declare({
         this._tool.set("active", true);
         const queryExecutions = event.getProperty("executions");
         queryExecutions.waitForExecution().then((response) => {
-            let executions = response.executions;
-            let responses = [];
+            const executions = response.executions;
+            const responses = [];
             executions.forEach((response) => {
                 if (response.result && response.result.length) {
-                    let storeId = response.source.id;
-                    let chartsProperties = this._getChartsProperties(storeId);
+                    const storeId = response.source.id;
+                    const chartsProperties = this._getChartsProperties(storeId);
                     if (chartsProperties) {
                         responses.push(response);
                     }
@@ -73,20 +73,20 @@ export default declare({
     },
 
     drawGraphicsForActiveTab(activeTab) {
-        let geometries = this._geometries[activeTab];
+        const geometries = this._geometries[activeTab];
         if (geometries) {
             this._addGraphicsToView(geometries);
         }
     },
 
     _handleChartResponses(responses) {
-        let promises = responses.map((response, i) => {
-            let tabTitle = response.source.title;
-            let total = response.total;
-            let storeId = response.source.id;
-            let chartsProperties = this._getChartsProperties(storeId);
-            let chartsTitle = total === 1 ? response.result[0][chartsProperties.titleAttribute] : this._i18n.get().ui.multipleObjects;
-            let chartNodes = [];
+        const promises = responses.map((response, i) => {
+            const tabTitle = response.source.title;
+            const total = response.total;
+            const storeId = response.source.id;
+            const chartsProperties = this._getChartsProperties(storeId);
+            const chartsTitle = total === 1 ? response.result[0][chartsProperties.titleAttribute] : this._i18n.get().ui.multipleObjects;
+            const chartNodes = [];
             this.charts.push({
                 storeId: storeId,
                 tabTitle: tabTitle,
@@ -96,7 +96,7 @@ export default declare({
 
             return this._getGeometryForResults(response.result, response.source.store).then((results) => {
                 let sumObject = null;
-                let geometries = [];
+                const geometries = [];
                 results.forEach((result) => {
                     if (!sumObject) {
                         sumObject = {};
@@ -129,14 +129,14 @@ export default declare({
     },
 
     _getChartsProperties(storeId) {
-        let chartsProperties = this._properties.chartsProperties;
+        const chartsProperties = this._properties.chartsProperties;
         return chartsProperties.find((properties) => properties.storeId === storeId);
     },
 
     _drawCharts(sumObject, count, chartsProperties, chartNodes) {
-        let factory = this._c3ChartsFactory;
+        const factory = this._c3ChartsFactory;
         chartsProperties.forEach((chartProperties) => {
-            let attributes = {};
+            const attributes = {};
             if (chartProperties.calculationType === "mean") {
                 ct_lang.forEachOwnProp(sumObject, (value, name) => {
                     attributes[name] = Math.round(value / count * 100) / 100;
@@ -146,18 +146,18 @@ export default declare({
                     attributes[name] = Math.round(value * 100) / 100;
                 });
             }
-            let chartNode = domConstruct.create("div");
-            let chart = factory.createChart(chartNode, chartProperties, attributes, null);
+            const chartNode = domConstruct.create("div");
+            const chart = factory.createChart(chartNode, chartProperties, attributes, null);
             this._charts.push(chart);
             chartNode.titleText = chartProperties.title;
-            let expanded = undefined ? true : chartProperties.expanded;
+            const expanded = undefined ? true : chartProperties.expanded;
             this.expandedCharts.push(expanded);
             chartNodes.push(chartNode);
         });
     },
 
     _addGraphicsToView(geometries) {
-        let graphics = geometries.map((geometry) => new Graphic({
+        const graphics = geometries.map((geometry) => new Graphic({
             geometry: geometry,
             symbol: {
                 type: "simple-fill",
@@ -170,17 +170,17 @@ export default declare({
                 attributes: {}
             }
         }));
-        let view = this._mapWidgetModel.get("view");
+        const view = this._mapWidgetModel.get("view");
         view.graphics.removeAll();
         view.graphics.addMany(graphics);
     },
 
     _getGeometryForResults(results, store) {
-        let query = {
+        const query = {
             $or: []
         };
         results.forEach((result) => {
-            let obj = {};
+            const obj = {};
             obj[store.idProperty] = result[store.idProperty];
             query["$or"].push(obj);
         });

@@ -83,7 +83,7 @@
             }
         },
         mounted: function () {
-            let that = this;
+            const that = this;
             that.$nextTick(function () {
                 that.$emit('start');
             })
