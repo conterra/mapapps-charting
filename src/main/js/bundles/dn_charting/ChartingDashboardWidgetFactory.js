@@ -30,17 +30,14 @@ export default class ChartingDashboardWidgetFactory {
         const model = this._chartingDashboardWidgetModel;
         const vm = this.vm = new Vue(ChartingDashboardWidget);
         vm.i18n = this.i18n = this._i18n.get().ui;
-        vm.loading = model.loading;
-        vm.charts = model.charts;
-        vm.expandedCharts = model.expandedCharts;
-        vm.activeTab = model.activeTab;
 
         Binding
             .create()
             .bindTo(vm, model)
             .syncAll("activeTab")
-            .syncAllToLeft("loading", "charts", "expandedCharts")
-            .enable();
+            .syncAllToLeft("loading", "tabs", "expandedCharts")
+            .enable()
+            .syncToLeftNow();
 
         vm.$once('start', () => {
             const widget = this.widget;

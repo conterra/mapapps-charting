@@ -10,22 +10,22 @@
             slider-color="primary"
             class="ct-flex-container fullHeight">
             <v-tab
-                v-for="chart in charts"
-                :key="chart.storeId">
-                {{ chart.tabTitle }}
+                v-for="tab in tabs"
+                :key="tab.storeId">
+                {{ tab.tabTitle }}
             </v-tab>
             <v-tab-item
-                v-for="chart in charts"
-                :key="chart.storeId">
+                v-for="tab in tabs"
+                :key="tab.storeId">
                 <v-card class="fullHeight">
                     <v-card-title primary-title>
-                        <h3>{{ i18n.statistics }} {{ chart.chartsTitle }}</h3>
+                        <h3>{{ i18n.statistics }} {{ tab.chartsTitle }}</h3>
                     </v-card-title>
                     <v-expansion-panel
                         v-model="expandedCharts"
                         expand>
                         <v-expansion-panel-content
-                            v-for="chartNode in chart.chartNodes"
+                            v-for="chartNode in tab.chartNodes"
                             :key="chartNode.titleText">
                             <div slot="header">{{ chartNode.titleText }}</div>
                             <v-card>
@@ -54,7 +54,7 @@
                     type: Boolean,
                     default: false
                 },
-                charts: {
+                tabs: {
                     type: Array,
                     default: function () {
                         return [];

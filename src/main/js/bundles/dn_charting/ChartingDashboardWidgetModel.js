@@ -26,7 +26,7 @@ export default declare({
     tabTitle: "",
     activeTab: "0",
     chartsTitle: "",
-    charts: [],
+    tabs: [],
     expandedCharts: [],
     _charts: [],
     _geometries: [],
@@ -42,7 +42,7 @@ export default declare({
             return;
         }
         this.loading = true;
-        this.charts = [];
+        this.tabs = [];
         this._charts = [];
         this._geometries = [];
         this._tool.set("active", true);
