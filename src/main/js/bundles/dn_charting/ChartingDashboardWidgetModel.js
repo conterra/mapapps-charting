@@ -217,11 +217,19 @@ export default declare({
             tab.geometries = tab.geometries.concat(sumObject.geometries);
             if (chartProperties.calculationType === "mean") {
                 ct_lang.forEachOwnProp(sumObject.object, (value, name) => {
-                    attributes[name] = Math.round(value / sumObject.count * 100) / 100;
+                    if (typeof value === "number") {
+                        attributes[name] = Math.round(value / sumObject.count * 100) / 100;
+                    } else if (!attributes[name]) {
+                        attributes[name] = value;
+                    }
                 });
             } else {
                 ct_lang.forEachOwnProp(sumObject.object, (value, name) => {
-                    attributes[name] = Math.round(value * 100) / 100;
+                    if (typeof value === "number") {
+                        attributes[name] = Math.round(value * 100) / 100;
+                    } else if (!attributes[name]) {
+                        attributes[name] = value;
+                    }
                 });
             }
             const chartNode = domConstruct.create("div");
