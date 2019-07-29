@@ -36,6 +36,114 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 
 ### Configurable components of the dn_charting bundle
 #### ChartingDashboardWidgetFactory
+##### New configuration (allows to add charts from different stores to one tab)
+```
+"ChartingDashboardWidgetModel": {
+    "chartsTabs": [
+        {
+            "title": "Diagramme",
+            "chartsTitle": {
+                "titleAttribute": "WKR_NAME",
+                "storeId": "wahlkreise_strukturdaten"
+            },
+            "charts": [
+                {
+                    "title": "Altersverteilung",
+                    "storeId": "wahlkreise_strukturdaten",
+                    "type": "donut",
+                    "height": 400,
+                    "data": [
+                        {
+                            "attribute": "Alter_unter_18",
+                            "title": "Unter 18 Jahren"
+                        },
+                        {
+                            "attribute": "Alter_18_24",
+                            "title": "18 - 24 Jahre"
+                        },
+                        {
+                            "attribute": "Alter_25_34",
+                            "title": "25 - 34 Jahre"
+                        },
+                        {
+                            "attribute": "Alter_35_59",
+                            "title": "35 - 59 Jahre"
+                        },
+                        {
+                            "attribute": "Alter_60_74",
+                            "title": "60 - 74 Jahre"
+                        },
+                        {
+                            "attribute": "Alter_75_und_mehr",
+                            "title": "75 Jahre und älter"
+                        }
+                    ],
+                    "colorPattern": [
+                        "#1f77b4",
+                        "#aec7e8",
+                        "#ff7f0e",
+                        "#ffbb78",
+                        "#2ca02c",
+                        "#98df8a"
+                    ],
+                    "calculationType": "mean",
+                    "dataOrientation": "rows",
+                    "showDataLabels": true,
+                    "rotatedAxis": false,
+                    "expanded": true
+                },
+                {
+                    "title": "Erststimme",
+                    "storeId": "wahlkreise_ergebnis",
+                    "type": "donut",
+                    "height": 400,
+                    "data": [
+                        {
+                            "attribute": "btw17_WKR_cducsu_erst",
+                            "title": "CDU / CSU"
+                        },
+                        {
+                            "attribute": "btw17_WKR_spd_erst",
+                            "title": "SPD"
+                        },
+                        {
+                            "attribute": "btw17_WKR_linke_erst",
+                            "title": "Linke"
+                        },
+                        {
+                            "attribute": "btw17_WKR_gruene_erst",
+                            "title": "Grüne"
+                        },
+                        {
+                            "attribute": "btw17_WKR_fdp_erst",
+                            "title": "FDP"
+                        },
+                        {
+                            "attribute": "btw17_WKR_afd_erst",
+                            "title": "AFD"
+                        }
+                    ],
+                    "colorPattern": [
+                        "#000000",
+                        "#FF0000",
+                        "#A020F0",
+                        "#00FF00",
+                        "#FFFF00",
+                        "#0000FF"
+                    ],
+                    "calculationType": "sum",
+                    "dataOrientation": "rows",
+                    "showDataLabels": true,
+                    "rotatedAxis": false,
+                    "expanded": true
+                }
+            ]
+        }
+    ]
+}
+```
+
+##### Old configuration
 ```
 "ChartingDashboardWidgetModel": {
     "chartsProperties": [
@@ -161,7 +269,14 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 ```
 
 ### Chart Configuration
-#### Core Properties
+#### chartTabs Properties (new config)
+| Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
+|-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| title                       | String  |                                                                       |                             | The title of the tab.                                                                                                                  |
+| chartsTitle                 | Object  |                                                                       |                             | The chart title configuration.                                                                                                         |
+| charts                      | Array   |                                                                       |                             | Array with charts definitions.                                                                                                         |
+
+#### chartProperties Properties (old config)
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | storeId                     | String  |                                                                       |                             | The ID of the AGSSeach store which will be used as data source. (AGSSearch Store)                                                      |
@@ -176,9 +291,9 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 | chart.height                | Integer |                                                                       | 500                         | Height of the chart. Width will be set automatically.                                                                                  |
 | chart.calculationType       | String  | ```sum``` &#124; ```mean```                                           | sum                         | Use sum or mean values for multiple features.                                                                                          |
 | chart.dataOrientation       | String  | ```rows``` &#124; ```columns ```                                      | row                         | Row or column oriented data.                                                                                                           |
-| chart.showDataLabels        | boolean | ```true``` &#124; ```false```                                         | true                        | Show the individual data labels.                                                                                                       |
-| chart.rotatedAxis           | boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                 |
-| chart.expanded              | boolean | ```true``` &#124; ```false```                                         | true                        | Chart expansion panel is initially expanded.                                                                                           |
+| chart.showDataLabels        | Boolean | ```true``` &#124; ```false```                                         | true                        | Show the individual data labels.                                                                                                       |
+| chart.rotatedAxis           | Boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                 |
+| chart.expanded              | Boolean | ```true``` &#124; ```false```                                         | true                        | Chart expansion panel is initially expanded.                                                                                           |
 | chart.colorPattern          | Array   |                                                                       |                             | Chart collor pattern. Array of hexadecimal colors.                                                                                     |
 
 #### Single chart series configuration (available in all bundle versions)

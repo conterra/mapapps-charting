@@ -109,6 +109,8 @@
                         "charts": []
                     }
                 ],
+                "chartsTabs": [
+                ],
                 "Event-Topics": [
                     {
                         "topic": "selection/EXECUTING",

@@ -11,14 +11,16 @@
             class="ct-flex-container fullHeight">
             <v-tab
                 v-for="tab in tabs"
-                :key="tab.storeId">
+                :key="tab.id">
                 {{ tab.tabTitle }}
             </v-tab>
             <v-tab-item
                 v-for="tab in tabs"
-                :key="tab.storeId">
+                :key="tab.id">
                 <v-card class="fullHeight">
-                    <v-card-title primary-title>
+                    <v-card-title
+                        v-if="tab.chartsTitle"
+                        primary-title>
                         <h3>{{ i18n.statistics }} {{ tab.chartsTitle }}</h3>
                     </v-card-title>
                     <v-expansion-panel

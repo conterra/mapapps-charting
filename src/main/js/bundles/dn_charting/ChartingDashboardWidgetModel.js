@@ -52,11 +52,7 @@ export default declare({
             const responses = [];
             executions.forEach((response) => {
                 if (response.result && response.result.length) {
-                    const storeId = response.source.id;
-                    const chartsProperties = this._getChartsProperties(storeId);
-                    if (chartsProperties) {
-                        responses.push(response);
-                    }
+                    responses.push(response);
                 }
             });
             this._handleChartResponses(responses);
@@ -73,54 +69,79 @@ export default declare({
     },
 
     drawGraphicsForActiveTab(activeTab) {
-        const geometries = this._geometries[activeTab];
+        const tab = this.tabs[activeTab];
+        const geometries = tab && tab.geometries;
         if (geometries) {
             this._addGraphicsToView(geometries);
         }
     },
 
     _handleChartResponses(responses) {
-        const promises = responses.map((response, i) => {
-            const tabTitle = response.source.title;
-            const total = response.total;
-            const storeId = response.source.id;
-            const chartsProperties = this._getChartsProperties(storeId);
-            const chartsTitle = total === 1 ? response.result[0][chartsProperties.titleAttribute] : this._i18n.get().ui.multipleObjects;
-            const chartNodes = [];
-            this.charts.push({
-                storeId: storeId,
-                tabTitle: tabTitle,
-                chartsTitle: chartsTitle,
-                chartNodes: chartNodes
+        const properties = this._properties;
+        if (properties.chartsTabs) {
+            this._newChartsConfiguration(responses);
+        }
+        if (properties.chartsProperties) {
+            this._oldChartsConfiguration(responses);
+        }
+    },
+
+    _getSumObjects(responses) {
+        return responses.map((response) => {
+            let sumObject = null;
+            const results = response.result;
+            results.forEach((result) => {
+                if (!sumObject) {
+                    sumObject = {};
+                    ct_lang.forEachOwnProp(result, (value, name) => {
+                        if (typeof value === "number") {
+                            sumObject[name] = parseFloat(value);
+                        } else if (!sumObject[name]) {
+                            sumObject[name] = value;
+                        }
+                    });
+                } else {
+                    ct_lang.forEachOwnProp(result, (value, name) => {
+                        sumObject[name] = sumObject[name] += parseFloat(value);
+                    });
+                }
             });
 
-            return this._getGeometryForResults(response.result, response.source.store).then((results) => {
-                let sumObject = null;
+            return this._getGeometryForSumObject(results, response.source.store).then((results) => {
                 const geometries = [];
                 results.forEach((result) => {
-                    if (!sumObject) {
-                        sumObject = {};
-                        ct_lang.forEachOwnProp(result, (value, name) => {
-                            sumObject[name] = parseFloat(value);
-                        });
-                    } else {
-                        ct_lang.forEachOwnProp(result, (value, name) => {
-                            sumObject[name] = sumObject[name] += parseFloat(value);
-                        });
-                    }
                     if (result.geometry) {
                         geometries.push(result.geometry);
                     }
                 });
-                if (i === parseInt(this.activeTab)) {
-                    this._addGraphicsToView(geometries);
-                }
-                this._geometries[i] = geometries;
-                this._drawCharts(sumObject, results.length, chartsProperties.charts, chartNodes);
+                return {
+                    object: sumObject,
+                    count: results.length,
+                    storeId: response.source.id,
+                    geometries: geometries
+                };
             });
         });
+    },
 
-        all(promises).then(() => {
+    _newChartsConfiguration(responses) {
+        const properties = this._properties;
+        const chartsTabs = properties.chartsTabs;
+        const sumObjectsPromises = this._getSumObjects(responses);
+
+        all(sumObjectsPromises).then((sumObjects) => {
+            chartsTabs.forEach((chartsTab, i) => {
+                const chartNodes = [];
+                const tab = {
+                    id: i,
+                    tabTitle: chartsTab.title,
+                    chartsTitle: this._getChartsTitle(chartsTab.chartsTitle, sumObjects),
+                    chartNodes: chartNodes,
+                    geometries: []
+                };
+                this.tabs.push(tab);
+                this._drawCharts(sumObjects, chartsTab.charts, tab);
+            });
             this.loading = false;
         }, (error) => {
             console.error(error);
@@ -128,21 +149,69 @@ export default declare({
         });
     },
 
+    _oldChartsConfiguration(responses) {
+        const sumObjectsPromises = this._getSumObjects(responses);
+
+        all(sumObjectsPromises).then((sumObjects) => {
+            responses.forEach((response) => {
+                const tabTitle = response.source.title;
+                const storeId = response.source.id;
+                const chartsProperties = this._getChartsProperties(storeId);
+                const chartNodes = [];
+                const tab = {
+                    id: storeId,
+                    tabTitle: tabTitle,
+                    chartsTitle: this._getChartsTitle(chartsProperties.titleAttribute, response),
+                    chartNodes: chartNodes,
+                    geometries: []
+                };
+                this.tabs.push(tab);
+                this._drawCharts(sumObjects, chartsProperties.charts, tab, storeId);
+            });
+            this.loading = false;
+        }, (error) => {
+            console.error(error);
+            this.loading = false;
+        });
+    },
+
+    _getChartsTitle(properties, objects) {
+        if (properties && typeof properties === "object" && properties.constructor === Object) {
+            const sumObject = objects.find((object) => object.storeId === properties.storeId);
+            const count = sumObject.count;
+            return count === 1 ? sumObject.object[properties.titleAttribute] : this._i18n.get().ui.multipleObjects;
+        } else {
+            const total = objects.total;
+            return total === 1 ? objects.result[0][properties] : this._i18n.get().ui.multipleObjects;
+        }
+    },
+
     _getChartsProperties(storeId) {
         const chartsProperties = this._properties.chartsProperties;
         return chartsProperties.find((properties) => properties.storeId === storeId);
     },
 
-    _drawCharts(sumObject, count, chartsProperties, chartNodes) {
+    _drawCharts(sumObjects, chartsProperties, tab, storeId) {
         const factory = this._c3ChartsFactory;
         chartsProperties.forEach((chartProperties) => {
             const attributes = {};
+            const sumObject = sumObjects.find((sumObject) => {
+                if (chartProperties.storeId) {
+                    return sumObject.storeId === chartProperties.storeId;
+                } else if (storeId) {
+                    return sumObject.storeId === storeId;
+                }
+            });
+            if (!sumObject) {
+                return;
+            }
+            tab.geometries = tab.geometries.concat(sumObject.geometries);
             if (chartProperties.calculationType === "mean") {
-                ct_lang.forEachOwnProp(sumObject, (value, name) => {
-                    attributes[name] = Math.round(value / count * 100) / 100;
+                ct_lang.forEachOwnProp(sumObject.object, (value, name) => {
+                    attributes[name] = Math.round(value / sumObject.count * 100) / 100;
                 });
             } else {
-                ct_lang.forEachOwnProp(sumObject, (value, name) => {
+                ct_lang.forEachOwnProp(sumObject.object, (value, name) => {
                     attributes[name] = Math.round(value * 100) / 100;
                 });
             }
@@ -152,7 +221,7 @@ export default declare({
             chartNode.titleText = chartProperties.title;
             const expanded = undefined ? true : chartProperties.expanded;
             this.expandedCharts.push(expanded);
-            chartNodes.push(chartNode);
+            tab.chartNodes.push(chartNode);
         });
     },
 
@@ -175,7 +244,7 @@ export default declare({
         view.graphics.addMany(graphics);
     },
 
-    _getGeometryForResults(results, store) {
+    _getGeometryForSumObject(results, store) {
         const query = {
             $or: []
         };
