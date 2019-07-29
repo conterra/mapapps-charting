@@ -102,15 +102,9 @@
             ],
             "propertiesConstructor": true,
             "properties": {
-                "chartsProperties": [
-                    {
-                        "storeId": "",
-                        "titleAttribute": "",
-                        "charts": []
-                    }
-                ],
-                "chartsTabs": [
-                ],
+                "drawTabGeometries": true,
+                "chartsProperties": [],
+                "chartsTabs": [],
                 "Event-Topics": [
                     {
                         "topic": "selection/EXECUTING",

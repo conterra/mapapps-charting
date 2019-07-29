@@ -269,14 +269,20 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 ```
 
 ### Chart Configuration
-#### chartTabs Properties (new config)
+#### Core properties
+drawTabGeometries
+| Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
+|-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| drawTabGeometries           | Boolean |```true``` &#124; ```false```                                          | ``` true```                 | Draw geometries of active chart tab.                                                                                                   |
+
+#### chartTabs properties (new config)
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | title                       | String  |                                                                       |                             | The title of the tab.                                                                                                                  |
 | chartsTitle                 | Object  |                                                                       |                             | The chart title configuration.                                                                                                         |
 | charts                      | Array   |                                                                       |                             | Array with charts definitions.                                                                                                         |
 
-#### chartProperties Properties (old config)
+#### chartProperties properties (old config)
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | storeId                     | String  |                                                                       |                             | The ID of the AGSSeach store which will be used as data source. (AGSSearch Store)                                                      |
@@ -287,13 +293,13 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | chart.title                 | String  |                                                                       |                             | Title of specific chart.                                                                                                               |
-| chart.type                  | String  | line, spline, step, donut, bar, pie, step, area, gauge                | bar                         | Type of chart. (More information: https://c3js.org/examples.html)                                                                      |
-| chart.height                | Integer |                                                                       | 500                         | Height of the chart. Width will be set automatically.                                                                                  |
-| chart.calculationType       | String  | ```sum``` &#124; ```mean```                                           | sum                         | Use sum or mean values for multiple features.                                                                                          |
-| chart.dataOrientation       | String  | ```rows``` &#124; ```columns ```                                      | row                         | Row or column oriented data.                                                                                                           |
-| chart.showDataLabels        | Boolean | ```true``` &#124; ```false```                                         | true                        | Show the individual data labels.                                                                                                       |
-| chart.rotatedAxis           | Boolean | ```true``` &#124; ```false```                                         | false                       | Rotate the chart axis.                                                                                                                 |
-| chart.expanded              | Boolean | ```true``` &#124; ```false```                                         | true                        | Chart expansion panel is initially expanded.                                                                                           |
+| chart.type                  | String  | line, spline, step, donut, bar, pie, step, area, gauge                | ```bar```                   | Type of chart. (More information: https://c3js.org/examples.html)                                                                      |
+| chart.height                | Integer |                                                                       | ```500```                   | Height of the chart. Width will be set automatically.                                                                                  |
+| chart.calculationType       | String  | ```sum``` &#124; ```mean```                                           | ```sum```                   | Use sum or mean values for multiple features.                                                                                          |
+| chart.dataOrientation       | String  | ```rows``` &#124; ```columns ```                                      | ```row```                   | Row or column oriented data.                                                                                                           |
+| chart.showDataLabels        | Boolean | ```true``` &#124; ```false```                                         | ```true```                  | Show the individual data labels.                                                                                                       |
+| chart.rotatedAxis           | Boolean | ```true``` &#124; ```false```                                         | ```false```                 | Rotate the chart axis.                                                                                                                 |
+| chart.expanded              | Boolean | ```true``` &#124; ```false```                                         | ```true```                  | Chart expansion panel is initially expanded.                                                                                           |
 | chart.colorPattern          | Array   |                                                                       |                             | Chart collor pattern. Array of hexadecimal colors.                                                                                     |
 
 #### Single chart series configuration (available in all bundle versions)
@@ -310,8 +316,8 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 | chart.dataSeries.headers    | Array   |                                                                       |                             | Array of headers used for the x axis. (e.g. ["2016", 2017", "2018"])                                                                   |
 | chart.dataSeries.title      | String  |                                                                       |                             | Title for the data series.                                                                                                             |
 | chart.dataSeries.attributes | Array   |                                                                       |                             | Array of attributes in the data series. These must be in the same order as the headers.                                                |
-| chart.dataSeries.groups     | Array   |                                                                       | []                          | Optional property that allows to use stacked charts. Array of grouped attributes. (e.g. [["2016", "2017"]])                            |
-| chart.dataSeries.color      | Array   |                                                                       | []                          | Optional property that change the color of the attribute. (e.g. "#FF0000")                            |
+| chart.dataSeries.groups     | Array   |                                                                       | ```[]```                    | Optional property that allows to use stacked charts. Array of grouped attributes. (e.g. [["2016", "2017"]])                            |
+| chart.dataSeries.color      | Array   |                                                                       | ```[]```                    | Optional property that change the color of the attribute. (e.g. "#FF0000")                            |
 
 More information about how to place the charting widget:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates

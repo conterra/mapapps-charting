@@ -107,20 +107,29 @@ export default declare({
                 }
             });
 
-            return this._getGeometryForSumObject(results, response.source.store).then((results) => {
-                const geometries = [];
-                results.forEach((result) => {
-                    if (result.geometry) {
-                        geometries.push(result.geometry);
-                    }
+            if (this._properties.drawTabGeometries) {
+                return this._getGeometryForSumObject(results, response.source.store).then((results) => {
+                    const geometries = [];
+                    results.forEach((result) => {
+                        if (result.geometry) {
+                            geometries.push(result.geometry);
+                        }
+                    });
+                    return {
+                        object: sumObject,
+                        count: results.length,
+                        storeId: response.source.id,
+                        geometries: geometries
+                    };
                 });
-                return {
+            } else {
+                return Promise.resolve({
                     object: sumObject,
                     count: results.length,
                     storeId: response.source.id,
-                    geometries: geometries
-                };
-            });
+                    geometries: []
+                });
+            }
         });
     },
 
