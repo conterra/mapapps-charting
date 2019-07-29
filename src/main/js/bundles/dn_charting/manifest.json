@@ -11,8 +11,6 @@
         "apprt-vuetify": "^4.4.1",
         "apprt-binding": "^4.4.1",
         "apprt-core": "^4.4.1",
-        "coordinatetransformer": "^4.4.1",
-        "mapdraw-api": "^4.4.1",
         "selection-services": "^4.4.1",
         "c3": ">0"
     },
@@ -120,14 +118,6 @@
                 {
                     "name": "_c3ChartsFactory",
                     "providing": "dn_charting.C3ChartsFactory"
-                },
-                {
-                    "name": "_coordinateTransformer",
-                    "providing": "ct.api.coordinatetransformer.CoordinateTransformer"
-                },
-                {
-                    "name": "_drawing",
-                    "providing": "mapdraw-api.DefaultMapDrawing"
                 },
                 {
                     "name": "_tool",
