@@ -745,7 +745,7 @@
                 ],
                 "chartsTabs": [
                     {
-                        "title": "Diagramme",
+                        "title": "Wahlkreise 2017",
                         "chartsTitle": {
                             "titleAttribute": "WKR_NAME",
                             "storeId": "wahlkreise_strukturdaten"
