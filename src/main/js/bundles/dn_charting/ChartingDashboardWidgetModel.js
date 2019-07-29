@@ -102,7 +102,11 @@ export default declare({
                     });
                 } else {
                     ct_lang.forEachOwnProp(result, (value, name) => {
-                        sumObject[name] = sumObject[name] += parseFloat(value);
+                        if (typeof value === "number") {
+                            sumObject[name] = sumObject[name] += parseFloat(value);
+                        } else if (!sumObject[name]) {
+                            sumObject[name] = value;
+                        }
                     });
                 }
             });
