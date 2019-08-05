@@ -17,7 +17,7 @@ import {declare} from "apprt-core/Mutable";
 import domConstruct from "dojo/dom-construct";
 import all from "dojo/promise/all";
 import ct_lang from "ct/_lang";
-import ct_when from "ct/_when";
+import ct_when from "apprt-core/when";
 import Graphic from "esri/Graphic";
 
 export default declare({

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ct_when from "ct/_when";
+import ct_when from "apprt-core/when";
 import ServiceResolver from "apprt/ServiceResolver";
 
 export default class ResultCenterChartingToolHandler {
