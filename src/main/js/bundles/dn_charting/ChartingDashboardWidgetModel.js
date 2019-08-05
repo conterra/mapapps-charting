@@ -19,6 +19,7 @@ import all from "dojo/promise/all";
 import ct_lang from "ct/_lang";
 import ct_when from "apprt-core/when";
 import Graphic from "esri/Graphic";
+import * as geometryEngine from "esri/geometry/geometryEngine";
 
 export default declare({
 
@@ -83,6 +84,7 @@ export default declare({
         }
         all([newPromise, oldPromise]).then(() => {
             this.activeTab = 0;
+            this.drawGraphicsForActiveTab(0);
         });
     },
 
@@ -116,7 +118,8 @@ export default declare({
                     const geometries = [];
                     results.forEach((result) => {
                         if (result.geometry) {
-                            geometries.push(result.geometry);
+                            const geometryAlreadyContained = this._isGeometryAlreadyContained(result.geometry, geometries);
+                            !geometryAlreadyContained && geometries.push(result.geometry);
                         }
                     });
                     return {
@@ -142,7 +145,7 @@ export default declare({
         const sumObjectsPromises = this._getSumObjects(responses);
 
         return all(sumObjectsPromises).then((sumObjects) => {
-            chartsTabs.forEach((chartsTab, i) => {
+            chartsTabs.forEach((chartsTab) => {
                 const chartNodes = [];
                 const tab = {
                     id: this.tabs.length,
@@ -223,7 +226,10 @@ export default declare({
             if (!sumObject) {
                 return;
             }
-            tab.geometries = tab.geometries.concat(sumObject.geometries);
+            sumObject.geometries.forEach((geometry) => {
+                const geometryAlreadyContained = this._isGeometryAlreadyContained(geometry, tab.geometries);
+                !geometryAlreadyContained && tab.geometries.push(geometry);
+            });
             if (chartProperties.calculationType === "mean") {
                 ct_lang.forEachOwnProp(sumObject.object, (value, name) => {
                     if (typeof value === "number") {
@@ -284,5 +290,13 @@ export default declare({
                 geometry: 1
             }
         });
+    },
+
+    _isGeometryAlreadyContained(geometry, geometries) {
+        return geometries.find((g) => {
+            const distance = geometryEngine.distance(g.extent.center, geometry.extent.center, "meters");
+            return distance === 0;
+        });
     }
-});
+})
+;
