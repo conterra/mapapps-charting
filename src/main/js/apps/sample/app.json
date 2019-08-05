@@ -27,7 +27,9 @@
             "agssearch",
             "banner",
             "selection-ui",
-            "dn_charting"
+            "dn_charting",
+            "dn_querybuilder",
+            "selection-resultcenter"
         ],
         "styles": [
             "${app}:app.css"
@@ -41,8 +43,12 @@
     },
     "bundles": {
         "dn_charting": {
+            "ResultCenterChartingTool": {
+                "visibility": true
+            },
             "ChartingDashboardWidgetModel": {
                 "drawTabGeometries": true,
+                "drawChartsForSelectionResults": true,
                 "chartsProperties": [
                     {
                         "storeId": "wahlkreise_strukturdaten",
@@ -846,6 +852,11 @@
                 ]
             }
         },
+        "dn_querybuilder": {
+            "QueryBuilderProperties": {
+                "useMemorySelectionStore": false
+            }
+        },
         "selection-ui": {
             "Config": {
                 "preselectSources": "all",
@@ -914,7 +925,8 @@
                         "id": "tools",
                         "title": "Floating Toolbar with Tool Labels",
                         "tools": [
-                            "selection-ui-tool"
+                            "selection-ui-tool",
+                            "queryBuilderToggleTool"
                         ],
                         "container": "map",
                         "position": {

@@ -101,6 +101,7 @@
             "propertiesConstructor": true,
             "properties": {
                 "drawTabGeometries": true,
+                "drawChartsForSelectionResults": true,
                 "chartsProperties": [],
                 "chartsTabs": [],
                 "Event-Topics": [
@@ -144,6 +145,23 @@
             ]
         },
         {
+            "name": "ResultCenterChartingToolHandler",
+            "provides": [
+                "dn_charting.ResultCenterChartingToolHandler"
+            ],
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel"
+                },
+                {
+                    "name": "_chartingDashboardWidgetModel",
+                    "providing": "dn_charting.ChartingDashboardWidgetModel",
+                    "cardinality": "0..1"
+                }
+            ]
+        },
+        {
             "name": "ChartingDashboardToggleTool",
             "impl": "ct/tools/Tool",
             "provides": [
@@ -157,6 +175,30 @@
                 "iconClass": "icon-chart-pie",
                 "togglable": true
             }
+        },
+        {
+            "name": "ResultCenterChartingTool",
+            "impl": "ct/tools/Tool",
+            "provides": [
+                "ct.tools.Tool"
+            ],
+            "propertiesConstructor": true,
+            "properties": {
+                "id": "resultCenterChartingTool",
+                "title": "${tool.title}",
+                "tooltip": "${tool.tooltip}",
+                "toolRole": "resultcenter",
+                "priority": -3,
+                "iconClass": "icon-chart-pie",
+                "clickHandler": "drawResultCenterCharts",
+                "togglable": false
+            },
+            "references": [
+                {
+                    "name": "handlerScope",
+                    "providing": "dn_charting.ResultCenterChartingToolHandler"
+                }
+            ]
         }
     ]
 }

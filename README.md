@@ -12,7 +12,7 @@ https://demos.conterra.de/mapapps/resources/apps/downloads_charting/index.html
 ## Installation Guide
 **Requirement: map.apps 4.4.1**
 
-1. First you need to add the bundles selection-ui and dn_charting to your app.
+1. First you need to add the bundle dn_charting to your app.
 2. Then you need to configure one or more stores. These are the data basis for the diagrams. A simple store configuration might look like this:
 ```
 "agssearch": {
@@ -34,11 +34,27 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 
 3. Finally, you can configure your diagrams as described below.
 
+There are two ways to draw charts using the Charting Bundle:
+1. Select features via the selection-ui bundle when the property _drawChartsForSelectionResults_ is enabled.
+2. If there are results in the ResultCenter, click the _ResultCenterChartingTool_ to draw charts of currently selected features.
+
+If you are using the Query Builder Bundle to get results in the ResultCenter disable _useMemorySelectionStore_ property:
+```
+"dn_querybuilder": {
+    "QueryBuilderProperties": {
+        "useMemorySelectionStore": false
+    }
+}
+```
+
 ### Configurable components of the dn_charting bundle
 #### ChartingDashboardWidgetFactory
+There are two ways to define charts tabs for the charting widget. It is possible to combine these two ways.
 ##### New configuration (allows to add charts from different stores to one tab)
 ```
 "ChartingDashboardWidgetModel": {
+    "drawTabGeometries": true,
+    "drawChartsForSelectionResults": true,
     "chartsTabs": [
         {
             "title": "Diagramme",
@@ -146,6 +162,8 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 ##### Old configuration
 ```
 "ChartingDashboardWidgetModel": {
+    "drawTabGeometries": true,
+    "drawChartsForSelectionResults": true,
     "chartsProperties": [
         {
             "storeId": "yourStoreID",
@@ -268,26 +286,35 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 }
 ```
 
-### Chart Configuration
+#### ResultCenterChartingTool
+To hide the ResultCenterChartingTool in the ResultCenter use this configuration in your bundle configuration.
+```
+"ResultCenterChartingTool": {
+    "visibility": false
+}
+```
+
+### Configuration properties
 #### Core properties
 drawTabGeometries
-| Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
-|-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| drawTabGeometries           | Boolean |```true``` &#124; ```false```                                          | ``` true```                 | Draw geometries of active chart tab.                                                                                                   |
+| Property                      | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
+|-------------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| drawTabGeometries             | Boolean | ```true``` &#124; ```false```                                         | ``` true```                 | Draw geometries of active chart tab.                                                                                                   |
+| drawChartsForSelectionResults | Boolean | ```true``` &#124; ```false```                                         | ``` true```                 | Automatically draw charts for results of a selection via the selection-ui bundle.                                                      |
 
 #### chartTabs properties (new config)
-| Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
-|-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| title                       | String  |                                                                       |                             | The title of the tab.                                                                                                                  |
-| chartsTitle                 | Object  |                                                                       |                             | The chart title configuration.                                                                                                         |
-| charts                      | Array   |                                                                       |                             | Array with charts definitions.                                                                                                         |
+| Property                      | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
+|-------------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| title                         | String  |                                                                       |                             | The title of the tab.                                                                                                                  |
+| chartsTitle                   | Object  |                                                                       |                             | The chart title configuration.                                                                                                         |
+| charts                        | Array   |                                                                       |                             | Array with charts definitions.                                                                                                         |
 
 #### chartProperties properties (old config)
-| Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
-|-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| storeId                     | String  |                                                                       |                             | The ID of the AGSSeach store which will be used as data source. (AGSSearch Store)                                                      |
-| titleAttribute              | String  |                                                                       |                             | The attribute name for the title of the whole charting section.                                                                        |
-| charts                      | Array   |                                                                       |                             | Array with charts definitions.                                                                                                         |
+| Property                      | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
+|-------------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| storeId                       | String  |                                                                       |                             | The ID of the AGSSeach store which will be used as data source. (AGSSearch Store)                                                      |
+| titleAttribute                | String  |                                                                       |                             | The attribute name for the title of the whole charting section.                                                                        |
+| charts                        | Array   |                                                                       |                             | Array with charts definitions.                                                                                                         |
 
 #### Chart properties
 | Property                    | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |

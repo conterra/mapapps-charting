@@ -14,49 +14,41 @@
  * limitations under the License.
  */
 import {declare} from "apprt-core/Mutable";
-import ServiceResolver from "apprt/ServiceResolver";
 import domConstruct from "dojo/dom-construct";
 import all from "dojo/promise/all";
 import ct_lang from "ct/_lang";
+import ct_when from "ct/_when";
 import Graphic from "esri/Graphic";
 
 export default declare({
 
     loading: false,
     tabTitle: "",
-    activeTab: "0",
+    activeTab: 0,
     chartsTitle: "",
     tabs: [],
     expandedCharts: [],
     _charts: [],
     _geometries: [],
 
-    activate(componentContext) {
-        const serviceResolver = this.serviceResolver = new ServiceResolver();
-        const bundleCtx = componentContext.getBundleContext();
-        serviceResolver.setBundleCtx(bundleCtx);
-    },
-
     receiveSelections(event) {
-        if (this.loading) {
-            return;
-        }
-        this.loading = true;
-        this.tabs = [];
-        this._charts = [];
-        this._geometries = [];
-        this._tool.set("active", true);
-        const queryExecutions = event.getProperty("executions");
-        queryExecutions.waitForExecution().then((response) => {
-            const executions = response.executions;
-            const responses = [];
-            executions.forEach((response) => {
-                if (response.result && response.result.length) {
-                    responses.push(response);
-                }
+        if (this.drawChartsForSelectionResults) {
+            if (this.loading) {
+                return;
+            }
+            this.loading = true;
+            const queryExecutions = event.getProperty("executions");
+            queryExecutions.waitForExecution().then((response) => {
+                const executions = response.executions;
+                const responses = [];
+                executions.forEach((response) => {
+                    if (response.result && response.result.length) {
+                        responses.push(response);
+                    }
+                });
+                this.handleChartResponses(responses);
             });
-            this._handleChartResponses(responses);
-        });
+        }
     },
 
     resizeCharts(width) {
@@ -76,14 +68,22 @@ export default declare({
         }
     },
 
-    _handleChartResponses(responses) {
-        const properties = this._properties;
-        if (properties.chartsTabs) {
-            this._newChartsConfiguration(responses);
+    handleChartResponses(responses) {
+        this.tabs = [];
+        this._charts = [];
+        this._geometries = [];
+        this._tool.set("active", true);
+        let newPromise;
+        let oldPromise;
+        if (this.chartsTabs) {
+            newPromise = this._newChartsConfiguration(responses);
         }
-        if (properties.chartsProperties) {
-            this._oldChartsConfiguration(responses);
+        if (this.chartsProperties) {
+            oldPromise = this._oldChartsConfiguration(responses);
         }
+        all([newPromise, oldPromise]).then(() => {
+            this.activeTab = 0;
+        });
     },
 
     _getSumObjects(responses) {
@@ -111,8 +111,8 @@ export default declare({
                 }
             });
 
-            if (this._properties.drawTabGeometries) {
-                return this._getGeometryForSumObject(results, response.source.store).then((results) => {
+            if (this.drawTabGeometries) {
+                return ct_when(this._getGeometryForSumObject(results, response.source.store), (results) => {
                     const geometries = [];
                     results.forEach((result) => {
                         if (result.geometry) {
@@ -138,15 +138,14 @@ export default declare({
     },
 
     _newChartsConfiguration(responses) {
-        const properties = this._properties;
-        const chartsTabs = properties.chartsTabs;
+        const chartsTabs = this.chartsTabs;
         const sumObjectsPromises = this._getSumObjects(responses);
 
-        all(sumObjectsPromises).then((sumObjects) => {
+        return all(sumObjectsPromises).then((sumObjects) => {
             chartsTabs.forEach((chartsTab, i) => {
                 const chartNodes = [];
                 const tab = {
-                    id: i,
+                    id: this.tabs.length,
                     tabTitle: chartsTab.title,
                     chartsTitle: this._getChartsTitle(chartsTab.chartsTitle, sumObjects),
                     chartNodes: chartNodes,
@@ -165,14 +164,17 @@ export default declare({
     _oldChartsConfiguration(responses) {
         const sumObjectsPromises = this._getSumObjects(responses);
 
-        all(sumObjectsPromises).then((sumObjects) => {
+        return all(sumObjectsPromises).then((sumObjects) => {
             responses.forEach((response) => {
                 const tabTitle = response.source.title;
                 const storeId = response.source.id;
                 const chartsProperties = this._getChartsProperties(storeId);
+                if (!chartsProperties) {
+                    return;
+                }
                 const chartNodes = [];
                 const tab = {
-                    id: storeId,
+                    id: this.tabs.length,
                     tabTitle: tabTitle,
                     chartsTitle: this._getChartsTitle(chartsProperties.titleAttribute, response),
                     chartNodes: chartNodes,
@@ -191,6 +193,9 @@ export default declare({
     _getChartsTitle(properties, objects) {
         if (properties && typeof properties === "object" && properties.constructor === Object) {
             const sumObject = objects.find((object) => object.storeId === properties.storeId);
+            if (!sumObject) {
+                return "";
+            }
             const count = sumObject.count;
             return count === 1 ? sumObject.object[properties.titleAttribute] : this._i18n.get().ui.multipleObjects;
         } else {
@@ -278,18 +283,6 @@ export default declare({
             fields: {
                 geometry: 1
             }
-        }).then((results) => results);
-    },
-
-    _getStore(id) {
-        return this.serviceResolver.getService("ct.api.Store", "(id=" + id + ")");
-    },
-
-    _getStoreProperties(idOrStore) {
-        var resolver = this.serviceResolver;
-        if (typeof (idOrStore) === "string") {
-            return resolver.getServiceProperties("ct.api.Store", "(id=" + idOrStore + ")");
-        }
-        return resolver.getServiceProperties(idOrStore);
+        });
     }
 });
