@@ -95,7 +95,7 @@ export default declare({
             results.forEach((result) => {
                 if (!sumObject) {
                     sumObject = {};
-                    ct_lang.forEachOwnProp(result, (value, name) => {
+                    ct_lang.forEachProp(result, (value, name) => {
                         if (typeof value === "number") {
                             sumObject[name] = parseFloat(value);
                         } else if (!sumObject[name]) {
@@ -103,7 +103,7 @@ export default declare({
                         }
                     });
                 } else {
-                    ct_lang.forEachOwnProp(result, (value, name) => {
+                    ct_lang.forEachProp(result, (value, name) => {
                         if (typeof value === "number") {
                             sumObject[name] = sumObject[name] += parseFloat(value);
                         } else if (!sumObject[name]) {
@@ -154,8 +154,10 @@ export default declare({
                     chartNodes: chartNodes,
                     geometries: []
                 };
-                this.tabs.push(tab);
                 this._drawCharts(sumObjects, chartsTab.charts, tab);
+                if (chartNodes.length) {
+                    this.tabs.push(tab);
+                }
             });
             this.loading = false;
         }, (error) => {
