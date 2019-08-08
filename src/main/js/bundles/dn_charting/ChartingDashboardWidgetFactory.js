@@ -65,7 +65,7 @@ export default class ChartingDashboardWidgetFactory {
         let width;
         const rect = this.vm.$el && this.vm.$el.getBoundingClientRect();
         if (rect) {
-            width = rect.width
+            width = rect.width;
         } else {
             width = 500;
         }
