@@ -13,6 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define(["./c3"],function(c3){
-    return c3;
-});
+import * as c3 from "c3";

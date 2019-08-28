@@ -271,6 +271,10 @@
                         <include>**/gulpfile.js</include>
                         <include>**/pom.xml</include>
                     </includes>
+                    <excludes>
+                        <exclude>src/main/js/**/c3.min.js</exclude>
+                        <exclude>src/main/js/**/d3.min.js</exclude>
+                    </excludes>
                     <mapping>
                         <vue>XML_STYLE</vue>
                     </mapping>

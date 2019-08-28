@@ -1,24 +1,33 @@
 {
     "name": "c3",
-    "version": "0.4.10",
-    "d3-version": "0.4.10",
-    "title": "C3",
-    "description": "C3 API",
-    "url": "http://c3js.org",
+    "version": "0.7.8",
+    "description": "D3-based reusable chart library",
+    "main": "c3.min.js",
     "i18n": [],
-    "excludedExecutionEnvironment": [
-        "IE:[,9)"
-    ],
-    "productName": "map.apps",
     "dependencies": {
-        "d3": "^3.x"
+        "d3": "^5.11.0"
     },
     "CSS-Themes-Extension": [
         {
             "name": "*",
             "files": [
-                "./styles/c3.css"
+                "./styles/c3.min.css"
             ]
         }
-    ]
+    ],
+    "keywords": [
+        "d3",
+        "chart",
+        "graph"
+    ],
+    "license": "MIT",
+    "authors": [
+        "Masayuki Tanaka",
+        "Ændrew Rininsland",
+        "Yoshiya Hinosawa"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/c3js/c3.git"
+    }
 }
