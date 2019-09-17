@@ -15,9 +15,8 @@
  */
 import {declare} from "apprt-core/Mutable";
 import domConstruct from "dojo/dom-construct";
-import all from "dojo/promise/all";
 import ct_lang from "ct/_lang";
-import ct_when from "apprt-core/when";
+import apprt_when from "apprt-core/when";
 import Graphic from "esri/Graphic";
 import * as geometryEngine from "esri/geometry/geometryEngine";
 
@@ -82,7 +81,7 @@ export default declare({
         if (this.chartsProperties) {
             oldPromise = this._oldChartsConfiguration(responses);
         }
-        all([newPromise, oldPromise]).then(() => {
+        Promise.all([newPromise, oldPromise]).then(() => {
             this.activeTab = 0;
             this.drawGraphicsForActiveTab(0);
         });
@@ -114,7 +113,7 @@ export default declare({
             });
 
             if (this.drawTabGeometries) {
-                return ct_when(this._getGeometryForSumObject(results, response.source.store), (results) => {
+                return apprt_when(this._queryController.getGeometryForSumObject(results, response.source.store), (results) => {
                     const geometries = [];
                     results.forEach((result) => {
                         if (result.geometry) {
@@ -144,7 +143,7 @@ export default declare({
         const chartsTabs = this.chartsTabs;
         const sumObjectsPromises = this._getSumObjects(responses);
 
-        return all(sumObjectsPromises).then((sumObjects) => {
+        return Promise.all(sumObjectsPromises).then((sumObjects) => {
             chartsTabs.forEach((chartsTab) => {
                 const chartNodes = [];
                 const tab = {
@@ -169,7 +168,7 @@ export default declare({
     _oldChartsConfiguration(responses) {
         const sumObjectsPromises = this._getSumObjects(responses);
 
-        return all(sumObjectsPromises).then((sumObjects) => {
+        return Promise.all(sumObjectsPromises).then((sumObjects) => {
             responses.forEach((response) => {
                 const tabTitle = response.source.title;
                 const storeId = response.source.id;
@@ -278,27 +277,10 @@ export default declare({
         view.graphics.addMany(graphics);
     },
 
-    _getGeometryForSumObject(results, store) {
-        const query = {
-            $or: []
-        };
-        results.forEach((result) => {
-            const obj = {};
-            obj[store.idProperty] = result[store.idProperty];
-            query["$or"].push(obj);
-        });
-        return store.query(query, {
-            fields: {
-                geometry: 1
-            }
-        });
-    },
-
     _isGeometryAlreadyContained(geometry, geometries) {
         return geometries.find((g) => {
             const distance = geometryEngine.distance(g.extent.center, geometry.extent.center, "meters");
             return distance === 0;
         });
     }
-})
-;
+});

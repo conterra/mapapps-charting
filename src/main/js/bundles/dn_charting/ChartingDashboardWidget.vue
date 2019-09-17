@@ -44,8 +44,8 @@
                         v-model="expandedCharts"
                         expand>
                         <v-expansion-panel-content
-                            v-for="chartNode in tab.chartNodes"
-                            :key="chartNode.titleText">
+                            v-for="(chartNode, i) in tab.chartNodes"
+                            :key="i">
                             <div slot="header">{{ chartNode.titleText }}</div>
                             <v-card>
                                 <ct-dom-node

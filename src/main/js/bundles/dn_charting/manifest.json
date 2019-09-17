@@ -121,6 +121,10 @@
                     "providing": "dn_charting.C3ChartsFactory"
                 },
                 {
+                    "name": "_queryController",
+                    "providing": "bistummuenster_charting.QueryController"
+                },
+                {
                     "name": "_tool",
                     "providing": "ct.tools.Tool",
                     "filter": "(id=chartingDashboardToggleTool)"
@@ -199,6 +203,10 @@
                     "providing": "dn_charting.ResultCenterChartingToolHandler"
                 }
             ]
+        },
+        {
+            "name": "QueryController",
+            "provides": "bistummuenster_charting.QueryController"
         }
     ]
 }
