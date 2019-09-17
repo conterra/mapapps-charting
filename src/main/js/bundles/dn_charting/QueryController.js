@@ -19,9 +19,9 @@ import apprt_request from "apprt-request";
 export default class QueryController {
 
     findRelatedRecords(objectId, url, metadata) {
-        let relationships = this.relationships = metadata.relationships;
-        let requests = relationships.map((relationship) => {
-            let relationshipId = relationship && relationship.id;
+        const relationships = this.relationships = metadata.relationships;
+        const requests = relationships.map((relationship) => {
+            const relationshipId = relationship && relationship.id;
             return apprt_request(url + "/queryRelatedRecords", {
                 query: {
                     objectIds: [objectId],
@@ -42,7 +42,7 @@ export default class QueryController {
     }
 
     getRelatedData(results, url) {
-        let requests = results.map((result) => {
+        const requests = results.map((result) => {
             return apprt_request(url + "/query", {
                 query: {
                     where: "orgunitID_int LIKE " + result.orgunitID,
@@ -66,9 +66,9 @@ export default class QueryController {
 
     getRelatedMetadata(url, metadata) {
         url = url.substr(0, url.lastIndexOf("/"));
-        let relationships = this.relationships = metadata.relationships;
-        let requests = relationships.map((relationship) => {
-            let relatedTableId = relationship && relationship.relatedTableId;
+        const relationships = this.relationships = metadata.relationships;
+        const requests = relationships.map((relationship) => {
+            const relatedTableId = relationship && relationship.relatedTableId;
             return apprt_request(url + "/" + relatedTableId, {
                 query: {
                     f: 'json'
