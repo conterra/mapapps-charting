@@ -879,7 +879,19 @@
                         "selection"
                     ],
                     "filterOptions": {
-                        "suggestContains": true
+                        "suggestContains": true,
+                        "metadata": {
+                            "fields": [
+                                {
+                                    "name": "LAND",
+                                    "title": "Land"
+                                },
+                                {
+                                    "name": "WKR_NAME",
+                                    "title": "Wahlkreis-Name"
+                                }
+                            ]
+                        }
                     },
                     "fetchIdProperty": true,
                     "enablePagination": false
@@ -894,7 +906,19 @@
                         "selection"
                     ],
                     "filterOptions": {
-                        "suggestContains": true
+                        "suggestContains": true,
+                        "metadata": {
+                            "fields": [
+                                {
+                                    "name": "Wahlkreise17_Wahlkreise17_LAND_",
+                                    "title": "Land"
+                                },
+                                {
+                                    "name": "Wahlkreise17_Wahlkreise17_WKR_1",
+                                    "title": "Wahlkreis-Name"
+                                }
+                            ]
+                        }
                     },
                     "fetchIdProperty": true,
                     "enablePagination": false
@@ -935,6 +959,25 @@
                         },
                         "cssClass": "showToolLabels",
                         "windowType": "container"
+                    },
+                    {
+                        "id": "questions",
+                        "title": "Suchabfragen",
+                        "container": "map",
+                        "window": {
+                            "closable": true
+                        },
+                        "tooltip": "Liste vorgefertigter Suchabfragen",
+                        "cssClass": "ctWDYWBtn ctPrimaryInput",
+                        "max_horizontal": 1,
+                        "windowType": "dropdown",
+                        "position": {
+                            "rel_l": 20,
+                            "rel_t": 80
+                        },
+                        "tools": [
+                            "querybuilder_*"
+                        ]
                     }
                 ]
             }
@@ -991,6 +1034,63 @@
                     }
                 }
             }
+        },
+        "dn_querybuilder": {
+            "QueryBuilderProperties": {
+                "useMemorySelectionStore": false
+            },
+            "QueryTools": [
+                {
+                    "id": "querybuilder_1568809973867",
+                    "title": "Ergebnisse der Wahlkreise in NRW",
+                    "iconClass": "icon-custom-info",
+                    "complexQuery": {
+                        "$or": [
+                            {
+                                "Wahlkreise17_Wahlkreise17_LAND_": {
+                                    "$eq": "Nordrhein-Westfalen"
+                                }
+                            }
+                        ]
+                    },
+                    "options": {
+                        "mode": "builder",
+                        "editable": false,
+                        "count": -1,
+                        "ignoreCase": false,
+                        "locale": {
+                            "language": "en",
+                            "country": "EN"
+                        }
+                    },
+                    "storeId": "wahlkreise_ergebnis"
+                },
+                {
+                    "id": "querybuilder_1568810008875",
+                    "title": "Strukturdaten der Wahlkreise in NRW",
+                    "iconClass": "icon-custom-info",
+                    "complexQuery": {
+                        "$or": [
+                            {
+                                "LAND": {
+                                    "$eq": "Nordrhein-Westfalen"
+                                }
+                            }
+                        ]
+                    },
+                    "options": {
+                        "mode": "builder",
+                        "editable": false,
+                        "count": -1,
+                        "ignoreCase": false,
+                        "locale": {
+                            "language": "en",
+                            "country": "EN"
+                        }
+                    },
+                    "storeId": "wahlkreise_strukturdaten"
+                }
+            ]
         },
         "themes": {
             "ThemeModel": {
