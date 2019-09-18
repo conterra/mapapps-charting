@@ -852,11 +852,6 @@
                 ]
             }
         },
-        "dn_querybuilder": {
-            "QueryBuilderProperties": {
-                "useMemorySelectionStore": false
-            }
-        },
         "selection-ui": {
             "Config": {
                 "preselectSources": "all",
