@@ -30,29 +30,14 @@ class C3ChartsDataProvider {
     }
 
     _getDefaultChartData(props, attributes, res) {
-        if (props.searchForAttributes) {
-            // automatic search for attributes
+        if (props.relatedData) {
+            const array = [d_string.substitute(props.title, attributes) || ""];
             const attribute = props.data.attribute;
-            const title = props.data.title || "${time}";
-            const values = [];
-            const regex = new RegExp(attribute + "_\\d+", "gm");
-            ct_lang.forEachOwnProp(attributes, (value, name) => {
-                if (name.search(regex) >= 0) {
-                    const split = name.split("_");
-                    const time = parseInt(split[split.length - 1]);
-                    values.push({
-                        name: name,
-                        title: title.replace("${time}", time),
-                        value: value,
-                        time: time
-                    });
-                }
-            });
-            values.sort((a, b) => a.time - b.time);
-            const array = [props.title || ""];
-            values.forEach((data) => {
-                res[0].push(data.title || "");
-                let value = data.value;
+            const relatedData = attributes.relatedData;
+            relatedData.sort((a, b) => a.time - b.time);
+            relatedData.forEach((data) => {
+                res[0].push(data.time.toString());
+                let value = data.attributes[attribute];
                 if (typeof value === "undefined") {
                     value = null;
                 }
@@ -60,114 +45,55 @@ class C3ChartsDataProvider {
             });
             res.push(array);
         } else {
-            // default data usage via configuration
-            if (props.relatedData) {
-                const array = [d_string.substitute(props.title, attributes) || ""];
-                const attribute = props.data.attribute;
+            const array = [d_string.substitute(props.title, attributes) || ""];
+            props.data.forEach((data) => {
+                res[0].push(d_string.substitute(data.title, attributes) || "");
+                let value = attributes[data.attribute];
+                if (typeof value === "undefined") {
+                    value = null;
+                }
+                array.push(value);
+            });
+            res.push(array);
+        }
+    }
+
+    _getDataSeriesChartData(props, attributes, res) {
+        if (props.headers) {
+            props.headers.forEach((header) => {
+                res[0].push(d_string.substitute(header, attributes) || "");
+            });
+        }
+        if (props.relatedData) {
+            props.dataSeries.forEach((series, i) => {
+                const array = [d_string.substitute(series.title, attributes) || ""];
                 const relatedData = attributes.relatedData;
                 relatedData.sort((a, b) => a.time - b.time);
+                const attribute = series.attribute;
                 relatedData.forEach((data) => {
-                    res[0].push(data.time.toString());
                     let value = data.attributes[attribute];
                     if (typeof value === "undefined") {
                         value = null;
                     }
                     array.push(value);
-                });
-                res.push(array);
-            } else {
-                const array = [d_string.substitute(props.title, attributes) || ""];
-                props.data.forEach((data) => {
-                    res[0].push(d_string.substitute(data.title, attributes) || "");
-                    let value = attributes[data.attribute];
-                    if (typeof value === "undefined") {
-                        value = null;
-                    }
-                    array.push(value);
-                });
-                res.push(array);
-            }
-        }
-    }
-
-    _getDataSeriesChartData(props, attributes, res) {
-        if (props.searchForAttributes) {
-            // automatic search for attributes
-            if (props.headers) {
-                props.headers.forEach((header) => {
-                    res[0].push(header || "");
-                });
-            }
-            props.dataSeries && props.dataSeries.forEach((series, i) => {
-                const attribute = series.attribute;
-                const title = series.title || "";
-                const header = props.header || "${time}";
-                const values = [];
-                const regex = new RegExp(attribute + "_\\d+", "gm");
-                ct_lang.forEachOwnProp(attributes, (value, name) => {
-                    if (name.search(regex) >= 0) {
-                        const split = name.split("_");
-                        const time = parseInt(split[split.length - 1]);
-                        values.push({
-                            name: name,
-                            title: title,
-                            value: value,
-                            time: time
-                        });
-                    }
-                });
-                values.sort((a, b) => a.time - b.time);
-                const array = [series.title];
-                values.forEach((data) => {
-                    let value = data.value;
-                    if (typeof value === "undefined") {
-                        value = null;
-                    }
-                    array.push(value);
                     if (i === 0) {
-                        res[0].push(header.replace("${time}", data.time));
+                        res[0].push(data.time.toString());
                     }
                 });
                 res.push(array);
             });
         } else {
-            // default data usage via configuration
-            if (props.headers) {
-                props.headers.forEach((header) => {
-                    res[0].push(d_string.substitute(header, attributes) || "");
+            props.dataSeries.forEach((series) => {
+                const array = [d_string.substitute(series.title, attributes) || ""];
+                series.attributes.forEach((attribute) => {
+                    let value = attributes[attribute];
+                    if (typeof value === "undefined") {
+                        value = null;
+                    }
+                    array.push(value);
                 });
-            }
-            if (props.relatedData) {
-                props.dataSeries.forEach((series, i) => {
-                    const array = [d_string.substitute(series.title, attributes) || ""];
-                    const relatedData = attributes.relatedData;
-                    relatedData.sort((a, b) => a.time - b.time);
-                    const attribute = series.attribute;
-                    relatedData.forEach((data) => {
-                        let value = data.attributes[attribute];
-                        if (typeof value === "undefined") {
-                            value = null;
-                        }
-                        array.push(value);
-                        if (i === 0) {
-                            res[0].push(data.time.toString());
-                        }
-                    });
-                    res.push(array);
-                });
-            } else {
-                props.dataSeries.forEach((series) => {
-                    const array = [d_string.substitute(series.title, attributes) || ""];
-                    series.attributes.forEach((attribute) => {
-                        let value = attributes[attribute];
-                        if (typeof value === "undefined") {
-                            value = null;
-                        }
-                        array.push(value);
-                    });
-                    res.push(array);
-                });
-            }
+                res.push(array);
+            });
         }
     }
 
