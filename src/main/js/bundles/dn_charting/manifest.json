@@ -102,6 +102,7 @@
             "properties": {
                 "drawTabGeometries": true,
                 "drawChartsForSelectionResults": true,
+                "relationships": [],
                 "chartsProperties": [],
                 "chartsTabs": [],
                 "Event-Topics": [

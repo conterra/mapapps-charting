@@ -89,53 +89,81 @@ export default declare({
 
     _getSumObjects(responses) {
         return responses.map((response) => {
-            let sumObject = null;
-            const results = response.result;
-            results.forEach((result) => {
-                if (!sumObject) {
-                    sumObject = {};
-                    ct_lang.forEachProp(result, (value, name) => {
-                        if (typeof value === "number") {
-                            sumObject[name] = parseFloat(value);
-                        } else if (!sumObject[name]) {
-                            sumObject[name] = value;
-                        }
-                    });
-                } else {
-                    ct_lang.forEachProp(result, (value, name) => {
-                        if (typeof value === "number") {
-                            sumObject[name] = sumObject[name] += parseFloat(value);
-                        } else if (!sumObject[name]) {
-                            sumObject[name] = value;
-                        }
-                    });
-                }
-            });
-
-            if (this.drawTabGeometries) {
-                return apprt_when(this._queryController.getGeometryForSumObject(results, response.source.store), (results) => {
-                    const geometries = [];
+            return new Promise((resolve, reject) => {
+                let sumObject = null;
+                const results = response.result;
+                const storeId = response.source.id;
+                const relationShips = this._properties.relationships;
+                const relationShip = relationShips.find((relation) => relation.storeId === storeId);
+                this._queryController.getRelatedData(results, relationShip).then((results) => {
                     results.forEach((result) => {
-                        if (result.geometry) {
-                            const geometryAlreadyContained = this._isGeometryAlreadyContained(result.geometry, geometries);
-                            !geometryAlreadyContained && geometries.push(result.geometry);
+                        if (!sumObject) {
+                            sumObject = {};
                         }
+                        ct_lang.forEachProp(result, (value, name) => {
+                            if (name === "relatedData") {
+                                if (!sumObject.relatedData) {
+                                    sumObject.relatedData = value;
+                                }
+                                sumObject.relatedData.forEach((data) => {
+                                    const newData = value.find((d) => d.time === data.time)
+                                    ct_lang.forEachProp(newData.attributes, (value, name) => {
+                                        if (data.attributes[name]) {
+                                            if (typeof value === "number") {
+                                                data.attributes[name] = data.attributes[name] += parseFloat(value)
+                                            }
+                                        } else {
+                                            if (typeof value === "number") {
+                                                data.attributes[name] = parseFloat(value);
+                                            } else {
+                                                data.attributes[name] = value;
+                                            }
+                                        }
+                                    });
+                                });
+                            } else {
+                                if (sumObject[name]) {
+                                    if (typeof value === "number") {
+                                        sumObject[name] = sumObject[name] += parseFloat(value)
+                                    }
+                                } else {
+                                    if (typeof value === "number") {
+                                        sumObject[name] = parseFloat(value);
+                                    } else {
+                                        sumObject[name] = value;
+                                    }
+                                }
+                            }
+                        });
+
                     });
-                    return {
-                        object: sumObject,
-                        count: results.length,
-                        storeId: response.source.id,
-                        geometries: geometries
-                    };
+
+                    if (this.drawTabGeometries) {
+                        apprt_when(this._queryController.getGeometryForSumObject(results, response.source.store), (results) => {
+                            const geometries = [];
+                            results.forEach((result) => {
+                                if (result.geometry) {
+                                    const geometryAlreadyContained = this._isGeometryAlreadyContained(result.geometry, geometries);
+                                    !geometryAlreadyContained && geometries.push(result.geometry);
+                                }
+                            });
+                            resolve({
+                                object: sumObject,
+                                count: results.length,
+                                storeId: storeId,
+                                geometries: geometries
+                            });
+                        });
+                    } else {
+                        resolve({
+                            object: sumObject,
+                            count: results.length,
+                            storeId: storeId,
+                            geometries: []
+                        });
+                    }
                 });
-            } else {
-                return Promise.resolve({
-                    object: sumObject,
-                    count: results.length,
-                    storeId: response.source.id,
-                    geometries: []
-                });
-            }
+            });
         });
     },
 
@@ -239,6 +267,15 @@ export default declare({
                         attributes[name] = value;
                     }
                 });
+                sumObject.object.relatedData && sumObject.object.relatedData.forEach((data) => {
+                    ct_lang.forEachOwnProp(data.attributes, (value, name) => {
+                        if (typeof value === "number") {
+                            attributes[name] = Math.round(value / sumObject.count * 100) / 100;
+                        } else if (!attributes[name]) {
+                            attributes[name] = value;
+                        }
+                    });
+                });
             } else {
                 ct_lang.forEachOwnProp(sumObject.object, (value, name) => {
                     if (typeof value === "number") {
@@ -246,6 +283,15 @@ export default declare({
                     } else if (!attributes[name]) {
                         attributes[name] = value;
                     }
+                });
+                sumObject.object.relatedData && sumObject.object.relatedData.forEach((data) => {
+                    ct_lang.forEachOwnProp(data.attributes, (value, name) => {
+                        if (typeof value === "number") {
+                            attributes[name] = Math.round(value * 100) / 100;
+                        } else if (!attributes[name]) {
+                            attributes[name] = value;
+                        }
+                    });
                 });
             }
             const chartNode = domConstruct.create("div");

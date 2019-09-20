@@ -38,10 +38,16 @@ export default class C3ChartsFactory {
             axis: {
                 rotated: chartProperties.rotatedAxis === undefined ? false : chartProperties.rotatedAxis,
                 x: {
-                    type: 'category'
+                    type: chartProperties.axisType || 'category'
                 }
             }
         };
+        if (chartProperties.tickFormat) {
+            props.axis.x.tick = chartProperties.tickFormat;
+        }
+        if (chartProperties.xFormat) {
+            props.data.xFormat = chartProperties.xFormat;
+        }
         if (!chartProperties.dataOrientation) {
             chartProperties.dataOrientation = "rows";
         }

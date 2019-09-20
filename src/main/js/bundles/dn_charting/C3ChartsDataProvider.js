@@ -61,16 +61,32 @@ class C3ChartsDataProvider {
             res.push(array);
         } else {
             // default data usage via configuration
-            const array = [d_string.substitute(props.title, attributes) || ""];
-            props.data.forEach((data) => {
-                res[0].push(d_string.substitute(data.title, attributes) || "");
-                let value = attributes[data.attribute];
-                if (typeof value === "undefined") {
-                    value = null;
-                }
-                array.push(value);
-            });
-            res.push(array);
+            if (props.relatedData) {
+                const array = [d_string.substitute(props.title, attributes) || ""];
+                const attribute = props.data.attribute;
+                const relatedData = attributes.relatedData;
+                relatedData.sort((a, b) => a.time - b.time);
+                relatedData.forEach((data) => {
+                    res[0].push(data.time.toString());
+                    let value = data.attributes[attribute];
+                    if (typeof value === "undefined") {
+                        value = null;
+                    }
+                    array.push(value);
+                });
+                res.push(array);
+            } else {
+                const array = [d_string.substitute(props.title, attributes) || ""];
+                props.data.forEach((data) => {
+                    res[0].push(d_string.substitute(data.title, attributes) || "");
+                    let value = attributes[data.attribute];
+                    if (typeof value === "undefined") {
+                        value = null;
+                    }
+                    array.push(value);
+                });
+                res.push(array);
+            }
         }
     }
 
@@ -116,20 +132,42 @@ class C3ChartsDataProvider {
             });
         } else {
             // default data usage via configuration
-            props.headers.forEach((header) => {
-                res[0].push(d_string.substitute(header, attributes) || "");
-            });
-            props.dataSeries.forEach((series) => {
-                const array = [d_string.substitute(series.title, attributes) || ""];
-                series.attributes.forEach((attribute) => {
-                    let value = attributes[attribute];
-                    if (typeof value === "undefined") {
-                        value = null;
-                    }
-                    array.push(value);
+            if (props.headers) {
+                props.headers.forEach((header) => {
+                    res[0].push(d_string.substitute(header, attributes) || "");
                 });
-                res.push(array);
-            });
+            }
+            if (props.relatedData) {
+                props.dataSeries.forEach((series, i) => {
+                    const array = [d_string.substitute(series.title, attributes) || ""];
+                    const relatedData = attributes.relatedData;
+                    relatedData.sort((a, b) => a.time - b.time);
+                    const attribute = series.attribute;
+                    relatedData.forEach((data) => {
+                        let value = data.attributes[attribute];
+                        if (typeof value === "undefined") {
+                            value = null;
+                        }
+                        array.push(value);
+                        if (i === 0) {
+                            res[0].push(data.time.toString());
+                        }
+                    });
+                    res.push(array);
+                });
+            } else {
+                props.dataSeries.forEach((series) => {
+                    const array = [d_string.substitute(series.title, attributes) || ""];
+                    series.attributes.forEach((attribute) => {
+                        let value = attributes[attribute];
+                        if (typeof value === "undefined") {
+                            value = null;
+                        }
+                        array.push(value);
+                    });
+                    res.push(array);
+                });
+            }
         }
     }
 

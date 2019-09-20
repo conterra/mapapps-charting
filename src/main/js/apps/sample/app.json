@@ -49,6 +49,7 @@
             "ChartingDashboardWidgetModel": {
                 "drawTabGeometries": true,
                 "drawChartsForSelectionResults": true,
+                "relationships": [],
                 "chartsProperties": [
                     {
                         "storeId": "wahlkreise_strukturdaten",

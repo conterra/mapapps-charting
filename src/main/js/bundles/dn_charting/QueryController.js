@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import all from "dojo/promise/all";
 import apprt_request from "apprt-request";
 
 export default class QueryController {
@@ -35,33 +34,41 @@ export default class QueryController {
             });
         });
         if (requests.length > 0) {
-            return all(requests);
+            return Promise.all(requests);
         } else {
             return null;
         }
     }
 
-    getRelatedData(results, url) {
-        const requests = results.map((result) => {
-            return apprt_request(url + "/query", {
-                query: {
-                    where: "orgunitID_int LIKE " + result.orgunitID,
-                    outFields: "*",
-                    returnGeometry: false,
-                    returnCountOnly: false,
-                    f: 'json'
-                },
-                handleAs: 'json'
-            }).then((relatedData) => {
-                result.relatedData = relatedData.features;
-                return result;
-            });
+    getRelatedData(results, relationship) {
+        return new Promise((resolve, reject) => {
+            if (!relationship || !results.length) {
+                resolve(results);
+            } else {
+                const requests = results.map((result) => apprt_request(relationship.tableUrl + "/query", {
+                    query: {
+                        where: relationship.foreignKey + " LIKE " + result[relationship.primaryKey],
+                        outFields: "*",
+                        returnGeometry: false,
+                        returnCountOnly: false,
+                        f: 'json'
+                    },
+                    handleAs: 'json'
+                }).then((relatedData) => {
+                    const features = [];
+                    relatedData.features.forEach((feature) => {
+                        const attributes = feature.attributes;
+                        const time = attributes[relationship.timeAttribute];
+                        features.push({time: time, attributes: attributes});
+                    });
+                    result.relatedData = features;
+                    return result;
+                }));
+                Promise.all(requests).then((results) => {
+                    resolve(results);
+                })
+            }
         });
-        if (requests.length > 0) {
-            return all(requests);
-        } else {
-            return null;
-        }
     }
 
     getRelatedMetadata(url, metadata) {
@@ -76,7 +83,7 @@ export default class QueryController {
                 handleAs: 'json'
             });
         });
-        return all(requests);
+        return Promise.all(requests);
     }
 
     getMetadata(url) {
