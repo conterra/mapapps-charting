@@ -42,11 +42,13 @@ export default class C3ChartsFactory {
                 }
             }
         };
-        if (chartProperties.tickFormat) {
-            props.axis.x.tick = chartProperties.tickFormat;
+        if (chartProperties.axisFormat) {
+            props.axis.x.tick = {
+                format: chartProperties.axisFormat
+            };
         }
-        if (chartProperties.xFormat) {
-            props.data.xFormat = chartProperties.xFormat;
+        if (chartProperties.axisFormat) {
+            props.data.xFormat = chartProperties.axisFormat;
         }
         if (!chartProperties.dataOrientation) {
             chartProperties.dataOrientation = "rows";
