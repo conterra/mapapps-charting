@@ -67,6 +67,12 @@ There are two ways to define charts tabs for the charting widget. It is possible
                     "title": "Altersverteilung",
                     "storeId": "wahlkreise_strukturdaten",
                     "type": "donut",
+                    "padding": {
+                        "left": 20,
+                        "right": 20,
+                        "top": 0,
+                        "bottom": 0
+                    },
                     "height": 400,
                     "data": [
                         {
@@ -218,7 +224,15 @@ There are two ways to define charts tabs for the charting widget. It is possible
                 {
                     "title": "Entwicklung Erststimme",
                     "type": "bar",
+                    "axisType": "timeseries",
+                    "axisFormat": "%Y",
                     "height": 400,
+                    "padding": {
+                        "left": 20,
+                        "right": 20,
+                        "top": 0,
+                        "bottom": 0
+                    },
                     "headers": [
                         "2013",
                         "2017"
@@ -321,7 +335,10 @@ drawTabGeometries
 |-----------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | chart.title                 | String  |                                                                       |                             | Title of specific chart.                                                                                                               |
 | chart.type                  | String  | line, spline, step, donut, bar, pie, step, area, gauge                | ```bar```                   | Type of chart. (More information: https://c3js.org/examples.html)                                                                      |
+| chart.axisType              | String  | timeseries                                                            | ```undefined```             | Use timeseries as x-axis type.                                                                                                         |
+| chart.axisFormat            | String  | %Y %m %d                                                                | ```%Y```                    | Configure the timeseries format. Only available if timeseries axis type is configured.                                                 |
 | chart.height                | Integer |                                                                       | ```500```                   | Height of the chart. Width will be set automatically.                                                                                  |
+| chart.padding               | Integer |                                                                       | ```{"right":10}```          | Add padding to the chart.                                                                                                              |
 | chart.calculationType       | String  | ```sum``` &#124; ```mean```                                           | ```sum```                   | Use sum or mean values for multiple features.                                                                                          |
 | chart.dataOrientation       | String  | ```rows``` &#124; ```columns ```                                      | ```row```                   | Row or column oriented data.                                                                                                           |
 | chart.showDataLabels        | Boolean | ```true``` &#124; ```false```                                         | ```true```                  | Show the individual data labels.                                                                                                       |
