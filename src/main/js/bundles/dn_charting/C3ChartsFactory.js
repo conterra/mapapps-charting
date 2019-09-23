@@ -25,6 +25,9 @@ export default class C3ChartsFactory {
         const data = this._c3ChartsDataProvider.getChartData(chartProperties, attributes);
         const props = {
             bindto: node,
+            padding: chartProperties.padding || {
+                right: 10
+            },
             data: {
                 x: 'x',
                 type: chartProperties.type || "bar",

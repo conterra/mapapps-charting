@@ -552,6 +552,14 @@
                             {
                                 "title": "Entwicklung Erststimme",
                                 "type": "line",
+                                "axisType": "timeseries",
+                                "axisFormat": "%Y",
+                                "padding": {
+                                    "left": 20,
+                                    "right": 20,
+                                    "top": 0,
+                                    "bottom": 0
+                                },
                                 "height": 400,
                                 "headers": [
                                     "2013",
@@ -616,6 +624,8 @@
                             {
                                 "title": "Entwicklung Erststimme",
                                 "type": "bar",
+                                "axisType": "timeseries",
+                                "axisFormat": "%Y",
                                 "height": 400,
                                 "headers": [
                                     "2013",
@@ -680,6 +690,8 @@
                             {
                                 "title": "Entwicklung Erststimme",
                                 "type": "bar",
+                                "axisType": "timeseries",
+                                "axisFormat": "%Y",
                                 "height": 400,
                                 "headers": [
                                     "2013",
