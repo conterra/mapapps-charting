@@ -43,6 +43,9 @@ export default class C3ChartsFactory {
                 x: {
                     type: chartProperties.axisType || 'category'
                 }
+            },
+            line: {
+                connectNull: true
             }
         };
         if (chartProperties.axisFormat) {
