@@ -554,6 +554,7 @@
                                 "type": "line",
                                 "axisType": "timeseries",
                                 "axisFormat": "%Y",
+                                "axisTickAdjusted": false,
                                 "padding": {
                                     "left": 20,
                                     "right": 20,
@@ -626,6 +627,7 @@
                                 "type": "bar",
                                 "axisType": "timeseries",
                                 "axisFormat": "%Y",
+                                "axisTickAdjusted": true,
                                 "height": 400,
                                 "headers": [
                                     "2013",
@@ -692,6 +694,7 @@
                                 "type": "bar",
                                 "axisType": "timeseries",
                                 "axisFormat": "%Y",
+                                "axisTickAdjusted": true,
                                 "height": 400,
                                 "headers": [
                                     "2013",
