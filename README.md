@@ -310,7 +310,6 @@ To hide the ResultCenterChartingTool in the ResultCenter use this configuration 
 
 ### Configuration properties
 #### Core properties
-drawTabGeometries
 | Property                      | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-------------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | drawTabGeometries             | Boolean | ```true``` &#124; ```false```                                         | ``` true```                 | Draw geometries of active chart tab.                                                                                                   |
