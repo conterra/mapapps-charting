@@ -312,8 +312,8 @@ To hide the ResultCenterChartingTool in the ResultCenter use this configuration 
 #### Core properties
 | Property                      | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
 |-------------------------------|---------|-----------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| drawTabGeometries             | Boolean | ```true``` &#124; ```false```                                         | ``` true```                 | Draw geometries of active chart tab.                                                                                                   |
-| drawChartsForSelectionResults | Boolean | ```true``` &#124; ```false```                                         | ``` true```                 | Automatically draw charts for results of a selection via the selection-ui bundle.                                                      |
+| drawTabGeometries             | Boolean | ```true``` &#124; ```false```                                         | ```true```                 | Draw geometries of active chart tab.                                                                                                   |
+| drawChartsForSelectionResults | Boolean | ```true``` &#124; ```false```                                         | ```true```                 | Automatically draw charts for results of a selection via the selection-ui bundle.                                                      |
 
 #### chartTabs properties (new config)
 | Property                      | Type    | Possible Values                                                       | Default                     | Description                                                                                                                            |
