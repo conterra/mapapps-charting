@@ -178,7 +178,8 @@
                 "title": "${tool.title}",
                 "tooltip": "${tool.tooltip}",
                 "iconClass": "icon-chart-pie",
-                "togglable": true
+                "togglable": true,
+                "noGroup": true
             }
         },
         {
