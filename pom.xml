@@ -407,11 +407,17 @@
                     <includes>
                         <include>src/main/js/**/*.js</include>
                         <include>src/main/js/**/*.vue</include>
+                        <include>src/main/js/**/*.css</include>
                         <include>src/main/config/assembly.xml</include>
                         <include>**/build.properties</include>
                         <include>**/gulpfile.js</include>
                         <include>**/pom.xml</include>
                     </includes>
+                    <excludes>
+                        <exclude>**/c3.min.css</exclude>
+                        <exclude>**/c3.min.js</exclude>
+                        <exclude>**/d3.min.js</exclude>
+                    </excludes>
                     <mapping>
                         <vue>XML_STYLE</vue>
                     </mapping>
@@ -627,7 +633,9 @@
                                     <goal>gulp</goal>
                                 </goals>
                                 <configuration>
-                                    <arguments>run-browser-tests --tests http://localhost:${jetty.server.port}/js/tests/runTests.html</arguments>
+                                    <arguments>run-browser-tests --tests
+                                        http://localhost:${jetty.server.port}/js/tests/runTests.html
+                                    </arguments>
                                 </configuration>
                             </execution>
                         </executions>
@@ -776,7 +784,8 @@
                                     <async>true</async>
                                     <executable>${maven.home}/bin/${mvn.cmd}</executable>
                                     <arguments>
-                                        <argument>com.github.eirslett:frontend-maven-plugin:gulp@watch-changes</argument>
+                                        <argument>com.github.eirslett:frontend-maven-plugin:gulp@watch-changes
+                                        </argument>
                                     </arguments>
                                 </configuration>
                             </execution>
