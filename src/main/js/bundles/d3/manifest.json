@@ -1,6 +1,6 @@
 {
     "name": "d3",
-    "version": "5.11.0",
+    "version": "5.14.2",
     "description": "Data-Driven Documents",
     "main": "d3.min.js",
     "i18n": [],
