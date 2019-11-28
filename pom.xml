@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.conterra.devnet</groupId>
     <artifactId>mapapps-charting</artifactId>
-    <version>1.6.1-SNAPSHOT</version>
+    <version>1.7.0</version>
     <packaging>jar</packaging>
     <repositories>
         <repository>
@@ -452,7 +452,7 @@
                                     <!-- remove bundleLocations from app.json -->
                                     <token>\s*"bundleLocations"\s*:\s*\[\s*"localbundles"\s*,\s*"bundles"\s*\]\s*,\s*
                                     </token>
-                                    <value/>
+                                    <value />
                                 </replacement>
                             </replacements>
                         </configuration>
@@ -525,7 +525,7 @@
         <connection>scm:git:https://github.com/conterra/mapapps-charting.git</connection>
         <developerConnection>scm:git:https://github.com/conterra/mapapps-charting.git</developerConnection>
         <url>https://github.com/conterra/mapapps-charting</url>
-        <tag>HEAD</tag>
+        <tag>1.7.0</tag>
     </scm>
     <distributionManagement>
         <repository>
@@ -562,10 +562,10 @@
             *://*:*/**;
         </proxy.allowedServerUrls>
         <proxy.allowedSSLDNs>*</proxy.allowedSSLDNs>
-        <proxy.use.rules></proxy.use.rules>
+        <proxy.use.rules />
         <jetty.port>9090</jetty.port>
         <mvn.cmd>mvn</mvn.cmd>
-        <gulp.task></gulp.task>
+        <gulp.task />
 
         <!-- required for release build -->
         <scm.push>false</scm.push>
