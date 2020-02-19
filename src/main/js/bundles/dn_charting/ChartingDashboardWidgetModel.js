@@ -46,7 +46,9 @@ export default declare({
                         responses.push(response);
                     }
                 });
-                this.handleChartResponses(responses);
+                this.getAllAttributes(responses).then((res) => {
+                    this.handleChartResponses(res);
+                });
             });
         }
     },
@@ -66,6 +68,22 @@ export default declare({
         if (geometries) {
             this._addGraphicsToView(geometries);
         }
+    },
+
+    getAllAttributes(responses) {
+        const promises = responses.map((response) => {
+            const store = response.source.store;
+            const ids = response.result.map((result) => result[store.idProperty]);
+            const query = {};
+            query[store.idProperty] = {$in: ids};
+            return store.query(query).then((results) => {
+                response.result = results;
+                return response;
+            });
+        });
+        return Promise.all(promises).then((res) => {
+            return res;
+        });
     },
 
     handleChartResponses(responses) {
