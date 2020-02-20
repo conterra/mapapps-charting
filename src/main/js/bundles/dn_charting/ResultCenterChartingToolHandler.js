@@ -38,7 +38,7 @@ export default class ResultCenterChartingToolHandler {
                 }
             };
             const responses = [response];
-            this._chartingDashboardWidgetModel.handleChartResponses(responses);
+            this._chartingDashboardWidgetModel.setCharts(responses);
         });
     }
 

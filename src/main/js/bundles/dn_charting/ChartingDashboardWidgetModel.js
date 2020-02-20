@@ -46,11 +46,15 @@ export default declare({
                         responses.push(response);
                     }
                 });
-                this.getAllAttributes(responses).then((res) => {
-                    this.handleChartResponses(res);
-                });
+                this.setCharts(responses);
             });
         }
+    },
+
+    setCharts(responses) {
+        this.getAllAttributes(responses).then((res) => {
+            this.handleChartResponses(res);
+        });
     },
 
     resizeCharts(width) {
@@ -72,7 +76,10 @@ export default declare({
 
     getAllAttributes(responses) {
         const promises = responses.map((response) => {
-            const store = response.source.store;
+            let store = response.source.store;
+            if (store.masterStore) {
+                store = store.masterStore;
+            }
             const ids = response.result.map((result) => result[store.idProperty]);
             const query = {};
             query[store.idProperty] = {$in: ids};
