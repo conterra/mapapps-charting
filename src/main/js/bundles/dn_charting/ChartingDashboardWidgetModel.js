@@ -129,6 +129,7 @@ export default declare({
                             if (name === "relatedData") {
                                 if (!sumObject.relatedData) {
                                     sumObject.relatedData = value;
+                                    return;
                                 }
                                 sumObject.relatedData.forEach((data) => {
                                     const newData = value.find((d) => d.time === data.time)
