@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.conterra.devnet</groupId>
     <artifactId>mapapps-charting</artifactId>
-    <version>1.8.2-SNAPSHOT</version>
+    <version>1.9.0</version>
     <packaging>jar</packaging>
     <repositories>
         <repository>
@@ -525,7 +525,7 @@
         <connection>scm:git:https://github.com/conterra/mapapps-charting.git</connection>
         <developerConnection>scm:git:https://github.com/conterra/mapapps-charting.git</developerConnection>
         <url>https://github.com/conterra/mapapps-charting</url>
-        <tag>HEAD</tag>
+        <tag>1.9.0</tag>
     </scm>
     <distributionManagement>
         <repository>
