@@ -34,7 +34,7 @@
             "window": {
                 "dockTool": "chartingDashboardToggleTool",
                 "marginBox": {
-                    "t": 40,
+                    "t": 42,
                     "b": 40,
                     "r": 0,
                     "w": 500
@@ -47,12 +47,12 @@
                 "minimizeOnClose": true,
                 "resizable": true,
                 "draggable": false,
-                "closable": false,
+                "closable": true,
                 "collapsable": true,
                 "collapseAxis": {
                     "l": true
                 },
-                "windowClass": "noTitleBarAndWindowTools"
+                "windowClass": "noPadding"
             }
         },
         {

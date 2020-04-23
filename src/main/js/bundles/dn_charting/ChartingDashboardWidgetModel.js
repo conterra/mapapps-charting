@@ -32,6 +32,14 @@ export default declare({
     _charts: [],
     _geometries: [],
 
+    activate() {
+        this._tool.watch("active", (name, oldValue, newValue) => {
+            if (!newValue) {
+                this._clearHighlight();
+            }
+        });
+    },
+
     receiveSelections(event) {
         if (this.drawChartsForSelectionResults) {
             if (this.loading) {
