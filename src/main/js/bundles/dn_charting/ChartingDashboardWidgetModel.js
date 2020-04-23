@@ -17,8 +17,9 @@ import {declare} from "apprt-core/Mutable";
 import domConstruct from "dojo/dom-construct";
 import ct_lang from "ct/_lang";
 import apprt_when from "apprt-core/when";
-import Graphic from "esri/Graphic";
 import * as geometryEngine from "esri/geometry/geometryEngine";
+
+const _currentHighlight = Symbol("_currentHighlight");
 
 export default declare({
 
@@ -70,7 +71,7 @@ export default declare({
         const tab = this.tabs[activeTab];
         const geometries = tab && tab.geometries;
         if (geometries) {
-            this._addGraphicsToView(geometries);
+            this._highlightGeometries(geometries);
         }
     },
 
@@ -330,23 +331,21 @@ export default declare({
         });
     },
 
-    _addGraphicsToView(geometries) {
-        const graphics = geometries.map((geometry) => new Graphic({
-            geometry: geometry,
-            symbol: {
-                type: "simple-fill",
-                color: [51, 51, 204, 0.5],
-                style: "solid",
-                outline: {
-                    color: "white",
-                    width: 1
-                },
-                attributes: {}
+    _highlightGeometries(geometries) {
+        this._clearHighlight();
+        const highlightObjects = geometries.map((geometry) => {
+            return {
+                geometry: geometry
             }
-        }));
-        const view = this._mapWidgetModel.get("view");
-        view.graphics.removeAll();
-        view.graphics.addMany(graphics);
+        });
+        this[_currentHighlight] = this._highlighter.highlight(highlightObjects);
+    },
+
+    _clearHighlight() {
+        if (this[_currentHighlight]) {
+            this[_currentHighlight].remove();
+            this[_currentHighlight] = undefined;
+        }
     },
 
     _isGeometryAlreadyContained(geometry, geometries) {

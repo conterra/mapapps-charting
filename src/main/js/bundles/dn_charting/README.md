@@ -5,7 +5,7 @@ By selecting one or more features from the selection-ui bundle, you can trigger 
 You can choose of a variety of different chart types like: bar, line, spline, area and donut.
 
 ## Usage
-**Requirement: map.apps 4.4.1**
+**Requirement: map.apps 4.8.0 since version 1.9.0**
 
 1. First you need to add the bundle dn_charting to your app.
 2. Then you need to configure one or more stores. These are the data basis for the diagrams. A simple store configuration might look like this:

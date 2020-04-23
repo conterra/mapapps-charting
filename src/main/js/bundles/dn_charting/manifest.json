@@ -7,11 +7,12 @@
     "productName": "devnet-mapapps-charting",
     "dependencies": {
         "esri": "^4.5.0",
-        "apprt-vue": "^4.4.1",
-        "apprt-vuetify": "^4.4.1",
-        "apprt-binding": "^4.4.1",
-        "apprt-core": "^4.4.1",
-        "selection-services": "^4.4.1",
+        "apprt-vue": "^4.8.0",
+        "apprt-vuetify": "^4.8.0",
+        "apprt-binding": "^4.8.0",
+        "apprt-core": "^4.8.0",
+        "highlights": "^4.8.0",
+        "selection-services": "^4.8.0",
         "c3": "^0.7.8"
     },
     "CSS-Themes-Extension": [
@@ -124,6 +125,10 @@
                 {
                     "name": "_queryController",
                     "providing": "bistummuenster_charting.QueryController"
+                },
+                {
+                    "name": "_highlighter",
+                    "providing": "highlights.HighlightService"
                 },
                 {
                     "name": "_tool",

@@ -10,7 +10,7 @@ You can choose of a variety of different chart types like: bar, line, spline, ar
 https://demos.conterra.de/mapapps/resources/apps/downloads_charting/index.html
 
 ## Installation Guide
-**Requirement: map.apps 4.4.1**
+**Requirement: map.apps 4.8.0**
 
 [dn_charting Documentation](https://github.com/conterra/mapapps-charting/tree/master/src/main/js/bundles/dn_charting)
 
