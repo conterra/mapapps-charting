@@ -260,11 +260,20 @@ export default declare({
     _getChartsTitle(properties, objects) {
         if (properties && typeof properties === "object" && properties.constructor === Object) {
             const sumObject = objects.find((object) => object.storeId === properties.storeId);
+            let title = "";
             if (!sumObject) {
-                return "";
+                return title;
             }
             const count = sumObject.count;
-            return count === 1 ? sumObject.object[properties.titleAttribute] : this._i18n.get().ui.multipleObjects;
+            if (count === 1) {
+                title = sumObject.object[properties.titleAttribute];
+                if (!title && sumObject.object.relatedData.length) {
+                    title = sumObject.object.relatedData[0].attributes[properties.titleAttribute];
+                }
+            } else {
+                title = this._i18n.get().ui.multipleObjects;
+            }
+            return title;
         } else {
             const total = objects.total;
             return total === 1 ? objects.result[0][properties] : this._i18n.get().ui.multipleObjects;
