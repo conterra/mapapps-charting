@@ -66,7 +66,13 @@ class C3ChartsDataProvider {
         if (props.relatedData) {
             props.dataSeries.forEach((series, i) => {
                 const array = [d_string.substitute(series.title, attributes) || ""];
-                const relatedData = attributes.relatedData;
+                let relatedData = attributes.relatedData;
+                if (props.headers) {
+                    // filter values
+                    relatedData = relatedData.filter((r) => {
+                        return props.headers.includes(r.time.toString());
+                    });
+                }
                 relatedData.sort((a, b) => a.time - b.time);
                 const attribute = series.attribute;
                 relatedData.forEach((data) => {
@@ -75,7 +81,7 @@ class C3ChartsDataProvider {
                         value = null;
                     }
                     array.push(value);
-                    if (i === 0) {
+                    if (i === 0 && !props.headers) {
                         if (props.axisIsDateObject) {
                             res[0].push(data.time);
                         } else {
