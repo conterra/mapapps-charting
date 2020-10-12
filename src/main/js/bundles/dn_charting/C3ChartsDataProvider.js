@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ct_lang from "ct/_lang";
 import d_string from "dojo/string";
 
 class C3ChartsDataProvider {
@@ -77,7 +76,11 @@ class C3ChartsDataProvider {
                     }
                     array.push(value);
                     if (i === 0) {
-                        res[0].push(data.time.toString());
+                        if (props.axisIsDateObject) {
+                            res[0].push(data.time);
+                        } else {
+                            res[0].push(data.time.toString());
+                        }
                     }
                 });
                 res.push(array);

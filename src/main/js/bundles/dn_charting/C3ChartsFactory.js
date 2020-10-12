@@ -56,8 +56,8 @@ export default class C3ChartsFactory {
                 props.axis.x.tick.fit = chartProperties.axisTickAdjusted;
             }
         }
-        if (chartProperties.axisFormat) {
-            props.data.xFormat = chartProperties.axisFormat;
+        if (chartProperties.axisFormat && !chartProperties.axisIsDateObject) {
+            props.data.xFormat = chartProperties.axisParserFormat || chartProperties.axisFormat;
         }
         if (!chartProperties.dataOrientation) {
             chartProperties.dataOrientation = "rows";
