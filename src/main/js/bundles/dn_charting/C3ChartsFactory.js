@@ -55,6 +55,9 @@ export default class C3ChartsFactory {
             if (chartProperties.axisTickAdjusted !== undefined) {
                 props.axis.x.tick.fit = chartProperties.axisTickAdjusted;
             }
+            if (chartProperties.axisTickCount !== undefined) {
+                props.axis.x.tick.count = chartProperties.axisTickCount;
+            }
         }
         if (chartProperties.axisFormat && !chartProperties.axisIsDateObject) {
             props.data.xFormat = chartProperties.axisParserFormat || chartProperties.axisFormat;
