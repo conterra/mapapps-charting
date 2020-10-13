@@ -29,14 +29,16 @@ class C3ChartsDataProvider {
     }
 
     _getDefaultChartData(props, attributes, res) {
-        if (props.relatedData) {
+        if (props.relatedData && props.headers && props.headers.length === 1) {
             const array = [d_string.substitute(props.title, attributes) || ""];
-            const attribute = props.data.attribute;
             const relatedData = attributes.relatedData;
             relatedData.sort((a, b) => a.time - b.time);
-            relatedData.forEach((data) => {
-                res[0].push(data.time.toString());
-                let value = data.attributes[attribute];
+            const relatedDataObject = relatedData.find((r) => {
+                return r.time.toString() === props.headers[0];
+            });
+            props.data.forEach((data) => {
+                res[0].push(d_string.substitute(data.title, attributes) || "");
+                let value = relatedDataObject.attributes[data.attribute];
                 if (typeof value === "undefined") {
                     value = null;
                 }
