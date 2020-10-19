@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import c3 from "c3";
+import * as d3 from "d3";
 
 export default class C3ChartsFactory {
 
@@ -64,6 +65,15 @@ export default class C3ChartsFactory {
         }
         if (!chartProperties.dataOrientation) {
             chartProperties.dataOrientation = "rows";
+        }
+        if (chartProperties.hideDecimalValues) {
+            props.axis.y = {
+                tick: {
+                    format: function (d) {
+                        return (parseInt(d) === d) ? d : null;
+                    }
+                }
+            }
         }
         if (chartProperties.colorPattern) {
             props.color = {
