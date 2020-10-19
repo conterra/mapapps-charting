@@ -32,7 +32,6 @@ class C3ChartsDataProvider {
         if (props.relatedData && props.headers && props.headers.length === 1) {
             const array = [d_string.substitute(props.title, attributes) || ""];
             const relatedData = attributes.relatedData;
-            relatedData.sort((a, b) => a.time - b.time);
             const relatedDataObject = relatedData.find((r) => {
                 return r.time.toString() === props.headers[0];
             });
@@ -66,6 +65,7 @@ class C3ChartsDataProvider {
             });
         }
         if (props.relatedData) {
+            res[0] = ["x"];
             props.dataSeries.forEach((series, i) => {
                 const array = [d_string.substitute(series.title, attributes) || ""];
                 let relatedData = attributes.relatedData;
@@ -83,7 +83,7 @@ class C3ChartsDataProvider {
                         value = null;
                     }
                     array.push(value);
-                    if (i === 0 && !props.headers) {
+                    if (i === 0) {
                         if (props.axisIsDateObject) {
                             res[0].push(data.time);
                         } else {
