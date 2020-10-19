@@ -82,6 +82,9 @@ class C3ChartsDataProvider {
                     if (typeof value === "undefined") {
                         value = null;
                     }
+                    if (props.axisIsDateObject && props.axisDatePeriodFilter && !(data.time > props.axisDatePeriodFilter.start && data.time < props.axisDatePeriodFilter.end)) {
+                        return;
+                    }
                     array.push(value);
                     if (i === 0) {
                         if (props.axisIsDateObject) {
