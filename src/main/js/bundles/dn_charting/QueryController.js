@@ -96,14 +96,9 @@ export default class QueryController {
     }
 
     getGeometryForSumObject(results, store) {
-        const query = {
-            $or: []
-        };
-        results.forEach((result) => {
-            const obj = {};
-            obj[store.idProperty] = result[store.idProperty];
-            query["$or"].push(obj);
-        });
+        const query = {};
+        const ids = results.map((result) => result[store.idProperty]);
+        query[store.idProperty] = {$in: ids};
         return store.query(query, {
             fields: {
                 geometry: 1
