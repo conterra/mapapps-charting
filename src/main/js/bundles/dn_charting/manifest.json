@@ -124,7 +124,7 @@
                 },
                 {
                     "name": "_queryController",
-                    "providing": "bistummuenster_charting.QueryController"
+                    "providing": "dn_charting.QueryController"
                 },
                 {
                     "name": "_highlighter",
@@ -213,7 +213,7 @@
         },
         {
             "name": "QueryController",
-            "provides": "bistummuenster_charting.QueryController"
+            "provides": "dn_charting.QueryController"
         }
     ]
 }
