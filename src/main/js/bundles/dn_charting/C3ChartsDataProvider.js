@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2023 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,9 +32,7 @@ class C3ChartsDataProvider {
         if (props.relatedData && props.headers && props.headers.length === 1) {
             const array = [d_string.substitute(props.title, attributes) || ""];
             const relatedData = attributes.relatedData;
-            const relatedDataObject = relatedData.find((r) => {
-                return r.time.toString() === props.headers[0];
-            });
+            const relatedDataObject = relatedData.find((r) => r.time.toString() === props.headers[0]);
             props.data.forEach((data) => {
                 res[0].push(d_string.substitute(data.title, attributes) || "");
                 let value = relatedDataObject.attributes[data.attribute];
@@ -71,9 +69,7 @@ class C3ChartsDataProvider {
                 let relatedData = attributes.relatedData;
                 if (props.headers) {
                     // filter values
-                    relatedData = relatedData.filter((r) => {
-                        return props.headers.includes(r.time.toString());
-                    });
+                    relatedData = relatedData.filter((r) => props.headers.includes(r.time.toString()));
                 }
                 relatedData.sort((a, b) => a.time - b.time);
                 const attribute = series.attribute;
@@ -82,6 +78,7 @@ class C3ChartsDataProvider {
                     if (typeof value === "undefined") {
                         value = null;
                     }
+                    // eslint-disable-next-line max-len
                     if (props.axisIsDateObject && props.axisDatePeriodFilter && !(data.time > props.axisDatePeriodFilter.start && data.time < props.axisDatePeriodFilter.end)) {
                         return;
                     }

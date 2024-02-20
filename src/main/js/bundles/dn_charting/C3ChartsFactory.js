@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2023 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import * as d3 from "d3";
 export default class C3ChartsFactory {
 
     createChart(chartNode, chartProperties, attributes, chart) {
+        // eslint-disable-next-line max-len
         return chart ? this._updateChart(chartProperties, attributes, chart) : this._createChart(chartProperties, attributes, chartNode);
     }
 
@@ -73,7 +74,7 @@ export default class C3ChartsFactory {
                         return (parseInt(d) === d) ? d : null;
                     }
                 }
-            }
+            };
         }
         if (chartProperties.colorPattern) {
             props.color = {
