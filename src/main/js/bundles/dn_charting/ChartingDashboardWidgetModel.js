@@ -171,10 +171,12 @@ export default declare({
                 });
 
                 if (this.drawTabGeometries) {
+                    // eslint-disable-next-line max-len
                     apprt_when(this._queryController.getGeometryForSumObject(results, response.source.store), (results) => {
                         const geometries = [];
                         results.forEach((result) => {
                             if (result.geometry) {
+                                // eslint-disable-next-line max-len
                                 const geometryAlreadyContained = this._isGeometryAlreadyContained(result.geometry, geometries);
                                 !geometryAlreadyContained && geometries.push(result.geometry);
                             }

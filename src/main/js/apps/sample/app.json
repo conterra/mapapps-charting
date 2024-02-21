@@ -28,7 +28,8 @@
             "banner",
             "selection-ui",
             "dn_charting",
-            "dn_querybuilder"
+            "dn_querybuilder",
+            "legend"
         ],
         "styles": [
             "${app}:app.css"
@@ -50,6 +51,93 @@
                 "drawChartsForSelectionResults": true,
                 "relationships": [],
                 "chartsProperties": [
+                 
+                    {
+                        "storeId": "Bevoelkerung_Altersgruppen",
+                        "titleAttribute": "NAME",
+                        "charts": [
+                            {
+                                "title": "Altersverteilung",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+                                    {
+                                        "attribute": "a0",
+                                        "title": "Unter 3 Jahren"
+                                    },
+                                    {
+                                        "attribute": "a2",
+                                        "title": "6-10 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a10",
+                                        "title": "40-45 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a14",
+                                        "title": "60-65 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a15",
+                                        "title": "65-75 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a16",
+                                        "title": "75 Jahre und älter"
+                                    }
+                                ],
+                                "colorPattern": [
+                                    "#1f77b4",
+                                    "#aec7e8",
+                                    "#ff7f0e",
+                                    "#ffbb78",
+                                    "#2ca02c",
+                                    "#98df8a"
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            {
+                                "title": "Altersverteilung",
+                                "type": "bar",
+                                "height": 600,
+                                "data": [
+                                    {
+                                        "attribute": "a0",
+                                        "title": "Unter 3 Jahren"
+                                    },
+                                    {
+                                        "attribute": "a2",
+                                        "title": "6-10 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a10",
+                                        "title": "40-45 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a14",
+                                        "title": "60-65 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a15",
+                                        "title": "65-75 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a16",
+                                        "title": "75 Jahre und älter"
+                                    }
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            }
+                        ]
+                    },
                     {
                         "storeId": "wahlkreise_strukturdaten",
                         "titleAttribute": "WKR_NAME",
@@ -765,105 +853,7 @@
                     }
                 ],
                 "chartsTabs": [
-                    {
-                        "title": "Wahlkreise 2017",
-                        "chartsTitle": {
-                            "titleAttribute": "WKR_NAME",
-                            "storeId": "wahlkreise_strukturdaten"
-                        },
-                        "charts": [
-                            {
-                                "title": "Altersverteilung",
-                                "storeId": "wahlkreise_strukturdaten",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "Alter_unter_18",
-                                        "title": "Unter 18 Jahren"
-                                    },
-                                    {
-                                        "attribute": "Alter_18_24",
-                                        "title": "18 - 24 Jahre"
-                                    },
-                                    {
-                                        "attribute": "Alter_25_34",
-                                        "title": "25 - 34 Jahre"
-                                    },
-                                    {
-                                        "attribute": "Alter_35_59",
-                                        "title": "35 - 59 Jahre"
-                                    },
-                                    {
-                                        "attribute": "Alter_60_74",
-                                        "title": "60 - 74 Jahre"
-                                    },
-                                    {
-                                        "attribute": "Alter_75_und_mehr",
-                                        "title": "75 Jahre und älter"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "#1f77b4",
-                                    "#aec7e8",
-                                    "#ff7f0e",
-                                    "#ffbb78",
-                                    "#2ca02c",
-                                    "#98df8a"
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Erststimme",
-                                "storeId": "wahlkreise_ergebnis",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "btw17_W_26",
-                                        "title": "CDU / CSU"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_31",
-                                        "title": "SPD"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_36",
-                                        "title": "Linke"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_41",
-                                        "title": "Grüne"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_46",
-                                        "title": "FDP"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_51",
-                                        "title": "AFD"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "#000000",
-                                    "#FF0000",
-                                    "#A020F0",
-                                    "#00FF00",
-                                    "#FFFF00",
-                                    "#0000FF"
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            }
-                        ]
-                    }
+                    
                 ]
             }
         },
@@ -880,11 +870,11 @@
         "agssearch": {
             "AGSStore": [
                 {
-                    "title": "Wahlkreise 2017 - Strukturdaten",
-                    "id": "wahlkreise_strukturdaten",
+                    "title": "Bevoelkerung_Altersgruppen",
+                    "id": "Bevoelkerung_Altersgruppen",
                     "description": "",
                     "idProperty": "OBJECTID",
-                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Wahlkreise_2017_mit_Strukturdaten/FeatureServer/0",
+                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/a7fab8/FeatureServer/0",
                     "useIn": [
                         "selection"
                     ],
@@ -893,39 +883,20 @@
                         "metadata": {
                             "fields": [
                                 {
-                                    "name": "LAND",
-                                    "title": "Land"
+                                    "name": "NAME",
+                                    "title": "Name"
                                 },
                                 {
-                                    "name": "WKR_NAME",
-                                    "title": "Wahlkreis-Name"
-                                }
-                            ]
-                        }
-                    },
-                    "fetchIdProperty": true,
-                    "enablePagination": false
-                },
-                {
-                    "title": "Wahlkreise 2017 - Wahlergebnisse",
-                    "id": "wahlkreise_ergebnis",
-                    "description": "",
-                    "idProperty": "OBJECTID",
-                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Wahlkreise_2017_amtlichesErgebnis/FeatureServer/0",
-                    "useIn": [
-                        "selection"
-                    ],
-                    "filterOptions": {
-                        "suggestContains": true,
-                        "metadata": {
-                            "fields": [
-                                {
-                                    "name": "Wahlkreise17_Wahlkreise17_LAND_",
-                                    "title": "Land"
+                                    "name": "a0",
+                                    "title": "unter 3"
                                 },
                                 {
-                                    "name": "Wahlkreise17_Wahlkreise17_WKR_1",
-                                    "title": "Wahlkreis-Name"
+                                    "name": "a1",
+                                    "title": "3 bis 6"
+                                },
+                                {
+                                    "name": "a16",
+                                    "title": "75 und mehr"
                                 }
                             ]
                         }
@@ -933,6 +904,7 @@
                     "fetchIdProperty": true,
                     "enablePagination": false
                 }
+                
             ]
         },
         "toolset": {
@@ -998,9 +970,9 @@
                     "basemap": "streets-night-vector",
                     "layers": [
                         {
-                            "id": "wahlkreise",
-                            "title": "Wahlkreise",
-                            "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Wahlkreise_2017_mit_Strukturdaten/FeatureServer/0",
+                            "id": "Bevoelkerung_Altersgruppen",
+                            "title": "Bevölkerung Altersgruppen",
+                            "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/a7fab8/FeatureServer/0",
                             "type": "AGS_FEATURE",
                             "elevationInfo": {
                                 "mode": "on-the-ground"
