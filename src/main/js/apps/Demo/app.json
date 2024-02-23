@@ -51,7 +51,7 @@
                 "drawChartsForSelectionResults": true,
                 "relationships": [],
                 "chartsProperties": [
-                 
+
                     {
                         "storeId": "Bevoelkerung_Altersgruppen",
                         "titleAttribute": "NAME",
@@ -853,7 +853,7 @@
                     }
                 ],
                 "chartsTabs": [
-                    
+
                 ]
             }
         },
@@ -904,7 +904,7 @@
                     "fetchIdProperty": true,
                     "enablePagination": false
                 }
-                
+
             ]
         },
         "toolset": {
@@ -980,23 +980,7 @@
                             "visible": true,
                             "outFields": [
                                 "*"
-                            ],
-                            "renderer": {
-                                "type": "simple",
-                                "symbol": {
-                                    "type": "simple-fill",
-                                    "color": [
-                                        255,
-                                        255,
-                                        255,
-                                        0.5
-                                    ],
-                                    "outline": {
-                                        "width": 1,
-                                        "color": "white"
-                                    }
-                                }
-                            }
+                            ]
                         }
                     ],
                     "ground": {
