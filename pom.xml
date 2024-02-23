@@ -330,6 +330,9 @@
                         <include>**/gulpfile.js</include>
                         <include>**/pom.xml</include>
                     </includes>
+                    <excludes>
+                        <exclude>src/main/js/**/*.min.js</exclude>
+                    </excludes>
                     <mapping>
                         <vue>XML_STYLE</vue>
                     </mapping>
