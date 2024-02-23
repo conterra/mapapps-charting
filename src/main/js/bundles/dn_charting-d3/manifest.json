@@ -1,5 +1,5 @@
 {
-    "name": "d3",
+    "name": "dn_charting-d3",
     "version": "5.14.2",
     "description": "Data-Driven Documents",
     "main": "d3.min.js",

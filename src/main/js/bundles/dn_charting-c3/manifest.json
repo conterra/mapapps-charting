@@ -1,11 +1,11 @@
 {
-    "name": "c3",
+    "name": "dn_charting-c3",
     "version": "0.7.11",
     "description": "D3-based reusable chart library",
     "main": "c3.min.js",
     "i18n": [],
     "dependencies": {
-        "d3": "^5.11.0"
+        "dn_charting-d3": "^5.11.0"
     },
     "CSS-Themes-Extension": [
         {
