@@ -13,7 +13,7 @@
         "apprt-core": "^4.8.0",
         "highlights": "^4.8.0",
         "selection-services": "^4.8.0",
-        "c3": "^0.7.8"
+        "dn_charting-c3": "^0.7.8"
     },
     "CSS-Themes-Extension": [
         {
@@ -74,7 +74,7 @@
             }
         }
     ],
-    "Components": [
+    "components": [
         {
             "name": "C3ChartsFactory",
             "provides": [

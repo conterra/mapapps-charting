@@ -1,0 +1,31 @@
+{
+    "name": "dn_charting-c3",
+    "version": "0.7.20",
+    "description": "D3-based reusable chart library",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/c3js/c3.git"
+    },
+    "keywords": [
+        "d3",
+        "chart",
+        "graph"
+    ],
+    "authors": [
+        "Masayuki Tanaka",
+        "Ændrew Rininsland",
+        "Yoshiya Hinosawa"
+    ],
+    "license": "MIT",
+    "CSS-Themes-Extension": [
+        {
+            "name": "*",
+            "files": [
+                "./styles/c3.min.css"
+            ]
+        }
+    ],
+    "main": "index.js",
+    "layer": "",
+    "i18n": []
+}

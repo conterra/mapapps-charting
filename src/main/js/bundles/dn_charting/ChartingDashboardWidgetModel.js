@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2023 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,9 +97,7 @@ export default declare({
                 return response;
             });
         });
-        return Promise.all(promises).then((res) => {
-            return res;
-        });
+        return Promise.all(promises).then((res) => res);
     },
 
     handleChartResponses(responses) {
@@ -122,84 +120,84 @@ export default declare({
     },
 
     _getSumObjects(responses) {
-        return responses.map((response) => {
-            return new Promise((resolve, reject) => {
-                let sumObject = null;
-                const results = response.result;
-                const storeId = response.source.id;
-                const relationShips = this._properties.relationships;
-                const relationShip = relationShips.find((relation) => relation.storeId === storeId);
-                this._queryController.getRelatedData(results, relationShip).then((results) => {
-                    results.forEach((result) => {
-                        if (!sumObject) {
-                            sumObject = {};
-                        }
-                        ct_lang.forEachProp(result, (value, name) => {
-                            if (name === "relatedData") {
-                                if (!sumObject.relatedData) {
-                                    sumObject.relatedData = value;
-                                    return;
-                                }
-                                sumObject.relatedData.forEach((data) => {
-                                    const newData = value.find((d) => d.time === data.time)
-                                    ct_lang.forEachProp(newData.attributes, (value, name) => {
-                                        if (data.attributes[name]) {
-                                            if (typeof value === "number") {
-                                                data.attributes[name] = data.attributes[name] += parseFloat(value)
-                                            }
-                                        } else {
-                                            if (typeof value === "number") {
-                                                data.attributes[name] = parseFloat(value);
-                                            } else {
-                                                data.attributes[name] = value;
-                                            }
+        return responses.map((response) => new Promise((resolve, reject) => {
+            let sumObject = null;
+            const results = response.result;
+            const storeId = response.source.id;
+            const relationShips = this._properties.relationships;
+            const relationShip = relationShips.find((relation) => relation.storeId === storeId);
+            this._queryController.getRelatedData(results, relationShip).then((results) => {
+                results.forEach((result) => {
+                    if (!sumObject) {
+                        sumObject = {};
+                    }
+                    ct_lang.forEachProp(result, (value, name) => {
+                        if (name === "relatedData") {
+                            if (!sumObject.relatedData) {
+                                sumObject.relatedData = value;
+                                return;
+                            }
+                            sumObject.relatedData.forEach((data) => {
+                                const newData = value.find((d) => d.time === data.time);
+                                ct_lang.forEachProp(newData.attributes, (value, name) => {
+                                    if (data.attributes[name]) {
+                                        if (typeof value === "number") {
+                                            data.attributes[name] = data.attributes[name] += parseFloat(value);
                                         }
-                                    });
-                                });
-                            } else {
-                                if (sumObject[name]) {
-                                    if (typeof value === "number") {
-                                        sumObject[name] = sumObject[name] += parseFloat(value)
-                                    }
-                                } else {
-                                    if (typeof value === "number") {
-                                        sumObject[name] = parseFloat(value);
                                     } else {
-                                        sumObject[name] = value;
+                                        if (typeof value === "number") {
+                                            data.attributes[name] = parseFloat(value);
+                                        } else {
+                                            data.attributes[name] = value;
+                                        }
                                     }
+                                });
+                            });
+                        } else {
+                            if (sumObject[name]) {
+                                if (typeof value === "number") {
+                                    sumObject[name] = sumObject[name] += parseFloat(value);
+                                }
+                            } else {
+                                if (typeof value === "number") {
+                                    sumObject[name] = parseFloat(value);
+                                } else {
+                                    sumObject[name] = value;
                                 }
                             }
-                        });
-
+                        }
                     });
 
-                    if (this.drawTabGeometries) {
-                        apprt_when(this._queryController.getGeometryForSumObject(results, response.source.store), (results) => {
-                            const geometries = [];
-                            results.forEach((result) => {
-                                if (result.geometry) {
-                                    const geometryAlreadyContained = this._isGeometryAlreadyContained(result.geometry, geometries);
-                                    !geometryAlreadyContained && geometries.push(result.geometry);
-                                }
-                            });
-                            resolve({
-                                object: sumObject,
-                                count: results.length,
-                                storeId: storeId,
-                                geometries: geometries
-                            });
+                });
+
+                if (this.drawTabGeometries) {
+                    // eslint-disable-next-line max-len
+                    apprt_when(this._queryController.getGeometryForSumObject(results, response.source.store), (results) => {
+                        const geometries = [];
+                        results.forEach((result) => {
+                            if (result.geometry) {
+                                // eslint-disable-next-line max-len
+                                const geometryAlreadyContained = this._isGeometryAlreadyContained(result.geometry, geometries);
+                                !geometryAlreadyContained && geometries.push(result.geometry);
+                            }
                         });
-                    } else {
                         resolve({
                             object: sumObject,
                             count: results.length,
                             storeId: storeId,
-                            geometries: []
+                            geometries: geometries
                         });
-                    }
-                });
+                    });
+                } else {
+                    resolve({
+                        object: sumObject,
+                        count: results.length,
+                        storeId: storeId,
+                        geometries: []
+                    });
+                }
             });
-        });
+        }));
     },
 
     _newChartsConfiguration(responses) {
@@ -353,7 +351,7 @@ export default declare({
         const highlightObjects = geometries.map((geometry) => {
             return {
                 geometry: geometry
-            }
+            };
         });
         this[_currentHighlight] = this._highlighter.highlight(highlightObjects);
     },
