@@ -13,8 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import c3 from "c3";
-import * as d3 from "d3";
+import c3 from "dn_charting-c3";
 
 export default class C3ChartsFactory {
 
