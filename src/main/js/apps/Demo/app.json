@@ -51,7 +51,6 @@
                 "drawChartsForSelectionResults": true,
                 "relationships": [],
                 "chartsProperties": [
-
                     {
                         "storeId": "Bevoelkerung_Altersgruppen",
                         "titleAttribute": "NAME",
@@ -967,7 +966,7 @@
         "map-init": {
             "Config": {
                 "map": {
-                    "basemap": "streets-night-vector",
+                    "basemap": "streets-vector",
                     "layers": [
                         {
                             "id": "Bevoelkerung_Altersgruppen",
@@ -1060,7 +1059,7 @@
         },
         "themes": {
             "ThemeModel": {
-                "_selectedTheme": "everlasting"
+                "_selectedTheme": "autumn"
             },
             "ThemeSelector": {
                 "componentEnabled": true
