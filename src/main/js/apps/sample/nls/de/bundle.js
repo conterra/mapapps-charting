@@ -14,5 +14,5 @@
  * limitations under the License.
  */
 module.exports = {
-    apptitle: "Statistiken der Wahlkreise - 2017"
+    apptitle: "Statistiken der Wahlkreise - 2016"
 };

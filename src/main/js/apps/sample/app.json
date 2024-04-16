@@ -130,12 +130,7 @@
                                     }
                                 ],
                                 "colorPattern": [
-                                    "#1f77b4",
-                                    "#aec7e8",
-                                    "#ff7f0e",
-                                    "#ffbb78",
-                                    "#2ca02c",
-                                    "#98df8a"
+                                    "black","grey"
                                 ],
                                 "calculationType": "mean",
                                 "dataOrientation": "rows",
@@ -216,6 +211,9 @@
                                         "attribute": "a16",
                                         "title": "75 Jahre und älter"
                                     }
+                                ],
+                                "colorPattern": [
+                                    "green", "lightgreen", "darkgreen"
                                 ],
                                 "calculationType": "mean",
                                 "dataOrientation": "rows",
@@ -367,120 +365,7 @@
                                 "expanded": true
                             }
                         ]
-                    },
-                    {
-                        "storeId": "Baugenehmigungen",
-                        "titleAttribute": "NAME",
-                        "charts": [
-                            
-                            {
-                                "title": "Baugenehmigungen",
-                                "type": "bar",
-                                "height": 600,
-                                "data": [
-                                    {
-                                        "name": "NAME",
-                                        "title": "Name"
-                                    },
-                                    {
-                                        "name": "a0",
-                                        "title": "Wohngebäude insgesamt"
-                                    },
-                                    {
-                                        "name": "a1",
-                                        "title": "Wohngebäude mit 1 Wohnung"
-                                    },
-                                    {
-                                        "name": "a2",
-                                        "title": "Wohngebäude mit 2 Wohnungen"
-                                    },
-                                    {
-                                        "name": "a3",
-                                        "title": "Wohngebäude mit 3 und mehr Wohnungen"
-                                    },
-                                    {
-                                        "name": "a4",
-                                        "title": "Wohnungen in Wohngebäuden insgesamt"
-                                    },
-                                    {
-                                        "name": "a5",
-                                        "title": "Wohnungen in Wohngebäuden mit 1 Wohnung"
-                                    },
-                                    {
-                                        "name": "a6",
-                                        "title": "Wohnungen in Wohngebäuden mit 2 Wohnungen"
-                                    },
-                                    {
-                                        "name": "a7",
-                                        "title": "Wohnungen in Wohngebäudem mit 3 und mehr Wohnungen"
-                                    },
-                                    {
-                                        "name": "a8",
-                                        "title": "Wohnfläche (1000 qm)"
-                                    }
-                                    
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            }
-                        ]
-                    },
-                    {
-                        "storeId": "Bauland_Kaufwerte",
-                        "titleAttribute": "NAME",
-                        "charts": [
-                            
-                            {
-                                "title": "Bauland Kaufwerte",
-                                "type": "bar",
-                                "height": 600,
-                                "data": [
-                                    {
-                                        "name": "insgesamt1",
-                                        "title": "Veräußerungsfälle von Bauland (Anzahl)"
-                                    },
-                                    {
-                                        "name": "insgesamt2",
-                                        "title": "Veräußerte Baulandfläche (1000 qm)"
-                                    },
-                                    {
-                                        "name": "insgesamt3",
-                                        "title": "Kaufsumme (Tsd. EUR)"
-                                    },
-                                    {
-                                        "name": "insgesamt4",
-                                        "title": "Durchschnittlicher Kaufwert je qm (EUR)"
-                                    },
-                                    {
-                                        "name": "baureifes1",
-                                        "title": "Veräußerungsfälle von Bauland (Anzahl)"
-                                    },
-                                    {
-                                        "name": "baureifes2",
-                                        "title": "Veräußerte Baulandfläche (1000 qm)"
-                                    },
-                                    {
-                                        "name": "baureifes3",
-                                        "title": " Kaufsumme (Tsd. EUR)"
-                                    },
-                                    {
-                                        "name": "baureifes4",
-                                        "title": "Durchschnittlicher Kaufwert je qm (EUR)"
-                                    }
-                                    
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            }
-                        ]
-                    }
-                    
+                    }  
                     
                 ],
                 "chartsTabs": [
@@ -627,57 +512,7 @@
                     "fetchIdProperty": true,
                     "enablePagination": false
                 },
-                {
-                    "title": "Bauland Kaufwerte",
-                    "id": "Bauland_Kaufwerte",
-                    "description": "",
-                    "idProperty": "OBJECTID",
-                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/a0988e/FeatureServer/0",
-                    "useIn": [
-                        "selection"
-                    ],
-                    "filterOptions": {
-                        "suggestContains": true,
-                        "metadata": {
-                            "fields": [
-                                {
-                                    "name": "insgesamt1",
-                                    "title": "Veräußerungsfälle von Bauland (Anzahl)"
-                                },
-                                {
-                                    "name": "insgesamt2",
-                                    "title": "Veräußerte Baulandfläche (1000 qm)"
-                                },
-                                {
-                                    "name": "insgesamt3",
-                                    "title": "Kaufsumme (Tsd. EUR)"
-                                },
-                                {
-                                    "name": "insgesamt4",
-                                    "title": "Durchschnittlicher Kaufwert je qm (EUR)"
-                                },
-                                {
-                                    "name": "baureifes1",
-                                    "title": "Veräußerungsfälle von Bauland (Anzahl)"
-                                },
-                                {
-                                    "name": "baureifes2",
-                                    "title": "Veräußerte Baulandfläche (1000 qm)"
-                                },
-                                {
-                                    "name": "baureifes3",
-                                    "title": " Kaufsumme (Tsd. EUR)"
-                                },
-                                {
-                                    "name": "baureifes4",
-                                    "title": "Durchschnittlicher Kaufwert je qm (EUR)"
-                                }
-                            ]
-                        }
-                    },
-                    "fetchIdProperty": true,
-                    "enablePagination": false
-                },
+                
                 {
                     "title": "Arbeitslosenstatistik Kreisebene",
                     "id": "Arbeitslosenstatistik_Kreise",
@@ -728,67 +563,8 @@
                     },
                     "fetchIdProperty": true,
                     "enablePagination": false
-                },
-                {
-                    "title": "Baugenehmigungen",
-                    "id": "Baugenehmigungen",
-                    "description": "",
-                    "idProperty": "OBJECTID",
-                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/a8c810/FeatureServer/0",
-                    "useIn": [
-                        "selection"
-                    ],
-                    "filterOptions": {
-                        "suggestContains": true,
-                        "metadata": {
-                            "fields": [
-                                {
-                                    "name": "NAME",
-                                    "title": "Name"
-                                },
-                                {
-                                    "name": "a0",
-                                    "title": "Wohngebäude insgesamt"
-                                },
-                                {
-                                    "name": "a1",
-                                    "title": "Wohngebäude mit 1 Wohnung"
-                                },
-                                {
-                                    "name": "a2",
-                                    "title": "Wohngebäude mit 2 Wohnungen"
-                                },
-                                {
-                                    "name": "a3",
-                                    "title": "Wohngebäude mit 3 und mehr Wohnungen"
-                                },
-                                {
-                                    "name": "a4",
-                                    "title": "Wohnungen in Wohngebäuden insgesamt"
-                                },
-                                {
-                                    "name": "a5",
-                                    "title": "Wohnungen in Wohngebäuden mit 1 Wohnung"
-                                },
-                                {
-                                    "name": "a6",
-                                    "title": "Wohnungen in Wohngebäuden mit 2 Wohnungen"
-                                },
-                                {
-                                    "name": "a7",
-                                    "title": "Wohnungen in Wohngebäudem mit 3 und mehr Wohnungen"
-                                },
-                                {
-                                    "name": "a8",
-                                    "title": "Wohnfläche (1000 qm)"
-                                }
-                            ]
-                        }
-                    },
-                    "fetchIdProperty": true,
-                    "enablePagination": false
                 }
-
+                
             ]
         },
         "toolset": {
