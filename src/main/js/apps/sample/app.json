@@ -386,7 +386,7 @@
         "agssearch": {
             "AGSStore": [
                 {
-                    "title": "Bevoelkerung_Altersgruppen",
+                    "title": "Bevölkerung Altersgruppen",
                     "id": "Bevoelkerung_Altersgruppen",
                     "description": "",
                     "idProperty": "OBJECTID",
@@ -478,7 +478,7 @@
                     "enablePagination": false
                 },
                 {
-                    "title": "Einkommen_Haushalte_Kreise",
+                    "title": "Einkommen Haushalte Kreise",
                     "id": "Einkommen_Haushalte_Kreise",
                     "description": "",
                     "idProperty": "OBJECTID",
