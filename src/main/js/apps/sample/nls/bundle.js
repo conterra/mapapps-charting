@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2024 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 module.exports = {
     root: {
-        apptitle: "Statistiken der Wahlkreise - 2017"
+        apptitle: "Statistiken der Wahlkreise - 2016"
     },
     "de": true
 };

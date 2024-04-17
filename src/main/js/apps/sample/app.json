@@ -65,12 +65,56 @@
                                         "title": "Unter 3 Jahren"
                                     },
                                     {
+                                        "attribute": "a1",
+                                        "title": "3 bis 6 Jahren"
+                                    },
+                                    {
                                         "attribute": "a2",
                                         "title": "6-10 Jahre"
                                     },
                                     {
+                                        "attribute": "a3",
+                                        "title": "10-15 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a4",
+                                        "title": "15-18 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a5",
+                                        "title": "18-20 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a6",
+                                        "title": "20-25 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a7",
+                                        "title": "25-30 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a8",
+                                        "title": "30-35 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a9",
+                                        "title": "35-40 Jahre"
+                                    },
+                                    {
                                         "attribute": "a10",
                                         "title": "40-45 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a11",
+                                        "title": "45-50 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a12",
+                                        "title": "50-55 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a13",
+                                        "title": "55-60 Jahre"
                                     },
                                     {
                                         "attribute": "a14",
@@ -86,12 +130,7 @@
                                     }
                                 ],
                                 "colorPattern": [
-                                    "#1f77b4",
-                                    "#aec7e8",
-                                    "#ff7f0e",
-                                    "#ffbb78",
-                                    "#2ca02c",
-                                    "#98df8a"
+                                    "black","grey"
                                 ],
                                 "calculationType": "mean",
                                 "dataOrientation": "rows",
@@ -109,12 +148,56 @@
                                         "title": "Unter 3 Jahren"
                                     },
                                     {
+                                        "attribute": "a1",
+                                        "title": "3 bis 6 Jahren"
+                                    },
+                                    {
                                         "attribute": "a2",
                                         "title": "6-10 Jahre"
                                     },
                                     {
+                                        "attribute": "a3",
+                                        "title": "10-15 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a4",
+                                        "title": "15-18 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a5",
+                                        "title": "18-20 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a6",
+                                        "title": "20-25 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a7",
+                                        "title": "25-30 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a8",
+                                        "title": "30-35 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a9",
+                                        "title": "35-40 Jahre"
+                                    },
+                                    {
                                         "attribute": "a10",
                                         "title": "40-45 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a11",
+                                        "title": "45-50 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a12",
+                                        "title": "50-55 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a13",
+                                        "title": "55-60 Jahre"
                                     },
                                     {
                                         "attribute": "a14",
@@ -129,6 +212,9 @@
                                         "title": "75 Jahre und älter"
                                     }
                                 ],
+                                "colorPattern": [
+                                    "green", "lightgreen", "darkgreen"
+                                ],
                                 "calculationType": "mean",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
@@ -138,37 +224,55 @@
                         ]
                     },
                     {
-                        "storeId": "wahlkreise_strukturdaten",
-                        "titleAttribute": "WKR_NAME",
+                        "storeId": "Einkommen_Haushalte_Kreise",
+                        "titleAttribute": "NAME",
+                        "charts": [
+                            
+                            {
+                                "title": "Einkommensverteilung",
+                                "type": "bar",
+                                "height": 600,
+                                "data": [
+                                    {
+                                        "attribute": "a0",
+                                        "title": "verfüg. Einkommen der priv. Haushalte (Tsd. EUR)"
+                                    },
+                                    {
+                                        "attribute": "a1",
+                                        "title": "verfüg. Einkommen der priv. Haushalte je Einwohner (EUR)"
+                                    }
+                                    
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            }
+                        ]
+                    },
+                    {
+                        "storeId": "Arbeitslosenstatistik_Kreise",
+                        "titleAttribute": "NAME",
                         "charts": [
                             {
-                                "title": "Altersverteilung",
+                                "title": "Arbeitslosenverteilung Alter",
                                 "type": "donut",
                                 "height": 400,
                                 "data": [
+
+                                    
                                     {
-                                        "attribute": "Alter_unter_18",
-                                        "title": "Unter 18 Jahren"
+                                        "attribute": "a3",
+                                        "title": "15 bis unter 20 Jahre"
                                     },
                                     {
-                                        "attribute": "Alter_18_24",
-                                        "title": "18 - 24 Jahre"
+                                        "attribute": "a4",
+                                        "title": "15 bis unter 25 Jahre"
                                     },
                                     {
-                                        "attribute": "Alter_25_34",
-                                        "title": "25 - 34 Jahre"
-                                    },
-                                    {
-                                        "attribute": "Alter_35_59",
-                                        "title": "35 - 59 Jahre"
-                                    },
-                                    {
-                                        "attribute": "Alter_60_74",
-                                        "title": "60 - 74 Jahre"
-                                    },
-                                    {
-                                        "attribute": "Alter_75_und_mehr",
-                                        "title": "75 Jahre und älter"
+                                        "attribute": "a1",
+                                        "title": "55 bis unter 65 Jahre"
                                     }
                                 ],
                                 "colorPattern": [
@@ -186,670 +290,83 @@
                                 "expanded": true
                             },
                             {
-                                "title": "Altersverteilung",
+                                "title": "Arbeitslosenverteilung Gruppe",
+                                "type": "donut",
+                                "height": 400,
+                                "data": [
+
+                                    {
+                                        "attribute": "a1",
+                                        "title": "Ausländer"
+                                    },
+                                    {
+                                        "attribute": "a2",
+                                        "title": "Schwerbehindert"
+                                    },
+                                    {
+                                        "attribute": "a1",
+                                        "title": " Langzeitarbeitslos"
+                                    }
+                                ],
+                                "colorPattern": [
+                                    "#1f77b4",
+                                    "#aec7e8",
+                                    "#ff7f0e",
+                                    "#ffbb78",
+                                    "#2ca02c",
+                                    "#98df8a"
+                                ],
+                                "calculationType": "mean",
+                                "dataOrientation": "rows",
+                                "showDataLabels": true,
+                                "rotatedAxis": false,
+                                "expanded": true
+                            },
+                            
+                            {
+                                "title": "Arbeitslosenstatistik",
                                 "type": "bar",
                                 "height": 600,
                                 "data": [
                                     {
-                                        "attribute": "Alter_unter_18",
-                                        "title": "Unter 18 Jahren"
+                                        "attribute": "a0",
+                                        "title": " Anzahl insg."
                                     },
                                     {
-                                        "attribute": "Alter_18_24",
-                                        "title": "18 - 24 Jahre"
+                                        "attribute": "a1",
+                                        "title": "Ausländer"
                                     },
                                     {
-                                        "attribute": "Alter_25_34",
-                                        "title": "25 - 34 Jahre"
+                                        "attribute": "a2",
+                                        "title": "Schwerbehindert"
                                     },
                                     {
-                                        "attribute": "Alter_35_59",
-                                        "title": "35 - 59 Jahre"
+                                        "attribute": "a3",
+                                        "title": "15 bis unter 20 Jahre"
                                     },
                                     {
-                                        "attribute": "Alter_60_74",
-                                        "title": "60 - 74 Jahre"
+                                        "attribute": "a4",
+                                        "title": "15 bis unter 25 Jahre"
                                     },
                                     {
-                                        "attribute": "Alter_75_und_mehr",
-                                        "title": "75 Jahre und älter"
+                                        "attribute": "a1",
+                                        "title": "55 bis unter 65 Jahre"
+                                    },
+                                    {
+                                        "attribute": "a1",
+                                        "title": " Langzeitarbeitslos"
                                     }
+                                    
                                 ],
                                 "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Religionsangehörigkeit",
-                                "type": "pie",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "BEV_Römisch_Katholisch",
-                                        "title": "Römisch Katholisch"
-                                    },
-                                    {
-                                        "attribute": "BEV_Evangelisch",
-                                        "title": "Evangelisch"
-                                    },
-                                    {
-                                        "attribute": "BEV_sonst_Religion",
-                                        "title": "Sonstige Religionen"
-                                    }
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Beschäftigte",
-                                "type": "pie",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "Beschäftigte_Land_Forst_Fisch",
-                                        "title": "Land Forst Fisch"
-                                    },
-                                    {
-                                        "attribute": "Beschäftigte_Produzierendes_Gw",
-                                        "title": "Produzierendes Gewerbe"
-                                    },
-                                    {
-                                        "attribute": "Beschäftigte_Handel_Verkehr",
-                                        "title": "Handel und Verkehr"
-                                    },
-                                    {
-                                        "attribute": "Beschaftigte_Dienstleister",
-                                        "title": "Dienstleistung"
-                                    },
-                                    {
-                                        "attribute": "Beschäftigte_Übrige",
-                                        "title": "Sonstige"
-                                    }
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Schulabschlüsse",
-                                "type": "pie",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "Absolv_ohne_Hauptschulabschlus",
-                                        "title": "Ohne Schulabschluss"
-                                    },
-                                    {
-                                        "attribute": "Absolv_mit_Hauptschulabscluss",
-                                        "title": "Hauptschulabschluss"
-                                    },
-                                    {
-                                        "attribute": "Absolv_mit_mittlerem_Schulabs",
-                                        "title": "Mittlere Reife"
-                                    },
-                                    {
-                                        "attribute": "Absolv_mit_all_und_Fachhochsch",
-                                        "title": "Allgemeine- oder Fachhhochschulreife"
-                                    },
-                                    {
-                                        "attribute": "Absolv_Berufschulen",
-                                        "title": "Berufsschulabschluss"
-                                    }
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Arbeitslosenquote",
-                                "type": "gauge",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "Arbeitslosenquote_insges",
-                                        "title": "Arbeitslosenquote Insgesamt"
-                                    }
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Arbeitslosenquote",
-                                "type": "bar",
-                                "height": 600,
-                                "data": [
-                                    {
-                                        "attribute": "Arbeitslosenquote_insges",
-                                        "title": "Arbeitslosenquote Insgesamt"
-                                    },
-                                    {
-                                        "attribute": "Arbeitslosenquote_Männer",
-                                        "title": "Arbeitslosenquote Männer"
-                                    },
-                                    {
-                                        "attribute": "Arbeitslosenquote_Frauen",
-                                        "title": "Arbeitslosenquote Frauen "
-                                    },
-                                    {
-                                        "attribute": "Arbeitslosenquote_15_20",
-                                        "title": "Arbeitslosenquote 15 bis 20 Jahre"
-                                    },
-                                    {
-                                        "attribute": "Arbeitslosenquote_55_65",
-                                        "title": "Arbeitslosenquote 55 bis 65 Jahre"
-                                    }
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Statistiken je 1000 Einwohner",
-                                "type": "bar",
-                                "height": 600,
-                                "data": [
-                                    {
-                                        "attribute": "Geburtensaldo_je1000",
-                                        "title": "Geburtensaldo - Zu- bzw. Abnahme"
-                                    },
-                                    {
-                                        "attribute": "Wanderungssaldo_je1000",
-                                        "title": "Wanderungssaldo - Zu- bzw. Abnahme"
-                                    },
-                                    {
-                                        "attribute": "Whg_Fertiggestellte_je1000_Ein",
-                                        "title": "Fertiggestellte Wohnungen"
-                                    },
-                                    {
-                                        "attribute": "Whg_Bestand_je1000_Einw",
-                                        "title": "Bestehende Wohnungen"
-                                    },
-                                    {
-                                        "attribute": "KFZ_Bestand_je1000_Einw",
-                                        "title": "KFZ Bestand"
-                                    },
-                                    {
-                                        "attribute": "Absolv_allgSchulen_je1000",
-                                        "title": "Schulabsolventen"
-                                    },
-                                    {
-                                        "attribute": "Betreure_Kinder_je1000",
-                                        "title": "Betreute Kinder"
-                                    },
-                                    {
-                                        "attribute": "Unternehmen_insges_je1000",
-                                        "title": "Unternehmen"
-                                    },
-                                    {
-                                        "attribute": "Handwerksunternehmen_je1000",
-                                        "title": "Unternehmen"
-                                    },
-                                    {
-                                        "attribute": "Beschäftigte_insges_je1000",
-                                        "title": "Beschäftigt"
-                                    },
-                                    {
-                                        "attribute": "Empf_SGBII_insges_je1000",
-                                        "title": "Arbeitslos"
-                                    }
-                                ],
-                                "calculationType": "sum",
                                 "dataOrientation": "rows",
                                 "showDataLabels": true,
                                 "rotatedAxis": false,
                                 "expanded": true
                             }
                         ]
-                    },
-                    {
-                        "storeId": "wahlkreise_ergebnis",
-                        "titleAttribute": "Wahlkrei_1",
-                        "charts": [
-                            {
-                                "title": "Erststimme",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "btw17_W_26",
-                                        "title": "CDU / CSU"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_31",
-                                        "title": "SPD"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_36",
-                                        "title": "Linke"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_41",
-                                        "title": "Grüne"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_46",
-                                        "title": "FDP"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_51",
-                                        "title": "AFD"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "#000000",
-                                    "#FF0000",
-                                    "#A020F0",
-                                    "#00FF00",
-                                    "#FFFF00",
-                                    "#0000FF"
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Erststimme",
-                                "type": "bar",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "btw17_W_26",
-                                        "title": "CDU / CSU"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_31",
-                                        "title": "SPD"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_36",
-                                        "title": "Linke"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_41",
-                                        "title": "Grüne"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_46",
-                                        "title": "FDP"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_51",
-                                        "title": "AFD"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "#000000",
-                                    "#FF0000",
-                                    "#A020F0",
-                                    "#00FF00",
-                                    "#FFFF00",
-                                    "#0000FF"
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Zweitstimme",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "btw17_W_28",
-                                        "title": "CDU / CSU"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_33",
-                                        "title": "SPD"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_38",
-                                        "title": "Linke"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_43",
-                                        "title": "Grüne"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_48",
-                                        "title": "FDP"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_53",
-                                        "title": "AFD"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "#000000",
-                                    "#FF0000",
-                                    "#A020F0",
-                                    "#00FF00",
-                                    "#FFFF00",
-                                    "#0000FF"
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Zweitstimme",
-                                "type": "bar",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "btw17_W_28",
-                                        "title": "CDU / CSU"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_33",
-                                        "title": "SPD"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_38",
-                                        "title": "Linke"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_43",
-                                        "title": "Grüne"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_48",
-                                        "title": "FDP"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_53",
-                                        "title": "AFD"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "#000000",
-                                    "#FF0000",
-                                    "#A020F0",
-                                    "#00FF00",
-                                    "#FFFF00",
-                                    "#0000FF"
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Gültigkeit Erststimme",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "btw17_W_12",
-                                        "title": "gültig"
-                                    },
-                                    {
-                                        "attribute": "btw17_WK_8",
-                                        "title": "ungültig"
-                                    }
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Gültigkeit Zweitstimme",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "btw17_W_14",
-                                        "title": "gültig"
-                                    },
-                                    {
-                                        "attribute": "btw17_W_10",
-                                        "title": "ungültig"
-                                    }
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Entwicklung Erststimme",
-                                "type": "line",
-                                "axisType": "timeseries",
-                                "axisFormat": "%Y",
-                                "axisTickAdjusted": false,
-                                "padding": {
-                                    "left": 20,
-                                    "right": 20,
-                                    "top": 0,
-                                    "bottom": 0
-                                },
-                                "height": 400,
-                                "headers": [
-                                    "2013",
-                                    "2017"
-                                ],
-                                "dataSeries": [
-                                    {
-                                        "title": "CDU / CSU",
-                                        "attributes": [
-                                            "btw17_W_26",
-                                            "btw17_W_27"
-                                        ],
-                                        "color": "#000000"
-                                    },
-                                    {
-                                        "title": "SPD",
-                                        "attributes": [
-                                            "btw17_W_31",
-                                            "btw17_W_32"
-                                        ],
-                                        "color": "#FF0000"
-                                    },
-                                    {
-                                        "title": "Linke",
-                                        "attributes": [
-                                            "btw17_W_36",
-                                            "btw17_W_37"
-                                        ],
-                                        "color": "#A020F0"
-                                    },
-                                    {
-                                        "title": "Grüne",
-                                        "attributes": [
-                                            "btw17_W_41",
-                                            "btw17_W_42"
-                                        ],
-                                        "color": "#00FF00"
-                                    },
-                                    {
-                                        "title": "FDP",
-                                        "attributes": [
-                                            "btw17_W_46",
-                                            "btw17_W_47"
-                                        ],
-                                        "color": "#FFFF00"
-                                    },
-                                    {
-                                        "title": "AFD",
-                                        "attributes": [
-                                            "btw17_W_51",
-                                            "btw17_W_52"
-                                        ],
-                                        "color": "#0000FF"
-                                    }
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "columns",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Entwicklung Erststimme",
-                                "type": "bar",
-                                "axisType": "timeseries",
-                                "axisFormat": "%Y",
-                                "axisTickAdjusted": true,
-                                "height": 400,
-                                "headers": [
-                                    "2013",
-                                    "2017"
-                                ],
-                                "dataSeries": [
-                                    {
-                                        "title": "CDU / CSU",
-                                        "attributes": [
-                                            "btw17_W_26",
-                                            "btw17_W_27"
-                                        ],
-                                        "color": "#000000"
-                                    },
-                                    {
-                                        "title": "SPD",
-                                        "attributes": [
-                                            "btw17_W_31",
-                                            "btw17_W_32"
-                                        ],
-                                        "color": "#FF0000"
-                                    },
-                                    {
-                                        "title": "Linke",
-                                        "attributes": [
-                                            "btw17_W_36",
-                                            "btw17_W_37"
-                                        ],
-                                        "color": "#A020F0"
-                                    },
-                                    {
-                                        "title": "Grüne",
-                                        "attributes": [
-                                            "btw17_W_41",
-                                            "btw17_W_42"
-                                        ],
-                                        "color": "#00FF00"
-                                    },
-                                    {
-                                        "title": "FDP",
-                                        "attributes": [
-                                            "btw17_W_46",
-                                            "btw17_W_47"
-                                        ],
-                                        "color": "#FFFF00"
-                                    },
-                                    {
-                                        "title": "AFD",
-                                        "attributes": [
-                                            "btw17_W_51",
-                                            "btw17_W_52"
-                                        ],
-                                        "color": "#0000FF"
-                                    }
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "columns",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Entwicklung Erststimme",
-                                "type": "bar",
-                                "axisType": "timeseries",
-                                "axisFormat": "%Y",
-                                "axisTickAdjusted": true,
-                                "height": 400,
-                                "headers": [
-                                    "2013",
-                                    "2017"
-                                ],
-                                "dataSeries": [
-                                    {
-                                        "title": "CDU / CSU",
-                                        "attributes": [
-                                            "btw17_W_26",
-                                            "btw17_W_27"
-                                        ],
-                                        "color": "#000000"
-                                    },
-                                    {
-                                        "title": "SPD",
-                                        "attributes": [
-                                            "btw17_W_31",
-                                            "btw17_W_32"
-                                        ],
-                                        "color": "#FF0000"
-                                    },
-                                    {
-                                        "title": "Linke",
-                                        "attributes": [
-                                            "btw17_W_36",
-                                            "btw17_W_37"
-                                        ],
-                                        "color": "#A020F0"
-                                    },
-                                    {
-                                        "title": "Grüne",
-                                        "attributes": [
-                                            "btw17_W_41",
-                                            "btw17_W_42"
-                                        ],
-                                        "color": "#00FF00"
-                                    },
-                                    {
-                                        "title": "FDP",
-                                        "attributes": [
-                                            "btw17_W_46",
-                                            "btw17_W_47"
-                                        ],
-                                        "color": "#FFFF00"
-                                    },
-                                    {
-                                        "title": "AFD",
-                                        "attributes": [
-                                            "btw17_W_51",
-                                            "btw17_W_52"
-                                        ],
-                                        "color": "#0000FF"
-                                    }
-                                ],
-                                "groups": [
-                                    [
-                                        "CDU / CSU",
-                                        "SPD"
-                                    ]
-                                ],
-                                "calculationType": "sum",
-                                "dataOrientation": "columns",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            }
-                        ]
-                    }
+                    }  
+                    
                 ],
                 "chartsTabs": [
 
@@ -869,7 +386,7 @@
         "agssearch": {
             "AGSStore": [
                 {
-                    "title": "Bevoelkerung_Altersgruppen",
+                    "title": "Bevölkerung Altersgruppen",
                     "id": "Bevoelkerung_Altersgruppen",
                     "description": "",
                     "idProperty": "OBJECTID",
@@ -894,6 +411,63 @@
                                     "title": "3 bis 6"
                                 },
                                 {
+                                    "name": "a2",
+                                    "title": "6 bis 10"
+                                },
+                                {
+                                    "name": "a3",
+                                    "title": "10 bis 15"
+                                },
+                                {
+                                    "name": "a4",
+                                    "title": "15 bis 18"
+                                },
+                                {
+                                    "name": "a5",
+                                    "title": "18 bis 10"
+                                },
+                                {
+                                    "name": "a6",
+                                    "title": "20 bis 25"
+                                },
+                                {
+                                    "name": "a7",
+                                    "title": "25 bis 30"
+                                },
+                                {
+                                    "name": "a8",
+                                    "title": "30 bis 35"
+                                },
+                                {
+                                    "name": "a9",
+                                    "title": "35 bis 40"
+                                },
+                                {
+                                    "name": "a10",
+                                    "title": "40 bis 45"
+                                },
+                                {
+                                    "name": "a11",
+                                    "title": "45 bis 50"
+                                },
+                                {
+                                    "name": "a12",
+                                    "title": "50 bis 55"
+                                },
+                                {
+                                    "name": "a13",
+                                    "title": "55 bis 60"
+                                },
+                                {
+                                    "name": "a14",
+                                    "title": "60 bis 65"
+                                },
+                                {
+                                    "name": "a15",
+                                    "title": "65 bis 75"
+                                },
+
+                                {
                                     "name": "a16",
                                     "title": "75 und mehr"
                                 }
@@ -902,8 +476,95 @@
                     },
                     "fetchIdProperty": true,
                     "enablePagination": false
+                },
+                {
+                    "title": "Einkommen Haushalte Kreise",
+                    "id": "Einkommen_Haushalte_Kreise",
+                    "description": "",
+                    "idProperty": "OBJECTID",
+                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/a7103e/FeatureServer/0",
+                    "useIn": [
+                        "selection"
+                    ],
+                    "filterOptions": {
+                        "suggestContains": true,
+                        "metadata": {
+                            "fields": [
+                                {
+                                    "name": "NAME",
+                                    "title": "Name"
+                                },
+                                {
+                                    "name": "a0",
+                                    "title": "verfüg. Einkommen der priv. Haushalte (Tsd. EUR)"
+                                },
+                                {
+                                    "name": "a1",
+                                    "title": "verfüg. Einkommen der priv. Haushalte je Einwohner (EUR)"
+                                },
+                                {
+                                    "name": "YEAR",
+                                    "title": "Jahr"
+                                }
+                            ]
+                        }
+                    },
+                    "fetchIdProperty": true,
+                    "enablePagination": false
+                },
+                
+                {
+                    "title": "Arbeitslosenstatistik Kreisebene",
+                    "id": "Arbeitslosenstatistik_Kreise",
+                    "description": "",
+                    "idProperty": "OBJECTID",
+                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/aeacc0/FeatureServer/0",
+                    "useIn": [
+                        "selection"
+                    ],
+                    "filterOptions": {
+                        "suggestContains": true,
+                        "metadata": {
+                            "fields": [
+                                {
+                                    "name": "NAME",
+                                    "title": "Name"
+                                },
+                                {
+                                    "name": "a0",
+                                    "title": "Anzahl insg"
+                                },
+                                {
+                                    "name": "a1",
+                                    "title": "Ausländer"
+                                },
+                                {
+                                    "name": "a2",
+                                    "title": "Schwerbehindert"
+                                },
+                                {
+                                    "name": "a3",
+                                    "title": "15 bis unter 20 Jahre"
+                                },
+                                {
+                                    "name": "a4",
+                                    "title": "15 bis unter 25 Jahre"
+                                },
+                                {
+                                    "name": "a5",
+                                    "title": "55 bis unter 65 Jahre"
+                                },
+                                {
+                                    "name": "a6",
+                                    "title": " Langzeitarbeitslos"
+                                }
+                            ]
+                        }
+                    },
+                    "fetchIdProperty": true,
+                    "enablePagination": false
                 }
-
+                
             ]
         },
         "toolset": {
