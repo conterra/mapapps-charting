@@ -34,9 +34,6 @@
         "styles": [
             "${app}:app.css"
         ],
-        "require": [
-            "${app}.app"
-        ],
         "i18n": [
             "bundle"
         ]
@@ -227,7 +224,7 @@
                         "storeId": "Einkommen_Haushalte_Kreise",
                         "titleAttribute": "NAME",
                         "charts": [
-                            
+
                             {
                                 "title": "Einkommensverteilung",
                                 "type": "bar",
@@ -241,7 +238,7 @@
                                         "attribute": "a1",
                                         "title": "verfüg. Einkommen der priv. Haushalte je Einwohner (EUR)"
                                     }
-                                    
+
                                 ],
                                 "calculationType": "mean",
                                 "dataOrientation": "rows",
@@ -261,7 +258,7 @@
                                 "height": 400,
                                 "data": [
 
-                                    
+
                                     {
                                         "attribute": "a3",
                                         "title": "15 bis unter 20 Jahre"
@@ -322,7 +319,7 @@
                                 "rotatedAxis": false,
                                 "expanded": true
                             },
-                            
+
                             {
                                 "title": "Arbeitslosenstatistik",
                                 "type": "bar",
@@ -356,7 +353,7 @@
                                         "attribute": "a1",
                                         "title": " Langzeitarbeitslos"
                                     }
-                                    
+
                                 ],
                                 "calculationType": "mean",
                                 "dataOrientation": "rows",
@@ -365,8 +362,8 @@
                                 "expanded": true
                             }
                         ]
-                    }  
-                    
+                    }
+
                 ],
                 "chartsTabs": [
 
@@ -512,7 +509,7 @@
                     "fetchIdProperty": true,
                     "enablePagination": false
                 },
-                
+
                 {
                     "title": "Arbeitslosenstatistik Kreisebene",
                     "id": "Arbeitslosenstatistik_Kreise",
@@ -564,7 +561,7 @@
                     "fetchIdProperty": true,
                     "enablePagination": false
                 }
-                
+
             ]
         },
         "toolset": {
