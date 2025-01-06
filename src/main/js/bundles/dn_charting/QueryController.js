@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import apprt_request from "apprt-request";
+import { apprtFetch } from "apprt-fetch";
 
 export default class QueryController {
 
@@ -21,7 +21,7 @@ export default class QueryController {
         const relationships = this.relationships = metadata.relationships;
         const requests = relationships.map((relationship) => {
             const relationshipId = relationship && relationship.id;
-            return apprt_request(url + "/queryRelatedRecords", {
+            return apprtFetch(url + "/queryRelatedRecords", {
                 query: {
                     objectIds: [objectId],
                     relationshipId: relationshipId,
@@ -45,7 +45,7 @@ export default class QueryController {
             if (!relationship || !results.length) {
                 resolve(results);
             } else {
-                const requests = results.map((result) => apprt_request(relationship.tableUrl + "/query", {
+                const requests = results.map((result) => apprtFetch(relationship.tableUrl + "/query", {
                     query: {
                         where: relationship.foreignKey + " LIKE " + result[relationship.primaryKey],
                         outFields: "*",
@@ -76,7 +76,7 @@ export default class QueryController {
         const relationships = this.relationships = metadata.relationships;
         const requests = relationships.map((relationship) => {
             const relatedTableId = relationship && relationship.relatedTableId;
-            return apprt_request(url + "/" + relatedTableId, {
+            return apprtFetch(url + "/" + relatedTableId, {
                 query: {
                     f: 'json'
                 },
@@ -87,7 +87,7 @@ export default class QueryController {
     }
 
     getMetadata(url) {
-        return apprt_request(url, {
+        return apprtFetch(url, {
             query: {
                 f: 'json'
             },
