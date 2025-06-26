@@ -8,28 +8,35 @@
             "bundles"
         ],
         "allowedBundles": [
-            "system",
-            "console",
-            "notifier",
-            "splashscreen",
-            "templatelayout",
-            "template-seasons",
-            "theme-everlasting",
-            "theme-winter",
-            "theme-spring",
-            "theme-summer",
-            "theme-autumn",
-            "map-init",
-            "toolset",
-            "locateme",
-            "viewmodeswitcher",
-            "mapnavigation",
             "agssearch",
             "banner",
+            "basemaptoggler",
+            "languagetoggler",
+            "locateme",
+            "locator-store",
+            "map-init",
+            "map-preload-2D",
+            "mapnavigation",
+            "measurement-2d",
+            "notifier",
+            "parameter-url",
+            "popups-default",
+            "printing",
+            "result-ui",
+            "scalebar",
+            "search-ui",
             "selection-ui",
+            "sketching",
+            "splashscreen",
+            "system",
+            "template-seasons",
+            "templatelayout",
+            "theme-autumn",
+            "toc",
+            "toolset",
             "dn_charting",
-            "dn_querybuilder",
-            "legend"
+            "dn_imprintprivacy",
+            "dn_querybuilder"
         ],
         "styles": [
             "${app}:app.css"
@@ -49,182 +56,9 @@
                 "relationships": [],
                 "chartsProperties": [
                     {
-                        "storeId": "Bevoelkerung_Altersgruppen",
-                        "titleAttribute": "NAME",
-                        "charts": [
-                            {
-                                "title": "Altersverteilung",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-                                    {
-                                        "attribute": "a0",
-                                        "title": "Unter 3 Jahren"
-                                    },
-                                    {
-                                        "attribute": "a1",
-                                        "title": "3 bis 6 Jahren"
-                                    },
-                                    {
-                                        "attribute": "a2",
-                                        "title": "6-10 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a3",
-                                        "title": "10-15 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a4",
-                                        "title": "15-18 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a5",
-                                        "title": "18-20 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a6",
-                                        "title": "20-25 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a7",
-                                        "title": "25-30 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a8",
-                                        "title": "30-35 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a9",
-                                        "title": "35-40 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a10",
-                                        "title": "40-45 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a11",
-                                        "title": "45-50 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a12",
-                                        "title": "50-55 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a13",
-                                        "title": "55-60 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a14",
-                                        "title": "60-65 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a15",
-                                        "title": "65-75 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a16",
-                                        "title": "75 Jahre und älter"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "black","grey"
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Altersverteilung",
-                                "type": "bar",
-                                "height": 600,
-                                "data": [
-                                    {
-                                        "attribute": "a0",
-                                        "title": "Unter 3 Jahren"
-                                    },
-                                    {
-                                        "attribute": "a1",
-                                        "title": "3 bis 6 Jahren"
-                                    },
-                                    {
-                                        "attribute": "a2",
-                                        "title": "6-10 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a3",
-                                        "title": "10-15 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a4",
-                                        "title": "15-18 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a5",
-                                        "title": "18-20 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a6",
-                                        "title": "20-25 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a7",
-                                        "title": "25-30 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a8",
-                                        "title": "30-35 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a9",
-                                        "title": "35-40 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a10",
-                                        "title": "40-45 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a11",
-                                        "title": "45-50 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a12",
-                                        "title": "50-55 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a13",
-                                        "title": "55-60 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a14",
-                                        "title": "60-65 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a15",
-                                        "title": "65-75 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a16",
-                                        "title": "75 Jahre und älter"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "green", "lightgreen", "darkgreen"
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            }
-                        ]
-                    },
-                    {
                         "storeId": "Einkommen_Haushalte_Kreise",
                         "titleAttribute": "NAME",
                         "charts": [
-
                             {
                                 "title": "Einkommensverteilung",
                                 "type": "bar",
@@ -238,122 +72,6 @@
                                         "attribute": "a1",
                                         "title": "verfüg. Einkommen der priv. Haushalte je Einwohner (EUR)"
                                     }
-
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            }
-                        ]
-                    },
-                    {
-                        "storeId": "Arbeitslosenstatistik_Kreise",
-                        "titleAttribute": "NAME",
-                        "charts": [
-                            {
-                                "title": "Arbeitslosenverteilung Alter",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-
-
-                                    {
-                                        "attribute": "a3",
-                                        "title": "15 bis unter 20 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a4",
-                                        "title": "15 bis unter 25 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a1",
-                                        "title": "55 bis unter 65 Jahre"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "#1f77b4",
-                                    "#aec7e8",
-                                    "#ff7f0e",
-                                    "#ffbb78",
-                                    "#2ca02c",
-                                    "#98df8a"
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-                            {
-                                "title": "Arbeitslosenverteilung Gruppe",
-                                "type": "donut",
-                                "height": 400,
-                                "data": [
-
-                                    {
-                                        "attribute": "a1",
-                                        "title": "Ausländer"
-                                    },
-                                    {
-                                        "attribute": "a2",
-                                        "title": "Schwerbehindert"
-                                    },
-                                    {
-                                        "attribute": "a1",
-                                        "title": " Langzeitarbeitslos"
-                                    }
-                                ],
-                                "colorPattern": [
-                                    "#1f77b4",
-                                    "#aec7e8",
-                                    "#ff7f0e",
-                                    "#ffbb78",
-                                    "#2ca02c",
-                                    "#98df8a"
-                                ],
-                                "calculationType": "mean",
-                                "dataOrientation": "rows",
-                                "showDataLabels": true,
-                                "rotatedAxis": false,
-                                "expanded": true
-                            },
-
-                            {
-                                "title": "Arbeitslosenstatistik",
-                                "type": "bar",
-                                "height": 600,
-                                "data": [
-                                    {
-                                        "attribute": "a0",
-                                        "title": " Anzahl insg."
-                                    },
-                                    {
-                                        "attribute": "a1",
-                                        "title": "Ausländer"
-                                    },
-                                    {
-                                        "attribute": "a2",
-                                        "title": "Schwerbehindert"
-                                    },
-                                    {
-                                        "attribute": "a3",
-                                        "title": "15 bis unter 20 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a4",
-                                        "title": "15 bis unter 25 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a1",
-                                        "title": "55 bis unter 65 Jahre"
-                                    },
-                                    {
-                                        "attribute": "a1",
-                                        "title": " Langzeitarbeitslos"
-                                    }
-
                                 ],
                                 "calculationType": "mean",
                                 "dataOrientation": "rows",
@@ -363,206 +81,400 @@
                             }
                         ]
                     }
-
                 ],
-                "chartsTabs": [
-
-                ]
+                "chartsTabs": []
             }
         },
-        "selection-ui": {
-            "Config": {
-                "preselectSources": "all",
-                "activateSelectionMethod": true,
-                "closeOnSelection": false,
-                "selectionMethods": [
-                    "*"
-                ]
-            }
+        "dn_querybuilder": {
+            "QueryBuilderProperties": {
+                "useMemorySelectionStore": false
+            },
+            "QueryTools": []
         },
         "agssearch": {
-            "AGSStore": [
-                {
-                    "title": "Bevölkerung Altersgruppen",
-                    "id": "Bevoelkerung_Altersgruppen",
-                    "description": "",
-                    "idProperty": "OBJECTID",
-                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/a7fab8/FeatureServer/0",
-                    "useIn": [
-                        "selection"
-                    ],
-                    "filterOptions": {
-                        "suggestContains": true,
-                        "metadata": {
-                            "fields": [
-                                {
-                                    "name": "NAME",
-                                    "title": "Name"
-                                },
-                                {
-                                    "name": "a0",
-                                    "title": "unter 3"
-                                },
-                                {
-                                    "name": "a1",
-                                    "title": "3 bis 6"
-                                },
-                                {
-                                    "name": "a2",
-                                    "title": "6 bis 10"
-                                },
-                                {
-                                    "name": "a3",
-                                    "title": "10 bis 15"
-                                },
-                                {
-                                    "name": "a4",
-                                    "title": "15 bis 18"
-                                },
-                                {
-                                    "name": "a5",
-                                    "title": "18 bis 10"
-                                },
-                                {
-                                    "name": "a6",
-                                    "title": "20 bis 25"
-                                },
-                                {
-                                    "name": "a7",
-                                    "title": "25 bis 30"
-                                },
-                                {
-                                    "name": "a8",
-                                    "title": "30 bis 35"
-                                },
-                                {
-                                    "name": "a9",
-                                    "title": "35 bis 40"
-                                },
-                                {
-                                    "name": "a10",
-                                    "title": "40 bis 45"
-                                },
-                                {
-                                    "name": "a11",
-                                    "title": "45 bis 50"
-                                },
-                                {
-                                    "name": "a12",
-                                    "title": "50 bis 55"
-                                },
-                                {
-                                    "name": "a13",
-                                    "title": "55 bis 60"
-                                },
-                                {
-                                    "name": "a14",
-                                    "title": "60 bis 65"
-                                },
-                                {
-                                    "name": "a15",
-                                    "title": "65 bis 75"
-                                },
-
-                                {
-                                    "name": "a16",
-                                    "title": "75 und mehr"
-                                }
-                            ]
-                        }
-                    },
-                    "fetchIdProperty": true,
-                    "enablePagination": false
-                },
-                {
-                    "title": "Einkommen Haushalte Kreise",
-                    "id": "Einkommen_Haushalte_Kreise",
-                    "description": "",
-                    "idProperty": "OBJECTID",
-                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/a7103e/FeatureServer/0",
-                    "useIn": [
-                        "selection"
-                    ],
-                    "filterOptions": {
-                        "suggestContains": true,
-                        "metadata": {
-                            "fields": [
-                                {
-                                    "name": "NAME",
-                                    "title": "Name"
-                                },
-                                {
-                                    "name": "a0",
-                                    "title": "verfüg. Einkommen der priv. Haushalte (Tsd. EUR)"
-                                },
-                                {
-                                    "name": "a1",
-                                    "title": "verfüg. Einkommen der priv. Haushalte je Einwohner (EUR)"
-                                },
-                                {
-                                    "name": "YEAR",
-                                    "title": "Jahr"
-                                }
-                            ]
-                        }
-                    },
-                    "fetchIdProperty": true,
-                    "enablePagination": false
-                },
-
-                {
-                    "title": "Arbeitslosenstatistik Kreisebene",
-                    "id": "Arbeitslosenstatistik_Kreise",
-                    "description": "",
-                    "idProperty": "OBJECTID",
-                    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/aeacc0/FeatureServer/0",
-                    "useIn": [
-                        "selection"
-                    ],
-                    "filterOptions": {
-                        "suggestContains": true,
-                        "metadata": {
-                            "fields": [
-                                {
-                                    "name": "NAME",
-                                    "title": "Name"
-                                },
-                                {
-                                    "name": "a0",
-                                    "title": "Anzahl insg"
-                                },
-                                {
-                                    "name": "a1",
-                                    "title": "Ausländer"
-                                },
-                                {
-                                    "name": "a2",
-                                    "title": "Schwerbehindert"
-                                },
-                                {
-                                    "name": "a3",
-                                    "title": "15 bis unter 20 Jahre"
-                                },
-                                {
-                                    "name": "a4",
-                                    "title": "15 bis unter 25 Jahre"
-                                },
-                                {
-                                    "name": "a5",
-                                    "title": "55 bis unter 65 Jahre"
-                                },
-                                {
-                                    "name": "a6",
-                                    "title": " Langzeitarbeitslos"
-                                }
-                            ]
-                        }
-                    },
-                    "fetchIdProperty": true,
-                    "enablePagination": false
+            "AutoStoreRegistration": {
+                "componentEnabled": true
+            }
+        },
+        "banner": {
+            "BannerWidget": {
+                "label": "Developer Network",
+                "image": "resource('${app}:/assets/logo.svg')",
+                "imageWidth": 150,
+                "imagePosition": "above",
+                "link": "http://conterra.github.io"
+            }
+        },
+        "basemaptoggler": {
+            "Config": {
+                "itemStyles": {
+                    "gray": "icon-thumbnail",
+                    "streets": "icon-thumbnail",
+                    "satellite": "icon-thumbnail",
+                    "hybrid": "icon-thumbnail"
                 }
-
-            ]
+            }
+        },
+        "map-init": {
+            "Config": {
+                "basemaps": [
+                    {
+                        "id": "gray",
+                        "basemap": "gray-vector",
+                        "title": "${map.basemaps.gray}",
+                        "thumbnailUrl": "resource('${app}:/assets/gray.png')",
+                        "selected": true
+                    },
+                    {
+                        "id": "streets",
+                        "basemap": "streets-vector",
+                        "title": "${map.basemaps.streets}",
+                        "thumbnailUrl": "resource('${app}:/assets/streets.png')"
+                    },
+                    {
+                        "id": "satellite",
+                        "basemap": "satellite",
+                        "title": "${map.basemaps.topo}",
+                        "thumbnailUrl": "resource('${app}:/assets/topo.png')"
+                    },
+                    {
+                        "id": "hybrid",
+                        "basemap": "hybrid",
+                        "title": "${map.basemaps.hybrid}",
+                        "thumbnailUrl": "resource('${app}:/assets/hybrid.png')"
+                    }
+                ],
+                "map": {
+                    "layers": [
+                        {
+                            "id": "Einkommen_Haushalte_Kreise",
+                            "title": "Einkommen Haushalte Kreise",
+                            "type":"AGS_FEATURE",
+                            "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/a7103e/FeatureServer/0",
+                            "visible": false
+                        },
+                        {
+                            "id": "koeln1",
+                            "title": "${map.koeln1.title}",
+                            "type": "GROUP",
+                            "visible": true,
+                            "layers": [
+                                {
+                                    "title": "${map.koeln1.districts.title}",
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/8",
+                                    "type": "AGS_FEATURE",
+                                    "visible": false,
+                                    "opacity": 0.5,
+                                    "popupTemplate": {
+                                        "title": "{STV_NAME}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln1.districts.text}"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln1.boroughs.title}",
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/7",
+                                    "type": "AGS_FEATURE",
+                                    "opacity": 0.5,
+                                    "minScale": 80000,
+                                    "popupTemplate": {
+                                        "title": "{NAME}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln1.boroughs.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "expression/area",
+                                                        "format": {
+                                                            "places": 2,
+                                                            "digitSeparator": true
+                                                        }
+                                                    },
+                                                    {
+                                                        "fieldName": "expression/area-rel",
+                                                        "format": {
+                                                            "places": 2,
+                                                            "digitSeparator": true
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "expressionInfos": [
+                                            {
+                                                "name": "area",
+                                                "title": "${common.area}",
+                                                "expression": "$feature.FLAECHE / 10000"
+                                            },
+                                            {
+                                                "name": "area-rel",
+                                                "title": "${common.totalArea}",
+                                                "expression": "Round(($feature.FLAECHE / 405020000)*100,2)"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln1.precints.title}",
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/6",
+                                    "type": "AGS_FEATURE",
+                                    "opacity": 0.5,
+                                    "maxScale": 80000,
+                                    "popupTemplate": {
+                                        "title": "{NAME}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln1.precints.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "expression/area",
+                                                        "format": {
+                                                            "places": 2,
+                                                            "digitSeparator": true
+                                                        }
+                                                    },
+                                                    {
+                                                        "fieldName": "expression/area-rel",
+                                                        "format": {
+                                                            "places": 2,
+                                                            "digitSeparator": true
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "expressionInfos": [
+                                            {
+                                                "name": "area",
+                                                "title": "${common.area}",
+                                                "expression": "$feature.FLAECHE / 10000"
+                                            },
+                                            {
+                                                "name": "area-rel",
+                                                "title": "${common.totalArea}",
+                                                "expression": "Round(($feature.FLAECHE / 405020000)*100,2)"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "koeln2",
+                            "title": "${map.koeln2.title}",
+                            "description": "${map.koeln2.description}",
+                            "type": "GROUP",
+                            "layers": [
+                                {
+                                    "title": "${map.koeln2.libraries.title}",
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/1",
+                                    "type": "AGS_FEATURE",
+                                    "visible": true,
+                                    "popupTemplate": {
+                                        "title": "{NAME_LANG}",
+                                        "content": [
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "NAME_LANG",
+                                                        "label": "${common.name}"
+                                                    },
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "PLZ",
+                                                        "label": "${common.zip}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln2.museums.title}",
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/2",
+                                    "type": "AGS_FEATURE",
+                                    "visible": true,
+                                    "popupTemplate": {
+                                        "title": "Museum",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln2.museums.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "STADTBEZIR",
+                                                        "label": "${common.precint}"
+                                                    },
+                                                    {
+                                                        "fieldName": "HYPERLINK",
+                                                        "label": "${common.furtherinfo}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "id": "schools",
+                                    "title": "${map.koeln2.schools.title}",
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/3",
+                                    "type": "AGS_FEATURE",
+                                    "visible": false,
+                                    "popupTemplate": {
+                                        "title": "{NAME}",
+                                        "content": [
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "SCHULNAME",
+                                                        "label": "${common.name}"
+                                                    },
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "SCHULART",
+                                                        "label": "${common.type}"
+                                                    },
+                                                    {
+                                                        "fieldName": "TRAEGER",
+                                                        "label": "${common.provider}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "koeln3",
+                            "title": "${map.koeln3.title}",
+                            "type": "GROUP",
+                            "visible": true,
+                            "layers": [
+                                {
+                                    "title": "${map.koeln3.sights.title}",
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/4",
+                                    "type": "AGS_FEATURE",
+                                    "popupTemplate": {
+                                        "title": "${map.koeln3.sights.titleSingle}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln3.sights.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "STADTBEZIRK",
+                                                        "label": "${common.precint}"
+                                                    },
+                                                    {
+                                                        "fieldName": "HYPERLINK",
+                                                        "label": "${common.furtherinfo}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln3.playgrounds.title}",
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/5",
+                                    "type": "AGS_FEATURE",
+                                    "visible": false,
+                                    "popupTemplate": {
+                                        "title": "{Typ}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln3.playgrounds.text}"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln3.places.title}",
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/9",
+                                    "type": "AGS_FEATURE",
+                                    "popupTemplate": {
+                                        "title": "${map.koeln3.places.titleSingle}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln3.places.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "STADTVIERT",
+                                                        "label": "${common.district}"
+                                                    },
+                                                    {
+                                                        "fieldName": "HYPERLINK",
+                                                        "label": "${common.furtherinfo}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "view": {
+                    "viewmode": "2D",
+                    "center": {
+                        "x": 774853,
+                        "y": 6610677,
+                        "spatialReference": 3857
+                    },
+                    "scale": 140000
+                }
+            }
+        },
+        "toc": {
+            "Config": {
+                "showBasemaps": true,
+                "showLayerLegend": true
+            }
         },
         "toolset": {
             "ToolsetManager": {
@@ -570,6 +482,7 @@
                     {
                         "id": "mapview_tools",
                         "tools": [
+                            "querybuilder_*",
                             "locateMeTool",
                             "zoomInTool",
                             "zoomOutTool",
@@ -582,154 +495,89 @@
                         },
                         "container": "ignore",
                         "windowType": "container",
-                        "cssClass": "muted"
+                        "cssClass": "muted",
+                        "tooltipPositions": [
+                            "before",
+                            "above",
+                            "below",
+                            "after"
+                        ]
                     },
                     {
-                        "id": "tools",
-                        "title": "Floating Toolbar with Tool Labels",
+                        "id": "drawer_left",
+                        "title": "${tools.drawerLeft}",
+                        "cssClass": "ct-main-app-menu",
                         "tools": [
                             "selection-ui-tool",
-                            "queryBuilderToggleTool"
+                            "sketchToggleTool",
+                            "measuring_tools",
+                            "printingToggleTool"
                         ],
-                        "container": "map",
-                        "position": {
-                            "rel_l": 20,
-                            "rel_t": 20
+                        "registerWidget": {
+                            "widgetRole": "drawer_button"
                         },
-                        "cssClass": "showToolLabels",
-                        "windowType": "container"
+                        "container": "ignore",
+                        "windowType": "drawer_left",
+                        "tooltipPositions": [
+                            "after",
+                            "above",
+                            "below",
+                            "before"
+                        ]
                     },
                     {
-                        "id": "questions",
-                        "title": "Suchabfragen",
-                        "container": "map",
-                        "window": {
-                            "closable": true
-                        },
-                        "tooltip": "Liste vorgefertigter Suchabfragen",
-                        "cssClass": "ctWDYWBtn ctPrimaryInput",
-                        "max_horizontal": 1,
-                        "windowType": "dropdown",
-                        "position": {
-                            "rel_l": 20,
-                            "rel_t": 80
-                        },
+                        "id": "measuring_tools",
+                        "title": "${tools.measuring}",
+                        "iconClass": "icon-editor-table",
                         "tools": [
-                            "querybuilder_*"
+                            "distanceMeasurement2DToggleTool",
+                            "areaMeasurement2DToggleTool"
+                        ],
+                        "container": "ignore",
+                        "registerTool": true,
+                        "windowType": "menuitem",
+                        "tooltipPositions": [
+                            "after"
                         ]
                     }
                 ]
             }
         },
-        "map-init": {
-            "Config": {
-                "map": {
-                    "basemap": "streets-vector",
-                    "layers": [
-                        {
-                            "id": "Bevoelkerung_Altersgruppen",
-                            "title": "Bevölkerung Altersgruppen",
-                            "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/a7fab8/FeatureServer/0",
-                            "type": "AGS_FEATURE",
-                            "elevationInfo": {
-                                "mode": "on-the-ground"
-                            },
-                            "visible": true,
-                            "outFields": [
-                                "*"
-                            ]
-                        }
+        "dn_imprintprivacy": {
+            "ToolHandler": {
+                "imprintUrls": [
+                    {
+                        "locale": "de",
+                        "url": "https://www.conterra.de/impressum"
+                    },
+                    {
+                        "locale": "en",
+                        "url": "https://www.con-terra.com/imprint"
+                    }
+                ],
+                "privacyUrls": [
+                    {
+                        "locale": "de",
+                        "url": "https://www.conterra.de/datenschutzhinweise"
+                    },
+                    {
+                        "locale": "en",
+                        "url": "https://www.con-terra.com/privacy-statements"
+                    }
+                ],
+                "toolsetDefinition": {
+                    "id": "imprintprivacyToolset",
+                    "tools": [
+                        "imprintTool",
+                        "privacyStatementsTool"
                     ],
-                    "ground": {
-                        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-                        "type": "ELEVATION"
-                    }
-                },
-                "view": {
-                    "viewmode": "2D",
-                    "scale": 5000000,
-                    "center": {
-                        "x": 1159578.07,
-                        "y": 6644912.76,
-                        "spatialReference": {
-                            "wkid": 3857
-                        }
-                    }
+                    "registerWidget": {
+                        "widgetRole": "footer_right"
+                    },
+                    "container": "ignore",
+                    "windowType": "container",
+                    "cssClass": "showToolLabels"
                 }
-            }
-        },
-        "dn_querybuilder": {
-            "QueryBuilderProperties": {
-                "useMemorySelectionStore": false
-            },
-            "QueryTools": [
-                {
-                    "id": "querybuilder_1568809973867",
-                    "title": "Ergebnisse der Wahlkreise in NRW",
-                    "iconClass": "icon-custom-info",
-                    "complexQuery": {
-                        "$or": [
-                            {
-                                "Wahlkreise17_Wahlkreise17_LAND_": {
-                                    "$eq": "Nordrhein-Westfalen"
-                                }
-                            }
-                        ]
-                    },
-                    "options": {
-                        "mode": "builder",
-                        "editable": false,
-                        "count": -1,
-                        "ignoreCase": false,
-                        "locale": {
-                            "language": "en",
-                            "country": "EN"
-                        }
-                    },
-                    "storeId": "wahlkreise_ergebnis"
-                },
-                {
-                    "id": "querybuilder_1568810008875",
-                    "title": "Strukturdaten der Wahlkreise in NRW",
-                    "iconClass": "icon-custom-info",
-                    "complexQuery": {
-                        "$or": [
-                            {
-                                "LAND": {
-                                    "$eq": "Nordrhein-Westfalen"
-                                }
-                            }
-                        ]
-                    },
-                    "options": {
-                        "mode": "builder",
-                        "editable": false,
-                        "count": -1,
-                        "ignoreCase": false,
-                        "locale": {
-                            "language": "en",
-                            "country": "EN"
-                        }
-                    },
-                    "storeId": "wahlkreise_strukturdaten"
-                }
-            ]
-        },
-        "themes": {
-            "ThemeModel": {
-                "_selectedTheme": "autumn"
-            },
-            "ThemeSelector": {
-                "componentEnabled": true
-            }
-        },
-        "banner": {
-            "BannerWidget": {
-                "label": "Developer Network",
-                "imagePosition": "above",
-                "image": "resource('${app}:/images/logo_conterra.png')",
-                "imageWidth": 200,
-                "link": "https://www.conterra.de"
             }
         }
     }
