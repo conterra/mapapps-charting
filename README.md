@@ -9,7 +9,7 @@ You can choose of a variety of different chart types like: bar, line, spline, ar
 ![Screenshot App](https://github.com/conterra/mapapps-charting/blob/main/screenshot.JPG)
 
 ## Sample App
-https://demos.conterra.de/mapapps/resources/apps/downloads_charting/index.html?lang=de
+https://demos.conterra.de/mapapps/resources/apps/public_demo_charting/index.html?
 
 ## Installation Guide
 **Requirement: map.apps 4.11.0 since version 1.10.1**
