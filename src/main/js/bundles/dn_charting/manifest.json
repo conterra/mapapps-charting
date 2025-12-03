@@ -6,16 +6,16 @@
     "vendor": "con terra GmbH",
     "productName": "devnet-mapapps-charting",
     "dependencies": {
-        "esri": "^4.5.0",
-        "apprt-vue": "^4.8.0",
-        "apprt-vuetify": "^4.8.0",
-        "apprt-binding": "^4.8.0",
-        "apprt-core": "^4.8.0",
-        "highlights": "^4.8.0",
-        "selection-services": "^4.8.0",
-        "dn_charting-c3": "^0.7.8"
+        "dn_charting-c3": "^0.7.8",
+        "@arcgis/core": "^4.33.0",
+        "apprt-vue": "^4.20.0",
+        "apprt-vuetify": "^4.20.0",
+        "apprt-binding": "^4.20.0",
+        "apprt-core": "^4.20.0",
+        "highlights": "^4.20.0",
+        "selection-services": "^4.20.0"
     },
-    "CSS-Themes-Extension": [
+    "cssThemesExtension": [
         {
             "name": "*",
             "files": [

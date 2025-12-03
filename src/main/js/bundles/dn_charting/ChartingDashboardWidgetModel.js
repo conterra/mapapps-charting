@@ -17,7 +17,7 @@ import {declare} from "apprt-core/Mutable";
 import domConstruct from "dojo/dom-construct";
 import ct_lang from "ct/_lang";
 import apprt_when from "apprt-core/when";
-import * as geometryEngine from "esri/geometry/geometryEngine";
+import * as geometryEngine from "@arcgis/core/geometry/geometryEngine";
 
 const _currentHighlight = Symbol("_currentHighlight");
 
