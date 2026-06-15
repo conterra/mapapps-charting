@@ -16,7 +16,8 @@
         "apprt-binding": "^4.20.0",
         "apprt-core": "^4.20.0",
         "highlights": "^4.20.0",
-        "selection-services": "^4.20.0"
+        "selection-services": "^4.20.0",
+        "result-api": "^4.20.0"
     },
     "cssThemesExtension": [
         {
@@ -170,15 +171,18 @@
             ]
         },
         {
-            "name": "ResultCenterChartingToolHandler",
+            "name": "ChartingBulkAction",
             "provides": [
-                "dn_charting.ResultCenterChartingToolHandler"
+                "result-api.BulkTableAction"
             ],
+            "propertiesConstructor": true,
+            "properties": {
+                "icon": "icon-chart-pie",
+                "label": "${tool.title}",
+                "tooltip": "${tool.tooltip}",
+                "priority": 1
+            },
             "references": [
-                {
-                    "name": "dataModel",
-                    "providing": "resultcenter.DataModel"
-                },
                 {
                     "name": "controller",
                     "providing": "dn_charting.ChartingDashboardController",
@@ -201,30 +205,6 @@
                 "togglable": true,
                 "noGroup": true
             }
-        },
-        {
-            "name": "ResultCenterChartingTool",
-            "impl": "ct/tools/Tool",
-            "provides": [
-                "ct.tools.Tool"
-            ],
-            "propertiesConstructor": true,
-            "properties": {
-                "id": "resultCenterChartingTool",
-                "title": "${tool.title}",
-                "tooltip": "${tool.tooltip}",
-                "toolRole": "resultcenter",
-                "priority": -3,
-                "iconClass": "icon-chart-pie",
-                "clickHandler": "drawResultCenterCharts",
-                "togglable": false
-            },
-            "references": [
-                {
-                    "name": "handlerScope",
-                    "providing": "dn_charting.ResultCenterChartingToolHandler"
-                }
-            ]
         },
         {
             "name": "QueryController",

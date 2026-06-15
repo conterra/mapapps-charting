@@ -41,7 +41,6 @@ export default class ChartingDashboardWidgetFactory {
     declare private _i18n: I18N<Messages>;
 
     private vm!: ChartingDashboardVm;
-    private i18n!: Messages["ui"];
     private widget!: any;
 
     activate(): void {
@@ -52,7 +51,7 @@ export default class ChartingDashboardWidgetFactory {
         const model = this.chartingDashboardWidgetModel;
         const controller = this.controller;
         const vm = this.vm = new Vue(ChartingDashboardWidget as any) as ChartingDashboardVm;
-        vm.i18n = this.i18n = this._i18n.get().ui;
+        vm.i18n = this._i18n.get().ui;
 
         Binding
             .create()

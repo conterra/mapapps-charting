@@ -31,16 +31,7 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 
 There are two ways to draw charts using the Charting Bundle:
 1. Select features via the selection-ui bundle when the property _drawChartsForSelectionResults_ is enabled.
-2. If there are results in the ResultCenter, click the _ResultCenterChartingTool_ to draw charts of currently selected features.
-
-If you are using the Query Builder Bundle to get results in the ResultCenter disable _useMemorySelectionStore_ property:
-```
-"dn_querybuilder": {
-    "QueryBuilderProperties": {
-        "useMemorySelectionStore": false
-    }
-}
-```
+2. If there are results in the result-ui, select one or more rows and trigger the _Statistics_ bulk action (provided by the _ChartingBulkAction_ component) to draw charts of the selected features. If no rows are selected, all results of the table are used.
 
 ## Configuration Reference
 
@@ -359,13 +350,23 @@ There are two ways to define charts tabs for the charting widget. It is possible
 More information about how to place the charting widget:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
 
-### ResultCenterChartingTool
-To hide the ResultCenterChartingTool in the ResultCenter use this configuration in your bundle configuration.
+### ChartingBulkAction
+The _Statistics_ action in the result-ui table is provided by the _ChartingBulkAction_ component. You can customize its appearance and ordering:
 ```
-"ResultCenterChartingTool": {
-    "visibility": false
+"ChartingBulkAction": {
+    "icon": "icon-chart-pie",
+    "label": "Statistics",
+    "tooltip": "Statistics",
+    "priority": 1
 }
 ```
+| Property | Type    | Default            | Description                                                       |
+|----------|---------|--------------------|-------------------------------------------------------------------|
+| icon     | String  | ```icon-chart-pie``` | Icon class of the bulk action button.                           |
+| label    | String  | ```${tool.title}```  | Label of the bulk action button.                               |
+| tooltip  | String  | ```${tool.tooltip}```| Tooltip of the bulk action button.                             |
+| priority | Number  | ```1```            | Ordering of the action among other result-ui bulk actions.        |
+
 
 ### Chart configuration samples
 
