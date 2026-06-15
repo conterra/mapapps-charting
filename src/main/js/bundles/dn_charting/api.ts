@@ -15,7 +15,6 @@
 ///
 
 import type Geometry from "@arcgis/core/geometry/Geometry";
-import type { SelectionResult } from "selection-services/api";
 
 /** Arbitrary feature attributes keyed by field name. */
 export type FeatureAttributes = Record<string, any>;
@@ -163,20 +162,34 @@ export interface Tab {
     geometries: Geometry[];
 }
 
-/** Configured component properties of the dashboard widget model. */
-export interface ChartingComponentProperties {
-    drawTabGeometries: boolean;
-    drawChartsForSelectionResults: boolean;
-    relationships: Relationship[];
-    chartsProperties: StoreChartsProperties[];
-    chartsTabs: ChartsTab[];
-}
-
 /**
- * apprt event envelope delivered on the `selection/EXECUTING` topic.
- * It wraps a {@link SelectionResult} (from `selection-services`); e.g.
- * `getProperty("executions")` yields the store-api `QueryExecutions` of the running selection.
+ * The charting dashboard model: reactive view state plus the bundle's configured properties.
+ *
+ * The widget binds the view state (via apprt-binding) and the `ChartingDashboardController` reads
+ * the configuration and mutates the view state. The configured properties are delivered through
+ * `propertiesConstructor` from the app config (keyed by the `ChartingDashboardWidgetModel` component,
+ * the bundle's public configuration contract). Implemented as a Mutable in `ChartingDashboardWidgetModel.ts`.
  */
-export interface SelectionExecutingEvent {
-    getProperty<K extends keyof SelectionResult>(name: K): SelectionResult[K];
+export interface ChartingDashboardWidgetModel {
+    // --- reactive view state ---
+    /** Whether a chart computation is currently running. */
+    loading: boolean;
+    /** Index of the active tab (two-way bound to the view). */
+    activeTab: number;
+    /** The tabs to display. */
+    tabs: Tab[];
+    /** Expansion state per chart panel. */
+    expandedCharts: Array<boolean | undefined>;
+
+    // --- configured properties (propertiesConstructor) ---
+    /** Whether the geometries of a tab's results are highlighted on the map. */
+    readonly drawTabGeometries: boolean;
+    /** Whether charts are drawn automatically from selection results. */
+    readonly drawChartsForSelectionResults: boolean;
+    /** Relationship metadata used to query related (time series) data. */
+    readonly relationships: Relationship[];
+    /** Per-store chart configuration (legacy configuration style). */
+    readonly chartsProperties: StoreChartsProperties[];
+    /** Tabbed chart configuration (new configuration style). */
+    readonly chartsTabs: ChartsTab[];
 }

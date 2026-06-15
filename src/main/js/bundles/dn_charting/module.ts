@@ -18,5 +18,6 @@ import "./C3ChartsFactory";
 import "./C3ChartsDataProvider";
 import "./ChartingDashboardWidgetFactory";
 import "./ChartingDashboardWidgetModel";
+import "./ChartingDashboardController";
 import "./ResultCenterChartingToolHandler";
 import "./QueryController";

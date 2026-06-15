@@ -23,14 +23,14 @@ export default class C3ChartsDataProvider {
         const res: ChartData = [["x"]];
 
         if (props.dataSeries) {
-            this._getDataSeriesChartData(props, attributes, res);
+            this.getDataSeriesChartData(props, attributes, res);
         } else {
-            this._getDefaultChartData(props, attributes, res);
+            this.getDefaultChartData(props, attributes, res);
         }
         return res;
     }
 
-    private _getDefaultChartData(props: ChartProperties, attributes: ChartAttributes, res: ChartData): void {
+    private getDefaultChartData(props: ChartProperties, attributes: ChartAttributes, res: ChartData): void {
         if (props.relatedData && props.headers && props.headers.length === 1) {
             const array: Array<string | number | Date | null> = [d_string.substitute(props.title, attributes) || ""];
             const relatedData = attributes.relatedData ?? [];
@@ -58,7 +58,7 @@ export default class C3ChartsDataProvider {
         }
     }
 
-    private _getDataSeriesChartData(props: ChartProperties, attributes: ChartAttributes, res: ChartData): void {
+    private getDataSeriesChartData(props: ChartProperties, attributes: ChartAttributes, res: ChartData): void {
         if (props.headers) {
             props.headers.forEach((header) => {
                 res[0].push(d_string.substitute(header, attributes) || "");

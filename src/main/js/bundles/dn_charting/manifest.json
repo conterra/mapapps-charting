@@ -85,7 +85,7 @@
             ],
             "references": [
                 {
-                    "name": "_c3ChartsDataProvider",
+                    "name": "c3ChartsDataProvider",
                     "providing": "dn_charting.C3ChartsDataProvider"
                 }
             ]
@@ -99,8 +99,7 @@
         {
             "name": "ChartingDashboardWidgetModel",
             "provides": [
-                "dn_charting.ChartingDashboardWidgetModel",
-                "ct.framework.api.EventHandler"
+                "dn_charting.ChartingDashboardWidgetModel"
             ],
             "propertiesConstructor": true,
             "properties": {
@@ -108,7 +107,16 @@
                 "drawChartsForSelectionResults": true,
                 "relationships": [],
                 "chartsProperties": [],
-                "chartsTabs": [],
+                "chartsTabs": []
+            }
+        },
+        {
+            "name": "ChartingDashboardController",
+            "provides": [
+                "dn_charting.ChartingDashboardController",
+                "ct.framework.api.EventHandler"
+            ],
+            "properties": {
                 "Event-Topics": [
                     {
                         "topic": "selection/EXECUTING",
@@ -118,23 +126,23 @@
             },
             "references": [
                 {
-                    "name": "_mapWidgetModel",
-                    "providing": "map-widget.MapWidgetModel"
+                    "name": "model",
+                    "providing": "dn_charting.ChartingDashboardWidgetModel"
                 },
                 {
-                    "name": "_c3ChartsFactory",
+                    "name": "c3ChartsFactory",
                     "providing": "dn_charting.C3ChartsFactory"
                 },
                 {
-                    "name": "_queryController",
+                    "name": "queryController",
                     "providing": "dn_charting.QueryController"
                 },
                 {
-                    "name": "_highlighter",
+                    "name": "highlighter",
                     "providing": "highlights.HighlightService"
                 },
                 {
-                    "name": "_tool",
+                    "name": "tool",
                     "providing": "ct.tools.Tool",
                     "filter": "(id=chartingDashboardToggleTool)"
                 }
@@ -152,8 +160,12 @@
             },
             "references": [
                 {
-                    "name": "_chartingDashboardWidgetModel",
+                    "name": "chartingDashboardWidgetModel",
                     "providing": "dn_charting.ChartingDashboardWidgetModel"
+                },
+                {
+                    "name": "controller",
+                    "providing": "dn_charting.ChartingDashboardController"
                 }
             ]
         },
@@ -164,12 +176,12 @@
             ],
             "references": [
                 {
-                    "name": "_dataModel",
+                    "name": "dataModel",
                     "providing": "resultcenter.DataModel"
                 },
                 {
-                    "name": "_chartingDashboardWidgetModel",
-                    "providing": "dn_charting.ChartingDashboardWidgetModel",
+                    "name": "controller",
+                    "providing": "dn_charting.ChartingDashboardController",
                     "cardinality": "0..1"
                 }
             ]

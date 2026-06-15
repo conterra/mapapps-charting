@@ -21,9 +21,9 @@ import Binding, { type Bindable } from "apprt-binding/Binding";
 import d_aspect from "dojo/aspect";
 import ct_util from "ct/ui/desktop/util";
 import type { I18N } from "apprt/api";
-import type { ChartingDashboardWidgetModel } from "./ChartingDashboardWidgetModel";
+import type ChartingDashboardController from "./ChartingDashboardController";
 import type { Messages } from "./nls/bundle";
-import type { Tab } from "./api";
+import type { ChartingDashboardWidgetModel, Tab } from "./api";
 
 /** The Vue view model bound to the dashboard widget model. */
 type ChartingDashboardVm = Vue & {
@@ -36,7 +36,8 @@ type ChartingDashboardVm = Vue & {
 
 export default class ChartingDashboardWidgetFactory {
 
-    declare private _chartingDashboardWidgetModel: ChartingDashboardWidgetModel;
+    declare private chartingDashboardWidgetModel: ChartingDashboardWidgetModel;
+    declare private controller: ChartingDashboardController;
     declare private _i18n: I18N<Messages>;
 
     private vm!: ChartingDashboardVm;
@@ -44,11 +45,12 @@ export default class ChartingDashboardWidgetFactory {
     private widget!: any;
 
     activate(): void {
-        this._initComponent();
+        this.initComponent();
     }
 
-    private _initComponent(): void {
-        const model = this._chartingDashboardWidgetModel;
+    private initComponent(): void {
+        const model = this.chartingDashboardWidgetModel;
+        const controller = this.controller;
         const vm = this.vm = new Vue(ChartingDashboardWidget as any) as ChartingDashboardVm;
         vm.i18n = this.i18n = this._i18n.get().ui;
 
@@ -66,23 +68,23 @@ export default class ChartingDashboardWidgetFactory {
             if (enclosingWidget) {
                 d_aspect.before(enclosingWidget, "resize", (dims: { w: number } | undefined) => {
                     if (dims) {
-                        model.resizeCharts(dims.w);
+                        controller.resizeCharts(dims.w);
                     }
                 });
             }
         });
 
         vm.$on('activeTabChanged', (activeTab: number) => {
-            model.drawGraphicsForActiveTab(activeTab);
+            controller.drawGraphicsForActiveTab(activeTab);
         });
 
-        d_aspect.after(model, "_drawCharts", () => {
+        d_aspect.after(controller, "drawCharts", () => {
             this.resizeCharts();
         });
     }
 
     resizeCharts(): void {
-        const model = this._chartingDashboardWidgetModel;
+        const controller = this.controller;
         let width: number;
         const rect = this.vm.$el && this.vm.$el.getBoundingClientRect();
         if (rect) {
@@ -90,7 +92,7 @@ export default class ChartingDashboardWidgetFactory {
         } else {
             width = 500;
         }
-        model.resizeCharts(width);
+        controller.resizeCharts(width);
     }
 
     createInstance(): any {

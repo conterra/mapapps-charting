@@ -36,7 +36,8 @@
             "toolset",
             "dn_charting",
             "dn_imprintprivacy",
-            "dn_querybuilder"
+            "dn_querybuilder",
+            "console"
         ],
         "styles": [
             "${app}:app.css"

@@ -20,7 +20,7 @@ import type C3ChartsDataProvider from "./C3ChartsDataProvider";
 
 export default class C3ChartsFactory {
 
-    declare private _c3ChartsDataProvider: C3ChartsDataProvider;
+    declare private c3ChartsDataProvider: C3ChartsDataProvider;
 
     createChart(
         chartNode: HTMLElement,
@@ -41,12 +41,12 @@ export default class C3ChartsFactory {
         chart: ChartAPI | null
     ): ChartAPI | void {
         return chart
-            ? this._updateChart(chartProperties, attributes, chart)
-            : this._createChart(chartProperties, attributes, chartNode);
+            ? this.updateChart(chartProperties, attributes, chart)
+            : this.generateChart(chartProperties, attributes, chartNode);
     }
 
-    private _createChart(chartProperties: ChartProperties, attributes: ChartAttributes, node: HTMLElement): ChartAPI {
-        const data = this._c3ChartsDataProvider.getChartData(chartProperties, attributes);
+    private generateChart(chartProperties: ChartProperties, attributes: ChartAttributes, node: HTMLElement): ChartAPI {
+        const data = this.c3ChartsDataProvider.getChartData(chartProperties, attributes);
         const props: ChartConfiguration = {
             bindto: node,
             padding: chartProperties.padding || {
@@ -103,7 +103,7 @@ export default class C3ChartsFactory {
                 pattern: chartProperties.colorPattern
             };
         }
-        const colors = this._c3ChartsDataProvider.getDataColors(chartProperties);
+        const colors = this.c3ChartsDataProvider.getDataColors(chartProperties);
         if (colors) {
             props.data.colors = colors;
         }
@@ -113,8 +113,8 @@ export default class C3ChartsFactory {
         return c3.generate(props);
     }
 
-    private _updateChart(chartProperties: ChartProperties, attributes: ChartAttributes, chart: ChartAPI): void {
-        const data = this._c3ChartsDataProvider.getChartData(chartProperties, attributes);
+    private updateChart(chartProperties: ChartProperties, attributes: ChartAttributes, chart: ChartAPI): void {
+        const data = this.c3ChartsDataProvider.getChartData(chartProperties, attributes);
 
         switch (chartProperties.dataOrientation) {
             case "columns":

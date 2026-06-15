@@ -17,7 +17,7 @@
 import ct_when from "apprt-core/when";
 import ServiceResolver from "apprt/ServiceResolver";
 import type { ComponentContext, ServiceInstance, ServiceProperties } from "apprt/api";
-import type { ChartingDashboardWidgetModel } from "./ChartingDashboardWidgetModel";
+import type ChartingDashboardController from "./ChartingDashboardController";
 import type { ChartResultSet, ChartStore } from "./api";
 
 interface ResultCenterDataModel {
@@ -29,8 +29,8 @@ interface ResultCenterDataModel {
 
 export default class ResultCenterChartingToolHandler {
 
-    declare private _dataModel: ResultCenterDataModel;
-    declare private _chartingDashboardWidgetModel: ChartingDashboardWidgetModel | undefined;
+    declare private dataModel: ResultCenterDataModel;
+    declare private controller: ChartingDashboardController | undefined;
 
     private serviceResolver!: ServiceResolver;
 
@@ -40,9 +40,9 @@ export default class ResultCenterChartingToolHandler {
     }
 
     drawResultCenterCharts(): void {
-        ct_when(this._queryData(), (result: any[]) => {
-            const datasource = this._dataModel.datasource;
-            const storeProperties = this._getStoreProperties(datasource.id);
+        ct_when(this.queryData(), (result: any[]) => {
+            const datasource = this.dataModel.datasource;
+            const storeProperties = this.getStoreProperties(datasource.id);
             const resultSet: ChartResultSet = {
                 storeId: datasource.id,
                 title: storeProperties!.title as string,
@@ -50,16 +50,12 @@ export default class ResultCenterChartingToolHandler {
                 result: result,
                 total: result.length
             };
-            this._chartingDashboardWidgetModel?.setCharts([resultSet]);
+            this.controller?.setCharts([resultSet]);
         });
     }
 
-    private _queryData(): Promise<any[]> {
-        const model = this._chartingDashboardWidgetModel;
-        if (model) {
-            model.loading = true;
-        }
-        const dataModel = this._dataModel;
+    private queryData(): Promise<any[]> {
+        const dataModel = this.dataModel;
         const selectedIds = dataModel.getSelected();
         if (selectedIds && selectedIds.length) {
             return dataModel.queryById(selectedIds);
@@ -68,11 +64,7 @@ export default class ResultCenterChartingToolHandler {
         }
     }
 
-    private _getStore(id: string): ServiceInstance | undefined {
-        return this.serviceResolver.getService("ct.api.Store", "(id=" + id + ")");
-    }
-
-    private _getStoreProperties(idOrStore: string | ServiceInstance): ServiceProperties | undefined {
+    private getStoreProperties(idOrStore: string | ServiceInstance): ServiceProperties | undefined {
         const resolver = this.serviceResolver;
         if (typeof (idOrStore) === "string") {
             return resolver.getServiceProperties("ct.api.Store", "(id=" + idOrStore + ")");
