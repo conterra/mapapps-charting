@@ -347,6 +347,56 @@ There are two ways to define charts tabs for the charting widget. It is possible
 | chart.dataSeries.groups       | Array   |                                                                       | ```[]```                    | Optional property that allows to use stacked charts. Array of grouped attributes. (e.g. [["2016", "2017"]])                            |
 | chart.dataSeries.color        | Array   |                                                                       | ```[]```                    | Optional property that change the color of the attribute. (e.g. "#FF0000")                            |
 
+### Related data (time series from a related table)
+If the values to plot live in a **separate table** with one row per time period (e.g. one row per year),
+you can configure a relationship. When a feature of the configured store is selected, the bundle queries
+the related table for the matching rows and draws them as a time series — one data point per period.
+
+Add a `relationships` entry to the model configuration:
+```
+"ChartingDashboardWidgetModel": {
+    "relationships": [
+        {
+            "storeId": "Kreisgrenzen_2022",
+            "tableUrl": "https://.../FeatureServer/0",
+            "primaryKey": "AGS",
+            "foreignKey": "AGS",
+            "timeAttribute": "YEAR"
+        }
+    ],
+    "chartsTabs": [
+        {
+            "title": "Einkommensentwicklung",
+            "chartsTitle": { "storeId": "Kreisgrenzen_2022", "titleAttribute": "GEN" },
+            "charts": [
+                {
+                    "title": "Verfügbares Einkommen je Einwohner",
+                    "storeId": "Kreisgrenzen_2022",
+                    "type": "line",
+                    "relatedData": true,
+                    "dataOrientation": "columns",
+                    "dataSeries": [
+                        { "title": "EUR je Einwohner", "attribute": "a1" }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+A related-data chart uses `"relatedData": true` and a `dataSeries` where each series names a single
+`attribute` (the value plotted across all periods). The x-axis is built from the `timeAttribute` values,
+sorted ascending. Use the optional `chart.headers` to restrict or order the periods shown.
+
+##### relationships properties
+| Property      | Type   | Possible Values | Default | Description                                                                                          |
+|---------------|--------|-----------------|---------|------------------------------------------------------------------------------------------------------|
+| storeId       | String |                 |         | Id of the selectable store. The relationship applies when a feature of this store is selected.        |
+| tableUrl      | String |                 |         | Query endpoint of the related feature service layer/table holding the per-period rows.                |
+| primaryKey    | String |                 |         | Attribute on the selected feature used as the join value.                                            |
+| foreignKey    | String |                 |         | Attribute on the related table matched against the join value. May be a string or numeric field.      |
+| timeAttribute | String |                 |         | Attribute on the related rows used as the time/period axis value.                                    |
+
 More information about how to place the charting widget:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
 

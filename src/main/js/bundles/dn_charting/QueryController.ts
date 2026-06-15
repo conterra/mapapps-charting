@@ -14,13 +14,8 @@
 /// limitations under the License.
 ///
 
-import { apprtFetch } from "apprt-fetch";
+import { apprtFetchJson } from "apprt-fetch";
 import type { ChartStore, FeatureAttributes, RelatedDataEntry, Relationship } from "./api";
-
-/** Metadata of a feature service layer, holding its relationships. */
-interface ServiceMetadata {
-    relationships: Relationship[];
-}
 
 /** A feature returned by an esri feature service query. */
 interface EsriFeature {
@@ -29,100 +24,40 @@ interface EsriFeature {
 
 /** Response of an esri feature service query. */
 interface EsriFeatureSet {
-    features: EsriFeature[];
+    features?: EsriFeature[];
 }
-
-/**
- * apprt-fetch supports the legacy `handleAs`/`query` options which resolve directly to
- * the parsed response body. The current typings only describe the standard fetch API,
- * so a typed wrapper is used here.
- */
-interface LegacyFetchInit {
-    query?: Record<string, unknown>;
-    handleAs?: "json";
-}
-const legacyFetch = apprtFetch as unknown as <T = unknown>(url: string, init: LegacyFetchInit) => Promise<T>;
 
 export default class QueryController {
 
-    relationships?: Relationship[];
-
-    findRelatedRecords(objectId: number | string, url: string, metadata: ServiceMetadata): Promise<unknown[]> | null {
-        const relationships = this.relationships = metadata.relationships;
-        const requests = relationships.map((relationship) => {
-            const relationshipId = relationship && relationship.id;
-            return legacyFetch(url + "/queryRelatedRecords", {
-                query: {
-                    objectIds: [objectId],
-                    relationshipId: relationshipId,
-                    outFields: "*",
-                    returnGeometry: true,
-                    returnCountOnly: false,
-                    f: 'json'
-                },
-                handleAs: 'json'
-            });
-        });
-        if (requests.length > 0) {
-            return Promise.all(requests);
-        } else {
-            return null;
+    async getRelatedData(
+        results: FeatureAttributes[],
+        relationship: Relationship | undefined
+    ): Promise<FeatureAttributes[]> {
+        if (!relationship || !results.length) {
+            return results;
         }
-    }
-
-    getRelatedData(results: FeatureAttributes[], relationship: Relationship | undefined): Promise<FeatureAttributes[]> {
-        return new Promise((resolve) => {
-            if (!relationship || !results.length) {
-                resolve(results);
-            } else {
-                const requests = results.map((result) => legacyFetch<EsriFeatureSet>(relationship.tableUrl + "/query", {
-                    query: {
-                        where: relationship.foreignKey + " LIKE " + result[relationship.primaryKey],
-                        outFields: "*",
-                        returnGeometry: false,
-                        returnCountOnly: false,
-                        f: 'json'
-                    },
-                    handleAs: 'json'
-                }).then((relatedData) => {
-                    const features: RelatedDataEntry[] = [];
-                    relatedData.features.forEach((feature) => {
-                        const attributes = feature.attributes;
-                        const time = attributes[relationship.timeAttribute];
-                        features.push({ time: time, attributes: attributes });
-                    });
-                    result.relatedData = features;
-                    return result;
-                }));
-                Promise.all(requests).then((res) => {
-                    resolve(res);
-                });
-            }
-        });
-    }
-
-    getRelatedMetadata(url: string, metadata: ServiceMetadata): Promise<unknown[]> {
-        url = url.substr(0, url.lastIndexOf("/"));
-        const relationships = this.relationships = metadata.relationships;
-        const requests = relationships.map((relationship) => {
-            const relatedTableId = relationship && relationship.relatedTableId;
-            return legacyFetch(url + "/" + relatedTableId, {
+        const requests = results.map(async (result) => {
+            const keyValue = result[relationship.primaryKey];
+            const whereValue = typeof keyValue === "string" ? `'${keyValue}'` : keyValue;
+            const relatedData = await apprtFetchJson<EsriFeatureSet>(relationship.tableUrl + "/query", {
                 query: {
-                    f: 'json'
-                },
-                handleAs: 'json'
+                    where: relationship.foreignKey + " LIKE " + whereValue,
+                    outFields: "*",
+                    returnGeometry: false,
+                    returnCountOnly: false,
+                    f: "json"
+                }
             });
+            const features: RelatedDataEntry[] = (relatedData.features ?? []).map((feature) => {
+                return {
+                    time: feature.attributes[relationship.timeAttribute],
+                    attributes: feature.attributes
+                };
+            });
+            result.relatedData = features;
+            return result;
         });
         return Promise.all(requests);
-    }
-
-    getMetadata(url: string): Promise<ServiceMetadata> {
-        return legacyFetch<ServiceMetadata>(url, {
-            query: {
-                f: 'json'
-            },
-            handleAs: 'json'
-        });
     }
 
     getGeometryForSumObject(results: FeatureAttributes[], store: ChartStore): Promise<any[]> {
