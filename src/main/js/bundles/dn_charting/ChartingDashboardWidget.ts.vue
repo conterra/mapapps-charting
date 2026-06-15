@@ -68,55 +68,39 @@
         </v-tabs>
     </div>
 </template>
-<script>
+<script lang="ts">
+    import Vue from "apprt-vue/Vue";
     import Bindable from "apprt-vue/mixins/Bindable";
     import CtDomNode from "apprt-vue/CtDomNode.vue";
+    import type { Messages } from "./nls/bundle";
+    import type { Tab } from "./api";
 
-    export default {
+    export default Vue.extend({
         components: {
             "ct-dom-node": CtDomNode
         },
         mixins: [Bindable],
         data: function () {
             return {
-                loading: {
-                    type: Boolean,
-                    default: false
-                },
-                tabs: {
-                    type: Array,
-                    default: function () {
-                        return [];
-                    }
-                },
-                expandedCharts: {
-                    type: Array,
-                    default: function () {
-                        return [];
-                    }
-                },
-                activeTab: null,
-                i18n: {
-                    type: Object,
-                    default: function () {
-                        return {};
-                    }
-                }
+                loading: false,
+                tabs: [] as Tab[],
+                expandedCharts: [] as Array<boolean | undefined>,
+                activeTab: null as number | null,
+                i18n: {} as Messages["ui"]
             };
         },
         watch: {
             activeTab: {
-                handler(val) {
+                handler(val: number) {
                     this.$emit('activeTabChanged', val);
                 }
             }
         },
         mounted: function () {
-            const that = this;
-            that.$nextTick(function () {
-                that.$emit('start');
+            this.$nextTick(() => {
+                this.$emit('start');
             });
         },
         methods: {}
-    };
+    });
 </script>

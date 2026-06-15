@@ -5,6 +5,9 @@
     "description": "${bundleDescription}",
     "vendor": "con terra GmbH",
     "productName": "devnet-mapapps-charting",
+    "i18n": [
+        "bundle"
+    ],
     "dependencies": {
         "dn_charting-c3": "^0.7.8",
         "@arcgis/core": "^4.33.0",

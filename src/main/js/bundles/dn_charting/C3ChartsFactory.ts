@@ -1,30 +1,53 @@
-/*
- * Copyright (C) 2025 con terra GmbH (info@conterra.de)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-import c3 from "dn_charting-c3";
+///
+/// Copyright (C) 2025 con terra GmbH (info@conterra.de)
+///
+/// Licensed under the Apache License, Version 2.0 (the "License");
+/// you may not use this file except in compliance with the License.
+/// You may obtain a copy of the License at
+///
+///         http://www.apache.org/licenses/LICENSE-2.0
+///
+/// Unless required by applicable law or agreed to in writing, software
+/// distributed under the License is distributed on an "AS IS" BASIS,
+/// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+/// See the License for the specific language governing permissions and
+/// limitations under the License.
+///
+
+import c3, { type ChartAPI, type ChartConfiguration } from "dn_charting-c3";
+import type { ChartAttributes, ChartProperties } from "./api";
+import type C3ChartsDataProvider from "./C3ChartsDataProvider";
 
 export default class C3ChartsFactory {
 
-    createChart(chartNode, chartProperties, attributes, chart) {
-        // eslint-disable-next-line max-len
-        return chart ? this._updateChart(chartProperties, attributes, chart) : this._createChart(chartProperties, attributes, chartNode);
+    declare private _c3ChartsDataProvider: C3ChartsDataProvider;
+
+    createChart(
+        chartNode: HTMLElement,
+        chartProperties: ChartProperties,
+        attributes: ChartAttributes,
+        chart: null
+    ): ChartAPI;
+    createChart(
+        chartNode: HTMLElement,
+        chartProperties: ChartProperties,
+        attributes: ChartAttributes,
+        chart: ChartAPI
+    ): void;
+    createChart(
+        chartNode: HTMLElement,
+        chartProperties: ChartProperties,
+        attributes: ChartAttributes,
+        chart: ChartAPI | null
+    ): ChartAPI | void {
+        return chart
+            ? this._updateChart(chartProperties, attributes, chart)
+            : this._createChart(chartProperties, attributes, chartNode);
     }
 
-    _createChart(chartProperties, attributes, node) {
+    private _createChart(chartProperties: ChartProperties, attributes: ChartAttributes, node: HTMLElement): ChartAPI {
         const data = this._c3ChartsDataProvider.getChartData(chartProperties, attributes);
-        const props = {
+        const props: ChartConfiguration = {
             bindto: node,
             padding: chartProperties.padding || {
                 right: 10
@@ -50,14 +73,14 @@ export default class C3ChartsFactory {
             }
         };
         if (chartProperties.axisFormat) {
-            props.axis.x.tick = {
+            props.axis!.x!.tick = {
                 format: chartProperties.axisFormat
             };
             if (chartProperties.axisTickAdjusted !== undefined) {
-                props.axis.x.tick.fit = chartProperties.axisTickAdjusted;
+                props.axis!.x!.tick.fit = chartProperties.axisTickAdjusted;
             }
             if (chartProperties.axisTickCount !== undefined) {
-                props.axis.x.tick.count = chartProperties.axisTickCount;
+                props.axis!.x!.tick.count = chartProperties.axisTickCount;
             }
         }
         if (chartProperties.axisFormat && !chartProperties.axisIsDateObject) {
@@ -67,10 +90,10 @@ export default class C3ChartsFactory {
             chartProperties.dataOrientation = "rows";
         }
         if (chartProperties.hideDecimalValues) {
-            props.axis.y = {
+            props.axis!.y = {
                 tick: {
-                    format: function (d) {
-                        return (parseInt(d) === d) ? d : null;
+                    format: function (d: number): number | null {
+                        return (parseInt(`${d}`) === d) ? d : null;
                     }
                 }
             };
@@ -90,7 +113,7 @@ export default class C3ChartsFactory {
         return c3.generate(props);
     }
 
-    _updateChart(chartProperties, attributes, chart) {
+    private _updateChart(chartProperties: ChartProperties, attributes: ChartAttributes, chart: ChartAPI): void {
         const data = this._c3ChartsDataProvider.getChartData(chartProperties, attributes);
 
         switch (chartProperties.dataOrientation) {
