@@ -7,7 +7,7 @@ The Charting Bundle allows you to display various charts based on data from an A
 By selecting one or more features from the selection-ui bundle, you can trigger the drawing of these charts.
 You can choose of a variety of different chart types like: bar, line, spline, area and donut.
 
-![Screenshot App](https://github.com/conterra/mapapps-charting/blob/main/screenshot.JPG)
+![Screenshot App](https://github.com/conterra/mapapps-charting/blob/main/screenshot.png)
 
 ## Sample App
 https://demos.conterra.de/mapapps/resources/apps/public_demo_charting/index.html?
