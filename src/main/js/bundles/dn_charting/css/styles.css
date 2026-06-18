@@ -74,15 +74,15 @@
     color: #000000;
 }
 
-.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-x path, .chartingDashboardWidget .c3 .c3-axis-x line {
+.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-x path, .ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-x line {
     stroke: #ffffff;
 }
 
-.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-y path, .chartingDashboardWidget .c3 .c3-axis-y line {
+.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-y path, .ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-y line {
     stroke: #ffffff;
 }
 
-.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-y text, .chartingDashboardWidget .c3 .c3-axis-x text {
+.ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-y text, .ctAppRoot.everlasting .chartingDashboardWidget .c3 .c3-axis-x text {
     fill: #ffffff;
 }
 
