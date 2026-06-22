@@ -31,16 +31,7 @@ https://demos.conterra.de/mapapps/resources/jsregistry/root/agssearch/latest/REA
 
 There are two ways to draw charts using the Charting Bundle:
 1. Select features via the selection-ui bundle when the property _drawChartsForSelectionResults_ is enabled.
-2. If there are results in the ResultCenter, click the _ResultCenterChartingTool_ to draw charts of currently selected features.
-
-If you are using the Query Builder Bundle to get results in the ResultCenter disable _useMemorySelectionStore_ property:
-```
-"dn_querybuilder": {
-    "QueryBuilderProperties": {
-        "useMemorySelectionStore": false
-    }
-}
-```
+2. If there are results in the result-ui, select one or more rows and trigger the _Statistics_ bulk action (provided by the _ChartingBulkAction_ component) to draw charts of the selected features. If no rows are selected, all results of the table are used.
 
 ## Configuration Reference
 
@@ -356,16 +347,76 @@ There are two ways to define charts tabs for the charting widget. It is possible
 | chart.dataSeries.groups       | Array   |                                                                       | ```[]```                    | Optional property that allows to use stacked charts. Array of grouped attributes. (e.g. [["2016", "2017"]])                            |
 | chart.dataSeries.color        | Array   |                                                                       | ```[]```                    | Optional property that change the color of the attribute. (e.g. "#FF0000")                            |
 
+### Related data (time series from a related table)
+If the values to plot live in a **separate table** with one row per time period (e.g. one row per year),
+you can configure a relationship. When a feature of the configured store is selected, the bundle queries
+the related table for the matching rows and draws them as a time series — one data point per period.
+
+Add a `relationships` entry to the model configuration:
+```
+"ChartingDashboardWidgetModel": {
+    "relationships": [
+        {
+            "storeId": "Kreisgrenzen_2022",
+            "tableUrl": "https://.../FeatureServer/0",
+            "primaryKey": "AGS",
+            "foreignKey": "AGS",
+            "timeAttribute": "YEAR"
+        }
+    ],
+    "chartsTabs": [
+        {
+            "title": "Einkommensentwicklung",
+            "chartsTitle": { "storeId": "Kreisgrenzen_2022", "titleAttribute": "GEN" },
+            "charts": [
+                {
+                    "title": "Verfügbares Einkommen je Einwohner",
+                    "storeId": "Kreisgrenzen_2022",
+                    "type": "line",
+                    "relatedData": true,
+                    "dataOrientation": "columns",
+                    "dataSeries": [
+                        { "title": "EUR je Einwohner", "attribute": "a1" }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+A related-data chart uses `"relatedData": true` and a `dataSeries` where each series names a single
+`attribute` (the value plotted across all periods). The x-axis is built from the `timeAttribute` values,
+sorted ascending. Use the optional `chart.headers` to restrict or order the periods shown.
+
+##### relationships properties
+| Property      | Type   | Possible Values | Default | Description                                                                                          |
+|---------------|--------|-----------------|---------|------------------------------------------------------------------------------------------------------|
+| storeId       | String |                 |         | Id of the selectable store. The relationship applies when a feature of this store is selected.        |
+| tableUrl      | String |                 |         | Query endpoint of the related feature service layer/table holding the per-period rows.                |
+| primaryKey    | String |                 |         | Attribute on the selected feature used as the join value.                                            |
+| foreignKey    | String |                 |         | Attribute on the related table matched against the join value. May be a string or numeric field.      |
+| timeAttribute | String |                 |         | Attribute on the related rows used as the time/period axis value.                                    |
+
 More information about how to place the charting widget:
 https://developernetwork.conterra.de/en/documentation/mapapps/39/developers-documentation/templates
 
-### ResultCenterChartingTool
-To hide the ResultCenterChartingTool in the ResultCenter use this configuration in your bundle configuration.
+### ChartingBulkAction
+The _Statistics_ action in the result-ui table is provided by the _ChartingBulkAction_ component. You can customize its appearance and ordering:
 ```
-"ResultCenterChartingTool": {
-    "visibility": false
+"ChartingBulkAction": {
+    "icon": "icon-chart-pie",
+    "label": "Statistics",
+    "tooltip": "Statistics",
+    "priority": 1
 }
 ```
+| Property | Type    | Default            | Description                                                       |
+|----------|---------|--------------------|-------------------------------------------------------------------|
+| icon     | String  | ```icon-chart-pie``` | Icon class of the bulk action button.                           |
+| label    | String  | ```${tool.title}```  | Label of the bulk action button.                               |
+| tooltip  | String  | ```${tool.tooltip}```| Tooltip of the bulk action button.                             |
+| priority | Number  | ```1```            | Ordering of the action among other result-ui bulk actions.        |
+
 
 ### Chart configuration samples
 

@@ -5,6 +5,9 @@
     "description": "${bundleDescription}",
     "vendor": "con terra GmbH",
     "productName": "devnet-mapapps-charting",
+    "i18n": [
+        "bundle"
+    ],
     "dependencies": {
         "dn_charting-c3": "^0.7.8",
         "@arcgis/core": "^4.33.0",
@@ -13,7 +16,8 @@
         "apprt-binding": "^4.20.0",
         "apprt-core": "^4.20.0",
         "highlights": "^4.20.0",
-        "selection-services": "^4.20.0"
+        "selection-services": "^4.20.0",
+        "result-api": "^4.20.0"
     },
     "cssThemesExtension": [
         {
@@ -82,7 +86,7 @@
             ],
             "references": [
                 {
-                    "name": "_c3ChartsDataProvider",
+                    "name": "c3ChartsDataProvider",
                     "providing": "dn_charting.C3ChartsDataProvider"
                 }
             ]
@@ -96,8 +100,7 @@
         {
             "name": "ChartingDashboardWidgetModel",
             "provides": [
-                "dn_charting.ChartingDashboardWidgetModel",
-                "ct.framework.api.EventHandler"
+                "dn_charting.ChartingDashboardWidgetModel"
             ],
             "propertiesConstructor": true,
             "properties": {
@@ -105,7 +108,16 @@
                 "drawChartsForSelectionResults": true,
                 "relationships": [],
                 "chartsProperties": [],
-                "chartsTabs": [],
+                "chartsTabs": []
+            }
+        },
+        {
+            "name": "ChartingDashboardController",
+            "provides": [
+                "dn_charting.ChartingDashboardController",
+                "ct.framework.api.EventHandler"
+            ],
+            "properties": {
                 "Event-Topics": [
                     {
                         "topic": "selection/EXECUTING",
@@ -115,23 +127,23 @@
             },
             "references": [
                 {
-                    "name": "_mapWidgetModel",
-                    "providing": "map-widget.MapWidgetModel"
+                    "name": "model",
+                    "providing": "dn_charting.ChartingDashboardWidgetModel"
                 },
                 {
-                    "name": "_c3ChartsFactory",
+                    "name": "c3ChartsFactory",
                     "providing": "dn_charting.C3ChartsFactory"
                 },
                 {
-                    "name": "_queryController",
+                    "name": "queryController",
                     "providing": "dn_charting.QueryController"
                 },
                 {
-                    "name": "_highlighter",
+                    "name": "highlighter",
                     "providing": "highlights.HighlightService"
                 },
                 {
-                    "name": "_tool",
+                    "name": "tool",
                     "providing": "ct.tools.Tool",
                     "filter": "(id=chartingDashboardToggleTool)"
                 }
@@ -149,24 +161,31 @@
             },
             "references": [
                 {
-                    "name": "_chartingDashboardWidgetModel",
+                    "name": "chartingDashboardWidgetModel",
                     "providing": "dn_charting.ChartingDashboardWidgetModel"
+                },
+                {
+                    "name": "controller",
+                    "providing": "dn_charting.ChartingDashboardController"
                 }
             ]
         },
         {
-            "name": "ResultCenterChartingToolHandler",
+            "name": "ChartingBulkAction",
             "provides": [
-                "dn_charting.ResultCenterChartingToolHandler"
+                "result-api.BulkTableAction"
             ],
+            "propertiesConstructor": true,
+            "properties": {
+                "icon": "icon-chart-pie",
+                "label": "${tool.title}",
+                "tooltip": "${tool.tooltip}",
+                "priority": 1
+            },
             "references": [
                 {
-                    "name": "_dataModel",
-                    "providing": "resultcenter.DataModel"
-                },
-                {
-                    "name": "_chartingDashboardWidgetModel",
-                    "providing": "dn_charting.ChartingDashboardWidgetModel",
+                    "name": "controller",
+                    "providing": "dn_charting.ChartingDashboardController",
                     "cardinality": "0..1"
                 }
             ]
@@ -186,30 +205,6 @@
                 "togglable": true,
                 "noGroup": true
             }
-        },
-        {
-            "name": "ResultCenterChartingTool",
-            "impl": "ct/tools/Tool",
-            "provides": [
-                "ct.tools.Tool"
-            ],
-            "propertiesConstructor": true,
-            "properties": {
-                "id": "resultCenterChartingTool",
-                "title": "${tool.title}",
-                "tooltip": "${tool.tooltip}",
-                "toolRole": "resultcenter",
-                "priority": -3,
-                "iconClass": "icon-chart-pie",
-                "clickHandler": "drawResultCenterCharts",
-                "togglable": false
-            },
-            "references": [
-                {
-                    "name": "handlerScope",
-                    "providing": "dn_charting.ResultCenterChartingToolHandler"
-                }
-            ]
         },
         {
             "name": "QueryController",

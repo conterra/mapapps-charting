@@ -1,0 +1,132 @@
+///
+/// Copyright (C) 2025 con terra GmbH (info@conterra.de)
+///
+/// Licensed under the Apache License, Version 2.0 (the "License");
+/// you may not use this file except in compliance with the License.
+/// You may obtain a copy of the License at
+///
+///         http://www.apache.org/licenses/LICENSE-2.0
+///
+/// Unless required by applicable law or agreed to in writing, software
+/// distributed under the License is distributed on an "AS IS" BASIS,
+/// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+/// See the License for the specific language governing permissions and
+/// limitations under the License.
+///
+
+import c3, { type ChartAPI, type ChartConfiguration } from "dn_charting-c3";
+import type { ChartAttributes, ChartProperties } from "./api";
+import type C3ChartsDataProvider from "./C3ChartsDataProvider";
+
+export default class C3ChartsFactory {
+
+    declare private c3ChartsDataProvider: C3ChartsDataProvider;
+
+    createChart(
+        chartNode: HTMLElement,
+        chartProperties: ChartProperties,
+        attributes: ChartAttributes,
+        chart: null
+    ): ChartAPI;
+    createChart(
+        chartNode: HTMLElement,
+        chartProperties: ChartProperties,
+        attributes: ChartAttributes,
+        chart: ChartAPI
+    ): void;
+    createChart(
+        chartNode: HTMLElement,
+        chartProperties: ChartProperties,
+        attributes: ChartAttributes,
+        chart: ChartAPI | null
+    ): ChartAPI | void {
+        return chart
+            ? this.updateChart(chartProperties, attributes, chart)
+            : this.generateChart(chartProperties, attributes, chartNode);
+    }
+
+    private generateChart(chartProperties: ChartProperties, attributes: ChartAttributes, node: HTMLElement): ChartAPI {
+        const data = this.c3ChartsDataProvider.getChartData(chartProperties, attributes);
+        const props: ChartConfiguration = {
+            bindto: node,
+            padding: chartProperties.padding || {
+                right: 10
+            },
+            data: {
+                x: 'x',
+                type: chartProperties.type || "bar",
+                groups: chartProperties.groups || [],
+                labels: chartProperties.showDataLabels === undefined ? true : chartProperties.showDataLabels
+            },
+            size: {
+                width: chartProperties.width || 500,
+                height: chartProperties.height || 500
+            },
+            axis: {
+                rotated: chartProperties.rotatedAxis === undefined ? false : chartProperties.rotatedAxis,
+                x: {
+                    type: chartProperties.axisType || 'category'
+                }
+            },
+            line: {
+                connectNull: true
+            }
+        };
+        if (chartProperties.axisFormat) {
+            props.axis!.x!.tick = {
+                format: chartProperties.axisFormat
+            };
+            if (chartProperties.axisTickAdjusted !== undefined) {
+                props.axis!.x!.tick.fit = chartProperties.axisTickAdjusted;
+            }
+            if (chartProperties.axisTickCount !== undefined) {
+                props.axis!.x!.tick.count = chartProperties.axisTickCount;
+            }
+        }
+        if (chartProperties.axisFormat && !chartProperties.axisIsDateObject) {
+            props.data.xFormat = chartProperties.axisParserFormat || chartProperties.axisFormat;
+        }
+        if (!chartProperties.dataOrientation) {
+            chartProperties.dataOrientation = "rows";
+        }
+        if (chartProperties.hideDecimalValues) {
+            props.axis!.y = {
+                tick: {
+                    format: function (d: number): number | null {
+                        return (parseInt(`${d}`) === d) ? d : null;
+                    }
+                }
+            };
+        }
+        if (chartProperties.colorPattern) {
+            props.color = {
+                pattern: chartProperties.colorPattern
+            };
+        }
+        const colors = this.c3ChartsDataProvider.getDataColors(chartProperties);
+        if (colors) {
+            props.data.colors = colors;
+        }
+
+        props.data[chartProperties.dataOrientation] = data;
+
+        return c3.generate(props);
+    }
+
+    private updateChart(chartProperties: ChartProperties, attributes: ChartAttributes, chart: ChartAPI): void {
+        const data = this.c3ChartsDataProvider.getChartData(chartProperties, attributes);
+
+        switch (chartProperties.dataOrientation) {
+            case "columns":
+                chart.load({
+                    columns: data
+                });
+                break;
+            case "rows":
+                chart.load({
+                    rows: data
+                });
+                break;
+        }
+    }
+}
