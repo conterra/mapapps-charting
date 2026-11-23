@@ -4,6 +4,8 @@ The Charting Bundle allows you to display various charts based on data from an A
 By selecting one or more features from the selection-ui bundle, you can trigger the drawing of these charts.
 You can choose of a variety of different chart types like: bar, line, spline, area and donut.
 
+The charts are drawn with [c3](https://c3js.org/) (MIT License, Copyright (c) 2013 Masayuki Tanaka), which is compiled into this bundle together with its dependency [d3](https://d3js.org/) (BSD-3-Clause, Copyright Mike Bostock). The license texts of c3 and its dependencies ship with the bundle in `licenses/<component>/`.
+
 ## Usage
 **Requirement: map.apps 4.8.0 since version 1.9.0**
 
