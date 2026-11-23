@@ -22,7 +22,7 @@ import type { Highlight, Highlighter } from "highlights/api";
 import type Tool from "ct/tools/Tool";
 import type { I18N, TopicEvent } from "apprt/api";
 import type { SearchSource, SelectionResult } from "selection-services/api";
-import type { ChartAPI } from "dn_charting-c3";
+import type { ChartAPI } from "c3";
 import type { Messages } from "./nls/bundle";
 import type C3ChartsFactory from "./C3ChartsFactory";
 import type QueryController from "./QueryController";

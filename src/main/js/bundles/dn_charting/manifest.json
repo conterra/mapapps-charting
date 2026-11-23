@@ -9,12 +9,14 @@
         "bundle"
     ],
     "dependencies": {
-        "dn_charting-c3": "^0.7.8",
         "@arcgis/core": "^4.33.0",
         "apprt-vue": "^4.20.0",
         "apprt-vuetify": "^4.20.0",
         "apprt-binding": "^4.20.0",
         "apprt-core": "^4.20.0",
+        "apprt-fetch": "^4.20.0",
+        "ct": "^4.20.0",
+        "dojo": "^1.17.0",
         "highlights": "^4.20.0",
         "selection-services": "^4.20.0",
         "result-api": "^4.20.0"
@@ -23,6 +25,7 @@
         {
             "name": "*",
             "files": [
+                "./c3.min.css",
                 "./css/styles.css"
             ]
         }

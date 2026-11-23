@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2025 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-.ctAppRoot .ct-application-center .showToolLabels.ctToolContainer .dijitButtonText {
-    font-size: inherit;
-}
+module.exports = {
+    type: "bundle",
+    entryPoints: ["module"],
+    // c3 (and its dependency d3) are compiled into this bundle
+    npmDependencies: ["c3"]
+};

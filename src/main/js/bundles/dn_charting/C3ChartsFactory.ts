@@ -14,7 +14,7 @@
 /// limitations under the License.
 ///
 
-import c3, { type ChartAPI, type ChartConfiguration } from "dn_charting-c3";
+import c3, { type ChartAPI, type ChartConfiguration } from "c3";
 import type { ChartAttributes, ChartProperties } from "./api";
 import type C3ChartsDataProvider from "./C3ChartsDataProvider";
 
