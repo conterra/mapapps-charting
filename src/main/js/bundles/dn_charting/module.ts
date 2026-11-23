@@ -14,10 +14,10 @@
 /// limitations under the License.
 ///
 
-import "./C3ChartsFactory";
-import "./C3ChartsDataProvider";
-import "./ChartingDashboardWidgetFactory";
-import "./ChartingDashboardWidgetModel";
-import "./ChartingDashboardController";
-import "./ChartingBulkAction";
-import "./QueryController";
+export { default as C3ChartsFactory } from "./C3ChartsFactory";
+export { default as C3ChartsDataProvider } from "./C3ChartsDataProvider";
+export { default as ChartingDashboardWidgetFactory } from "./ChartingDashboardWidgetFactory";
+export { default as ChartingDashboardWidgetModel } from "./ChartingDashboardWidgetModel";
+export { default as ChartingDashboardController } from "./ChartingDashboardController";
+export { default as ChartingBulkAction } from "./ChartingBulkAction";
+export { default as QueryController } from "./QueryController";

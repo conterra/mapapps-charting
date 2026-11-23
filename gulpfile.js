@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 const gulp = require("gulp");
+const path = require("path");
 const mapapps = require('ct-mapapps-gulp-js');
 const mapappsBrowserSync = require("ct-mapapps-browser-sync");
 const dotEnv = require("dotenv");
@@ -119,6 +120,48 @@ mapappsBrowserSync.registerTask({
     externalReloadTrigger: true
 }, gulp);
 
+// Assets of npm dependencies bundled via "npmDependencies" in a build.config.js.
+// - CSS: the rollup build does not process CSS imports, so the stylesheets are copied
+//   from node_modules into the bundle output and loaded via "cssThemesExtension"
+//   in the bundle's manifest.json.
+// - License: the dependency's code is shipped inside the bundle, so its license text
+//   is shipped as well (licenses/<dependency>/).
+// npm dependency -> bundles using it
+const npmBundleDeps = {
+    "c3": ["dn_charting"]
+};
+
+gulp.task("copy-npm-bundle-assets", gulp.parallel(
+    ...Object.entries(npmBundleDeps).flatMap(([dep, bundles]) =>
+        bundles.flatMap((bundle) => [
+            function copyNpmCss() {
+                return gulp.src(`node_modules/${dep}/c3.min.css`)
+                    .pipe(gulp.dest(`target/webapp/js/bundles/${bundle}`));
+            },
+            // The transitive dependencies (e.g. d3 for c3) are compiled into the bundle as well,
+            // so their license texts are shipped too.
+            ...collectPackages(dep, __dirname).map(({name, dir}) =>
+                function copyNpmLicense() {
+                    return gulp.src(`${dir.replace(/\\/g, "/")}/{LICENSE,license,LICENSE.*,license.*}`, {allowEmpty: true})
+                        .pipe(gulp.dest(`target/webapp/js/bundles/${bundle}/licenses/${name}`));
+                }
+            )
+        ])
+    )
+));
+
+// Returns the package directories of an npm dependency and all of its transitive production dependencies.
+function collectPackages(name, fromDir, result = new Map()) {
+    if (result.has(name)) {
+        return [...result.values()];
+    }
+    const dir = path.dirname(require.resolve(`${name}/package.json`, {paths: [fromDir]}));
+    result.set(name, {name, dir});
+    const {dependencies = {}} = require(path.join(dir, "package.json"));
+    Object.keys(dependencies).forEach((dependency) => collectPackages(dependency, dir, result));
+    return [...result.values()];
+}
+
 gulp.task("build",
     gulp.series(
         "copy-resources",
@@ -127,7 +170,8 @@ gulp.task("build",
             "js-transpile",
             "rollup-build",
             "themes-compile"
-        )
+        ),
+        "copy-npm-bundle-assets"
     )
 );
 

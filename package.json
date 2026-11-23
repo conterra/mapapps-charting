@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@arcgis/core": "4.33.14",
+        "c3": "0.7.20",
         "vue": "2.7.16"
     },
     "devDependencies": {
